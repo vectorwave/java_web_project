@@ -42,11 +42,16 @@ public class OrderController {
 	}
 	@GetMapping("order/page/{page}")
 	public List<ProductOrder> getOrderPage(@PathVariable("page")int index){
-		return orderService.getOrderPage(index).getContent();
+		return orderService.getOrderPage(index);
 	}
 	@GetMapping("order/all")
 	public List<ProductOrder> getAll() {
 		return orderService.getAll();
+	}
+	
+	@GetMapping("order/all/with")
+	public Object getJson() {
+		return new Object() {public List<ProductOrder> orders=orderService.getAll();public int te=5;};
 	}
 	
 	

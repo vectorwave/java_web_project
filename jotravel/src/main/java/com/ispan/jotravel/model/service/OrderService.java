@@ -14,7 +14,7 @@ public interface OrderService {
 	//提交一份完整訂單
 	public ProductOrder fillOrder(ProductOrder order);
 	//填滿訂單中的明細資料
-	public Page<ProductOrder> getOrderPage(int index);
+	public List<ProductOrder> getOrderPage(int index);
 	//用分頁顯示全部訂單
 	public void deleteOrder(int orderId);
 	//刪除訂單和其下屬的訂單明細
