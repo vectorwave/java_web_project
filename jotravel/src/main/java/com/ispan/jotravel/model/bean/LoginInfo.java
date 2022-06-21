@@ -34,6 +34,4 @@ public class LoginInfo {
 	
 	@Column(name="status")
 	private String status;
-	//test,ignore this
-	//kokoko
 }
