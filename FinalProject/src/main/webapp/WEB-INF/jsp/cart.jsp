@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="${contextRoot}/css/cart.css">
     <script src="${contextRoot}/js/jquery-3.6.0.min.js"></script>
     <script src="${contextRoot}/js/bootstrap.bundle.min.js"></script>
-    <script src="${contextRoot}/js/popper.min.js"></script>
+
     <title>CH11.Cart-Page</title>
 </head>
 
