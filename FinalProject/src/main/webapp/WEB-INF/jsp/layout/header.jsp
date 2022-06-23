@@ -69,8 +69,8 @@
       <div class="dropdown">
         <button class="dropbtn"><span class="material-icons">local_grocery_store</span>商品管理</button>
         <div class="dropdown-content">
-          <a href="#">所有商品</a>
-          <a href="#">活動商品</a>
+          <a class="dropdown-item" href="${contextRoot}/back/allProduct">所有商品</a>
+			    <a class="dropdown-item" href="${contextRoot}/back/addProduct">新增商品</a>
           <a href="#">商品分類</a>
         </div>
       </div>
