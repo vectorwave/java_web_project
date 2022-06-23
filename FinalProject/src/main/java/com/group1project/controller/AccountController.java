@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -16,12 +17,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.group1project.model.bean.Account;
 import com.group1project.model.service.AccountService;
-
+@Controller
 public class AccountController {
 
-	@Autowired
+//	@Autowired
 	private AccountService aService;
-
+	@Autowired
 	public AccountController(AccountService aService) {
 		super();
 		this.aService = aService;

@@ -33,13 +33,13 @@ public class PageController {
 		return "addProduct";
 	}
 	
-	@GetMapping("/login/insert")
-	public String insertAccountPage(Model model) {
-		Account account = new Account();
-		
-		model.addAttribute("account", account);
-		return "addAccount";
-	}
+//	@GetMapping("/login/insert")
+//	public String insertAccountPage(Model model) {
+//		Account account = new Account();
+//		
+//		model.addAttribute("account", account);
+//		return "addAccount";
+//	}
 	
 //	@GetMapping("back/allProduct")
 //	public String productAll() {
