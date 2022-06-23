@@ -1,7 +1,7 @@
 package com.group1project.model.bean;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -15,8 +15,13 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -44,20 +49,23 @@ public class Account implements Serializable{
 	@Column(name="account_id")
 	private Integer accountId;
 	
-	@Column(name="account_name")
+	@Column(name="account_name", nullable = false, columnDefinition = "nvarchar(20)")
 	private String accountName;
 	
 	
-	@Column(name="password")
+	@Column(name="password", nullable = false, columnDefinition = "varchar(20)")
 	private String password;
 	
-	@Column(name="title")
+	@Column(name="title", nullable = false, columnDefinition = "nvarchar(20)")
 	private String title;
 	
-	@Column(name="status")
+	@Column(name="status", nullable = false, columnDefinition = "bit")
 	private String status;
 	
-	@Column(name="signup_date")
+	@JsonFormat(pattern="yyyy-MM-dd hh:mm:ss", timezone = "GMT+8")
+	@DateTimeFormat(pattern="yyyy-MM-dd hh:mm:ss") // Spring MVC 用
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name="signup_date", columnDefinition="datetime")
 	private Date signupDate;
 	
 	

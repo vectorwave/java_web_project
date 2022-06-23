@@ -1,0 +1,83 @@
+/* 通用CSS */
+body {
+    color: white;
+}
+
+fieldset {
+    font-size: 18px;
+}
+
+legend {
+    font-size: 30px;
+}
+
+.content-container {
+    margin:50px 50px 50px 0px;
+}
+
+/* allGuide.jsp 樣式 */
+.thContent * {
+    padding: 10px;
+    text-align: center;
+}
+
+.tdContent * {
+    padding: 10px;
+}
+
+#infoBtn {
+    height:30px;
+    display: flex;
+    align-items: center
+}
+
+/* guideDetail.jsp 樣式 */
+#GIFormContainer1 {
+    width: 500px;
+}
+
+.inputBox1 {
+    margin-top: 5px;
+    margin-bottom: 5px;
+color:white;
+width: 300px;
+background-color: transparent;
+border: none;
+float: right;
+}
+
+.textarea1 {
+    margin-top: 5px;
+    margin-bottom: 5px;
+color:white;
+width: 300px;
+background-color: transparent;
+resize:none;
+border: none;
+float: right;
+}
+
+.inputBoxAdd{
+    margin-top: 5px;
+    margin-bottom: 5px;
+width: 300px;
+border: none;
+float: right;
+border-radius: 3px;
+}
+
+.textareaAdd{
+    margin-top: 5px;
+    margin-bottom: 5px;
+width: 300px;
+resize:none;
+border: none;
+float: right;
+border-radius: 3px;
+}
+
+.GIFLabel {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    float: left;
+}
