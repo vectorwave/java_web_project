@@ -1,7 +1,5 @@
 package com.group1project.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -10,11 +8,11 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.group1project.model.bean.Account;
 import com.group1project.model.bean.Product;
 import com.group1project.service.ProductService;
 
@@ -32,9 +30,13 @@ public class PageController {
 	@GetMapping("back/addProduct")
 	public String addProduct(Model model){
 		
+//		Account account = new Account();
 		Product newPd = new Product();
+				
+//		Integer userId = account.getAccountId();
+//		Integer userId = null;
 		model.addAttribute("newPd", newPd);
-		
+//		model.addAttribute("userId", userId);
 		return "addProduct";
 	}
 	
