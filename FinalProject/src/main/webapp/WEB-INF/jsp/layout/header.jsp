@@ -10,7 +10,7 @@
 <title>JoTravel 管理平台</title>
 
 <link rel="stylesheet" href="${contextRoot}/jQueryconfirm/jquery-confirm.css">
-<script type="text/javascript" src="${contextRoot}/js/jquery-3.6.0.js"></script>
+<script type="text/javascript" src="${contextRoot}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${contextRoot}/jQueryconfirm/jquery-confirm.js"></script>
 
 <!-- <link rel="stylesheet" href="${contextRoot}/css/bootstrap.min.css"> -->
