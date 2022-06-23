@@ -12,8 +12,10 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="${contextRoot}/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="${contextRoot}/css/all.css"/>
+    <!--  <link rel="stylesheet" href="${contextRoot}/css/all.min.css"/>-->
     <link rel="stylesheet" href="${contextRoot}/css/cart.css">
+    <link rel="stylesheet" 
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <script src="${contextRoot}/js/jquery-3.6.0.min.js"></script>
     <script src="${contextRoot}/js/bootstrap.bundle.min.js"></script>
 
