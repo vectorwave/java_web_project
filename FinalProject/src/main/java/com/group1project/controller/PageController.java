@@ -1,16 +1,22 @@
 package com.group1project.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.group1project.model.bean.Product;
-import com.group1project.model.service.ProductService;
+import com.group1project.service.ProductService;
 
 @Controller
 public class PageController {
@@ -33,11 +39,11 @@ public class PageController {
 	}
 	
 	
-//	@GetMapping("back/allProduct")
+//	@GetMapping("back/allProduct2")
 //	public String productAll() {
 //		return "findAllProduct";
 //	}
-	
+//	
 	
 //	@GetMapping("back/Product/all")
 //	public String findAllPrdouct(@RequestParam(name="p", defaultValue = "1") Integer pageNumber, Model model) {
@@ -49,19 +55,48 @@ public class PageController {
 //		return "findAllProduct2";
 //		
 //	}
-
+	//原本方法
+//	@GetMapping("back/allProduct")
+//	public ModelAndView viewAllProducts(ModelAndView mav, 
+//			@RequestParam(name="p", defaultValue="1") Integer pageNumber) {
+//		Page<Product> page = pService.findByPage(pageNumber);
+//		
+//		mav.getModel().put("page", page);
+//		mav.setViewName("findAllProduct2");
+//		return mav;
+//	
+//	}
+	
 	@GetMapping("back/allProduct")
-	public ModelAndView viewMessages(ModelAndView mav, 
-			@RequestParam(name="p", defaultValue="1") Integer pageNumber) {
-		System.out.println(pageNumber);
-		Page<Product> page = pService.findByPage(pageNumber);
+	@ResponseBody
+	public ModelAndView searchProductByPage(ModelAndView mav, 
+			@RequestParam(name="p", defaultValue="1") Integer pageNumber,@RequestParam(value="key",defaultValue="" ,required = false) String key ,Model m) {
+		
+		Pageable pgb = PageRequest.of(pageNumber - 1, 3 ,Sort.Direction.DESC,"productId");
+		Page<Product> page = pService.searchProductByNameWithPage(key, pgb);
 		
 		mav.getModel().put("page", page);
+		mav.getModel().put("key", key);
 		mav.setViewName("findAllProduct2");
 		return mav;
 	
 	}
 	
 	
+	@GetMapping("searchProduct")
+	@ResponseBody
+	public Page<Product> searchProduct(@RequestParam("key") String key,@RequestParam(name = "p",defaultValue = "1") Integer pageNumber,Model m) {
+	
+		 Pageable pgb = PageRequest.of(pageNumber - 1, 3 ,Sort.Direction.DESC,"productId");
+		 
+		 m.addAttribute("page", pgb);
+		 
+		 return pService.searchProductByNameWithPage(key, pgb);
+	
+	}
+	
+	
+
 	
 }
+

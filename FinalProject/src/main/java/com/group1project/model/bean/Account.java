@@ -30,7 +30,6 @@ import lombok.extern.slf4j.Slf4j;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@Slf4j
 
 @Entity
 @Table(name="login_info")
@@ -77,7 +76,5 @@ public class Account implements Serializable{
 	private Account(Integer account) {
 		accountId=account;
 	}
-	public static void main(String[] args) {
-		log.info("hello");
-	}
+	
 }
