@@ -16,6 +16,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -70,6 +72,11 @@ public class Account implements Serializable{
 	@OneToMany(mappedBy = "account",fetch = FetchType.LAZY)
 	private List<Order> orders;
 	
+	
+	@JsonCreator
+	private Account(Integer account) {
+		accountId=account;
+	}
 	public static void main(String[] args) {
 		log.info("hello");
 	}
