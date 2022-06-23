@@ -55,7 +55,7 @@ public class ProductController {
 	//查詢所有商品
 	//利用@GetMapping方法查詢商品,給參數就會查到對應產品 ex:http://localhost:8080/jotravel/back/product/1
 	@GetMapping("{id}")
-	@ResponseBody //回傳json格式的資料
+	@ResponseBody //回傳json格式的資料123
 	public Product getProductById(@PathVariable("id") int product_id) {
 		return pService.getProductById(product_id);
 	}
