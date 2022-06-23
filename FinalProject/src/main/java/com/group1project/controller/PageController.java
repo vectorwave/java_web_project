@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.group1project.model.bean.Account;
 import com.group1project.model.bean.Product;
 import com.group1project.model.service.ProductService;
 
@@ -32,6 +33,13 @@ public class PageController {
 		return "addProduct";
 	}
 	
+	@GetMapping("/login/insert")
+	public String insertAccountPage(Model model) {
+		Account account = new Account();
+		
+		model.addAttribute("account", account);
+		return "addAccount";
+	}
 	
 //	@GetMapping("back/allProduct")
 //	public String productAll() {
@@ -61,6 +69,8 @@ public class PageController {
 		return mav;
 	
 	}
+	
+	
 	
 	
 	
