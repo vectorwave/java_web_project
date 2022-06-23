@@ -11,19 +11,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <!--  <link rel="stylesheet" href="${contextRoot}/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="${contextRoot}/css/bootstrap.min.css" />
     <link rel="stylesheet" href="${contextRoot}/css/all.css"/>
     <link rel="stylesheet" href="${contextRoot}/css/cart.css">
     <script src="${contextRoot}/js/jquery-3.6.0.min.js"></script>
     <script src="${contextRoot}/js/bootstrap.bundle.min.js"></script>
-    <script src="${contextRoot}/js/popper.min.js"></script>-->
-    <!--  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
-    -->
-    <link rel="stylesheet" href="${contextRoot}/css/bootstrap.min.css" />
-    <script src="${contextRoot}/js/jquery-3.6.0.min.js"></script>
-    <script src="${contextRoot}/js/bootstrap.bundle.min.js"></script>
+    <script src="${contextRoot}/js/popper.min.js"></script>
     <title>CH11.Cart-Page</title>
 </head>
 
@@ -361,61 +354,59 @@
 
         <div class="row justify-content-center mt-4">
             <div class="col-md-8">
-                <div class="card">
-  <div class="card-header d-flex justify-content-between align-items-end">
-    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-    Button with data-bs-target
-  </button>
-    <p class="m-0 h3">NT$ 580</p>
-  </div>
-  <div class="collapse" id="collapseExample">
-    <div class="card card-body">
-      <table class="table">
-              <thead>
-                <tr>
-                  <th scope="col" width="50"></th>
-                  <th scope="col" width="50">
-                   
-                  </th>
-                  <th scope="col" width="200">商品名稱</th>
-                  <th scope="col" width="100">數量</th>
-                  <th scope="col" width="50">小計</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">
-                    <a data-toggle="modal" data-target="#removeModal" data-whatever="金牌西裝" href="#">
-                    <i class="fas fa-trash-alt"></i>
-                    </a>
-                  </th>
-                  <td>
-                    <div class="card border-secondary">
-                      <div class="card-body bg-cover" style="background-image:url(https://upload.cc/i1/2020/12/26/y5BPdl.jpg);">
-                        
-                      </div>
+                <div class="accordion" id="accordionExample">
+                    <div class="card card-bottom">
+                        <div class="card-header  d-flex justify-content-between" id="headingOne">
+                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
+                                aria-expanded="true" aria-controls="collapseOne">
+                                顯示購物車細節
+                            </button>
+                            <div class="h3 d-inline-block mt-2">
+                                <strong>$ 1059</strong>
+                            </div>
+                        </div>
+
                     </div>
-                    
-                  </td>
-                  <td>金牌西裝</td>
-                  <td>1件</td>
-                  <td class="text-right">$520</td>
-                </tr>
-              </tbody>
-              <tfoot>
-                <tr>
-                  <td colspan="4" class="text-right">運費 </td>
-                  <td class="text-right">$60</td>
-                </tr>  
-                <tr>
-                  <td colspan="4" class="text-right">合計 </td>
-                  <td class="text-right">$580</td>
-                </tr>  
-              </tfoot>
-            </table>
-    </div>
-  </div>
-</div>
+                    <div id="collapseOne" class="collapse show " aria-labelledby="headingOne" data-parent="#accordionExample">
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th width="20"></th>
+                                    <th width="100"></th>
+                                    <th> 商品名稱</th>
+                                    <th>數量</th>
+                                    <th class="text-center" width="120">小計</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="align-middle"><a href="#removeModal" class="text-dark" data-price="999"
+                                            data-title="一級偽裝帽" data-toggle="modal" data-target="#removeModal"><i class="far fa-trash-alt mr-3"></i></a></td>
+                                    <td class="align-middle">
+                                        <div class="card p-1 card-bottom">
+                                            <img src="https://images.unsplash.com/photo-1447005497901-b3e9ee359928?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80"
+                                                alt="..." width="80px;">
+                                        </div>
+                                    </td>
+                                    <td class="align-middle "> 一級偽裝帽</td>
+                                    <td class="align-middle">1件</td>
+                                    <td class="align-middle text-right">$999</td>
+                                </tr>
+                                <tr class="text-right">
+                                    <td colspan="4"><strong>運費</strong></td>
+                                    <td><strong>$ 60</strong></td>
+                                </tr>
+                                <tr class="text-right">
+                                    <td colspan="4"><strong>合計</strong></td>
+                                    <td><strong>$ 1059</strong></td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+
+
+                    </div>
+                </div>
 
                 <div class="card text-center my-5 border-0">
                     <div class="card-header border-0">

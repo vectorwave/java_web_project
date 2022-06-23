@@ -12,18 +12,18 @@ import com.group1project.model.service.AccountService;
 public class AccountPageController {
 	
 	@Autowired
-//	private AccountService aService;
+	private AccountService aService;
 
 	@GetMapping("/")
 	public String Welcome(){
 		return "index";
 	}
 	
-//	@GetMapping("/login/insert")
-//	public String insertAccountPage(Model model) {
-//		Account account = new Account();
-//		
-//		model.addAttribute("account", account);
-//		return "addAccount";
-//	}
+	@GetMapping("/login/insert")
+	public String insertAccountPage(Model model) {
+		Account account = new Account();
+		
+		model.addAttribute("account", account);
+		return "addAccount";
+	}
 }

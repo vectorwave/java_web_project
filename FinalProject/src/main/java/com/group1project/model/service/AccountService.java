@@ -2,8 +2,10 @@ package com.group1project.model.service;
 
 import java.util.List;
 
-import com.group1project.model.bean.Account;
+import org.springframework.stereotype.Service;
 
+import com.group1project.model.bean.Account;
+@Service
 public interface AccountService {
 	Account saveAccount(Account account);
 	Account getAccountById(Integer accountId);
