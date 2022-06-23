@@ -12,7 +12,7 @@
 <form:form method="post" enctype="multipart/form-data" action="${contextRoot}/back/product" modelAttribute="newPd" >
 
   <form:input path="productId" type="hidden" />
-  <input name="accountId" type="hidden" value="">
+  <input name="accountId" type="hidden" value="1">
   
 <%--   <form:input path="account.accountId" type="hidden" value="1"/> --%>
   
