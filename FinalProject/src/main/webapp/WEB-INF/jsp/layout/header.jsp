@@ -23,7 +23,7 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
-<body style="background-color:rgb(4, 17, 37) ">
+<body style="background-color:white ">
 
 <!-- 頂部橫條列 -->  
 <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
