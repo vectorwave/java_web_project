@@ -1,4 +1,4 @@
-package com.group1project.service.impl;
+package com.group1project.model.service.impl;
 
 import java.util.List;
 import java.util.Optional;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.group1project.model.bean.Article;
 import com.group1project.model.repository.ArticleRepository;
-import com.group1project.service.ArticleService;
+import com.group1project.model.service.ArticleService;
 
 @Service
 public  class ArticleServiceimpl implements ArticleService {

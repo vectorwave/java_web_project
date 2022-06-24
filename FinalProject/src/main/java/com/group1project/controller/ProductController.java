@@ -24,7 +24,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.group1project.model.bean.Account;
 import com.group1project.model.bean.Product;
-import com.group1project.service.ProductService;
+import com.group1project.model.service.ProductService;
 
 //rest風格的CRUD 收到的頁面為http://localhost:8080/jotravel/back/product
 @Controller

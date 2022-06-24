@@ -1,4 +1,4 @@
-package com.group1project.service.impl;
+package com.group1project.model.service.impl;
 
 import java.util.List;
 import java.util.Optional;
@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.group1project.model.bean.Product;
 import com.group1project.model.repository.ProductRepository;
-import com.group1project.service.ProductService;
+import com.group1project.model.service.ProductService;
 
 @Service
 @Transactional

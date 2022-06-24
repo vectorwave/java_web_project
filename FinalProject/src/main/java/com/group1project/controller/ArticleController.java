@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.group1project.model.bean.Article;
-import com.group1project.service.ArticleService;
+import com.group1project.model.service.ArticleService;
 
 //rest風格的CRUD 收到的頁面為http://localhost:8080/jotravel/back/product
 @Controller

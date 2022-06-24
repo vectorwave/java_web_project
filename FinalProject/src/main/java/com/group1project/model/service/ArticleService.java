@@ -1,4 +1,4 @@
-package com.group1project.service;
+package com.group1project.model.service;
 
 import java.util.List;
 

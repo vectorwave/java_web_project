@@ -19,9 +19,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.group1project.model.bean.ArticleComment;
-import com.group1project.service.ArticleCommentService;
-import com.group1project.service.ArticleService;
-import com.group1project.service.ProductService;
+import com.group1project.model.service.ArticleCommentService;
+import com.group1project.model.service.ArticleService;
+import com.group1project.model.service.ProductService;
 
 //rest風格的CRUD 收到的頁面為http://localhost:8080/jotravel/back/product
 @Controller

@@ -1,4 +1,4 @@
-package com.group1project.service.impl;
+package com.group1project.model.service.impl;
 
 import java.util.List;
 import java.util.Optional;
@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.group1project.model.bean.ArticleComment;
 import com.group1project.model.repository.ArticleCommentRepository;
-import com.group1project.service.ArticleCommentService;
+import com.group1project.model.service.ArticleCommentService;
 
 @Service
 public class ArticleCommentServiceimpl implements ArticleCommentService {

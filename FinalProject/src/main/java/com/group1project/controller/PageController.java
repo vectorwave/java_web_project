@@ -14,7 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.group1project.model.bean.Account;
 import com.group1project.model.bean.Product;
-import com.group1project.service.ProductService;
+import com.group1project.model.service.ProductService;
 
 @Controller
 public class PageController {
