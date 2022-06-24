@@ -27,6 +27,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 
 
@@ -75,6 +76,7 @@ public class Account implements Serializable{
 	@PrimaryKeyJoinColumn
 	private Member member;
 	
+	@ToString.Exclude
 	@OneToMany(mappedBy = "account",fetch = FetchType.LAZY)
 	private List<Order> orders;
 	
