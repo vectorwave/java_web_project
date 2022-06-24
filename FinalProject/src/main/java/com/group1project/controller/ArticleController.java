@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.group1project.model.bean.Account;
 import com.group1project.model.bean.Article;
 import com.group1project.model.service.ArticleService;
 
@@ -28,6 +29,7 @@ import com.group1project.model.service.ArticleService;
 @RequestMapping("/back/article/") 
 public class ArticleController {
 
+	
 	
 	private ArticleService aService;
 	@Autowired
@@ -44,39 +46,7 @@ public class ArticleController {
 		return aService.getAllArticle();
 	}
 	
-	//查詢所有商品
-	//利用@GetMapping方法查詢商品,給參數就會查到對應產品 ex:http://localhost:8080/jotravel/back/product/1
-	@GetMapping("/{id}")
-	@ResponseBody //回傳json格式的資料
-	public Article getArticleById(@PathVariable("id") int articleId) {
-		return aService.getArticleById(articleId);
-	}
-	
-	
-	//新增商品
-	//@PostMapping方法,為新增商品,輸入json格式資料即可完成新增,利用@ResponseBody回傳json格式的資料
-//	@PostMapping("editArticle")
-//	@ResponseBody
-//	public Article saveArticle(@RequestBody Article article) {
-//		return aService.saveArticle(article);
-//	}
-//	
-//  以非rest風格方式刪除商品
-//	@RequestMapping(value="add", method = RequestMethod.POST )
-//	@ResponseBody
-//	public Product saveProduct2(@RequestBody Product product) {
-//		return pService.saveProduct(product);
-//	
-//	}
-	
-	
-	//刪除商品
-//	@DeleteMapping("{id}")
-//	public String deleteArticleById(@PathVariable("id") int articleId) {
-//		aService.deleteArticle(articleId);
-//		return "redirect:/saveOK";
-//	}
-	
+
 	//以非rest風格的方式刪除商品
 	@GetMapping("delete/{id}")
 	public String deleteProductById2(@PathVariable("id") int articleId) {
@@ -99,10 +69,12 @@ public class ArticleController {
 		return "updateArticle";
 	}
 	
-	
+	private Integer accountId;
 	@PostMapping("editArticle")
-    public String editArticle(@ModelAttribute("article") Article arc, Model model,@RequestParam("file") MultipartFile file) {
-		
+    public String editArticle(@ModelAttribute("article") Article arc, Model model,@RequestParam("file") MultipartFile file, @RequestParam("accountId") Integer accountId) {
+		this.accountId=accountId;
+		Account acc=new Account();
+		acc.setAccountId(accountId);
 		try {
 			arc.setArticlePic(file.getBytes());
 		} catch (IOException e) {
@@ -119,7 +91,7 @@ public class ArticleController {
 		
 		model.addAttribute("Article", newArc);
 		
-//		
+	
 		return "redirect:/article/all";
 		
 	}
