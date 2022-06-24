@@ -45,8 +45,8 @@ public class PageController {
 	} 
 	
 	@GetMapping("back/addProduct")
-	public String addProduct(@ModelAttribute("account") Integer accountsession,Model model){
-		
+	public String addProduct(Model model){
+//		@ModelAttribute("account") Integer accountsession ,
 //		Account account = new Account();
 		Product newPd = new Product();
 				
@@ -56,10 +56,8 @@ public class PageController {
 //		model.addAttribute("userId", userId);
 		
 		
-		//test
-
-		
-		System.out.println(accountsession);
+		//test	
+//		System.out.println(accountsession);
 		
 		return "addProduct";
 	}
