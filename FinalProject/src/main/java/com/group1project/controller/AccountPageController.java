@@ -26,4 +26,6 @@ public class AccountPageController {
 		model.addAttribute("account", account);
 		return "addAccount";
 	}
+	
+	
 }

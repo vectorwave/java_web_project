@@ -27,6 +27,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 
 
@@ -46,6 +47,8 @@ public class Account implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="account_id")
 	private Integer accountId;
+	
+
 	
 	@Column(name="account_name", nullable = false, columnDefinition = "nvarchar(20)")
 	private String accountName;
@@ -75,6 +78,7 @@ public class Account implements Serializable{
 	@PrimaryKeyJoinColumn
 	private Member member;
 	
+	@ToString.Exclude
 	@OneToMany(mappedBy = "account",fetch = FetchType.LAZY)
 	private List<Order> orders;
 	
