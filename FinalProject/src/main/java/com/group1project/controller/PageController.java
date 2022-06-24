@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.group1project.model.bean.Account;
+import com.group1project.model.bean.Feedback;
 import com.group1project.model.bean.Product;
+import com.group1project.model.service.FeedbackService;
 import com.group1project.model.service.ProductService;
 
 @Controller
@@ -102,6 +104,22 @@ public class PageController {
 		 
 		 return pService.searchProductByNameWithPage(key, pgb);
 	
+	}
+	
+
+	@Autowired
+	private FeedbackService fService;
+	
+	
+	@GetMapping("back/allFeedback")
+	public ModelAndView Feedback(ModelAndView mav, 
+			@RequestParam(name="p", defaultValue="1") Integer pageNumber) {
+		System.out.println(pageNumber);
+		Page<Feedback> page = fService.findByPage(pageNumber);
+		
+		mav.getModel().put("page", page);
+		mav.setViewName("findAllFeedback");
+		return mav;
 	}
 	
 	
