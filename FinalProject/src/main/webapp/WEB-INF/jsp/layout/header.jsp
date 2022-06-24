@@ -90,7 +90,8 @@
       <div class="dropdown">
         <button class="dropbtn"><span class="material-icons">rate_review</span>論壇管理</button>
         <div class="dropdown-content">
-          <a href="#">文章管理</a>
+          <a href="${contextRoot}/article/add">新增文章</a>
+          <a href="${contextRoot}/article/all">文章管理</a>
         </div>
       </div>
 
