@@ -47,6 +47,8 @@ public class Account implements Serializable{
 	@Column(name="account_id")
 	private Integer accountId;
 	
+
+	
 	@Column(name="account_name", nullable = false, columnDefinition = "nvarchar(20)")
 	private String accountName;
 	
