@@ -90,7 +90,8 @@
       <div class="dropdown">
         <button class="dropbtn"><span class="material-icons">rate_review</span>論壇管理</button>
         <div class="dropdown-content">
-          <a href="#">文章管理</a>
+          <a href="${contextRoot}/article/add">新增文章</a>
+          <a href="${contextRoot}/article/all">文章管理</a>
         </div>
       </div>
 
@@ -98,7 +99,7 @@
         <button class="dropbtn"><span class="material-icons">chat</span>客服管理</button>
         <div class="dropdown-content">
           <a href="#">未回覆問題</a>
-          <a href="#">所有問題</a>
+           <a class="dropdown-item" href="/jotravel/back/allFeedback">所有問題</a>
           <a href="#">即時回回覆</a>
         </div>
       </div>

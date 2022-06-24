@@ -48,6 +48,7 @@ public class Member implements Serializable{
 	@MapsId
 	private Account account;
 	
+
 	
 	@Column(name = "member_name", columnDefinition = "nvarchar(30)")
 	private String memberName;

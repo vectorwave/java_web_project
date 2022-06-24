@@ -16,4 +16,5 @@ public interface OrderRepository extends JpaRepository<Order, Integer> {
 	public Page<Order> findByCashFlow(String cashFlow,Pageable pageable);
 	public List<Order> findByStatus(String status);
 	public Page<Order> findByStatus(String status,Pageable pageable);
+	
 }

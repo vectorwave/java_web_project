@@ -13,9 +13,25 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+
 import com.group1project.model.bean.Guide;
 import com.group1project.model.bean.Product;
 import com.group1project.model.service.GuideService;
+
+
+
+import com.group1project.model.bean.Article;
+
+import com.group1project.model.bean.Product;
+import com.group1project.model.service.ArticleService;
+
+import com.group1project.model.bean.Account;
+import com.group1project.model.bean.Feedback;
+
+
+import com.group1project.model.service.FeedbackService;
+
+
 import com.group1project.model.service.ProductService;
 
 @Controller
@@ -23,6 +39,9 @@ public class PageController {
 	
 	@Autowired
 	private ProductService pService ;
+	
+	@Autowired
+	private ArticleService aService;
 	
 	@GetMapping("back/")
 	public String backIndexPage(){
@@ -106,6 +125,35 @@ public class PageController {
 	
 	}
 	
+
+	@Autowired
+	private FeedbackService fService;
+	
+	
+	@GetMapping("back/allFeedback")
+	public ModelAndView Feedback(ModelAndView mav, 
+			@RequestParam(name="p", defaultValue="1") Integer pageNumber) {
+		System.out.println(pageNumber);
+		Page<Feedback> page = fService.findByPage(pageNumber);
+		
+		mav.getModel().put("page", page);
+		mav.setViewName("findAllFeedback");
+		return mav;
+	}
+	
+	
+	@GetMapping("article/add")
+	public String addArticlePage(Model model) {
+		
+		Article article=new Article();
+		
+		
+		
+		model.addAttribute("article", article);
+	
+		
+		return "editArticle";
+	}
 	
 	// ##### Start ##### 商家導遊 Page Controller
 	
@@ -158,6 +206,16 @@ public class PageController {
 	
 	// ##### End ##### 商家導遊 Page Controller 
 
+	
+	@GetMapping("article/all")
+	public ModelAndView viewAllArticles(ModelAndView mav, 
+			@RequestParam(name="p", defaultValue = "1") Integer pageNumber) {
+		Page<Article> page = aService.findByPage(pageNumber);
+		
+		mav.getModel().put("page", page);
+		mav.setViewName("viewArticles");
+		return mav;
+	}
 	
 	
 	
