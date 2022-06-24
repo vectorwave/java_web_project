@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -16,6 +17,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -44,11 +47,12 @@ public class Order implements Serializable{
 	@Column(name="status")
 	private String status;
 	
-	@ManyToOne
+	@JsonProperty(access = Access.WRITE_ONLY)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="account_id")
 	private Account account;
 	
-	@OneToMany(mappedBy = "order",fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "order",fetch = FetchType.LAZY)
 	private List<OrderDetail> orderDetails;
 	
 	@JsonCreator

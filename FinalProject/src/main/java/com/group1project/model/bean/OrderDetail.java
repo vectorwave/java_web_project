@@ -3,6 +3,7 @@ package com.group1project.model.bean;
 import java.io.Serializable;
 import java.sql.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
@@ -41,14 +42,14 @@ public class OrderDetail implements Serializable{
 	@EqualsAndHashCode.Include
 	private OrderDetailId detailId = new OrderDetailId();
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JsonProperty(access = Access.WRITE_ONLY)
 	@MapsId(value = "orderId")
 	@JoinColumn(name="order_id")
 	private Order order;
 	
 	@MapsId(value="productId")
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne
 	@JoinColumn(name="product_id")
 	private Product product;
 	

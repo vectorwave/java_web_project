@@ -13,48 +13,56 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
-import com.group1project.model.bean.ArticleComment;
-import com.group1project.model.service.ArticleCommentService;
+import com.group1project.model.bean.Feedback;
+import com.group1project.model.service.FeedbackService;
+
+
 
 //rest風格的CRUD 收到的頁面為http://localhost:8080/jotravel/back/product
 @Controller
-@RequestMapping("/back/articlecomment") 
-public class ArticleCommentController {
+@RequestMapping("/back/feedback") 
+public class FeedbackController {
 
-	
-	private ArticleCommentService acService;
 	@Autowired
-	public ArticleCommentController(ArticleCommentService acService) {
+	private FeedbackService fService;
+	
+	public FeedbackController(FeedbackService fService) {
 		super();
-		this.acService = acService;
+		this.fService = fService;
 	}
 	
 	//查詢商品
 	//利用@GetMapping方法查詢商品,沒參數就會查到所有產品 ex: http://localhost:8080/jotravel/back/product
-	@GetMapping
-	@ResponseBody //回傳json格式的資料
-	public List<ArticleComment> getAllArticleComment() {
-		return acService.getAllArticleComment();
-	}
+//	@GetMapping
+//	@ResponseBody //回傳json格式的資料
+//	public List<Feedback> getAllFeedback() {
+//		return fService.getAllFeedback();
+//	}
 	
 	//查詢所有商品
 	//利用@GetMapping方法查詢商品,給參數就會查到對應產品 ex:http://localhost:8080/jotravel/back/product/1
 	@GetMapping("/{id}")
 	@ResponseBody //回傳json格式的資料
-	public ArticleComment getArticleCommentById(@PathVariable("id") int article_comment_id) {
-		return acService.getArticleCommentById(article_comment_id);
+	public Feedback getFeedbackById(@PathVariable("id") int feedbackId) {
+		return fService.getFeedbackById(feedbackId);
 	}
 	
 	
 	//新增商品
 	//@PostMapping方法,為新增商品,輸入json格式資料即可完成新增,利用@ResponseBody回傳json格式的資料
-	@PostMapping()
+	@PostMapping("/insert")
 	@ResponseBody
-	public ArticleComment saveArticleComment(@RequestBody ArticleComment articleComment) {
-		return acService.saveArticleComment(articleComment);
+	public Feedback saveFeedback(@RequestBody Feedback feedback) {
+		Date nowDate = new Date();
+	    feedback.onCreate();
+		feedback.setStartDate(nowDate);
+		feedback.setStatus("未處理");
+		return fService.saveFeedback(feedback);
 	}
 	
 //  以非rest風格方式刪除商品
@@ -67,10 +75,10 @@ public class ArticleCommentController {
 	
 	
 	//刪除商品
-	@DeleteMapping("{id}")
-	public String deleteArticleCommentById(@PathVariable("id") int article_comment_id) {
-		acService.deleteArticleComment(article_comment_id);
-		return "redirect:/saveOK";
+	@GetMapping("delete")
+	public String deleteFeedback(@RequestParam("id") int feedbackId) {
+		fService.deleteFeedback(feedbackId);
+		return "redirect:/back/allFeedback";
 	}
 	
 	//以非rest風格的方式刪除商品
@@ -81,24 +89,25 @@ public class ArticleCommentController {
 //	}
 	
 	
-	@GetMapping("editProduct")
-	public String editArticle(@RequestParam("id") int article_comment_id, Model model) {
-		ArticleComment newArcC = acService.getArticleCommentById(article_comment_id);
+	@GetMapping("editFeedback")
+	public String editFeedback(@RequestParam("id") int feedbackId, Model model) {
+		Feedback newPd = fService.getFeedbackById(feedbackId);
 		
 		Date nowDate = new Date();
 		System.out.println(nowDate);
-		model.addAttribute("newArcC", newArcC);
+		model.addAttribute("newPd", newPd);
 //		model.addAttribute("nowDate", nowDate);
-		return "editProduct";//回到頁面
+		return "editFeedback";//回到頁面
 	}
 	
-	@PostMapping("editProduct")
-    public String postEditArticleComment(@ModelAttribute(name="newArcC") ArticleComment newArcC) {
-		acService.saveArticleComment(newArcC);
+	@PostMapping("editFeedback")
+    public String postEditMessage(@ModelAttribute(name="newPd") Feedback newPd) {
+		fService.saveFeedback(newPd);
 		
-		return "redirect:/";
+		return "redirect:/back/allFeedback";
 		
 	}
 
+	
 	
 }
