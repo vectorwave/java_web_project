@@ -44,7 +44,7 @@ public class AccountController {
 		return "allAccount";
 	}
 
-	// 會員帳號新增
+	// 會員帳號新增  
 	@PostMapping("/login/member/insert")
 	public String inserAccount(@ModelAttribute("account") Account account, Model model) {
 		Date nowdate = new Date();
