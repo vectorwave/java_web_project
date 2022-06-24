@@ -54,7 +54,7 @@ public class AccountController {
 		return "redirect:/login/findall";
 	}
 	
-	// 商家新增帳號用
+	// 商家新增帳號用 
 	@PostMapping("/login/guide/insert")
 	public String inserGuideAccount(@ModelAttribute("account") Account account, Model model) {
 		Date nowdate = new Date();
