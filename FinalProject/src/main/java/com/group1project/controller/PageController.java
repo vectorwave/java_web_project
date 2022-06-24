@@ -8,9 +8,15 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+
+import com.group1project.model.bean.Guide;
+import com.group1project.model.bean.Product;
+import com.group1project.model.service.GuideService;
 
 
 
@@ -24,6 +30,7 @@ import com.group1project.model.bean.Feedback;
 
 
 import com.group1project.model.service.FeedbackService;
+
 
 import com.group1project.model.service.ProductService;
 
@@ -148,6 +155,56 @@ public class PageController {
 		return "editArticle";
 	}
 	
+	// ##### Start ##### 商家導遊 Page Controller
+	
+	@Autowired
+	private GuideService gService;
+	
+	//所有商家頁面
+	@GetMapping("/guidemanagement")
+	public ModelAndView allGuidePage(ModelAndView mav, @RequestParam(name="p", defaultValue = "1") Integer pageNumber) {
+		
+		Page<Guide> page = gService.findByPage(pageNumber);
+		
+		Integer history = pageNumber;
+		
+		mav.getModel().put("page", page);
+		mav.setViewName("allGuide");
+		
+		return mav;
+	}
+	
+	//導遊詳細資訊
+	@GetMapping("/guidemanagement/info/{id}")
+	public ModelAndView guideDetails(ModelAndView mav, @PathVariable("id") int id) {
+		Guide guideInfo = gService.getGuideById(id);
+		mav.getModel().put("guideInfo", guideInfo);
+		mav.setViewName("guideDetail");
+		return mav;
+	}
+	
+	
+	//新增導遊
+	@GetMapping("/guidemanagement/add")
+	public ModelAndView insertGuide(ModelAndView mav) {
+		
+		Guide newGuide = new Guide();
+		mav.getModel().put("addGuide", newGuide);
+		mav.setViewName("addGuide");
+		
+		return mav;
+	}
+	
+	//更新導遊
+	@GetMapping("/guidemanagement/update/{id}")
+	public ModelAndView updateGuideInfo(ModelAndView mav, @PathVariable("id") int id) {
+		Guide guideUpdate = gService.getGuideById(id);
+		mav.getModel().put("guideUpdate", guideUpdate);
+		mav.setViewName("updateGuide");
+		return mav;
+	}
+	
+	// ##### End ##### 商家導遊 Page Controller 
 
 	
 	@GetMapping("article/all")
