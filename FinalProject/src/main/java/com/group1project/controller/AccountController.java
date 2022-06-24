@@ -44,14 +44,24 @@ public class AccountController {
 		return "allAccount";
 	}
 
-	// 新增
-	@PostMapping("/login/insert")
+	// 會員帳號新增
+	@PostMapping("/login/member/insert")
 	public String inserAccount(@ModelAttribute("account") Account account, Model model) {
 		Date nowdate = new Date();
 		account.setSignupDate(nowdate);
 
 		aService.saveAccount(account);
 		return "redirect:/login/findall";
+	}
+	
+	// 商家新增帳號用
+	@PostMapping("/login/guide/insert")
+	public String inserGuideAccount(@ModelAttribute("account") Account account, Model model) {
+		Date nowdate = new Date();
+		account.setSignupDate(nowdate);
+
+		aService.saveAccount(account);
+		return "redirect:XXXXXXXXX";
 	}
 
 	// 刪除帳號
