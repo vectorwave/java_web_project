@@ -14,5 +14,5 @@ public interface FeedbackService {
 	List<Feedback> getAllFeedback();
 	void deleteFeedback(int feedback_id);
 	Page<Feedback> findByPage(Integer pageNumber);
-	void test();
+	
 }
