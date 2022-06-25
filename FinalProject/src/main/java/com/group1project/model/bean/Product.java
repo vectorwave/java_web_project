@@ -46,8 +46,9 @@ public class Product implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer productId;
 	
+
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JsonIgnore
-	@ManyToOne
 	@JoinColumn(name="account_id")
 	private Account account;
 	

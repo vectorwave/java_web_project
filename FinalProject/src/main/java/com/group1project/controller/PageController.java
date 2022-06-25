@@ -8,9 +8,14 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import org.springframework.web.bind.annotation.ModelAttribute;
+
 import org.springframework.web.bind.annotation.PathVariable;
+
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 
@@ -22,7 +27,7 @@ import com.group1project.model.service.GuideService;
 
 import com.group1project.model.bean.Article;
 
-import com.group1project.model.bean.Product;
+
 import com.group1project.model.service.ArticleService;
 
 import com.group1project.model.bean.Account;
@@ -34,6 +39,7 @@ import com.group1project.model.service.FeedbackService;
 
 import com.group1project.model.service.ProductService;
 
+@SessionAttributes("account")
 @Controller
 public class PageController {
 	
@@ -50,7 +56,7 @@ public class PageController {
 	
 	@GetMapping("back/addProduct")
 	public String addProduct(Model model){
-		
+//		@ModelAttribute("account") Integer accountsession ,
 //		Account account = new Account();
 		Product newPd = new Product();
 				
@@ -58,6 +64,11 @@ public class PageController {
 //		Integer userId = null;
 		model.addAttribute("newPd", newPd);
 //		model.addAttribute("userId", userId);
+		
+		
+		//test	
+//		System.out.println(accountsession);
+		
 		return "addProduct";
 	}
 	
@@ -108,6 +119,15 @@ public class PageController {
 		mav.getModel().put("page", page);
 		mav.getModel().put("key", key);
 		mav.setViewName("findAllProduct2");
+		
+		
+		
+		//test
+		
+//		m.addAttribute("account", accountBean.getId);
+//		System.out.println("123");;
+//		
+//		
 		return mav;
 	
 	}
