@@ -102,7 +102,7 @@ public class ProductController {
 		message.put("okMsg", "insertOK");
 		model.addAttribute("msg", message);
 		
-		return "addProduct";
+		return "redirect:/back/allProduct";
 	}
 	
 //  以非rest風格方式刪除商品
@@ -138,6 +138,9 @@ public class ProductController {
 //		model.addAttribute("nowDate", nowDate);
 		return "editProduct";//回到頁面
 	}
+	
+	
+	
 	
 	@PostMapping("editProduct")
     public String postEditMessage(@ModelAttribute(name="newPd") Product newPd ,
