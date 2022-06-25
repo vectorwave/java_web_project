@@ -5,8 +5,13 @@
 <jsp:include page="layout/header.jsp" />
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
+
+<!-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
+<%-- <script type="text/javascript" src="${contextRoot}/js/sweetalert2.all.min.js"></script> --%>
+<%-- <link href="${contextRoot}/css/sweetalert2.min.css" rel="stylesheet"> --%>
+
 <h1> 新增產品 </h1>
 
 <form:form method="post" enctype="multipart/form-data" action="${contextRoot}/back/product" modelAttribute="newPd" >
@@ -22,14 +27,19 @@
   產品價格：<form:input type="text" path="productPrice" class="form-control" value="1000" required="required"/><br/>
   上架時間：<form:input type="date" path="startDate" class="form-control" required="required" /><br/>
   下架時間：<form:input type="date" path="endDate" class="form-control"  required="required"/><br/>
-  產品圖片：<input type="file" class="form-control" name="file" accept="image/*" onchange="loadFile(event)"/><br/>
 	
-	<img id="output" width="300" height="300"/>
+  產品圖片：<img id="output" width="300" height="300"/><br/><br/>
+  
+  <input type="file" class="form-control" name="file" accept="image/*" onchange="loadFile(event)"/><br/>
+  
+  上架狀態:<form:select path="status" class="form-select" required="required">
+  <form:option value="1" >上架</form:option>
+  <form:option value="0">下架</form:option>
+</form:select>
   
   </div>
   
-  <input type="submit" name="submit" value="更新">
-  
+  <input onclick="submitForm(form)" type="button" class="btn btn-primary" value="新增商品">
   </form:form>
   
   <div> ${msg.okMsg}
@@ -43,6 +53,26 @@
       URL.revokeObjectURL(output.src) // free memory
     }
   };
+  
+  function submitForm(form){
+	  Swal.fire({
+		  title: '確認新增商品?',
+		  showDenyButton: true,
+		  confirmButtonText: '儲存',
+		  denyButtonText: '繼續修改',
+		}).then((result) => {
+		  /* Read more about isConfirmed, isDenied below */
+		  if (result.isConfirmed) {
+// 		    Swal.fire('Saved!', '', 'success')
+		    form.submit(form);
+		    
+		  } else if (result.isDenied) {
+		    
+		    return false;
+		  }
+		})
+  }
+  
 </script> 
   
  <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script> 
