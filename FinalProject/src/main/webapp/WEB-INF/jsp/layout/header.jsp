@@ -64,7 +64,7 @@
       <div class="dropdown">
         <button class="dropbtn"><span class="material-icons">content_paste</span>訂單管理</button>
         <div class="dropdown-content">
-          <a href="#">所有訂單</a>
+           <a class="dropdown-item" href="${contextRoot}/back/allOrder">所有訂單</a>
           <a href="#">匯出訂單</a>
         </div>
       </div>
