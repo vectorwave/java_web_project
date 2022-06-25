@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <jsp:include page="layout/header.jsp" />
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <link rel="stylesheet" href="${contextRoot}/css/all.min.css"/>
@@ -10,23 +9,23 @@
 
 <div id="app">
 
-<div class="row justify-content-center mt-4">
-            <div class="col-md-8">
+<div class="row justify-content-center mt-4" style="color:black">
+            <div class="col-md-15">
                 <div class="accordion" id="accordionExample" v-for="(order,index) in orders">
                     <div class="card card-bottom">
-                        <div class="card-header  d-flex justify-content-between" id="headingOne">
-                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
-                                aria-expanded="true" aria-controls="collapseOne">
+                        <div class="card-header  d-flex justify-content-between" :id="'heading-'+index">
+                            <button class="btn btn-link" type="button" data-toggle="collapse" :data-target="'#collapse-'+index"
+                                aria-expanded="true" :aria-controls="'collapse'+index">
                                 顯示訂單細節
                             </button>
-                            <div class="h3 d-inline-block mt-2">
-                                <strong>{{order.cashFlow}}</strong>
-                                <strong>{{order.status}}</strong>
+                            <div class="h3 d-inline-block mt-2 " >
+                                <strong>金流:{{order.cashFlow}}</strong>
+                                <strong>訂單狀態:{{order.status}}</strong>
                             </div>
                         </div>
 
                     </div>
-                    <div id="collapseOne" class="collapse show " aria-labelledby="headingOne" data-parent="#accordionExample">
+                    <div :id="'collapse-'+index" class="collapse show " :aria-labelledby="'heading-'+index" data-parent="#accordionExample">
                         <table class="table table-sm">
                             <thead>
                                 <tr>
@@ -41,8 +40,7 @@
                             </thead>
                             <tbody  v-for="(detail,index) in order.orderDetails">
                                 <tr>
-                                    <td class="align-middle"><a href="#removeModal" class="text-dark" data-price="999"
-                                            data-title="一級偽裝帽" data-toggle="modal" data-target="#removeModal"><i class="far fa-trash-alt mr-3"></i></a></td>
+                                    <td class="align-middle"><button>🗑️</button>
                                     <td class="align-middle">
                                         <div class="card p-1 card-bottom">
                                             <img :src="'${contextRoot}/back/product/photo/'+detail.product.productId"
