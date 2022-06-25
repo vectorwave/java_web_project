@@ -113,7 +113,7 @@ public class PageController {
 	public ModelAndView searchProductByPage(ModelAndView mav, 
 			@RequestParam(name="p", defaultValue="1") Integer pageNumber,@RequestParam(value="key",defaultValue="" ,required = false) String key ,Model m) {
 		
-		Pageable pgb = PageRequest.of(pageNumber - 1, 3 ,Sort.Direction.DESC,"productId");
+		Pageable pgb = PageRequest.of(pageNumber - 1, 5 ,Sort.Direction.DESC,"productId");
 		Page<Product> page = pService.searchProductByNameWithPage(key, pgb);
 		
 		mav.getModel().put("page", page);
@@ -145,7 +145,7 @@ public class PageController {
 	
 	}
 	
-
+	// ##### Start ##### feedback Page Controller
 	@Autowired
 	private FeedbackService fService;
 	
