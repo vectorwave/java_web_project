@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.group1project.model.bean.Order;
 import com.group1project.model.bean.OrderDetail;
+import com.group1project.model.bean.OrderDetailId;
 import com.group1project.model.repository.OrderDetailRepository;
 import com.group1project.model.repository.OrderRepository;
 import com.group1project.model.service.OrderService;
@@ -61,6 +62,14 @@ public class OrderServiceImpl implements OrderService{
 		}
 		detailRepository.flush();
 		return order;
+	}
+
+
+	@Override
+	public void deleteOrderDetail(Integer orderId, Integer productId) {
+		OrderDetailId detailId = new OrderDetailId(orderId,productId);
+		detailRepository.deleteById(detailId);
+		detailRepository.flush();
 	}
 
 

@@ -15,5 +15,5 @@ public interface OrderService {
 	public List<Order> findAll(Integer page);
 	public void deleteOrder(Integer orderId);
 	public Order save(Order order);
-	
+	public void deleteOrderDetail(Integer orderId,Integer productId);
 }
