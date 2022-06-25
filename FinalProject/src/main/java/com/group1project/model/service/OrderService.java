@@ -11,10 +11,9 @@ public interface OrderService {
 	
 	public List<Order> findByAccountId(Integer accountId);
 	public List<Order> findByAccountId(Integer accountId,Integer page);
-	public List<Order> findByProductName(String productName);
-	public List<Order> findByProductName(String productName,Integer page);
 	public List<Order> findAll();
 	public List<Order> findAll(Integer page);
-	
+	public void deleteOrder(Integer orderId);
+	public Order save(Order order);
 	
 }
