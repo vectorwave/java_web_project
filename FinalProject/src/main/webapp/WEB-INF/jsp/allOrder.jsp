@@ -13,7 +13,7 @@
                 <div class="accordion" id="accordionExample" v-for="(order,index) in orders" :key="order.orderId">
                     <div class="card card-bottom">
                         <div class="card-header  d-flex justify-content-between" :id="'heading-'+index">
-                            <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#purchaseModal">🗑️</button>
+                            <button type="button" @click="delOrder(index)" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#purchaseModal">🗑️</button>
                             <button class="btn btn-primary btn-sm" type="button" data-toggle="collapse" :data-target="'#collapse-'+index"
                                 aria-expanded="false" :aria-controls="'collapse'+index">
                                 顯示訂單細節
@@ -38,9 +38,9 @@
                                     <th class="text-center" width="120">小計</th>
                                 </tr>
                             </thead>
-                            <tbody  v-for="(detail,index) in order.orderDetails">
+                            <tbody  v-for="(detail,cindex) in order.orderDetails">
                                 <tr>
-                                    <td class="align-middle"><button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#purchaseModal">🗑️</button>
+                                    <td class="align-middle"><button type="button" @click="delDetail(index,cindex)" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#purchaseModal">🗑️</button>
                                     <td class="align-middle">
                                         <div class="card p-1 card-bottom">
                                             <img :src="'${contextRoot}/back/product/photo/'+detail.product.productId"
@@ -76,7 +76,7 @@
                 確定刪除?
                 </div>
                 <div class="modal-footer">
-                	<button type="button" class="btn btn-danger" data-dismiss="modal">是</button>
+                	<button type="button" @click="delModal()" class="btn btn-danger" data-dismiss="modal">是</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">否</button>
                 </div>
             </div>
@@ -95,18 +95,48 @@ jQuery.ajax({
 	error:function(err){
 		console.log(err);
 	}
-})
+});
+var delUrl = "${contextRoot}/order/delete?orderId=";
+var index = null;
+var cindex = null;
 var vm = new Vue({
   el:'#app',
-  data:{orders:c,del:null},
+  data:{orders:c},
   methods:{
-	  delOrder(){
-		  this.orders.splice(index,1);
+	  delModal(){
+		 if(cindex == null){
+			 let o = this.orders;
+			 del(''+o[index].orderId);
+			 o.splice(index,1);
+		 }else{
+			 let o = this.orders;
+			 let d = o[index].orderDetails;
+			 del(''+o[index].orderId+'&productId='+d[cindex].product.productId);
+		 	d.splice(cindex,1);
+		 }
+		 index = null;
+		 cindex = null;
 	  },
-	  delDetail(){
-		  
+	  delOrder(i){
+		 index = i;
+	  },
+	  delDetail(i,c){
+		  index = i;
+		 cindex = c;
 	  }
   },
 });
+function del(id){
+	jQuery.ajax({
+		url:delUrl+id,
+	  async :false, 
+	  type:'DELETE',
+		error:function(err){
+			console.log(err);
+		}
+	});
+}
+
+
 </script>
 <jsp:include page="layout/footer.jsp" />
