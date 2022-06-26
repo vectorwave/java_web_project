@@ -23,9 +23,17 @@
   產品圖片：<img src="${contextRoot}/jotravel/back/product/photo/${photo}" id="output" width="300" height="300"/><br/><br/>
   <input type="file" class="form-control" name="file" accept="image/*" onchange="loadFile(event)"/><br/>
 <!-- 	<img id="output" width="300" height="300"/> -->
-    上架狀態:<form:select path="status" class="form-select" required="required">
-  <form:option value="1" >上架</form:option>
-  <form:option value="0">下架</form:option>
+ 區域分類:<form:select path="productArea" class="form-select" required="required">
+  <form:option value="北部" >北部</form:option>
+  <form:option value="東部">東部</form:option>
+  <form:option value="南部">南部</form:option>
+  <form:option value="西部">西部</form:option>
+  <form:option value="外島">外島</form:option>
+</form:select>
+  
+  上架狀態:<form:select path="status" class="form-select" required="required">
+  <form:option value="上架" >上架</form:option>
+  <form:option value="下架">下架</form:option>
 </form:select>
   </div>
   

@@ -56,7 +56,10 @@ public class Product implements Serializable{
 	private String productName;
 	
 	@Column(name="product_status")
-	private Integer status;
+	private String status;
+	
+	@Column(name="product_area")
+	private String productArea;
 	
 	@Column(name="product_price", nullable = false)
 	private int productPrice;
