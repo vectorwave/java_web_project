@@ -49,7 +49,7 @@ public class PageController {
 	@Autowired
 	private ArticleService aService;
 	
-	@GetMapping("back/")
+	@GetMapping("/back")
 	public String backIndexPage(){
 		return "backIndex";
 	} 

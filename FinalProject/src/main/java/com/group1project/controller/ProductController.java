@@ -139,8 +139,7 @@ public class ProductController {
 		return "editProduct";//回到頁面
 	}
 	
-	
-	
+
 	
 	@PostMapping("editProduct")
     public String postEditMessage(@ModelAttribute(name="newPd") Product newPd ,
