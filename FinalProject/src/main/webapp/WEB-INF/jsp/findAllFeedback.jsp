@@ -77,9 +77,9 @@ td {
 				</c:otherwise>
 			</c:choose>
 
-			<c:if test="${pageNumber != page.totalPages}">
-   |&nbsp
-   </c:if>
+			<c:if test="${pageNumber != page.totalPages}">|</c:if>
+   
+   
 
 		</c:forEach>
 	</div>
