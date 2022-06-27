@@ -58,7 +58,7 @@
       <div class="dropdown">
         <button class="dropbtn"><span class="material-icons">people</span>會員管理</button>
         <div class="dropdown-content">
-           <a class="dropdown-item" href="${contextRoot}/member/add">新增會員資料</a>
+<%--            <a class="dropdown-item" href="${contextRoot}/member/add">新增會員資料</a> --%>
 			    <a class="dropdown-item" href="${contextRoot}/member/findall">所有會員資訊</a>
 			     <a class="dropdown-item" href="${contextRoot}/login/insert">新增帳號</a>
 			    <a class="dropdown-item" href="${contextRoot}/login/findall">所有帳號</a>

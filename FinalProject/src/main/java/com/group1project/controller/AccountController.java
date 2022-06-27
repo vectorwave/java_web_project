@@ -55,7 +55,7 @@ public class AccountController {
 		account.setSignupDate(nowdate);
 
 		aService.saveAccount(account);
-		return "redirect:/login/findall";
+		return "redirect:/";
 	}
 	
 	// 刪除帳號
@@ -84,6 +84,7 @@ public class AccountController {
 		
 	}
 	
+	//登入
 	@RequestMapping(path = "/logingo", method=RequestMethod.POST)
 	public String loginCheck(@RequestParam("inputAccount") String inputAccount, @RequestParam("inputPassword") String inputPassword, Model model) {
 		
@@ -99,10 +100,10 @@ public class AccountController {
 			return "index";
 		} else if(queryMember.getAccountName().equals("")) {
 			model.addAttribute("loginuser", queryMember);
-			return "allAccount";
+			return "redirect:/member/add";
 		} else {
 			model.addAttribute("loginuser", queryMember);
-			return "allAccount";
+			return "redirect:/member/add";
 		}
 	}
 
