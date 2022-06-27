@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.servlet.server.Session;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.group1project.model.bean.Account;
@@ -27,6 +29,7 @@ import com.group1project.model.bean.Product;
 import com.group1project.model.service.ProductService;
 
 //rest風格的CRUD 收到的頁面為http://localhost:8080/jotravel/back/product
+
 @Controller
 @RequestMapping("back/product") 
 public class ProductController {
@@ -38,6 +41,12 @@ public class ProductController {
 		super();
 		this.pService = pService;
 	}
+	
+	//TEST
+	private final Integer accountId = 1;
+	
+	
+	
 	
 	//查詢商品
 	//利用@GetMapping方法查詢商品,沒參數就會查到所有產品 ex: http://localhost:8080/jotravel/back/product
@@ -69,7 +78,9 @@ public class ProductController {
 			Model model) {
 //		Account account = storeservice.findbyid(storeId);
 		Account accId = new Account();
+
 		accId.setAccountId(accountId);
+
 		
 		product.setAccount(accId);
 		try {
@@ -88,7 +99,7 @@ public class ProductController {
 		message.put("okMsg", "insertOK");
 		model.addAttribute("msg", message);
 		
-		return "addProduct";
+		return "redirect:/back/allProduct";
 	}
 	
 //  以非rest風格方式刪除商品
@@ -124,6 +135,8 @@ public class ProductController {
 //		model.addAttribute("nowDate", nowDate);
 		return "editProduct";//回到頁面
 	}
+	
+
 	
 	@PostMapping("editProduct")
     public String postEditMessage(@ModelAttribute(name="newPd") Product newPd ,

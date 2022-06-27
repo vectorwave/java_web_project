@@ -14,10 +14,12 @@
 
 
 <form:hidden path="articleId"/>
+
 <!-- <input  path="accountId" name="accountId" value="1"/> -->
 <input type="text" name="accountId" value="1" style="visibility:hidden"/>
 <!-- path="accountId" -->
 <form:hidden path="picId"  value="${article.articleId}"/>
+
   <div class="form-group">
     文章標題
     <form:input type="text" path="articleTitle" class="form-control" id="exampleFormControlInput1" placeholder="請輸入文章....."/>

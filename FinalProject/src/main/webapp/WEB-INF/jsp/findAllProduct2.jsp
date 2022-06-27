@@ -18,25 +18,30 @@ td
 
 <div class="container">
 <h2>商品資訊</h2>
-<form action="/jotravel/back/allProduct" method="get">
+<form action="/jotravel/back/allProduct" method="get" >
 <input type="text" name="key" placeholder="搜尋商品名稱" id="key"> <input type="submit" id="send" value="🔍" > <a href="http://localhost:8081/jotravel/back/allProduct"><input type="button" value="全部商品" ></a>  
 </form>
-<div class="row justify-content-center">
+<div>
+<!-- class="row justify-content-center" -->
 <table class="table" border="1">
 <tr style="background-color:#fac473">
-<th>選取<th>商品編號<th>商家編號<th>商品名稱<th>商品價格<th>上架時間<th>下架時間<th>商品圖片<th>更新時間<th>修改<th>刪除</tr> 
+<th>選取<th>商品編號<th>商家編號<th>商品名稱<th>商品價格<th>上架時間<th>下架時間<th>商品圖片<th>更新時間<th>區域分類<th>上架狀態<th>修改<th>刪除</tr> 
+
 <div id="newTable">
 <c:forEach var="value" items="${page.content}">
 <tr>
 <td> <input type="checkbox" id="checkbox"></td>
 <td> <c:out value="${value.productId}"/></td>
-<td> <c:out value="${value.account}"/></td>
+<td> <c:out value="${value.account.accountId}"/></td>
 <td> <c:out value="${value.productName}"/></td>
 <td> <c:out value="${value.productPrice}"/></td>     	     		
 <td> <fmt:formatDate pattern="yyyy 年 MM 月 dd 日 " value="${value.startDate}" />   	     		
 <td> <fmt:formatDate pattern="yyyy 年 MM 月 dd 日 " value="${value.endDate}" /></td>      	     		
 <td> <img src="${contextRoot}/back/product/photo/${value.productId}" width="100px" height="100px"> </td>      	     		
 <td> <fmt:formatDate pattern="yyyy 年 MM 月 dd 日 a hh:mm:ss " value="${value.updatedTime}"/></td> 
+
+<td> <c:out value="${value.status}"/></td> 
+<td> <c:out value="${value.productArea}"/></td> 
 <td><a href="product/editProduct?id=${value.productId}"><button class="delt" onclick="return del()">📝</button></a></td> 
 <td><a href="product/delete/${value.productId}"><button class="delt" onclick="return del()">✂</button></a></td> 
 </tr>
@@ -70,29 +75,6 @@ td
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <table class="table" border="1"  id="table1"> -->
-<!-- <tr style="background-color:#fac473"> -->
-<!-- <th>商品編號<th>商家編號<th>商品名稱<th>商品價格<th>上架時間<th>下架時間<th>商品圖片<th>更新時間<th>修改<th>刪除 -->
-<!-- </table> -->
-
-<%-- <%-- <h3>共 ${count} 筆商品資料 </h3> --%>
-
-<!-- <div id="div1" ></div> -->
-
-
 <script>
 //  var button = document.querySelectorAll('.delt');
   function del(e) {
@@ -107,6 +89,8 @@ td
  button.forEach(delt => {
   delt.addEventListener('click', del);
   });
+ 
+ 
  
  
 </script>

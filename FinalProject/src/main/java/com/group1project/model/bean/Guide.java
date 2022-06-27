@@ -78,8 +78,24 @@ public class Guide implements Serializable {
 	private String licenceNo;
 	
 	@Column(name = "guide_photo",columnDefinition = "varbinary(MAX)", nullable = true)
-	private String guidePhoto;
+	private byte[] guidePhoto;
 	
+	
+	public byte[] getGuidePhoto() {
+		return guidePhoto;
+	}
 
+	public void setGuidePhoto(byte[] guidePhoto) {
+		this.guidePhoto = guidePhoto;
+	}
+
+	public String getGuideGender() {
+		return guideGender;
+	}
+
+	public void setGuideGender(String guideGender) {
+		this.guideGender = guideGender;
+	}
+	
 
 }

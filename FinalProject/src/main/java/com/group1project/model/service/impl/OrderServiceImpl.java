@@ -9,13 +9,17 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.group1project.model.bean.Order;
+import com.group1project.model.bean.OrderDetail;
+import com.group1project.model.bean.OrderDetailId;
+import com.group1project.model.repository.OrderDetailRepository;
 import com.group1project.model.repository.OrderRepository;
 import com.group1project.model.service.OrderService;
 @Service
 public class OrderServiceImpl implements OrderService{
 	
 	@Autowired OrderRepository orderRepository;
-	
+	@Autowired OrderDetailRepository detailRepository;
+
 	
 
 	@Override
@@ -25,32 +29,47 @@ public class OrderServiceImpl implements OrderService{
 	}
 
 	@Override
-	public List<Order> findByProductName(String productName, Integer page) {
-		return null;
-	}
-
-	@Override
 	public List<Order> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return orderRepository.findAll();
 	}
 
 	@Override
 	public List<Order> findAll(Integer page) {
-		// TODO Auto-generated method stub
-		return null;
+		Pageable pageable = PageRequest.of(page-1, 3);
+		return orderRepository.findAll(pageable).getContent();
 	}
 
 	@Override
 	public List<Order> findByAccountId(Integer accountId) {
-		// TODO Auto-generated method stub
-		return null;
+		return  orderRepository.findByAccountAccountId(accountId);
 	}
 
+
 	@Override
-	public List<Order> findByProductName(String productName) {
-		// TODO Auto-generated method stub
-		return null;
+	public void deleteOrder(Integer orderId) {
+		orderRepository.deleteById(orderId);
+		
+	}
+
+
+	@Override
+	public Order save(Order order) {
+		
+		orderRepository.saveAndFlush(order);
+		for(OrderDetail detail:order.getOrderDetails()) {
+			detail.setOrder(order);
+			detailRepository.save(detail);
+		}
+		detailRepository.flush();
+		return order;
+	}
+
+
+	@Override
+	public void deleteOrderDetail(Integer orderId, Integer productId) {
+		OrderDetailId detailId = new OrderDetailId(orderId,productId);
+		detailRepository.deleteById(detailId);
+		detailRepository.flush();
 	}
 
 }

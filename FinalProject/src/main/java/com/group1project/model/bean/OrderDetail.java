@@ -49,7 +49,7 @@ public class OrderDetail implements Serializable{
 	private Order order;
 	
 	@MapsId(value="productId")
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="product_id")
 	private Product product;
 	
