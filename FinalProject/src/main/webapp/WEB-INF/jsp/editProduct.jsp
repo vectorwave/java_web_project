@@ -9,18 +9,19 @@
 
 <form:form method="post" modelAttribute="newPd" enctype="multipart/form-data">
 
-  <form:input path="productid" type="hidden" />
-  <form:input path="merchant_id" type="hidden" />
+  <form:input path="productId" type="hidden" />
+  <form:input path="account" type="hidden" />
   
   
   <div class="form-group">
-  產品名稱：<form:input type="text" path="product_name" class="form-control"/><br/>
-  產品價格： <form:input type="text" path="product_price" class="form-control"/><br/>
-  上架時間：<form:input type="date" path="start_date" class="form-control"/><br/>
-  下架時間：<form:input type="date" path="end_date" class="form-control"/><br/>
+  產品名稱：<form:input type="text" path="productName" class="form-control"/><br/>
+  產品價格： <form:input type="text" path="productPrice" class="form-control"/><br/>
+  上架時間：<form:input type="date" path="startDate" class="form-control"/><br/>
+  下架時間：<form:input type="date" path="endDate" class="form-control"/><br/>
   產品圖片：<input type="file" class="form-control" name="file" accept="image/*" onchange="loadFile(event)"/><br/>
 	
-	<img id="output" width="300" height="300"/>
+<!-- 	<img id="output" width="300" height="300"/> -->
+	<img src="${contextRoot}/jotravel/back/product/photo/${photo}" id="output" width="300" height="300"/>
   </div>
   
   <input type="submit" name="submit" value="更新">

@@ -11,15 +11,17 @@
 
 <form:form method="post" enctype="multipart/form-data" action="${contextRoot}/back/product" modelAttribute="newPd" >
 
-  <form:input path="productid" type="hidden" />
-  <form:input path="merchant_id" type="hidden" />
+  <form:input path="productId" type="hidden" />
+  <input name="accountId" type="hidden" value="1">
+  
+<%--   <form:input path="account.accountId" type="hidden" value="1"/> --%>
   
   
   <div class="form-group">
-  產品名稱：<form:input type="text" path="product_name" class="form-control" required="required" placeholder="商品名稱" /><br/>
-  產品價格： <form:input type="text" path="product_price" class="form-control" value="1000" required="required"/><br/>
-  上架時間：<form:input type="date" path="start_date" class="form-control" required="required" /><br/>
-  下架時間：<form:input type="date" path="end_date" class="form-control"  required="required"/><br/>
+  產品名稱：<form:input type="text" path="productName" class="form-control" required="required" placeholder="商品名稱" /><br/>
+  產品價格：<form:input type="text" path="productPrice" class="form-control" value="1000" required="required"/><br/>
+  上架時間：<form:input type="date" path="startDate" class="form-control" required="required" /><br/>
+  下架時間：<form:input type="date" path="endDate" class="form-control"  required="required"/><br/>
   產品圖片：<input type="file" class="form-control" name="file" accept="image/*" onchange="loadFile(event)"/><br/>
 	
 	<img id="output" width="300" height="300"/>

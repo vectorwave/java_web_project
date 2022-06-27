@@ -10,6 +10,8 @@ public interface AccountService {
 	Account saveAccount(Account account);
 	Account getAccountById(Integer accountId);
 	List<Account> getAllAccount();
-	void deleteAccount(Integer accountId);
-	
+	void deleteAccount(Integer accountId);	
+//	Account getAccountByName(String account);
+	public Account findByAccPwd(String accountName, String Password);
+
 }

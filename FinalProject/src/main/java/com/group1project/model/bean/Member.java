@@ -21,6 +21,8 @@ import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.NaturalId;
 import org.hibernate.annotations.Parameter;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -38,15 +40,26 @@ public class Member implements Serializable{
 	
 	@EqualsAndHashCode.Include
 	@Id
-	@GeneratedValue(generator = "pkGenerator")
-	@GenericGenerator(name="pkGenerator",strategy = "foreign",parameters = @Parameter(name="property",value="account"))
-	@Column(name="account_id")
-	private Integer accountId;
+	@Column(name = "member_id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer memberId;
+	
+//	@EqualsAndHashCode.Include
+//	@Id
+//	@GeneratedValue(generator = "pkGenerator")
+//	@GenericGenerator(name="pkGenerator",strategy = "foreign",parameters = @Parameter(name="property",value="account"))
+//	@Column(name="account_id")
+//	private Integer accountId;
 	
 	@OneToOne
+	@JsonIgnore
 	@JoinColumn(name="account_id")
-	@MapsId
 	private Account account;
+	
+//	@OneToOne
+//	@JoinColumn(name="account_id")
+//	@MapsId
+//	private Account account;
 	
 
 	

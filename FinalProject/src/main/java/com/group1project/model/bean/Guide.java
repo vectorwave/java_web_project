@@ -68,7 +68,7 @@ public class Guide implements Serializable {
 	@Column(name = "guide_email",columnDefinition = "varchar(100)", nullable = false)
 	private String guideEmail;
 	
-	@Column(name = "guide_address",columnDefinition = "varchar(100)", nullable = false)
+	@Column(name = "guide_address",columnDefinition = "nvarchar(100)", nullable = false)
 	private String guideAddress;
 	
 	@Column(name = "licence_type",columnDefinition = "nvarchar(50)", nullable = false)
@@ -77,9 +77,25 @@ public class Guide implements Serializable {
 	@Column(name = "licence_no",columnDefinition = "varchar(50)", nullable = false)
 	private String licenceNo;
 	
-	@Column(name = "guide_photo",columnDefinition = "varchar(50)", nullable = true)
-	private String guidePhoto;
+	@Column(name = "guide_photo",columnDefinition = "varbinary(MAX)", nullable = true)
+	private byte[] guidePhoto;
 	
+	
+	public byte[] getGuidePhoto() {
+		return guidePhoto;
+	}
 
+	public void setGuidePhoto(byte[] guidePhoto) {
+		this.guidePhoto = guidePhoto;
+	}
+
+	public String getGuideGender() {
+		return guideGender;
+	}
+
+	public void setGuideGender(String guideGender) {
+		this.guideGender = guideGender;
+	}
+	
 
 }

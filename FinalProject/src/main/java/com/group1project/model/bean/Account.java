@@ -27,7 +27,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import lombok.ToString;
 
 
 
@@ -35,7 +35,6 @@ import lombok.extern.slf4j.Slf4j;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@Slf4j
 
 @Entity
 @Table(name="login_info")
@@ -48,6 +47,8 @@ public class Account implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="account_id")
 	private Integer accountId;
+	
+
 	
 	@Column(name="account_name", nullable = false, columnDefinition = "nvarchar(20)")
 	private String accountName;
@@ -77,6 +78,7 @@ public class Account implements Serializable{
 	@PrimaryKeyJoinColumn
 	private Member member;
 	
+	@ToString.Exclude
 	@OneToMany(mappedBy = "account",fetch = FetchType.LAZY)
 	private List<Order> orders;
 	
@@ -85,7 +87,5 @@ public class Account implements Serializable{
 	private Account(Integer account) {
 		accountId=account;
 	}
-	public static void main(String[] args) {
-		log.info("hello");
-	}
+	
 }

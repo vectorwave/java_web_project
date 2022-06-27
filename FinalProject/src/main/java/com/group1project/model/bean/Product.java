@@ -2,14 +2,17 @@ package com.group1project.model.bean;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -19,7 +22,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -43,7 +46,9 @@ public class Product implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer productId;
 	
-	@ManyToOne
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JsonIgnore
 	@JoinColumn(name="account_id")
 	private Account account;
 	
@@ -51,7 +56,10 @@ public class Product implements Serializable{
 	private String productName;
 	
 	@Column(name="product_status")
-	private Integer status;
+	private String status;
+	
+	@Column(name="product_area")
+	private String productArea;
 	
 	@Column(name="product_price", nullable = false)
 	private int productPrice;
@@ -68,6 +76,7 @@ public class Product implements Serializable{
 	@Column(name="end_date", columnDefinition="date") // 預設是 datetime2
 	private Date endDate;
 	
+	@JsonIgnore
 	@Column(name="product_pic" ,columnDefinition = "varbinary(max)")
 	private byte[] productPic;
 	
@@ -77,7 +86,11 @@ public class Product implements Serializable{
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="updated_time", columnDefinition="datetime") // 預設是 datetime2
 	private Date updatedTime;
-
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "product",fetch = FetchType.LAZY)
+	private List<OrderDetail> detail;
+	
 	// 檢查是否有時間，沒有的話依照現在時間產生
 		@PrePersist // helper function 在物件轉換成 Persistent 狀態以前，觸發此方法
 		public void onCreate() {

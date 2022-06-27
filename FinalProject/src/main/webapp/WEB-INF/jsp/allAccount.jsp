@@ -8,6 +8,7 @@
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <h3 style="text-align: center">所有會員</h3>
 
+  <input id=accountId name="accountId" value="${loginuser.accountId}" />
 
 <%-- <form:form method="post" action="${contextRoot}/member/findall modelAttribute="member"> --%>
 

@@ -10,6 +10,7 @@ import com.group1project.model.bean.Member;
 public interface MemberService {
 	Member saveMember(Member Member);
 	Member getMemberById(Integer accountId);
+	Member getMemberByAccountId(Integer accountId);
 	List<Member> getAllMember();
 	void deleteMember(Integer accountId);
 	Page<Member> findByPage(Integer pageNumber);

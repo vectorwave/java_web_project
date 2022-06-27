@@ -6,27 +6,30 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
+<jsp:useBean id="member" class="com.group1project.model.bean.Member" scope="request" />
 
 
 <form:form method="post" enctype="multipart/form-data" modelAttribute="newMember">
 
-<h1 style="text-align: center"> 修改會員資訊 </h1>
-<div style="width: 300px;margin: auto;text-align: center;">
-<form:form method="post" modelAttribute="newMember" >
-<br><form:hidden value="${accountId}" id="accountId" path="accountId"/>
-<br><form:input type="text" value="" path="memberName" id="memberName" class="form-control" placeholder="姓名"/><span id="musername"></span>
-<br><form:input type="date" value="" path="birthDate" id="birthDate" class="form-control" placeholder="生日"/><span id="mbirthdate"></span>
-<br><form:input type="text" value="" path="phone" id="phone" class="form-control" placeholder="電話" /><span id="mphone"></span>
-<br><form:input type="text" value="" path="email" id="email" class="form-control" placeholder="email"/><span id="memail"></span>
-<br><form:input type="text" value="" path="address" id="address" class="form-control" placeholder="地址" /><span id="maddress"></span>
-<br><form:input type="text" value="" path="gender" id="gender" class="form-control" placeholder="0=女，1=男" /><span id="mgender"></span>
-<br>     <input type="file" value="" class="form-control" name="file" accept="image/*" onchange="loadFile(event)"/><br/>
-
-<img id="output" width="300" height="300">
-		
+	<h1 style="text-align: center"> 修改會員資訊 </h1>
+	<div style="width: 300px;margin: auto;text-align: center;">
+<%-- <form:form method="post" modelAttribute="newMember" > --%>
+	<br><form:hidden value="" id="memberId" path="memberId"/>
+		<input type="hidden" value="${newMember.account.accountId}" id="accountId" name="accountId" />
+	<br><form:input type="text" value="" path="memberName" id="memberName" class="form-control" placeholder="姓名"/><span id="musername"></span>
+	<br><form:input type="date" value="" path="birthDate" id="birthDate" class="form-control" placeholder="生日"/><span id="mbirthdate"></span>
+	<br><form:input type="text" value="" path="phone" id="phone" class="form-control" placeholder="電話" /><span id="mphone"></span>
+	<br><form:input type="text" value="" path="email" id="email" class="form-control" placeholder="email"/><span id="memail"></span>
+	<br><form:input type="text" value="" path="address" id="address" class="form-control" placeholder="地址" /><span id="maddress"></span>
+	<br><form:input type="text" value="" path="gender" id="gender" class="form-control" placeholder="0=女，1=男" /><span id="mgender"></span>
+	<br>     <input type="file" value="" class="form-control" name="file" accept="image/*" onchange="loadFile(event)"/>
+	<br>
+	
+	<img id="output" width="300" height="300">
+	<input type="submit" value="修改" class="btn btn-lg btn-success btn-block" id="send"/>
+	</div>	
 </form:form>
-<input type="submit" value="修改" class="btn btn-lg btn-success btn-block" id="send"/>
-</div>
+
 
 <script>
    //預覽  透過id(output)
@@ -149,11 +152,4 @@
 
 
 </script>
-
-</body>
-</html>
-  </form:form>
-
-</body>
-</html>
 <jsp:include page="layout/footer.jsp" />

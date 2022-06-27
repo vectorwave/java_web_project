@@ -34,37 +34,49 @@ public class ProductServiceimpl implements ProductService {
 	
 
 	@Override
-	public void deleteProduct(int product_id) {
-		pDao.deleteById(product_id);
+	public void deleteProduct(Integer productId) {
+		pDao.deleteById(productId);
 	}
 
 
 	@Override
-	public Product getProductById(int product_id) {
-	 Optional<Product> product = pDao.findById(product_id);
-	 
-//	 if(product.isPresent()) {
+	public Product getProductById(Integer productId) {
+	 Optional<Product> product = pDao.findById(productId);
+	 if(product.isPresent()) {
 		 return product.get();
-//	 }else {
-//		 return null;
-//	 }
-//		
+	 }else {
+		 return null;
+	 }
+		
 	}
 
 	@Override
 	public List<Product> getAllProduct() {
 		return pDao.findAll();
 	}
-
-
+	
 	
 	@Override
 	public Page<Product> findByPage(Integer pageNumber) {
-		   Pageable pgb = PageRequest.of(pageNumber - 1, 4 ,Sort.Direction.DESC,"productid");
+		   Pageable pgb = PageRequest.of(pageNumber - 1, 4 ,Sort.Direction.DESC,"productId");
 		   
 		   Page<Product> page = pDao.findAll(pgb);
 		   
 		   return page;
 		  }
+
+	@Override
+	public List<Product> searchProductByName(String key) {
+		
+		return pDao.findAllByProductNameLike("%" + key + "%");
+		
+	}
+
+	
+	public Page<Product> searchProductByNameWithPage(String key , Pageable pab) {
+		   return pDao.findAllByProductNameLike("%" + key + "%", pab);
+	}
+	
+	
 
 }

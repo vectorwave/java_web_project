@@ -1,9 +1,6 @@
 package com.group1project.controller;
 
 import java.io.IOException;
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -25,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.group1project.model.bean.Account;
 import com.group1project.model.bean.Product;
 import com.group1project.model.service.ProductService;
 
@@ -53,6 +51,7 @@ public class ProductController {
 		return list;
 	}
 	
+	
 	//查詢所有商品
 	//利用@GetMapping方法查詢商品,給參數就會查到對應產品 ex:http://localhost:8080/jotravel/back/product/1
 	@GetMapping("{id}")
@@ -66,9 +65,13 @@ public class ProductController {
 	//@PostMapping方法,為新增商品,輸入json格式資料即可完成新增,利用@ResponseBody回傳json格式的資料
 	@PostMapping()
 	public String saveProduct(@ModelAttribute("newPd") Product product,
-			@RequestParam("file") MultipartFile file,
+			@RequestParam("file") MultipartFile file,@RequestParam("accountId") Integer accountId,
 			Model model) {
+//		Account account = storeservice.findbyid(storeId);
+		Account accId = new Account();
+		accId.setAccountId(accountId);
 		
+		product.setAccount(accId);
 		try {
 			product.setProductPic(file.getBytes());
 		} catch (IOException e) {
@@ -117,6 +120,7 @@ public class ProductController {
 		Product newPd = pService.getProductById(product_id);
 
 		model.addAttribute("newPd", newPd);
+		model.addAttribute("photo", product_id);
 //		model.addAttribute("nowDate", nowDate);
 		return "editProduct";//回到頁面
 	}
@@ -154,5 +158,16 @@ public class ProductController {
 	}
 
 
+	@GetMapping("searchProduct")
+	@ResponseBody
+	public List<Product> searchProduct(@RequestParam("key") String key,Model m) {
+	
+		List<Product> searchProducts = pService.searchProductByName(key);
+		
+		m.addAttribute("searchProducts", searchProducts);
+		
+		return searchProducts;
+	
+	}
 	
 }

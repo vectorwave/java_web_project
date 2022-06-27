@@ -10,7 +10,7 @@
 
 
 <%-- <form:form method="post" action="${contextRoot}/member/findall modelAttribute="member"> --%>
-
+<input id=accountId name="accountId" value="${loginuser.accountId}" />
 	<div class="row">
 		<table class="table table-hover">
 			<thead>
@@ -31,19 +31,19 @@
 			<tbody>
 				<c:forEach items="${member}" var="member">
 					<tr>
-						<td><c:out value="${member.accountId}" /><td hidden><c:out value="${member.accountId}" />
+						<td><c:out value="${member.account.accountId}" /><td hidden><c:out value="${member.account.accountId}" />
 						<td><c:out value="${member.memberName}" />
 						<td><c:out value="${member.birthDate}" />
 						<td><c:out value="${member.phone}" />
 						<td><c:out value="${member.email}" />
 						<td><c:out value="${member.address}" />
 						<td><c:out value="${member.gender}" />
-						<td><img src="${contextRoot}/member/photo/${member.accountId}" width="100px" height="100px">						
+						<td><img src="${contextRoot}/member/photo/${member.account.accountId}" width="100px" height="100px">						
 						<td><a
-							href='<c:out value="${contextRoot}"/>/member/edit?id=${member.accountId}'>
+							href='<c:out value="${contextRoot}"/>/member/edit?id=${member.account.accountId}'>
 							<button>📝</button></a>
 						<td><a
-							href='<c:out value="${contextRoot}"/>/member/delete/${member.accountId}'>
+							href='<c:out value="${contextRoot}"/>/member/delete/${member.memberId}'>
 							<button>🗑️</button></a> 
 					</tr>
 				</c:forEach>
