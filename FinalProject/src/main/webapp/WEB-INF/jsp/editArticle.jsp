@@ -17,7 +17,6 @@
 <form:hidden path="loginInfoId"/>
 <form:hidden path="username"/>
 
-
   <div class="form-group">
     文章標題
     <form:input type="text" path="articleTitle" class="form-control" id="exampleFormControlInput1" placeholder="請輸入文章....."/>

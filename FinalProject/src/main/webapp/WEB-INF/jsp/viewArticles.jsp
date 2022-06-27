@@ -35,6 +35,7 @@
 			   <th width='80'>帖子標題</th>
 			   <th width='80'>帖子分類</th>
 			   <th width='156'>帖子內容</th>
+
 			   <th width='80'>會員ID</th>
 			   <th width='80'>會員名稱</th>
 			   <th width='80'>照片ID</th>
@@ -52,9 +53,11 @@
 
 <td><c:out value="${value.articleText}" /></td>
 
+
 <td><c:out value="${value.loginInfoId}" /></td>
 
 <td><c:out value="${value.username}" /></td>
+
 
 <td><c:out value="${value.picId}" /></td>
 <td><img src="${contextRoot}/back/article/photo/${value.articleId}" width="100px" height="100px"></td>

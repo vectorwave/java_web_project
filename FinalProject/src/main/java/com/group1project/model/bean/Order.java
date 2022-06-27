@@ -52,7 +52,9 @@ public class Order implements Serializable{
 	@JoinColumn(name="account_id")
 	private Account account;
 	
-	@OneToMany(mappedBy = "order",fetch = FetchType.LAZY)
+
+	@OneToMany(mappedBy = "order",fetch = FetchType.LAZY,cascade = CascadeType.REMOVE)
+
 	private List<OrderDetail> orderDetails;
 	
 	@JsonCreator
