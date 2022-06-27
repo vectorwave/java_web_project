@@ -187,18 +187,9 @@ public class PageController {
 		return mav;
 	}
 	
-	//新增導遊帳號
-	@GetMapping("/guidemanagement/addguide")
-	public ModelAndView insertGuideAccount(ModelAndView mav) {
-		Account guideAccount = new Account();
-		
-		mav.getModel().put("guideAccount", guideAccount);
-		mav.setViewName("addGuideAccount");
-		return mav;
-	}
 	
 	//新增導遊
-	@GetMapping("/guidemanagement/addguideinfo")
+	@GetMapping("/guidemanagement/addguide")
 	public ModelAndView insertGuide(ModelAndView mav) {
 		
 		Guide newGuide = new Guide();

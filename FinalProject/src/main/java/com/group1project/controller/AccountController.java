@@ -58,20 +58,6 @@ public class AccountController {
 		return "redirect:/login/findall";
 	}
 	
-	// 商家新增帳號用
-	@PostMapping("/login/guide/insert")
-	public String inserGuideAccount(@ModelAttribute("guideAccount") Account guideAccount, Model model) {
-		Date nowdate = new Date();
-		guideAccount.setSignupDate(nowdate);
-		
-		aService.saveAccount(guideAccount);
-		
-		Integer accountId = guideAccount.getAccountId();
-		model.addAttribute("accountId", accountId);
-		
-		return "redirect:/guidemanagement/addguideinfo";
-	}
-
 	// 刪除帳號
 	@RequestMapping(value = "/login/delete/{id}", method = RequestMethod.GET)
 	public String deleteAccount(@PathVariable("id") Integer accountId) {

@@ -1,6 +1,7 @@
 package com.group1project.controller;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,14 +70,16 @@ public class GuideController {
 		guideAccount.setStatus("1");
 		guideAccount.setTitle("guide");
 		
+		Date nowdate = new Date();
+		guideAccount.setSignupDate(nowdate);
+		
 		Integer acId = aService.saveAccount(guideAccount).getAccountId();
 		
-		System.out.println("==================================");
-		System.out.println(acId);
-		System.out.println("==================================");
+//		System.out.println("==================================");
+//		System.out.println(acId);
+//		System.out.println("==================================");
 		
-		guide.setAccountId(acId);
-		guide.setAccount(guideAccount);
+		guide.setAccount(aService.getAccountById(acId));
 		
 		try {
 			guide.setGuidePhoto(profilePic.getBytes());
