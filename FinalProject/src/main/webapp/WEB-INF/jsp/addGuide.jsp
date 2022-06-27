@@ -19,17 +19,17 @@
 
         <form:form class="form" method="post" modelAttribute="addGuide" action="${contextRoot}/guide_info/insert" enctype="multipart/form-data">
 
-        <label class="GIFLabel">主頁名稱： </label>
+        <label class="GIFLabel">帳號： </label>
+        <input type="text" name="accountName"  class="inputBoxAdd"/></br></br></br>
+
+        <label class="GIFLabel">密碼： </label>
+        <input type="password" name="pwd"  class="inputBoxAdd"/></br></br></br>
+
+        <label class="GIFLabel">商家名稱： </label>
         <form:input path="profileName" class="inputBoxAdd"/></br></br></br>
 
         <label class="GIFLabel">個人圖片： </label>
         <input type="file" name="profilePic" accept="image/*" class="inputBoxAdd"/></br></br></br>
-
-
-        <input type="text" name="accountName"/>
-
-        <input type="password" name="pwd"/>
-
 
         <label class="GIFLabel">姓名： </label>
         <form:input path="guideName" class="inputBoxAdd"/></br></br></br>
