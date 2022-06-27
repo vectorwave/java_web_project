@@ -40,7 +40,7 @@ public class MemberController {
 		
 		member.setAccount(accId);
 		
-		member.toString();
+//		member.toString();
 		try {
 			member.setPhotoPath(file.getBytes());
 		} catch (IOException e) {

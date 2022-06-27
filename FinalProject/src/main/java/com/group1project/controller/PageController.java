@@ -167,6 +167,7 @@ public class PageController {
 		 
 		 m.addAttribute("page", pgb);
 		 
+		 
 		 return pService.searchProductByNameWithPage(key, pgb);
 	
 	}

@@ -28,7 +28,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-@Data
+
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
@@ -83,6 +83,97 @@ public class Member implements Serializable{
 
 	@Column(name = "photopath", columnDefinition = "varbinary(max)")
 	private byte[] photoPath;
+
+	public Integer getMemberId() {
+		return memberId;
+	}
+
+	public void setMemberId(Integer memberId) {
+		this.memberId = memberId;
+	}
+
+	public Account getAccount() {
+		return account;
+	}
+
+	public void setAccount(Account account) {
+		this.account = account;
+	}
+
+	public String getMemberName() {
+		return memberName;
+	}
+
+	public void setMemberName(String memberName) {
+		this.memberName = memberName;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public Long getGender() {
+		return gender;
+	}
+
+	public void setGender(Long gender) {
+		this.gender = gender;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public Date getBirthDate() {
+		return birthDate;
+	}
+
+	public void setBirthDate(Date birthDate) {
+		this.birthDate = birthDate;
+	}
+
+	public byte[] getPhotoPath() {
+		return photoPath;
+	}
+
+	public void setPhotoPath(byte[] photoPath) {
+		this.photoPath = photoPath;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	public Member(Integer memberId, String memberName, String phone, Long gender, String email, String address,
+			Date birthDate, byte[] photoPath) {
+		super();
+		this.memberId = memberId;
+		this.memberName = memberName;
+		this.phone = phone;
+		this.gender = gender;
+		this.email = email;
+		this.address = address;
+		this.birthDate = birthDate;
+		this.photoPath = photoPath;
+	}
+
+	
 
 	
 
