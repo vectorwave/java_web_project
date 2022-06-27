@@ -1,23 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
-
-
-    <title>Document</title>
+    <link rel="stylesheet" href="${contextRoot}/css/all.min.css">
+    <link rel="stylesheet" href="${contextRoot}/css/bootstrap.min.css">
+    <script src="${contextRoot}/js/jquery-3.6.0.min.js"></script>
+    <script src="${contextRoot}/js/bootstrap.bundle.min.js"></script>
+    <script src="${contextRoot}/js/vue.min.js"></script>
+    <title>訂單頁面</title>
 </head>
 <body>
-    <hr>
     <div class="container mt-5" >
-        <div class="h1 text-center"><strong>六角血拚 訂單確認</strong></div>
+        <div class="h1 text-center"><strong>訂單確認</strong></div>
         <div class="row mt-3">
             <div class="col-12 col-md">
                 <div class="alert alert-success alert-rounded text-center" role="alert">1.輸入訂單資料</div>
@@ -58,8 +57,8 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td class="align-middle"><a href="#removeModal" class="text-dark" data-price="999"
-                                            data-title="一級偽裝帽" data-toggle="modal" data-target="#removeModal"><i class="far fa-trash-alt mr-3"></i></a></td>
+                                    <td class="align-middle"><a href="#removeModal" style="text-decoration:none;" class="text-dark" data-price="999"
+                                            data-title="一級偽裝帽" data-toggle="modal" data-target="#removeModal">🗑️</a></td>
                                     <td class="align-middle">
                                         <div class="card p-1 card-bottom">
                                             <img src="https://images.unsplash.com/photo-1447005497901-b3e9ee359928?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80"

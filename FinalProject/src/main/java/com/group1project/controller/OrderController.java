@@ -21,7 +21,8 @@ public class OrderController {
 	
 	@GetMapping("all")
 	public Object getAllOrder() {
-		return orderService.findAll();
+		Integer accountId = 1;
+		return orderService.findByAccountId(accountId);
 	}
 	
 	@PostMapping

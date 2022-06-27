@@ -13,17 +13,16 @@
                 <div class="accordion" id="accordionExample" v-for="(order,index) in orders" :key="order.orderId">
                     <div class="card card-bottom">
                         <div class="card-header  d-flex justify-content-between" :id="'heading-'+index">
-                            <button type="button" @click="delOrder(index)" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#purchaseModal">🗑️</button>
-                            <button class="btn btn-primary btn-sm" type="button" data-toggle="collapse" :data-target="'#collapse-'+index"
-                                aria-expanded="false" :aria-controls="'collapse'+index">
-                                顯示訂單細節
-                            </button>
                             <div class="h3 d-inline-block mt-2 " >
                                 <strong>金流:{{order.cashFlow}}</strong>
-                                <strong>訂單狀態:{{order.status}}</strong>
+                                <strong>狀態:{{order.status}}</strong>
                             </div>
-                        </div>
-
+                            <div>
+                            <button class="btn btn-primary btn-sm" type="button" data-toggle="collapse" :data-target="'#collapse-'+index">
+                                顯示訂單細節</button>
+                               <button type="button" @click="delOrder(index)" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#purchaseModal">🗑️</button>  
+                            </div>
+                            </div>
                     </div>
                     <div :id="'collapse-'+index" class="collapse show " :aria-labelledby="'heading-'+index" data-parent="#accordionExample">
                         <table class="table table-sm">
@@ -58,11 +57,9 @@
                                     <td><strong>{{detail.product.productPrice*detail.amount}}</strong></td>
                                 </tr>
                             </tbody>
-
                         </table>
-
-
                     </div>
+                    <br/>
                 </div>
 </div>
 </div>
