@@ -32,7 +32,7 @@ td
 <tr>
 <td> <input type="checkbox" id="checkbox"></td>
 <td> <c:out value="${value.productId}"/></td>
-<td> <c:out value="${value.account}"/></td>
+<td> <c:out value="${value.account.accountId}"/></td>
 <td> <c:out value="${value.productName}"/></td>
 <td> <c:out value="${value.productPrice}"/></td>     	     		
 <td> <fmt:formatDate pattern="yyyy 年 MM 月 dd 日 " value="${value.startDate}" />   	     		

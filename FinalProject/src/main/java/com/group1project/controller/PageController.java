@@ -112,20 +112,7 @@ public class PageController {
 		return mav;
 	
 	}
-	
-	
-	@GetMapping("searchProduct")
-	@ResponseBody
-	public Page<Product> searchProduct(@RequestParam("key") String key,@RequestParam(name = "p",defaultValue = "1") Integer pageNumber,Model m) {
-	
-		 Pageable pgb = PageRequest.of(pageNumber - 1, 3 ,Sort.Direction.DESC,"productId");
-		 
-		 m.addAttribute("page", pgb);
-		 
-		 return pService.searchProductByNameWithPage(key, pgb);
-	
-	}
-	
+		
 	// ##### Start ##### feedback Page Controller
 	@Autowired
 	private FeedbackService fService;
