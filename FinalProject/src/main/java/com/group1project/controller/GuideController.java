@@ -19,7 +19,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.group1project.model.bean.Account;
 import com.group1project.model.bean.Guide;
+import com.group1project.model.service.AccountService;
 import com.group1project.model.service.GuideService;
 
 @Controller
@@ -32,6 +34,14 @@ public class GuideController {
 		super();
 		this.gService = gService;
 	}
+	
+	@Autowired
+	private AccountService aService;
+//	public GuideController(AccountService aService) {
+//		super();
+//		this.aService = aService;
+//	}
+
 	
 	//查詢單筆資料
 	@GetMapping("/{id}")
@@ -50,7 +60,23 @@ public class GuideController {
 	
 	//新增導遊資料
 	@PostMapping("insert")
-	public String saveGuide_info(@ModelAttribute("addGuide") Guide guide, Model m, @RequestParam("profilePic") MultipartFile profilePic) {
+	public String saveGuide_info(@ModelAttribute("addGuide") Guide guide, Model m,@RequestParam("profilePic") MultipartFile profilePic,
+			@RequestParam("accountName") String accountName, @RequestParam("pwd") String pwd) {
+	
+		Account guideAccount = new Account();
+		guideAccount.setAccountName(accountName);
+		guideAccount.setPassword(pwd);
+		guideAccount.setStatus("1");
+		guideAccount.setTitle("guide");
+		
+		Integer acId = aService.saveAccount(guideAccount).getAccountId();
+		
+		System.out.println("==================================");
+		System.out.println(acId);
+		System.out.println("==================================");
+		
+		guide.setAccountId(acId);
+		guide.setAccount(guideAccount);
 		
 		try {
 			guide.setGuidePhoto(profilePic.getBytes());

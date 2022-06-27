@@ -3,6 +3,8 @@ package com.group1project.controller;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -46,7 +48,7 @@ public class AccountController {
 		return "allAccount";
 	}
 
-	// 會員帳號新增  
+	// 會員帳號新增
 	@PostMapping("/login/member/insert")
 	public String inserAccount(@ModelAttribute("account") Account account, Model model) {
 		Date nowdate = new Date();
@@ -56,14 +58,18 @@ public class AccountController {
 		return "redirect:/login/findall";
 	}
 	
-	// 商家新增帳號用 
+	// 商家新增帳號用
 	@PostMapping("/login/guide/insert")
-	public String inserGuideAccount(@ModelAttribute("account") Account account, Model model) {
+	public String inserGuideAccount(@ModelAttribute("guideAccount") Account guideAccount, Model model) {
 		Date nowdate = new Date();
-		account.setSignupDate(nowdate);
-
-		aService.saveAccount(account);
-		return "redirect:XXXXXXXXX";
+		guideAccount.setSignupDate(nowdate);
+		
+		aService.saveAccount(guideAccount);
+		
+		Integer accountId = guideAccount.getAccountId();
+		model.addAttribute("accountId", accountId);
+		
+		return "redirect:/guidemanagement/addguideinfo";
 	}
 
 	// 刪除帳號

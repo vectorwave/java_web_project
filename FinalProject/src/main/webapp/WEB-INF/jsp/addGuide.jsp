@@ -16,13 +16,20 @@
 
 <div id="GIFormContainer1">
 
+
         <form:form class="form" method="post" modelAttribute="addGuide" action="${contextRoot}/guide_info/insert" enctype="multipart/form-data">
 
         <label class="GIFLabel">主頁名稱： </label>
         <form:input path="profileName" class="inputBoxAdd"/></br></br></br>
 
         <label class="GIFLabel">個人圖片： </label>
-        <input type="file" name="guidePhoto" accept="image/*" class="inputBoxAdd"/></br></br></br>
+        <input type="file" name="profilePic" accept="image/*" class="inputBoxAdd"/></br></br></br>
+
+
+        <input type="text" name="accountName"/>
+
+        <input type="password" name="pwd"/>
+
 
         <label class="GIFLabel">姓名： </label>
         <form:input path="guideName" class="inputBoxAdd"/></br></br></br>

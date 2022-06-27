@@ -86,9 +86,9 @@
       <div class="dropdown">
         <button class="dropbtn"><span class="material-icons">hiking</span>商家管理</button>
         <div class="dropdown-content">
-          <a href="/jotravel/guidemanagement">所有商家</a>
+          <a href="${contextRoot}/guidemanagement">所有商家</a>
           <a href="#">商家權限</a>
-          <a href="/jotravel/guidemanagement/add">新增商家</a>
+          <a href="${contextRoot}/guidemanagement/addguide">新增商家</a>
         </div>
       </div>
 
