@@ -16,7 +16,7 @@
 <%-- <form:hidden path="loginInfoId" value="${article.loginInfoId}"/> --%>
 <%-- <form:hidden path="username" value="${article.username}"/> --%>
 <input type="text" name="accountId" value="1" style="visibility:hidden"/>
- 
+ <form:hidden path="picId"  value="${article.articleId}"/>
   <div class="form-group">
     文章標題
     <form:input type="text" path="articleTitle" class="form-control" id="exampleFormControlInput1" value="${value.articleTitle}"/>
