@@ -56,9 +56,9 @@
 <td><c:out value="${value.articleText}" /></td>
 
 
-<td><c:out value="${value.loginInfoId}" /></td>
+<td><c:out value="${value.account.accountId}" /></td>
 
-<td><c:out value="${value.username}" /></td>
+<%-- <td><c:out value="${value.username}" /></td> --%>
 
 
 <%-- <td><c:out value="${value.picId}" /></td> --%>
