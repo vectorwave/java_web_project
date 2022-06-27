@@ -73,7 +73,7 @@
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 </div>
                 <div class="modal-body">
-                確定刪除?
+                <h2>確定刪除?</h2>
                 </div>
                 <div class="modal-footer">
                 	<button type="button" @click="delModal()" class="btn btn-danger" data-dismiss="modal">是</button>
@@ -85,23 +85,12 @@
 </div>
 <script>
 
-var c = null;
-jQuery.ajax({
-	url:'${contextRoot}/order/all',
-  async :false, 
-	success:function(res){
-		c = res;
-	},
-	error:function(err){
-		console.log(err);
-	}
-});
 var delUrl = "${contextRoot}/order/delete?orderId=";
 var index = null;
 var cindex = null;
 var vm = new Vue({
   el:'#app',
-  data:{orders:c},
+  data:{orders:null},
   methods:{
 	  delModal(){
 		 if(cindex == null){
@@ -126,6 +115,17 @@ var vm = new Vue({
 	  }
   },
 });
+jQuery.ajax({
+	url:'${contextRoot}/order/all',
+  async :false, 
+	success:function(res){
+		vm.$data.orders = res;
+	},
+	error:function(err){
+		console.log(err);
+	}
+});
+
 function del(id){
 	jQuery.ajax({
 		url:delUrl+id,
