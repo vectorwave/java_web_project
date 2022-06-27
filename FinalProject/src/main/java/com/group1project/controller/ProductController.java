@@ -145,15 +145,22 @@ public class ProductController {
     public String postEditMessage(@ModelAttribute(name="newPd") Product newPd ,
     		@RequestParam("file") MultipartFile file, Model model) {
 		
-		try {
-			newPd.setProductPic(file.getBytes());
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
 		Date nowDate = new Date();
 		newPd.setUpdatedTime(nowDate);
 		
+		Product originalPd = pService.getProductById(newPd.getProductId());
+		newPd.setProductPic(originalPd.getProductPic()); 
+		
+		try {
+			
+			if(!(file.getSize() == 0)) {				
+				newPd.setProductPic(file.getBytes());
+				
+			}
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		pService.saveProduct(newPd);
 		
 		return "redirect:/back/allProduct";
