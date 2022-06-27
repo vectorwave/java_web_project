@@ -232,6 +232,9 @@ public class PageController {
 
 	
 	
-	
+	@GetMapping("front/")
+	public String frontPage(){
+		return "frontend";
+	} 
 }
 
