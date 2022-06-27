@@ -2,24 +2,20 @@ package com.group1project.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.net.http.HttpResponse;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.group1project.model.bean.Account;
 import com.group1project.model.bean.Order;
 import com.group1project.model.service.OrderService;
 
@@ -31,10 +27,9 @@ import ecpay.payment.integration.domain.AioCheckOutDevide;
 public class ECPayController {
 	
 	@Autowired OrderService orderService;
-	
-	@GetMapping("go")
-	public void goECPay(HttpServletResponse response) {
-		
+	@PostMapping("go")
+	public void goECPay(HttpServletResponse response,@RequestBody Order order) {
+		orderService.save(order);
 		//設定金流
 		AllInOne aio = new AllInOne("");
 		AioCheckOutDevide aioCheck = new AioCheckOutDevide();
@@ -45,15 +40,13 @@ public class ECPayController {
 		sdf.setLenient(false);
 		aioCheck.setMerchantTradeDate(sdf.format(new Date()));
 		//特店交易編號
-		
-		aioCheck.setMerchantTradeNo("jotravel"+3344454);
+		aioCheck.setMerchantTradeNo("jotravelorder"+(1233+order.getOrderId()));
 		//交易金額
 		aioCheck.setTotalAmount("123");
 		//交易描述
 		aioCheck.setTradeDesc("ddd");
 		//商品名稱
 		aioCheck.setItemName("cool*2#supercool*3");
-	
 		//付款完成通知回傳網址
 		aioCheck.setReturnURL("localhost:8081/jotravel/ECPay/returnURL");
 		//Clinet端回傳付款結果網址
