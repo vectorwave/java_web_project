@@ -3,6 +3,10 @@ package com.group1project.model.service.impl;
 import java.util.List;
 import java.util.Optional;
 
+import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
+import javax.persistence.TypedQuery;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +17,9 @@ import com.group1project.model.service.AccountService;
 @Service
 public class AccountServiceimpl implements AccountService {
 
+	@Autowired
+	private EntityManager entityManager;
+	
 	@Autowired
 	private AccountRepository aDao;
 
@@ -43,4 +50,31 @@ public class AccountServiceimpl implements AccountService {
 
 	}
 
+//	@Override
+//	public Account getAccountByName(String account) {
+//		String hql = "FROM Account a WHERE a.account=:inputAccount";
+//		TypedQuery<Account> query = entityManager.createQuery(hql, Account.class);
+//		query.setParameter("inputAccount", account);
+//		
+//		Account acc = null;
+//		try {
+//			acc = query.getSingleResult();
+//		}catch(NoResultException e) {
+//			return null;
+//		}
+//		return acc;
+//	}
+
+	@Override
+	public Account findByAccPwd(String accountName, String Password) {
+		Account user = aDao.findByAccPwd(accountName, Password);
+		if(user != null) {
+			return user;
+		}
+		return null;		
+	}
+
+	
+	
+	
 }

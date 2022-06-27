@@ -14,6 +14,7 @@
   
   
   <div class="form-group">
+
   商家編號：<input type="text" class="form-control" disabled="disabled" value="${newPd.account.accountId}"/><br/>
   產品名稱：<form:input type="text" path="productName" class="form-control"/><br/>
   產品價格：<form:input type="text" path="productPrice" class="form-control"/><br/>
@@ -30,6 +31,7 @@
   <form:option value="西部">西部</form:option>
   <form:option value="外島">外島</form:option>
 </form:select>
+
   
   上架狀態:<form:select path="status" class="form-select" required="required">
   <form:option value="上架" >上架</form:option>

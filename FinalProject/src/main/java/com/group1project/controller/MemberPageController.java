@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.group1project.model.bean.Account;
 import com.group1project.model.bean.Member;
 import com.group1project.model.service.MemberService;
 
@@ -19,7 +20,7 @@ public class MemberPageController {
 	@GetMapping("/member/add")
 	public String addMemberPage(Model model) {
 		Member member = new Member();
-		
+
 		model.addAttribute("member", member);
 		return "addMember";
 	}

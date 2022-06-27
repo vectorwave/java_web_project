@@ -26,18 +26,20 @@ td
 <table class="table" border="1">
 <tr style="background-color:#fac473">
 <th>選取<th>商品編號<th>商家編號<th>商品名稱<th>商品價格<th>上架時間<th>下架時間<th>商品圖片<th>更新時間<th>區域分類<th>上架狀態<th>修改<th>刪除</tr> 
+
 <div id="newTable">
 <c:forEach var="value" items="${page.content}">
 <tr>
 <td> <input type="checkbox" id="checkbox"></td>
 <td> <c:out value="${value.productId}"/></td>
-<td> <c:out value="${value.account.accountId}"/></td>
+<td> <c:out value="${value.account}"/></td>
 <td> <c:out value="${value.productName}"/></td>
 <td> <c:out value="${value.productPrice}"/></td>     	     		
 <td> <fmt:formatDate pattern="yyyy 年 MM 月 dd 日 " value="${value.startDate}" />   	     		
 <td> <fmt:formatDate pattern="yyyy 年 MM 月 dd 日 " value="${value.endDate}" /></td>      	     		
 <td> <img src="${contextRoot}/back/product/photo/${value.productId}" width="100px" height="100px"> </td>      	     		
 <td> <fmt:formatDate pattern="yyyy 年 MM 月 dd 日 a hh:mm:ss " value="${value.updatedTime}"/></td> 
+
 <td> <c:out value="${value.status}"/></td> 
 <td> <c:out value="${value.productArea}"/></td> 
 <td><a href="product/editProduct?id=${value.productId}"><button class="delt" onclick="return del()">📝</button></a></td> 

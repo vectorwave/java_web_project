@@ -78,12 +78,9 @@ public class ProductController {
 			Model model) {
 //		Account account = storeservice.findbyid(storeId);
 		Account accId = new Account();
-//		System.out.println(accountId);
-		
-		accId.setAccountId(this.accountId);
-		System.out.println(accId);
 
-//		userBean.getID
+		accId.setAccountId(accountId);
+
 		
 		product.setAccount(accId);
 		try {
