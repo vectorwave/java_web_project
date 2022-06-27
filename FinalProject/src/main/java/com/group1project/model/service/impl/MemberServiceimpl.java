@@ -3,6 +3,9 @@ package com.group1project.model.service.impl;
 import java.util.List;
 import java.util.Optional;
 
+import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
+import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +24,9 @@ import com.group1project.model.service.MemberService;
 public class MemberServiceimpl implements MemberService {
 	@Autowired
 	private MemberRepository mDao;
+	
+	@Autowired
+	private EntityManager entityManager;
 
 	@Autowired
 	public MemberServiceimpl(MemberRepository mDao) {
@@ -42,7 +48,25 @@ public class MemberServiceimpl implements MemberService {
 			 return null;
 		 }
 			
-		}
+	}
+	
+	@Override
+	public Member getMemberByAccountId(Integer accountId) {
+		 
+		String hql = "from Member where account_id = :accountId";
+		
+		TypedQuery<Member> query = entityManager.createQuery(hql,Member.class);
+		query.setParameter("accountId", accountId);	
+		 
+		Member member = query.getSingleResult();
+
+		 if(member != null) {
+			 return member;
+		 }else {
+			 return null;
+		 }
+			
+	}
 	
 
 	
@@ -52,8 +76,17 @@ public class MemberServiceimpl implements MemberService {
 	}
 
 	@Override
-	public void deleteMember(Integer memberid) {
-		mDao.deleteById(memberid);		
+	public void deleteMember(Integer memberId) {
+		mDao.deleteById(memberId);	
+//		String hql = "from Member where account_id = :accountId";
+//		
+//		TypedQuery<Member> query = entityManager.createQuery(hql,Member.class);
+//		query.setParameter("accountId", accountId);	
+//		 
+//		Member member = query.getSingleResult();
+//		if(member != null) {
+//			mDao.deleteById(member.getMemberId());
+//		 }
 	}
 
 	@Override

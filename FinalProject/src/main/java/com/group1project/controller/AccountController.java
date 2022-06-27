@@ -3,6 +3,8 @@ package com.group1project.controller;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,10 +16,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.group1project.model.bean.Account;
 import com.group1project.model.service.AccountService;
 @Controller
+@SessionAttributes(names = {"loginuser"})
 public class AccountController {
 
 //	@Autowired
@@ -44,7 +48,7 @@ public class AccountController {
 		return "allAccount";
 	}
 
-	// 會員帳號新增  
+	// 會員帳號新增
 	@PostMapping("/login/member/insert")
 	public String inserAccount(@ModelAttribute("account") Account account, Model model) {
 		Date nowdate = new Date();
@@ -54,14 +58,18 @@ public class AccountController {
 		return "redirect:/login/findall";
 	}
 	
-	// 商家新增帳號用 
+	// 商家新增帳號用
 	@PostMapping("/login/guide/insert")
-	public String inserGuideAccount(@ModelAttribute("account") Account account, Model model) {
+	public String inserGuideAccount(@ModelAttribute("guideAccount") Account guideAccount, Model model) {
 		Date nowdate = new Date();
-		account.setSignupDate(nowdate);
-
-		aService.saveAccount(account);
-		return "redirect:XXXXXXXXX";
+		guideAccount.setSignupDate(nowdate);
+		
+		aService.saveAccount(guideAccount);
+		
+		Integer accountId = guideAccount.getAccountId();
+		model.addAttribute("accountId", accountId);
+		
+		return "redirect:/guidemanagement/addguideinfo";
 	}
 
 	// 刪除帳號
@@ -88,6 +96,28 @@ public class AccountController {
 		
 		return "redirect:/login/findall";
 		
+	}
+	
+	@RequestMapping(path = "/logingo", method=RequestMethod.POST)
+	public String loginCheck(@RequestParam("inputAccount") String inputAccount, @RequestParam("inputPassword") String inputPassword, Model model) {
+		
+		Account queryMember = aService.findByAccPwd(inputAccount, inputPassword );
+		
+		System.out.println("queryMember=" + queryMember);
+				
+		if(queryMember == null) {	
+			model.addAttribute("loginErrorMsg", "登入失敗,帳號不存在");
+			return "index";
+		} else if(!queryMember.getPassword().equals(inputPassword)){
+			model.addAttribute("loginErrorMsg", "登入失敗,密碼錯誤");
+			return "index";
+		} else if(queryMember.getAccountName().equals("")) {
+			model.addAttribute("loginuser", queryMember);
+			return "allAccount";
+		} else {
+			model.addAttribute("loginuser", queryMember);
+			return "allAccount";
+		}
 	}
 
 }

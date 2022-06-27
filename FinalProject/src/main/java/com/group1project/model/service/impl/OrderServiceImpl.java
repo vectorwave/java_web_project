@@ -19,6 +19,7 @@ public class OrderServiceImpl implements OrderService{
 	
 	@Autowired OrderRepository orderRepository;
 	@Autowired OrderDetailRepository detailRepository;
+
 	
 
 	@Override
@@ -26,7 +27,6 @@ public class OrderServiceImpl implements OrderService{
 		PageRequest request = PageRequest.of(page-1, 3);
 		return orderRepository.findByAccountAccountId(accountId, request).getContent();
 	}
-
 
 	@Override
 	public List<Order> findAll() {
@@ -71,6 +71,5 @@ public class OrderServiceImpl implements OrderService{
 		detailRepository.deleteById(detailId);
 		detailRepository.flush();
 	}
-
 
 }

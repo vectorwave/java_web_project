@@ -29,15 +29,15 @@
 </tr>
 <c:forEach var="guide" items="${page.content}">
 <tr class="tdContent">
-<td><c:out value="${guide.accountId}"/><c:set var="guideId" value="${guide.accountId}" scope="page"/></td>
-<td><img class="guide_pic" src="${contextRoot}/guide_info/photo/${guide.accountId}" width="40"/></td>
-<td><c:out value="${guide.profile_name}"/></td>
-<td><c:out value="${guide.guide_name}"/></td>
-<td><c:out value="${guide.licence_type}"/></td>
-<td><c:out value="${guide.guide_phone}"/></td>
-<td><c:out value="${guide.guide_email}"/></td>
+<td><c:out value="${guide.account}"/><c:set var="guideId" value="${guide.account}" scope="page"/></td>
+<td><img class="guide_pic" src="${contextRoot}/guide_info/photo/${guide.account}" width="40"/></td>
+<td><c:out value="${guide.profileName}"/></td>
+<td><c:out value="${guide.guideName}"/></td>
+<td><c:out value="${guide.licenceType}"/></td>
+<td><c:out value="${guide.guidePhone}"/></td>
+<td><c:out value="${guide.guideEmail}"/></td>
 <td>
-    </a><button type="button" class="btn btn-outline-info" id="infoBtn" onclick="location.href='${contextRoot}/guidemanagement/info/${guide.accountId}'">詳細資訊</button>
+    </a><button type="button" class="btn btn-outline-info" id="infoBtn" onclick="location.href='${contextRoot}/guidemanagement/info/${guide.account}'">詳細資訊</button>
 </td>
 </tr>
 </c:forEach>

@@ -27,7 +27,6 @@
   產品價格：<form:input type="text" path="productPrice" class="form-control" value="1000" required="required"/><br/>
   上架時間：<form:input type="date" path="startDate" class="form-control" required="required" /><br/>
   下架時間：<form:input type="date" path="endDate" class="form-control"  required="required"/><br/>
-	
   產品圖片：<img id="output" width="300" height="300"/><br/><br/>
   
   <input type="file" class="form-control" name="file" accept="image/*" onchange="loadFile(event)"/><br/>

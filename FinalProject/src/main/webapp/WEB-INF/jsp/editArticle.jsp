@@ -14,9 +14,8 @@
 
 
 <form:hidden path="articleId"/>
-<!-- <input  path="accountId" name="accountId" value="1"/> -->
-<input type="text" name="accountId" value="1" style="visibility:hidden"/>
-<!-- path="accountId" -->
+<form:hidden path="loginInfoId"/>
+<form:hidden path="username"/>
 
   <div class="form-group">
     文章標題
