@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 import com.group1project.model.bean.Account;
 import com.group1project.model.bean.Product;
@@ -105,7 +106,7 @@ public class AccountController {
 				
 		if(queryMember == null) {	
 			model.addAttribute("loginErrorMsg", "登入失敗,帳號不存在");
-			return "index";
+			return "ㄕ";
 		} else if(!queryMember.getPassword().equals(inputPassword)){
 			model.addAttribute("loginErrorMsg", "登入失敗,密碼錯誤");
 			return "index";
@@ -141,6 +142,12 @@ public class AccountController {
 		
 		return searchAccount;
 	
+	}
+	
+	@GetMapping("loginout")
+	public String login(SessionStatus status) {
+		status.setComplete();
+		return "index";
 	}
 
 }

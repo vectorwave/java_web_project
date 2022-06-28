@@ -22,7 +22,7 @@
   </form:select><br>帳號狀態<form:input type="text" value="" path="status" id="status" class="form-control" placeholder="帳號狀態"/><span id="mstatus"></span>
 <br><form:input type="hidden" value="" path="signupDate" id="signupDate" class="form-control" placeholder=""/><span id="msignDate"></span>
 
-		<input type="submit" value="修改" class="btn btn-lg btn-success btn-block" id="send"/>
+		<input type="button" onclick="submitForm(form)" value="修改" class="btn btn-lg btn-success btn-block" id="send"/>
 </form:form>
 
 </div>
@@ -79,11 +79,11 @@ $(function(){
 			return;
 		}
 		
-		 var params= {"accountId":''+accountId, "accountName":''+accountName,"password":''+password 
-				 ,"title":''+title ,"status":''+status 
-				 ,"signupDate":''+signupDate };
-		 var data=JSON.stringify(params);
-		 console.log(data)
+// 		 var params= {"accountId":''+accountId, "accountName":''+accountName,"password":''+password 
+// 				 ,"title":''+title ,"status":''+status 
+// 				 ,"signupDate":''+signupDate };
+// 		 var data=JSON.stringify(params);
+// 		 console.log(data)
 		 
 // 		 	$.ajax({
 // 	    		url:'${contextRoot}/login/edit/${accountId}',

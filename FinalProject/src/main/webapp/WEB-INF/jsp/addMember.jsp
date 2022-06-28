@@ -7,11 +7,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <h1 style="text-align: center"> 新增會員資料 </h1>
+<p>你好, ${loginuser.accountName}</p>
 
 <form:form method="post" enctype="multipart/form-data" action="${contextRoot}/member/add" modelAttribute="member">
 
   <form:input path="memberId" type="hidden" />
-  <input id=accountId name="accountId" value="${loginuser.accountId}" />
+<%--   <input id=accountId name="accountId" value="${loginuser.accountId}" /> --%>
   <div class="form-group" style="width: 300px;margin: auto;text-align: center;">
   姓名： <form:input type="text" path="memberName" class="form-control"/><br/>
   地址：<form:input type="text" path="address" class="form-control"/><br/>
