@@ -8,16 +8,20 @@
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <h1 style="text-align: center"> 新增會員資料 </h1>
 
-<form:form method="post" enctype="multipart/form-data" action="${contextRoot}/member/add" modelAttribute="accountId">
+<form:form method="post" enctype="multipart/form-data" action="${contextRoot}/member/add" modelAttribute="member">
 
-  <form:input path="accountId" type="hidden" />
-  
+  <form:input path="memberId" type="hidden" />
+  <input id=accountId name="accountId" value="${loginuser.accountId}" />
   <div class="form-group" style="width: 300px;margin: auto;text-align: center;">
   姓名： <form:input type="text" path="memberName" class="form-control"/><br/>
   地址：<form:input type="text" path="address" class="form-control"/><br/>
   生日： <form:input type="date" path="birthDate" class="form-control" /><br/>
   email：<form:input type="text" path="email" class="form-control"/><br/>
   性別：<form:input type="redio" path="gender" class="form-control" placeholder="0=女，1=男"/><br/>
+<%--   性別:<form:select path="gender" class="form-select" required="required"> --%>
+<%--   <form:option value="男" >男</form:option> --%>
+<%--   <form:option value="女">女</form:option> --%>
+<%--   </form:select> --%>
   電話：<form:input type="text" path="phone" class="form-control" /><br/>
   會員圖片：<input type="file" class="form-control" name="file" accept="image/*" onchange="loadFile(event)"/><br/>
  
@@ -28,7 +32,9 @@
   
   
   </form:form>
-  <script>
+  
+  
+<script>
   var loadFile = function(event) {
     var output = document.getElementById('output');
     output.src = URL.createObjectURL(event.target.files[0]);
@@ -37,6 +43,4 @@
     }
   };
 </script> 
-  <div> 
-  </div>
 <jsp:include page="layout/footer.jsp" />

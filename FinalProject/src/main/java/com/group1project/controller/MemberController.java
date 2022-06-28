@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.group1project.model.bean.Account;
 import com.group1project.model.bean.Member;
 import com.group1project.model.service.MemberService;
 
@@ -31,8 +32,14 @@ public class MemberController {
 
 	// 新增
 	@PostMapping("/member/add")
-	public String addMember(@ModelAttribute("member") Member member,@RequestParam("file") MultipartFile file , Model model) {
+	public String addMember(@ModelAttribute("member") Member member,@RequestParam("file") MultipartFile file ,@RequestParam("accountId") Integer accountId, Model model) {
 		
+		Account accId = new Account();
+		accId.setAccountId(accountId);
+		
+		member.setAccount(accId);
+		
+//		member.toString();
 		try {
 			member.setPhotoPath(file.getBytes());
 		} catch (IOException e) {
@@ -46,8 +53,8 @@ public class MemberController {
 
 	// 刪除
 	@RequestMapping(value="/member/delete/{id}", method = RequestMethod.GET)
-	public String deleteMemberById(@PathVariable("id") Integer accountId) {
-		mService.deleteMember(accountId);
+	public String deleteMemberById(@PathVariable("id") Integer memberId) {
+		mService.deleteMember(memberId);
 		return "redirect:/member/findall";
 	}
 	
@@ -68,7 +75,7 @@ public class MemberController {
 	//修改
 	@GetMapping("/member/edit")
 	public String editMember(@RequestParam("id") Integer accountId, Model model) {
-		Member newMember = mService.getMemberById(accountId);
+		Member newMember = mService.getMemberByAccountId(accountId);
 		
 //		Member member = new Member();
 		model.addAttribute("newMember", newMember);
@@ -79,7 +86,11 @@ public class MemberController {
 
 	
 	@PostMapping("/member/edit")
-    public String postEditMember(@ModelAttribute(name="newMember") Member newMember, @RequestParam("file") MultipartFile file) {
+    public String postEditMember(@ModelAttribute(name="newMember") Member newMember, @RequestParam("file") MultipartFile file,@RequestParam("accountId") Integer accountId) {
+		Account accId = new Account();
+		accId.setAccountId(accountId);
+		
+		newMember.setAccount(accId);
 		
 		try {
 			newMember.setPhotoPath(file.getBytes());
@@ -105,9 +116,9 @@ public class MemberController {
 //	  
 //	  return "addMember";
 //	 }
-	@GetMapping("/member/photo/{memberid}")
-	public ResponseEntity<byte[]> downloadImage(@PathVariable("memberid") Integer accountId){
-		Member photo1 = mService.getMemberById(accountId);
+	@GetMapping("/member/photo/{accountId}")
+	public ResponseEntity<byte[]> downloadImage(@PathVariable("accountId") Integer accountId){
+		Member photo1 = mService.getMemberByAccountId(accountId);
 		
 		byte[] photoFile = photo1.getPhotoPath();
 

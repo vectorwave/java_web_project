@@ -22,6 +22,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -31,11 +32,11 @@ import lombok.ToString;
 
 
 
-@Data
+
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-
+@Data
 @Entity
 @Table(name="login_info")
 public class Account implements Serializable{
@@ -69,15 +70,18 @@ public class Account implements Serializable{
 	@Column(name="signup_date", columnDefinition="datetime")
 	private Date signupDate;
 	
-	
+	@ToString.Exclude
 	@OneToOne(mappedBy = "account",cascade = CascadeType.ALL)
 	@PrimaryKeyJoinColumn
 	private Guide guide;
 	
+	@ToString.Exclude
+	@JsonIgnore
 	@OneToOne(mappedBy = "account",cascade = CascadeType.ALL)
 	@PrimaryKeyJoinColumn
 	private Member member;
 	
+	@JsonIgnore
 	@ToString.Exclude
 	@OneToMany(mappedBy = "account",fetch = FetchType.LAZY)
 	private List<Order> orders;
@@ -87,5 +91,6 @@ public class Account implements Serializable{
 	private Account(Integer account) {
 		accountId=account;
 	}
+
 	
 }

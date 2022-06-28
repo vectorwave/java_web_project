@@ -1,10 +1,11 @@
 package com.group1project.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,8 +21,9 @@ public class OrderController {
 	@Autowired OrderService orderService;
 	
 	@GetMapping("all")
-	public Object getAllOrder() {
-		return orderService.findAll();
+	public Object getAllOrder(HttpSession session) {
+		Integer accountId = (Integer)session.getAttribute("loginuser.accountId");
+		return orderService.findByAccountId(accountId);
 	}
 	
 	@PostMapping

@@ -9,4 +9,12 @@ public class OrderPageController {
 	public String allOrderPage() {
 		return "allOrder";
 	}
+	@GetMapping("order/addOrder")
+	public String addOrder() {
+		return "addOrder";
+	}
+	@GetMapping("back/downloadOrder")
+	public String downloadOrder(){
+		return "downloadOrder";
+	}
 }
