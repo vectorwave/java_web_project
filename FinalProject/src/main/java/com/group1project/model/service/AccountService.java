@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.group1project.model.bean.Account;
+import com.group1project.model.bean.Product;
 @Service
 public interface AccountService {
 	Account saveAccount(Account account);
@@ -13,5 +14,8 @@ public interface AccountService {
 	void deleteAccount(Integer accountId);	
 //	Account getAccountByName(String account);
 	public Account findByAccPwd(String accountName, String Password);
+//	Account updateById2(Integer accountId, String password);
+	List<Account> searchAccountByName(String key);
+
 
 }

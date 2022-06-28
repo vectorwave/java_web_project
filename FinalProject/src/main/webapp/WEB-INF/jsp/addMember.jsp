@@ -18,6 +18,10 @@
   生日： <form:input type="date" path="birthDate" class="form-control" /><br/>
   email：<form:input type="text" path="email" class="form-control"/><br/>
   性別：<form:input type="redio" path="gender" class="form-control" placeholder="0=女，1=男"/><br/>
+<%--   性別:<form:select path="gender" class="form-select" required="required"> --%>
+<%--   <form:option value="男" >男</form:option> --%>
+<%--   <form:option value="女">女</form:option> --%>
+<%--   </form:select> --%>
   電話：<form:input type="text" path="phone" class="form-control" /><br/>
   會員圖片：<input type="file" class="form-control" name="file" accept="image/*" onchange="loadFile(event)"/><br/>
  

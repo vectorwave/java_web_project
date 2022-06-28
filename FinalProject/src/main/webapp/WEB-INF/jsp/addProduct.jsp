@@ -17,12 +17,9 @@
 <form:form method="post" enctype="multipart/form-data" action="${contextRoot}/back/product" modelAttribute="newPd" >
 
   <form:input path="productId" type="hidden" />
-  <input name="accountId" type="hidden" value="1">
-  
-<%--   <form:input path="account.accountId" type="hidden" value="1"/> --%>
-  
   
   <div class="form-group">
+  商家編號：<input name="accountId" class="form-control" type="text" value="${loginuser.accountId}" readonly="readonly"><br/>
   產品名稱：<form:input type="text" path="productName" class="form-control" required="required" placeholder="商品名稱" /><br/>
   產品價格：<form:input type="text" path="productPrice" class="form-control" value="1000" required="required"/><br/>
   上架時間：<form:input type="date" path="startDate" class="form-control" required="required" /><br/>
