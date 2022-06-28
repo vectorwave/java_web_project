@@ -13,5 +13,7 @@ public interface AccountService {
 	void deleteAccount(Integer accountId);	
 //	Account getAccountByName(String account);
 	public Account findByAccPwd(String accountName, String Password);
+//	Account updateById2(Integer accountId, String password);
+	public String findIdByName(String userName);
 
 }

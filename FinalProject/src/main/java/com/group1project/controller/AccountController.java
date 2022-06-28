@@ -55,9 +55,21 @@ public class AccountController {
 		account.setSignupDate(nowdate);
 
 		aService.saveAccount(account);
+		
 		return "redirect:/";
 	}
 	
+	// 商家新增帳號用 
+	@PostMapping("/login/guide/insert")
+	public String inserGuideAccount(@ModelAttribute("account") Account account, Model model) {
+		Date nowdate = new Date();
+		account.setSignupDate(nowdate);
+
+		aService.saveAccount(account);
+		
+		return "redirect:XXXXXXXXX";
+	}
+
 	// 刪除帳號
 	@RequestMapping(value = "/login/delete/{id}", method = RequestMethod.GET)
 	public String deleteAccount(@PathVariable("id") Integer accountId) {
@@ -106,5 +118,16 @@ public class AccountController {
 			return "redirect:/member/add";
 		}
 	}
+	
+//	@RequestMapping(path = "/login.password.update", method = RequestMethod.POST)
+//	@ResponseBody
+//	public Account AccountUpdate(@RequestParam("updateNo") Integer accountId,
+//			@RequestParam("updatePwd") String password) {
+//		
+//	
+//		Account member = aService.updateById2(accountId, password);
+//
+//		return member;
+//	}
 
 }

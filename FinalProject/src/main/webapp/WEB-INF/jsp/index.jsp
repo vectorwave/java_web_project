@@ -94,8 +94,8 @@
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary"
 						data-dismiss="modal">離開</button>
-					<a href="javascript:;" class="try-me btn btn-info" id="masterMode1">我要註冊</a>
-				</div>
+					<a href='<c:out value="${contextRoot}"/>/login/insert' class="try-me btn btn-info" >我要註冊</a>
+			</div>
 			</div>
 		</div>
 
@@ -103,6 +103,50 @@
 
 
 	</body>
+<script type="text/javascript">
+  $(function(){
+	$('#send').click(function(){
+		$('#nameresult').text('');
+		$('#pwdresult').text('');
+		$('#loginresult').text('');
+	var useraccount = $('#account').val();
+	var userpassword = $('#password').val();
+	if($.trim(useraccount)==''){
+		$('#nameresult').text('帳號不可為空');
+		return;
+		}
+	if($.trim(userpassword)==''){
+		$('#pwdresult').text('密碼不可為空');
+		return;
+		}
 
+	
+//     console.log(useraccount);	
+//     console.log(userpassword);	
+    
+    var params= {"useraccount":''+useraccount,"userpassword":''+userpassword};
+    
+    	var data=JSON.stringify(params);
+    	console.log(data)
+    	$.ajax({
+    		url:'login',
+    		method:'post',
+    		contentType:'application/json',
+    		data: data,
+    		success:function(res){
+    			console.log(res);
+    			if(res){    			
+    			window.location="/homework/index";
+    			}else{
+    				$('#loginresult').text('帳號密碼錯誤');	
+    			}
+    		}
+    		
+    	});
+    
+    
+	});
+  });
+</script>
 
 	<jsp:include page="layout/footer.jsp" />

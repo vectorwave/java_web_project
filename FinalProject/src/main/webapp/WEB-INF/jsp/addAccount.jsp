@@ -15,7 +15,11 @@
   <div class="form-group" style="width: 300px;margin: auto;text-align: center;">
   帳號： <form:input type="text" path="accountName" class="form-control"/><br/>
   密碼：<form:input type="text" path="password" class="form-control"/><br/>
-  身分： <form:input type="text" path="title" class="form-control" /><br/>
+<%--   身分： <form:input type="text" path="title" class="form-control" /><br/> --%>
+  身分:<form:select path="title" class="form-select" required="required">
+  <form:option value="商家" >商家</form:option>
+  <form:option value="會員">會員</form:option>
+  </form:select>
   帳號狀態： <form:input type="text" path="status" class="form-control" /><br/>
  
   <input type="submit" name="submit" value="新增" class="btn btn-lg btn-success btn-block">
