@@ -32,7 +32,7 @@ td
 <tr> 
 <td><a href="ProductComment/add?id=${value.productId}"><button onclick="del()" >評論</button></a></td>
 <td> <c:out value="${value.productId}"/></td>
-<td> <c:out value="${value.account}"/></td>
+<td> <c:out value="${value.account.accountId}"/></td>
 <td> <c:out value="${value.productName}"/></td>
 <td> <c:out value="${value.productPrice}"/></td>     	     		
 <td> <fmt:formatDate pattern="yyyy 年 MM 月 dd 日 " value="${value.startDate}" />   	     		
