@@ -20,17 +20,18 @@
 <br>帳號狀態<form:input type="text" value="" path="status" id="status" class="form-control" placeholder="帳號狀態"/><span id="mstatus"></span>
 <br><form:input type="hidden" value="" path="signupDate" id="signupDate" class="form-control" placeholder=""/><span id="msignDate"></span>
 
-		
+		<input type="button" value="修改" class="btn btn-lg btn-success btn-block" id="send"/>
 </form:form>
-<input type="button" value="修改" class="btn btn-lg btn-success btn-block" id="send"/>
+
 </div>
 
  
 <script type="text/javascript">
 
 $(function(){
+
 	$('#send').click(function(){
-		
+		console.log("666")
 		$('form span').text('');
 		
 		var accountName = $('#accountName').val();
@@ -59,7 +60,7 @@ $(function(){
 			return;
 		}
 		if( $.trim(title)==''){
-			$('#mtitle).text('身分不可為空');
+			$('#mtitle').text('身分不可為空');
 			Swal.fire({
 				  icon: 'error',
 				  title: 'Oops...',
@@ -89,7 +90,7 @@ $(function(){
 	    		contentType:'application/json',
 	    		data: data,
 	    		success:function(res){
-	    			if(res=='eidt'){
+	    			if(res=='update'){
 	    				Swal.fire({
 	    					  icon: 'success',
 	    					  title: '修改成功',
