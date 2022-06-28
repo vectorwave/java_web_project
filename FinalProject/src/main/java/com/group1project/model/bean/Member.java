@@ -3,7 +3,7 @@ package com.group1project.model.bean;
 import java.io.Serializable;
 import java.sql.Date;
 
-
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -51,7 +51,7 @@ public class Member implements Serializable{
 //	@Column(name="account_id")
 //	private Integer accountId;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.REMOVE)
 	@JsonIgnore
 	@JoinColumn(name="account_id")
 	private Account account;
@@ -69,8 +69,8 @@ public class Member implements Serializable{
 	@Column(name = "phone", columnDefinition = "varchar(20)")
 	private String phone;
 
-	@Column(name = "gender", columnDefinition = "bit")
-	private Long gender;
+	@Column(name = "gender", columnDefinition = "nvarchar(10)")
+	private String gender;
 
 	@Column(name = "email",columnDefinition = "varchar(50)")
 	private String email;
@@ -116,11 +116,11 @@ public class Member implements Serializable{
 		this.phone = phone;
 	}
 
-	public Long getGender() {
+	public String getGender() {
 		return gender;
 	}
 
-	public void setGender(Long gender) {
+	public void setGender(String gender) {
 		this.gender = gender;
 	}
 
@@ -160,7 +160,7 @@ public class Member implements Serializable{
 		return serialVersionUID;
 	}
 
-	public Member(Integer memberId, String memberName, String phone, Long gender, String email, String address,
+	public Member(Integer memberId, String memberName, String phone, String gender, String email, String address,
 			Date birthDate, byte[] photoPath) {
 		super();
 		this.memberId = memberId;
