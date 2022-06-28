@@ -22,7 +22,7 @@
 
 		
 </form:form>
-<input type="submit" value="修改" class="btn btn-lg btn-success btn-block" id="send"/>
+<input type="button" value="修改" class="btn btn-lg btn-success btn-block" id="send"/>
 </div>
 
  
