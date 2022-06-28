@@ -53,6 +53,7 @@ public class AccountController {
 		account.setSignupDate(nowdate);
 
 		aService.saveAccount(account);
+		
 		return "redirect:/";
 	}
 	
@@ -63,6 +64,7 @@ public class AccountController {
 		account.setSignupDate(nowdate);
 
 		aService.saveAccount(account);
+		
 		return "redirect:XXXXXXXXX";
 	}
 
@@ -114,5 +116,16 @@ public class AccountController {
 			return "redirect:/member/add";
 		}
 	}
+	
+//	@RequestMapping(path = "/login.password.update", method = RequestMethod.POST)
+//	@ResponseBody
+//	public Account AccountUpdate(@RequestParam("updateNo") Integer accountId,
+//			@RequestParam("updatePwd") String password) {
+//		
+//	
+//		Account member = aService.updateById2(accountId, password);
+//
+//		return member;
+//	}
 
 }
