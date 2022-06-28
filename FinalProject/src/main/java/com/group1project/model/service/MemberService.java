@@ -12,7 +12,7 @@ public interface MemberService {
 	Member getMemberById(Integer accountId);
 	Member getMemberByAccountId(Integer accountId);
 	List<Member> getAllMember();
-	void deleteMember(Integer accountId);
+	void deleteMember(Integer memberId);
 	Page<Member> findByPage(Integer pageNumber);
 	
 }
