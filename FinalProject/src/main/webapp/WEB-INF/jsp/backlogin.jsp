@@ -7,7 +7,7 @@
 
 <head>
 <meta charset="UTF-8">
-<title>飲君子後臺系統</title>
+<title>JoTravel登入系統</title>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
 

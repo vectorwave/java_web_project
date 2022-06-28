@@ -3,8 +3,6 @@ package com.group1project.controller;
 import java.util.Date;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.group1project.model.bean.Account;
+import com.group1project.model.bean.Product;
 import com.group1project.model.service.AccountService;
 @Controller
 @SessionAttributes(names = {"loginuser"})
@@ -40,24 +39,36 @@ public class AccountController {
 	}
 
 	// 查詢所有帳號資料
-	@GetMapping("/login/findall")
-	public String getAllAccount(Model model) {
-		List<Account> accounts = aService.getAllAccount();
-		model.addAttribute("account", accounts);
+//	@GetMapping("/login/findall")
+//	public String getAllAccount(Model model) {
+//		List<Account> accounts = aService.getAllAccount();
+//		model.addAttribute("account", accounts);
+//
+//		return "allAccount";
+//	}
 
-		return "allAccount";
-	}
-
-	// 會員帳號新增
+	// 會員帳號新增  
 	@PostMapping("/login/member/insert")
 	public String inserAccount(@ModelAttribute("account") Account account, Model model) {
 		Date nowdate = new Date();
 		account.setSignupDate(nowdate);
 
 		aService.saveAccount(account);
+		
 		return "redirect:/";
 	}
 	
+	// 商家新增帳號用 
+	@PostMapping("/login/guide/insert")
+	public String inserGuideAccount(@ModelAttribute("account") Account account, Model model) {
+		Date nowdate = new Date();
+		account.setSignupDate(nowdate);
+
+		aService.saveAccount(account);
+		
+		return "redirect:XXXXXXXXX";
+	}
+
 	// 刪除帳號
 	@RequestMapping(value = "/login/delete/{id}", method = RequestMethod.GET)
 	public String deleteAccount(@PathVariable("id") Integer accountId) {
@@ -105,6 +116,31 @@ public class AccountController {
 			model.addAttribute("loginuser", queryMember);
 			return "redirect:/member/add";
 		}
+	}
+	
+//	@RequestMapping(path = "/login.password.update", method = RequestMethod.POST)
+//	@ResponseBody
+//	public Account AccountUpdate(@RequestParam("updateNo") Integer accountId,
+//			@RequestParam("updatePwd") String password) {
+//		
+//	
+//		Account member = aService.updateById2(accountId, password);
+//
+//		return member;
+//	}
+	
+	
+	//模糊搜尋
+	@GetMapping("searchAccount")
+	@ResponseBody
+	public List<Account> searchAccount(@RequestParam("key") String key,Model m) {
+	
+		List<Account> searchAccount = aService.searchAccountByName(key);
+		
+		m.addAttribute("searchAccount", searchAccount);
+		
+		return searchAccount;
+	
 	}
 
 }

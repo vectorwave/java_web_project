@@ -116,6 +116,6 @@ public class ArticleController {
 		                               // 要回傳的物件, header , httpstatus 回應
 		return new ResponseEntity<byte[]>(photoFile, headers, HttpStatus.OK);
 	}
-	  
+	
 	
 }

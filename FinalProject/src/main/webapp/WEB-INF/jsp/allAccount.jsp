@@ -7,6 +7,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <h3 style="text-align: center">所有會員</h3>
+<form action="/jotravel/login/findall" method="get" >
+<input type="text" name="key" placeholder="搜尋帳號" id="key"> <input type="submit" id="send" value="🔍" > <a href="http://localhost:8081/jotravel/login/findall"><input type="button" value="全部帳號" ></a>  
+</form>
 
   <input id=accountId name="accountId" value="${loginuser.accountId}" />
 

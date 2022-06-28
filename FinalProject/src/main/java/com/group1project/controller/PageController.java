@@ -105,6 +105,7 @@ public class PageController {
 		return mav;
 	
 	}
+
 		
 	@GetMapping("back/ProductComment/add")
 	public String addProductComment(@RequestParam(name="id") Integer productId,Model model) {
@@ -115,7 +116,22 @@ public class PageController {
 		return "addProductComment";
 	}
 	
+
 	
+	
+//	@GetMapping("searchProduct")
+//	@ResponseBody
+//	public Page<Product> searchProduct(@RequestParam("key") String key,@RequestParam(name = "p",defaultValue = "1") Integer pageNumber,Model m) {
+//	
+//		 Pageable pgb = PageRequest.of(pageNumber - 1, 3 ,Sort.Direction.DESC,"productId");
+//		 
+//		 m.addAttribute("page", pgb);
+//		 
+//		 return pService.searchProductByNameWithPage(key, pgb);
+//	
+//	}
+	
+
 	// ##### Start ##### feedback Page Controller
 	@Autowired
 	private FeedbackService fService;
@@ -193,7 +209,7 @@ public class PageController {
 	
 	
 	//新增導遊
-	@GetMapping("/guidemanagement/addguide")
+	@GetMapping("/guidemanagement/add")
 	public ModelAndView insertGuide(ModelAndView mav) {
 		
 		Guide newGuide = new Guide();
@@ -227,9 +243,6 @@ public class PageController {
 
 	
 	
-	@GetMapping("front/")
-	public String frontPage(){
-		return "frontend";
-	} 
+	
 }
 
