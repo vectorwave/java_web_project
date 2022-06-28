@@ -460,15 +460,14 @@ footer{
     border: solid 1px #000000;
 }
 
+  </style>
 
+  <h1 id="rrr">台北一日遊</h1>
+<button  style="width:80px" id="tp">台北</button>
+ <br>
+  
 
-
-
-
-
-
-        
-        </style>
+  
         <div class="navbar">
             <nav class="navigation hide" id="navigation">
                 <span class="close-icon" id="close-icon" onclick="showIconBar()"><i class="fa fa-close"></i></span>
@@ -725,6 +724,15 @@ footer{
         var replyArea = document.getElementById("reply-area");
         replyArea.classList.remove("hide");
     }
+
+var rrrr=document.getElementById("rrr").innerText;
+
+var jkf=rrrr.indexOf("台南00");
+console.log(rrrr);
+console.log(jkf);
+    
+   
+
 </script>
     
     
