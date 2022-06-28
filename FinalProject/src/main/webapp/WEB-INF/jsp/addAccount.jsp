@@ -20,7 +20,7 @@
   <form:option value="商家" >商家</form:option>
   <form:option value="會員">會員</form:option>
   </form:select>
-  帳號狀態： <form:input type="text" path="status" class="form-control" /><br/>
+ <form:input type="hidden" path="status" class="form-control" value="1"/><br/>
  
   <input type="submit" name="submit" value="新增" class="btn btn-lg btn-success btn-block">
   </div>	

@@ -36,7 +36,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@Data
+
 @Entity
 @Table(name="login_info")
 public class Account implements Serializable{
@@ -70,12 +70,11 @@ public class Account implements Serializable{
 	@Column(name="signup_date", columnDefinition="datetime")
 	private Date signupDate;
 	
-	@ToString.Exclude
+	
 	@OneToOne(mappedBy = "account",cascade = CascadeType.ALL)
 	@PrimaryKeyJoinColumn
 	private Guide guide;
 	
-	@ToString.Exclude
 	@JsonIgnore
 	@OneToOne(mappedBy = "account",cascade = CascadeType.ALL)
 	@PrimaryKeyJoinColumn
@@ -87,10 +86,129 @@ public class Account implements Serializable{
 	private List<Order> orders;
 	
 	
-	@JsonCreator
+//	@JsonCreator
 	private Account(Integer account) {
 		accountId=account;
 	}
 
+
+	public Integer getAccountId() {
+		return accountId;
+	}
+
+
+	public void setAccountId(Integer accountId) {
+		this.accountId = accountId;
+	}
+
+
+	public String getAccountName() {
+		return accountName;
+	}
+
+
+	public void setAccountName(String accountName) {
+		this.accountName = accountName;
+	}
+
+
+	public String getPassword() {
+		return password;
+	}
+
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+
+	public String getTitle() {
+		return title;
+	}
+
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+
+	public String getStatus() {
+		return status;
+	}
+
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+
+	public Date getSignupDate() {
+		return signupDate;
+	}
+
+
+	public void setSignupDate(Date signupDate) {
+		this.signupDate = signupDate;
+	}
+
+
+	public Guide getGuide() {
+		return guide;
+	}
+
+
+	public void setGuide(Guide guide) {
+		this.guide = guide;
+	}
+
+
+	public Member getMember() {
+		return member;
+	}
+
+
+	public void setMember(Member member) {
+		this.member = member;
+	}
+
+
+	public List<Order> getOrders() {
+		return orders;
+	}
+
+
+	public void setOrders(List<Order> orders) {
+		this.orders = orders;
+	}
+
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+
+
+
+
+	@Override
+	public String toString() {
+		return "Account [accountId=" + accountId + ", accountName=" + accountName + ", password=" + password
+				+ ", title=" + title + ", status=" + status + ", signupDate=" + signupDate + ", guide=" + guide
+				+ ", member=" + member + ", orders=" + orders + "]";
+	}
+
+
+	public Account(Integer accountId, String accountName, String password, String title, String status, Date signupDate,
+			Guide guide) {
+		super();
+		this.accountId = accountId;
+		this.accountName = accountName;
+		this.password = password;
+		this.title = title;
+		this.status = status;
+		this.signupDate = signupDate;
+		this.guide = guide;
+	}
+	
 	
 }

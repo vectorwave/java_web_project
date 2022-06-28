@@ -36,7 +36,6 @@
 <!-- <link rel="stylesheet" href="${contextRoot}/css/bootstrap.min.css"> -->
 </head>
 
-
 <body style="background-color: #8E8E8E">
 
 	<!-- 頂部橫條列 -->
@@ -152,4 +151,3 @@
 			</nav>
 
 			<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
-

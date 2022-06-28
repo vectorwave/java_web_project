@@ -6,7 +6,7 @@
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <script type="text/javascript" src="${contextRoot}/js/vue.min.js"></script>
 
-<div id="app" style="color: black">
+<div id="app" style="color:black">
 
 	<div class="row justify-content-center mt-4">
 
@@ -101,13 +101,6 @@ var vm = new Vue({
   el:'#app',
   data:{orders:null},
   methods:{
-	  getTotalPrice(index){
-		  var total = 0;
-		  this.orders[index].orderDetails.forEach(function(detail){
-			  total += detail.product.productPrice*detail.amount;
-		  });
-		  return total;
-	  },
 	  delModal(){
 		 if(cindex == null){
 			 let o = this.orders;
