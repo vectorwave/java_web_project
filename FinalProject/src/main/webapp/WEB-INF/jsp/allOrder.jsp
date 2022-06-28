@@ -12,7 +12,7 @@
 
 
 		<div class="h3 d-inline-block mt-2 d-flex justify-content-between">
-			<strong>商品編號</strong><strong> 金流</strong> <strong>狀態</strong><strong>總價</strong><strong></strong><strong></strong><strong></strong>
+			<strong>訂單編號</strong><strong> 金流</strong> <strong>狀態</strong><strong>總價</strong><strong></strong><strong></strong><strong></strong>
 		</div>
 		<div class="col-md-15">
 			<div id="accordionExample" v-for="(order,index) in orders"
@@ -135,6 +135,9 @@ jQuery.ajax({
 	url:'${contextRoot}/order/all',
   async :false, 
 	success:function(res){
+		if(res.length == 0){
+			$('#app').html('<img class="mb-4 rounded mx-auto d-block" src="${contextRoot}/assets/img/noOrder.png" alt="" width="700" height="700">');			
+		}
 		vm.$data.orders = res;
 	},
 	error:function(err){
