@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.group1project.model.bean.Account;
+import com.group1project.model.bean.Product;
 import com.group1project.model.service.AccountService;
 @Controller
 @SessionAttributes(names = {"loginuser"})
@@ -38,13 +39,13 @@ public class AccountController {
 	}
 
 	// 查詢所有帳號資料
-	@GetMapping("/login/findall")
-	public String getAllAccount(Model model) {
-		List<Account> accounts = aService.getAllAccount();
-		model.addAttribute("account", accounts);
-
-		return "allAccount";
-	}
+//	@GetMapping("/login/findall")
+//	public String getAllAccount(Model model) {
+//		List<Account> accounts = aService.getAllAccount();
+//		model.addAttribute("account", accounts);
+//
+//		return "allAccount";
+//	}
 
 	// 會員帳號新增  
 	@PostMapping("/login/member/insert")
@@ -127,5 +128,19 @@ public class AccountController {
 //
 //		return member;
 //	}
+	
+	
+	//模糊搜尋
+	@GetMapping("searchAccount")
+	@ResponseBody
+	public List<Account> searchAccount(@RequestParam("key") String key,Model m) {
+	
+		List<Account> searchAccount = aService.searchAccountByName(key);
+		
+		m.addAttribute("searchAccount", searchAccount);
+		
+		return searchAccount;
+	
+	}
 
 }
