@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 import com.group1project.model.bean.Guide;
 import com.group1project.model.bean.Product;
+import com.group1project.model.bean.ProductComment;
 import com.group1project.model.service.GuideService;
 import com.group1project.model.bean.Article;
 import com.group1project.model.service.ArticleService;
@@ -100,19 +101,21 @@ public class PageController {
 		mav.getModel().put("page", page);
 		mav.getModel().put("key", key);
 		mav.setViewName("findAllProduct2");
-		
-		
-		
-		//test
-		
-//		m.addAttribute("account", accountBean.getId);
-//		System.out.println("123");;
-//		
-//		
+			
 		return mav;
 	
 	}
 		
+	@GetMapping("back/ProductComment/add")
+	public String addProductComment(@RequestParam(name="id") Integer productId,Model model) {
+		
+		
+		model.addAttribute("pdComment", new ProductComment()); 
+		model.addAttribute("pid", productId);
+		return "addProductComment";
+	}
+	
+	
 	// ##### Start ##### feedback Page Controller
 	@Autowired
 	private FeedbackService fService;
