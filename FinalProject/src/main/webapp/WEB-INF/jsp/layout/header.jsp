@@ -9,18 +9,25 @@
 <link href="${contextRoot}/css/bootstrap.min.css" rel="stylesheet" >
 <title>JoTravel 管理平台</title>
 
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
 <!-- 引入JS -->
 <script type="text/javascript" src="${contextRoot}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${contextRoot}/jQueryconfirm/jquery-confirm.js"></script>
+
+
 <!-- 引入sweetalert2 -->
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script type="text/javascript" src="${contextRoot}/js/sweetalert2.all.min.js"></script>
 <link href="${contextRoot}/css/sweetalert2.min.css" rel="stylesheet">
 
+
 <!-- 引入CSS -->
 <link rel="stylesheet" href="${contextRoot}/jQueryconfirm/jquery-confirm.css">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
 <script type="text/javascript" src="${contextRoot}/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 <link href="${contextRoot}/css/dashboard.css" rel="stylesheet">
 <link href="${contextRoot}/css/leftMenuBar.css" rel="stylesheet">
 <link rel="stylesheet" href="${contextRoot}/css/ManagementPage.css">
@@ -28,7 +35,7 @@
 <!-- <link rel="stylesheet" href="${contextRoot}/css/bootstrap.min.css"> -->
 </head>
 
-<body style="background-color:#8E8E8E ">
+<body style="background-color:rgb(243, 243, 245) ">
 
 <!-- 頂部橫條列 -->  
 <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
@@ -87,8 +94,8 @@
         <button class="dropbtn"><span class="material-icons">hiking</span>商家管理</button>
         <div class="dropdown-content">
           <a href="${contextRoot}/guidemanagement">所有商家</a>
-          <a href="#">商家權限</a>
           <a href="${contextRoot}/guidemanagement/addguide">新增商家</a>
+          <a href="#">權限管理</a>
         </div>
       </div>
 

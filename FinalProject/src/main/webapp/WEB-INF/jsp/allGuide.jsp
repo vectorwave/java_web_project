@@ -20,11 +20,11 @@
 <table style="position: relative;">
     <div class="btn-group" style="position: absolute; top:50px; right:50px">
         <div class="btn-group" role="group" aria-label="Basic radio toggle button group" style="">
-            <input id="btnradio1" autocomplete="off" name="btnradio" class="btn-check" type="radio" value="男性" checked="checked"/>
-            <label class="btn btn-outline-info" for="btnradio1" id="infoBtn" style="border-radius: 5px 0px 0px 5px;">編號</label>
+            <input id="btnradio1" autocomplete="off" name="btnradio" class="btn-check" type="radio" value="編號" checked="checked"/>
+            <label class="btn btn-outline-dark" for="btnradio1" id="infoBtn" style="border-radius: 5px 0px 0px 5px;">編號</label>
     
-            <input id="btnradio2" autocomplete="off" name="btnradio" class="btn-check" type="radio" value="女性"/>
-            <label class="btn btn-outline-info" for="btnradio2" id="infoBtn" style="border-radius: 0px 5px 5px 0px;">名稱</label>
+            <input id="btnradio2" autocomplete="off" name="btnradio" class="btn-check" type="radio" value="名稱"/>
+            <label class="btn btn-outline-dark" for="btnradio2" id="infoBtn" style="border-radius: 0px 5px 5px 0px;">名稱</label>
         </div>
         <input type="text"  placeholder="輸入搜尋..." style="height: 30px;border-radius: 5px;">
       </div>
@@ -49,7 +49,7 @@
 <td style="width:130px"><c:out value="${guide.guidePhone}"/></td>
 <td style="width:200px"><c:out value="${guide.guideEmail}"/></td>
 <td style="border-radius: 0px 20px 20px 0px;width:130px">
-    </a><button type="button" class="btn btn-outline-info" id="infoBtn" onclick="location.href='${contextRoot}/guidemanagement/info/${guide.accountId}'">詳細資訊</button>
+    </a><button type="button" class="btn btn-outline-dark" id="infoBtn" onclick="location.href='${contextRoot}/guidemanagement/info/${guide.accountId}'">詳細資訊</button>
 </td>
 </tr>
 </c:forEach>
@@ -77,7 +77,7 @@ console.log(pg)
             <c:choose>
                 <c:when test="${page.number != pageNumber -1}">
 
-                    <a href="${contextRoot}/guidemanagement?p=${pageNumber}"><button type="button" class="btn btn-outline-info"><c:out value="${pageNumber}"/>  </button></a>
+                    <a href="${contextRoot}/guidemanagement?p=${pageNumber}"><button type="button" class="btn btn-outline-secondary"><c:out value="${pageNumber}"/>  </button></a>
 
                 </c:when>
                 <c:otherwise>
