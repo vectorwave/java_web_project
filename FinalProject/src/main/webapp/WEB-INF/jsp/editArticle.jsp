@@ -16,7 +16,7 @@
 <form:hidden path="articleId"/>
 
 <!-- <input  path="accountId" name="accountId" value="1"/> -->
-<input type="text" name="accountId" value="1" style="visibility:hidden"/>
+  <input id=accountId name="accountId" value="${loginuser.accountId}" />
 <!-- path="accountId" -->
 <form:hidden path="picId"  value="${article.articleId}"/>
 

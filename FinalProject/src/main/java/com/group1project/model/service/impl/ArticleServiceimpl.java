@@ -11,6 +11,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.group1project.model.bean.Article;
+import com.group1project.model.bean.Product;
 import com.group1project.model.repository.ArticleRepository;
 import com.group1project.model.service.ArticleService;
 
@@ -61,6 +62,10 @@ public  class ArticleServiceimpl implements ArticleService {
 		
 		return page;
 		
+	}
+	
+	public Page<Article> searchArticleByTitleWithPage(String key , Pageable pab) {
+		   return aDao.findAllByArticleTitleLike("%" + key + "%", pab);
 	}
 	
 //	@Override
