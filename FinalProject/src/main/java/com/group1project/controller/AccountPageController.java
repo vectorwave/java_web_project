@@ -26,7 +26,7 @@ public class AccountPageController {
 
 	@GetMapping("/")
 	public String Welcome() {
-		return "index";
+		return "login";
 	}
 
 	@GetMapping("/login/insert")

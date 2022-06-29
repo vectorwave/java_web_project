@@ -1,13 +1,65 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
-
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <link href="${contextRoot}/css/bootstrap.min.css" rel="stylesheet">
-<jsp:include page="layout/header.jsp" />
-<meta name="author" content="http://www.softwhy.com/" />
-	<title>aa</title>
+<title>JoTravel 管理平台</title>
+
+<!-- 引入JS -->
+<script type="text/javascript"
+	src="${contextRoot}/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript"
+	src="${contextRoot}/jQueryconfirm/jquery-confirm.js"></script>
+<!-- 引入sweetalert2 -->
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script type="text/javascript"
+	src="${contextRoot}/js/sweetalert2.all.min.js"></script>
+<link href="${contextRoot}/css/sweetalert2.min.css" rel="stylesheet">
+
+<!-- 引入CSS -->
+<link rel="stylesheet"
+	href="${contextRoot}/jQueryconfirm/jquery-confirm.css">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<script type="text/javascript"
+	src="${contextRoot}/js/bootstrap.bundle.min.js"></script>
+<link href="${contextRoot}/css/dashboard.css" rel="stylesheet">
+<link href="${contextRoot}/css/leftMenuBar.css" rel="stylesheet">
+<link rel="stylesheet" href="${contextRoot}/css/ManagementPage.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+<!-- <link rel="stylesheet" href="${contextRoot}/css/bootstrap.min.css"> -->
+</head>
+
+
+<body style="background-color: #8E8E8E">
+
+	<!-- 頂部橫條列 -->
+	<nav
+		class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+		<a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#"
+			style="font-size: 24px;" onclick="return false">JoTravel 管理平台</a>
+		<button class="navbar-toggler position-absolute d-md-none collapsed"
+			type="button" data-toggle="collapse" data-target="#sidebarMenu"
+			aria-controls="sidebarMenu" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<!--   <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search"> -->
+		<a class="nav-link" href="http://localhost:8081/jotravel/loginout">
+		<button type="button" class="btn btn-secondary"
+			style="margin-right: 20px;">登出</button>
+		</a>
+
+	</nav>
+	<p>你好, ${loginuser.accountName}</p>
+	
 	<style>
           .v_code {
             width: 600px;
@@ -61,8 +113,7 @@
 
 	</head>
 	<body>
-		<p>你好, ${loginuser.accountName}</p>
-	
+
 		<div class="modal-dialog modal-dialog-centered modal-sm"
 			role="document" style="max-width: 335px">
 			<div class="modal-content">
@@ -146,6 +197,7 @@
          if (inputCode.length <= 0) {
            textShow.innerHTML = "請輸入驗證碼";
            textShow.style.color = "red";
+           return false;
          } else if (inputCode.toUpperCase() != code.toUpperCase()) {
            textShow.innerHTML = "您輸入的驗證碼有誤";
            textShow.style.color = "red";
@@ -216,4 +268,4 @@
 // 		});
 	</script>
 
-<%-- 	<jsp:include page="layout/footer.jsp" /> --%>
+	<jsp:include page="layout/footer.jsp" />
