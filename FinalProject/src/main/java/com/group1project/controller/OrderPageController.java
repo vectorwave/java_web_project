@@ -14,7 +14,7 @@ public class OrderPageController {
 		return "addOrder";
 	}
 	@GetMapping("back/downloadOrder")
-	public String downloadOrder(){
+	public String downloadOrder() {
 		return "downloadOrder";
 	}
 }

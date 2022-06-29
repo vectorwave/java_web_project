@@ -75,14 +75,13 @@ public class AccountServiceimpl implements AccountService {
 	}
 
 	@Override
-	public String findIdByName(String accountName) {
-
-		String user = aDao.findIdByName(accountName);
-		if (user.isBlank()) {
-			return null;
-		}
-		return user;
+	public List<Account> searchAccountByName(String key) {
+		
+		return aDao.findAllByAccountNameLike("%" + key + "%");
+		
 	}
+
+
 
 //	@Override
 //	public Account updateById2(Integer accountId, String password) {

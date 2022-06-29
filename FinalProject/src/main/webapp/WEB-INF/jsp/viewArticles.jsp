@@ -27,7 +27,7 @@
 
 
 
-  <c:forEach var="value" items="${page.content}">
+  
    
   
     <table style="text-align:center">
@@ -46,6 +46,7 @@
 			  
 			   <th  width='160'colspan="2">刪除🗑️/更新📝
 			</tr>
+			<c:forEach var="value" items="${page.content}">
 <tr>
 <td><c:out value="${value.articleId}" /></td>
 
@@ -67,14 +68,14 @@
  <td  class="btn"><a href="${contextRoot}/back/article/delete/${value.articleId}"><button class="btn1" id="delete" onclick="return del()">🗑️</button></a>
  <td class="btn"><a href="${contextRoot}/back/article/update/${value.articleId}"><button class="btn1">📝</button></a>
 
-<tr>
+<tr></c:forEach>
 </table>
       
       
 
       
    
-  </c:forEach>
+  
 <div style="text-align: center;">
 <c:forEach begin="1" end="${page.totalPages}" var="p">
 <a href="${contextRoot}/article/all?p=${p}"><c:out value="${p}"/></a>
