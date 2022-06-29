@@ -38,6 +38,14 @@ public class PageController {
 	@GetMapping("/back")
 	public String backIndexPage(){
 		return "backIndex";
+	}
+	@GetMapping("/back/car")
+	public String carPage(){
+		return "cart";
+	} 
+	@GetMapping("/back/car2")
+	public String carPage2(){
+		return "frontProductPage";
 	} 
 	
 	@GetMapping("back/addProduct")

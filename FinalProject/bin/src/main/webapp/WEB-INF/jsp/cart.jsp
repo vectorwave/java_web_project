@@ -65,7 +65,7 @@
             </div>
         </div>
     </section>
-
+<!-- ---------------左側欄位--------------------- -->
     <section class="container">
         <div class="row">
             <div class="col-md-3">
@@ -77,7 +77,7 @@
                     <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1" aria-disabled="true">限時下殺</a>
                 </div>
             </div>
-
+<!-- ---------------商品欄位--------------------- -->
             <div class="col-md-9">
                 <div class="tab-content">
                     <div class="tab-pane active" id="pane-1" role="tabpanel">

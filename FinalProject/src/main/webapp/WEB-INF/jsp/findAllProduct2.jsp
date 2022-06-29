@@ -30,7 +30,7 @@ td
 <div id="newTable">
 <c:forEach var="value" items="${page.content}">
 <tr> 
-<td><a href="ProductComment/add?id=${value.productId}"><button onclick="upd()" >評論</button></a></td>
+<td><a href="ProductComment/add?id=${value.productId}"><button >評論</button></a></td>
 <td> <c:out value="${value.productId}"/></td>
 <td> <c:out value="${value.account.accountId}"/></td>
 <td> <c:out value="${value.productName}"/></td>
