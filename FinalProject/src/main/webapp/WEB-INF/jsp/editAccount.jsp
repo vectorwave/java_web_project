@@ -25,9 +25,9 @@
   <input onclick="submitForm(form)" type="button" class="btn btn-primary" value="修改" id="send">
 
 <!-- 		<input type="submit" onclick="submitForm(form)" value="修改" class="btn btn-lg btn-success btn-block" id="send"/> -->
+</div>
 </form:form>
 
-</div>
 
  
 <script type="text/javascript">

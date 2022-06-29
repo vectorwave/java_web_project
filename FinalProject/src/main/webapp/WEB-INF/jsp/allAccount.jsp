@@ -45,7 +45,7 @@
 							<button>📝</button></a>
 						<td><a
 							href='<c:out value="${contextRoot}"/>/login/delete/${account.accountId}'>
-							<button>🗑️</button></a> 
+							<button onclick="submitForm(form)">🗑️</button></a> 
 					</tr>
 				</c:forEach>
 
@@ -53,5 +53,29 @@
 		</table>
 	</div>
 <%-- </form:form> --%>
+ <script type="text/javascript">
+function submitForm(form){
+	 Swal.fire({
+	   title: '確定刪除?',
+	   text: "You won't be able to revert this!",
+	   icon: 'warning',
+	   showCancelButton: true,
+	   confirmButtonColor: '#3085d6',
+	   cancelButtonColor: '#d33',
+	   confirmButtonText: 'Yes, delete it!'
+	 }).then((result) => {
+		 if (result.isConfirmed) {
+//			    Swal.fire('Saved!', '', 'success')
+			    form.submit(form);
+			    
+			  } else if (result.isDenied) {
+			    
+			    return false;
+			  }
+			})
+	}
+
+
+</script>
 
 <jsp:include page="layout/footer.jsp" />
