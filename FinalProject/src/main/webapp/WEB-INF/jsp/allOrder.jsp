@@ -6,22 +6,28 @@
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <script type="text/javascript" src="${contextRoot}/js/vue.min.js"></script>
 
-<div id="app" style="color:black">
+<div id="app" style="color: black">
 
 	<div class="row justify-content-center mt-4">
 
 
-		<div class="h3 d-inline-block mt-2 d-flex justify-content-between">
-			<strong>訂單編號</strong><strong> 金流</strong> <strong>狀態</strong><strong>總價</strong><strong></strong><strong></strong><strong></strong>
+		<div class="h3 d-inline-block mt-2 d-flex row">
+			<div class="col-sm text-center">訂單編號</div>
+			<div class="col-sm text-center">金流</div>
+			<div class="col-sm text-center">狀態</div>
+			<div class="col-sm text-center">總價</div>
+			<div class="col-sm"></div>
 		</div>
 		<div class="col-md-15">
 			<div id="accordionExample" v-for="(order,index) in orders"
 				:key="order.orderId">
 				<div class="card card-bottom">
-					<div class="card-header fs-2 d-flex justify-content-between"
-						:id="'heading-'+index">
-						<strong>{{order.orderId}}</strong><strong>{{order.cashFlow}}</strong><strong>{{order.status}}</strong><strong>{{getTotalPrice(index)}}</strong>
-						<div>
+					<div class="card-header fs-2 d-flex row" :id="'heading-'+index">
+						<div class="col-sm text-center">{{order.orderId}}</div>
+						<div class="col-sm text-center">{{order.cashFlow}}</div>
+						<div class="col-sm text-center">{{order.status}}</div>
+						<div class="col-sm text-center">{{getTotalPrice(index)}}</div>
+						<div class="col-sm">
 							<button class="btn btn-primary btn-sm" type="button"
 								data-toggle="collapse" :data-target="'#collapse-'+index">
 								顯示訂單細節</button>
@@ -35,15 +41,13 @@
 					:aria-labelledby="'heading-'+index" data-parent="#accordionExample">
 					<table class="table table-sm">
 						<thead>
-							<tr>
-								<th width="20"></th>
-								<th width="100"></th>
+							<tr><th width="20"></th><th width="60"></th>
 								<th>商品名稱</th>
-								<th>數量</th>
 								<th>價格</th>
+								<th>數量</th>
 								<th>日期</th>
 								<th>天數</th>
-								<th class="text-center" width="120">小計</th>
+								<th>小計</th>
 							</tr>
 						</thead>
 						<tbody v-for="(detail,cindex) in order.orderDetails">
@@ -51,19 +55,15 @@
 								<td class="align-middle"><button type="button"
 										@click="delDetail(index,cindex)" class="btn btn-danger btn-sm"
 										data-toggle="modal" data-target="#purchaseModal">🗑️</button>
-								<td class="align-middle">
-									<div class="card p-1 card-bottom">
-										<img
-											:src="'${contextRoot}/back/product/photo/'+detail.product.productId"
-											alt="..." width="80px;">
-									</div>
-								</td>
+								<td class="align-middle"><img
+									:src="'${contextRoot}/back/product/photo/'+detail.product.productId"
+									alt="..." width="80px;"></td>
 								<td class="align-middle ">{{detail.product.productName}}</td>
-								<td class="align-middle">{{detail.amount}}</td>
 								<td class="align-middle">{{detail.product.productPrice}}</td>
+								<td class="align-middle">{{detail.amount}}</td>
 								<td class="align-middle">{{detail.date}}</td>
 								<td class="align-middle ">{{detail.totalDays}}</td>
-								<td class="align-middle text-right">{{detail.product.productPrice*detail.amount}}</td>
+								<td class="align-middle">{{detail.product.productPrice*detail.amount}}</td>
 							</tr>
 						</tbody>
 					</table>
@@ -144,7 +144,6 @@ jQuery.ajax({
 		console.log(err);
 	}
 });
-
 function del(id){
 	jQuery.ajax({
 		url:delUrl+id,
