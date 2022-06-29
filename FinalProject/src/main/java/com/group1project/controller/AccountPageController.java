@@ -24,9 +24,14 @@ public class AccountPageController {
 	@Autowired
 	private AccountService aService;
 
+	@GetMapping("login")
+	public String Login() {
+		return "login";
+	}
+	
 	@GetMapping("/")
 	public String Welcome() {
-		return "login";
+		return "index";
 	}
 
 	@GetMapping("/login/insert")

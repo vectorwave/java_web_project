@@ -58,7 +58,6 @@
 		</a>
 
 	</nav>
-	<p>你好, ${loginuser.accountName}</p>
 	
 	<style>
           .v_code {
