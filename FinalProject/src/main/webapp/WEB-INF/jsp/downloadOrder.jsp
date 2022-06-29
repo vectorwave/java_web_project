@@ -61,36 +61,37 @@ class Workbook {
     }
 };
 const workbook = new Workbook();
-function download(){
-	jQuery.ajax({
-		url:'${contextRoot}/order/all',
-	  async :false, 
-		success:function(res){
-			var temp = [['orderId','cashFlow','status','productName','price','amount','date','totalDays']];
-			res.forEach(function(order){
-				let tempO = [];
-				tempO.push(order.orderId);
-				tempO.push(order.cashFlow);
-				tempO.push(order.status);
-				temp.push(tempO);
-				order.orderDetails.forEach(function(orderDetail){
-					let tempD = [,,,];
-					tempD.push(orderDetail.product.productName);
-					tempD.push(orderDetail.product.productPrice);
-					tempD.push(orderDetail.amount);
-					tempD.push(orderDetail.date);
-					tempD.push(orderDetail.totalDays);
-					temp.push(tempD);
-				});
+var temp = [['orderId','cashFlow','status','productName','price','amount','date','totalDays']];
+jQuery.ajax({
+	url:'${contextRoot}/order/all',
+  async :false, 
+	success:function(res){
+		res.forEach(function(order){
+			let tempO = [];
+			tempO.push(order.orderId);
+			tempO.push(order.cashFlow);
+			tempO.push(order.status);
+			temp.push(tempO);
+			order.orderDetails.forEach(function(orderDetail){
+				let tempD = [,,,];
+				tempD.push(orderDetail.product.productName);
+				tempD.push(orderDetail.product.productPrice);
+				tempD.push(orderDetail.amount);
+				tempD.push(orderDetail.date);
+				tempD.push(orderDetail.totalDays);
+				temp.push(tempD);
 			});
-			const sheet = XLSX.utils.aoa_to_sheet(temp);
-		    workbook.appendSheet(sheet, 'sheet_name_1');
-		    saveAs(workbook.toBlob(),"myOrder.xls");
-		},
-		error:function(err){
-			console.log(err);
-		}
-	});
+		});
+		const sheet = XLSX.utils.aoa_to_sheet(temp);
+	    workbook.appendSheet(sheet, 'sheet_name_1');
+	},
+	error:function(err){
+		console.log(err);
+	}
+});
+
+function download(){
+	saveAs(workbook.toBlob(),"myOrder.xls");
 }
 </script>
 <jsp:include page="layout/footer.jsp" />
