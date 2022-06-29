@@ -118,7 +118,7 @@
 					</button>
 					<div class="dropdown-content">
 						<a href="/jotravel/guidemanagement">所有商家</a> <a href="#">商家權限</a>
-						<a href="/jotravel/guidemanagement/add">新增商家</a>
+						<a href="/jotravel/guidemanagement/addguide">新增商家</a>
 					</div>
 				</div>
 
