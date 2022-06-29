@@ -11,18 +11,27 @@ legend {
     font-size: 30px;
 }
 
+.tableContainer {
+padding: 30px;
+}
+
 .content-container {
     margin:50px 50px 50px 0px;
 }
 
 /* allGuide.jsp 樣式 */
 .thContent * {
-    padding: 10px;
+    padding:5px 10px 5px 10px;
     text-align: center;
 }
 
 .tdContent * {
-    padding: 10px;
+    padding:5px 10px 5px 10px;
+    text-align: center;
+}
+
+.tdContent:hover {
+    background-color:  rgb(5, 29, 51) ;
 }
 
 #infoBtn {
@@ -33,14 +42,19 @@ legend {
 
 /* guideDetail.jsp 樣式 */
 #GIFormContainer1 {
-    width: 500px;
+    padding: 20px;
+    width: 800px;
 }
 
+#leftPart {float:left}
+
+#rightPart {float:right}
+
 .inputBox1 {
-    margin-top: 5px;
-    margin-bottom: 5px;
+margin-top: 5px;
+margin-bottom: 5px;
 color:white;
-width: 300px;
+width: 250px;
 background-color: transparent;
 border: none;
 float: right;
@@ -50,7 +64,7 @@ float: right;
     margin-top: 5px;
     margin-bottom: 5px;
 color:white;
-width: 300px;
+width: 250px;
 background-color: transparent;
 resize:none;
 border: none;
@@ -60,7 +74,7 @@ float: right;
 .inputBoxAdd{
     margin-top: 5px;
     margin-bottom: 5px;
-width: 300px;
+width: 250px;
 border: none;
 float: right;
 border-radius: 3px;
@@ -69,7 +83,7 @@ border-radius: 3px;
 .textareaAdd{
     margin-top: 5px;
     margin-bottom: 5px;
-width: 300px;
+width: 250px;
 resize:none;
 border: none;
 float: right;
