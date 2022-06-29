@@ -147,7 +147,7 @@ public class AccountController {
 	@GetMapping("loginout")
 	public String login(SessionStatus status) {
 		status.setComplete();
-		return "index";
+		return "login";
 	}
 
 }
