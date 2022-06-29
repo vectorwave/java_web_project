@@ -31,8 +31,7 @@ public class PageController {
 	@Autowired
 	private ProductService pService ;
 	
-	@Autowired
-	private ArticleService aService;
+	
 	
 	@GetMapping("/back")
 	public String backIndexPage(){
@@ -129,6 +128,8 @@ public class PageController {
 		return mav;
 	}
 	
+	@Autowired
+	private ArticleService aService;
 	
 	@GetMapping("article/add")
 	public String addArticlePage(Model model) {
@@ -214,10 +215,15 @@ public class PageController {
 	
 	@GetMapping("article/all")
 	public ModelAndView viewAllArticles(ModelAndView mav, 
-			@RequestParam(name="p", defaultValue = "1") Integer pageNumber) {
-		Page<Article> page = aService.findByPage(pageNumber);
+			@RequestParam(name="p", defaultValue = "1") Integer pageNumber,@RequestParam(value="key",defaultValue="" ,required = false) String key,Model m) {
+		//Page<Article> page = aService.findByPage(pageNumber);
 		
+		Pageable pgb = PageRequest.of(pageNumber - 1, 5 ,Sort.Direction.DESC,"articleId");
+
+		Page<Article> page = aService.searchArticleByTitleWithPage(key, pgb);
+
 		mav.getModel().put("page", page);
+		mav.getModel().put("key", key);
 		mav.setViewName("viewArticles");
 		return mav;
 	}
