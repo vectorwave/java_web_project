@@ -15,6 +15,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import com.group1project.model.bean.Account;
 import com.group1project.model.bean.Member;
 import com.group1project.model.repository.MemberRepository;
 import com.group1project.model.service.MemberService;
@@ -24,7 +25,7 @@ import com.group1project.model.service.MemberService;
 public class MemberServiceimpl implements MemberService {
 	@Autowired
 	private MemberRepository mDao;
-	
+
 	@Autowired
 	private EntityManager entityManager;
 
@@ -36,40 +37,39 @@ public class MemberServiceimpl implements MemberService {
 
 	@Override
 	public Member saveMember(Member member) {
-		return  mDao.save(member);	}
+		return mDao.save(member);
+	}
 
 	@Override
 	public Member getMemberById(Integer memberid) {
-		 Optional<Member> member = mDao.findById(memberid);
-		 
-		 if(member.isPresent()) {
-			 return member.get();
-		 }else {
-			 return null;
-		 }
-			
+		Optional<Member> member = mDao.findById(memberid);
+
+		if (member.isPresent()) {
+			return member.get();
+		} else {
+			return null;
+		}
+
 	}
-	
+
 	@Override
 	public Member getMemberByAccountId(Integer accountId) {
-		 
+
 		String hql = "from Member where account_id = :accountId";
-		
-		TypedQuery<Member> query = entityManager.createQuery(hql,Member.class);
-		query.setParameter("accountId", accountId);	
-		 
+
+		TypedQuery<Member> query = entityManager.createQuery(hql, Member.class);
+		query.setParameter("accountId", accountId);
+
 		Member member = query.getSingleResult();
 
-		 if(member != null) {
-			 return member;
-		 }else {
-			 return null;
-		 }
-			
-	}
-	
+		if (member != null) {
+			return member;
+		} else {
+			return null;
+		}
 
-	
+	}
+
 	@Override
 	public List<Member> getAllMember() {
 		return mDao.findAll();
@@ -77,7 +77,7 @@ public class MemberServiceimpl implements MemberService {
 
 	@Override
 	public void deleteMember(Integer memberId) {
-		mDao.deleteById(memberId);	
+		mDao.deleteById(memberId);
 //		String hql = "from Member where account_id = :accountId";
 //		
 //		TypedQuery<Member> query = entityManager.createQuery(hql,Member.class);
@@ -91,13 +91,16 @@ public class MemberServiceimpl implements MemberService {
 
 	@Override
 	public Page<Member> findByPage(Integer pageNumber) {
-		Pageable pgb = PageRequest.of(pageNumber - 1, 4,Sort.Direction.DESC,"memberid");
-		
+		Pageable pgb = PageRequest.of(pageNumber - 1, 4, Sort.Direction.DESC, "memberid");
+
 		Page<Member> page = mDao.findAll(pgb);
 		return page;
 	}
 
-	
-	
-	
+	@Override
+	public List<Member> searchMemberByName(String key) {
+
+		return mDao.findAllByMemberNameLike("%" + key + "%");
+	}
+
 }
