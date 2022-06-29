@@ -462,8 +462,13 @@ footer{
 
   </style>
 
-  <h1 id="rrr">台北一日遊</h1>
-<button  style="width:80px" id="tp">台北</button>
+  <div id="rrr">台北一日遊</div>
+
+  <p id="krisrock"></p>
+
+  <p id="krisrock1"></p>
+
+<!-- <button  style="width:80px" id="tp">台北</button> -->
  <br>
   
 
@@ -727,10 +732,26 @@ footer{
 
 var rrrr=document.getElementById("rrr").innerText;
 
-var jkf=rrrr.indexOf("台南00");
+var jkf=rrrr.indexOf("一日遊");
+if(jkf!=-1){
+	var el = document.getElementById("krisrock");
+	el.innerHTML = "<a href='https://www.youtube.com/?gl=TW&hl=zh-tw'/><button type='button' class='btn btn-info'>一日遊</button>";
+
+
+}
+var jkf1=rrrr.indexOf("台北");
+
+if(jkf1!=-1){
+	var el1 = document.getElementById("krisrock1");
+	el1.innerHTML = "<a href='http://localhost:8081/jotravel/article/all?key=66'/><button type='button' class='btn btn-info'>台北</button>";
+
+
+}
+
 console.log(rrrr);
 console.log(jkf);
-    
+console.log(jkf1);
+   
    
 
 </script>
