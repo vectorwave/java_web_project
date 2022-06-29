@@ -21,12 +21,13 @@
 //   });
  </script>
 
+<div id="kkk">
 <br>
 
 
 
 
-  <c:forEach var="value" items="${page.content}">
+  
    
   
     <table style="text-align:center">
@@ -36,14 +37,16 @@
 			   <th width='80'>帖子分類</th>
 			   <th width='156'>帖子內容</th>
 
-			   <th width='80'>會員ID</th>
-			   <th width='80'>會員名稱</th>
-			   <th width='80'>照片ID</th>
+			   <th width='80'>會員ID</th>			   
+<!-- 			   <th width='80'>照片ID</th> -->
+
+
 			   <th width='80'>照片</th>
 			   <th width='156' >更新時間</th>
 			  
 			   <th  width='160'colspan="2">刪除🗑️/更新📝
 			</tr>
+			<c:forEach var="value" items="${page.content}">
 <tr>
 <td><c:out value="${value.articleId}" /></td>
 
@@ -54,30 +57,31 @@
 <td><c:out value="${value.articleText}" /></td>
 
 
-<td><c:out value="${value.loginInfoId}" /></td>
+<td><c:out value="${value.account.accountId}" /></td>
 
-<td><c:out value="${value.username}" /></td>
+<%-- <td><c:out value="${value.username}" /></td> --%>
 
 
-<td><c:out value="${value.picId}" /></td>
+<%-- <td><c:out value="${value.picId}" /></td> --%>
 <td><img src="${contextRoot}/back/article/photo/${value.articleId}" width="100px" height="100px"></td>
 <td><c:out value="${value.articleDate}" /></td>
  <td  class="btn"><a href="${contextRoot}/back/article/delete/${value.articleId}"><button class="btn1" id="delete" onclick="return del()">🗑️</button></a>
  <td class="btn"><a href="${contextRoot}/back/article/update/${value.articleId}"><button class="btn1">📝</button></a>
 
-<tr>
+<tr></c:forEach>
 </table>
       
       
 
       
    
-  </c:forEach>
+  
 <div style="text-align: center;">
 <c:forEach begin="1" end="${page.totalPages}" var="p">
 <a href="${contextRoot}/article/all?p=${p}"><c:out value="${p}"/></a>
 </c:forEach>
-  </div>
+
+  
   
  
   
@@ -88,9 +92,9 @@
    <c:forEach var="pageNumber" begin="1" end="${page.totalPages}"></c:forEach>
    
 
-  
+  </div>
 
-
+</div>
 
 
 <jsp:include page="layout/footer.jsp" />

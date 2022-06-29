@@ -19,7 +19,7 @@ public class AccountServiceimpl implements AccountService {
 
 	@Autowired
 	private EntityManager entityManager;
-	
+
 	@Autowired
 	private AccountRepository aDao;
 
@@ -68,13 +68,28 @@ public class AccountServiceimpl implements AccountService {
 	@Override
 	public Account findByAccPwd(String accountName, String Password) {
 		Account user = aDao.findByAccPwd(accountName, Password);
-		if(user != null) {
+		if (user != null) {
 			return user;
 		}
-		return null;		
+		return null;
 	}
 
-	
-	
-	
+	@Override
+	public List<Account> searchAccountByName(String key) {
+		
+		return aDao.findAllByAccountNameLike("%" + key + "%");
+		
+	}
+
+
+
+//	@Override
+//	public Account updateById2(Integer accountId, String password) {
+//		Account account = entityManager.find(Account.class, accountId);
+//		if (account != null) {
+//			account.setPassword(password);
+//		}
+//		return account;
+//	}	
+
 }

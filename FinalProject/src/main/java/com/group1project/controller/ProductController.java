@@ -137,7 +137,6 @@ public class ProductController {
 	}
 	
 
-	
 	@PostMapping("editProduct")
     public String postEditMessage(@ModelAttribute(name="newPd") Product newPd ,
     		@RequestParam("file") MultipartFile file, Model model) {

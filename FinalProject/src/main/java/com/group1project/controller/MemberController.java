@@ -30,7 +30,6 @@ public class MemberController {
 	@Autowired
 	private MemberService mService;
 
-//	private Integer accountId=6;
 	// 新增
 	@PostMapping("/member/add")
 	public String addMember(@ModelAttribute("member") Member member,@RequestParam("file") MultipartFile file ,@RequestParam("accountId") Integer accountId, Model model) {
@@ -40,7 +39,7 @@ public class MemberController {
 		
 		member.setAccount(accId);
 		
-		member.toString();
+//		member.toString();
 		try {
 			member.setPhotoPath(file.getBytes());
 		} catch (IOException e) {
