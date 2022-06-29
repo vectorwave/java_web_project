@@ -16,6 +16,7 @@ public interface AccountService {
 	public Account findByAccPwd(String accountName, String Password);
 //	Account updateById2(Integer accountId, String password);
 	List<Account> searchAccountByName(String key);
+	public String findIdByName(String userName);
 
 
 }
