@@ -8,6 +8,8 @@
 <jsp:include page="layout/header.jsp" />
 <meta name="author" content="http://www.softwhy.com/" />
 	<title>aa</title>
+	<p>你好, ${loginuser.accountName}</p>
+	
 	<style>
           .v_code {
             width: 600px;
@@ -61,8 +63,7 @@
 
 	</head>
 	<body>
-		<p>你好, ${loginuser.accountName}</p>
-	
+
 		<div class="modal-dialog modal-dialog-centered modal-sm"
 			role="document" style="max-width: 335px">
 			<div class="modal-content">
@@ -146,6 +147,7 @@
          if (inputCode.length <= 0) {
            textShow.innerHTML = "請輸入驗證碼";
            textShow.style.color = "red";
+           return false;
          } else if (inputCode.toUpperCase() != code.toUpperCase()) {
            textShow.innerHTML = "您輸入的驗證碼有誤";
            textShow.style.color = "red";

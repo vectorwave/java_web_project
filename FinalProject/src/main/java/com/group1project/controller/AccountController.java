@@ -106,7 +106,7 @@ public class AccountController {
 				
 		if(queryMember == null) {	
 			model.addAttribute("loginErrorMsg", "登入失敗,帳號不存在");
-			return "ㄕ";
+			return "index";
 		} else if(!queryMember.getPassword().equals(inputPassword)){
 			model.addAttribute("loginErrorMsg", "登入失敗,密碼錯誤");
 			return "index";

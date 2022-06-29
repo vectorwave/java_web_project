@@ -38,7 +38,7 @@
 	<br>
 	
 	<img id="output" width="300" height="300">
-	<input type="button" value="修改" class="btn btn-lg btn-success btn-block" id="send"/>
+	<input type="submit" value="修改" class="btn btn-lg btn-success btn-block" id="send"/>
 	</div>	
 </form:form>
 
