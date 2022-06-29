@@ -42,8 +42,8 @@
         <form:textarea path="guideDescription" class="textareaAdd"/></br></br></br>
 
 
-        <button type="button" onclick="updateGuide(form)" class="btn btn-primary">修改</button>
-        <button type="button" class="btn btn-secondary" onclick="history.go(-1)">取消</button>
+        <button type="button" onclick="updateGuide(form)" class="btn btn-outline-success">修改</button>
+        <button type="button" class="btn btn-outline-secondary" onclick="history.go(-1)">取消</button>
       </div>
 
 
@@ -56,13 +56,13 @@
         <div class="btn-group" role="group" aria-label="Basic radio toggle button group" style="float:right; margin-right: 50px;">
 
             <form:radiobutton path="guideGender" value="男性" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off"/>
-            <label class="btn btn-outline-primary" for="btnradio1" style="border-radius: 5px 0px 0px 5px;">男性</label>
+            <label class="btn btn-outline-dark" for="btnradio1" style="border-radius: 5px 0px 0px 5px;">男性</label>
     
             <form:radiobutton path="guideGender" value="女性" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off"/>
-            <label class="btn btn-outline-primary" for="btnradio2">女性</label>
+            <label class="btn btn-outline-dark" for="btnradio2">女性</label>
 
             <form:radiobutton path="guideGender" value="保密" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off"/>
-            <label class="btn btn-outline-primary" for="btnradio3">保密</label>
+            <label class="btn btn-outline-dark" for="btnradio3">保密</label>
           </div></br></br></br>
 
         <c:set var="guideGender" value="${guideUpdate.guideGender}" />

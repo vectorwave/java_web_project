@@ -64,10 +64,10 @@
 
 </div>
 </fieldset>
-<a  href="${contextRoot}/guidemanagement/update/${guideInfo.accountId}"><button type="button" class="btn btn-primary">修改</button></a>
-<button type="button" onclick="deleteGuide()" class="btn btn-danger">刪除</button>
+<a  href="${contextRoot}/guidemanagement/update/${guideInfo.accountId}"><button type="button" class="btn btn-outline-primary">修改</button></a>
+<button type="button" onclick="deleteGuide()" class="btn btn-outline-danger">刪除</button>
 
-<button type="button" class="btn btn-secondary" onclick="location.href='${contextRoot}/guidemanagement?p=${sessionScope.pgn}'">返回</button>
+<button type="button" class="btn btn-outline-secondary" onclick="location.href='${contextRoot}/guidemanagement?p=${sessionScope.pgn}'">返回</button>
 </div>
 
 <script>
