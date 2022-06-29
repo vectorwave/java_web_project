@@ -101,6 +101,8 @@ public class GuideController {
 	@PostMapping("edit")
 	public String updateGuideInfo(@ModelAttribute("guideUpdate") Guide guide, Model m,@RequestParam("profilePic") MultipartFile profilePic) {
 		
+		if(profilePic.isEmpty());
+		
 		try {
 			guide.setGuidePhoto(profilePic.getBytes());
 		} catch (IOException e) {
@@ -117,6 +119,7 @@ public class GuideController {
 	@GetMapping("delete/{id}")
 	public String deleteById(@PathVariable("id") Integer id) {
 		 gService.deleteGuideById(id);
+		 aService.deleteAccount(id);
 		 return "redirect:/guidemanagement";
 	 }
 	

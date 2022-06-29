@@ -19,6 +19,7 @@
 
         <form:form class="form" method="post" modelAttribute="addGuide" action="${contextRoot}/guide_info/insert" enctype="multipart/form-data">
 
+          <div id="leftPart">
         <label class="GIFLabel">帳號： </label>
         <input type="text" name="accountName"  class="inputBoxAdd"/></br></br></br>
 
@@ -29,20 +30,24 @@
         <form:input path="profileName" class="inputBoxAdd"/></br></br></br>
 
         <label class="GIFLabel">個人圖片： </label>
-        <input type="file" name="profilePic" accept="image/*" class="inputBoxAdd"/></br></br></br>
+        <input class="form-control" type="file" name="profilePic" id="formFile" accept="image/*" style="width:250px;height: 35px;"></br></br>
 
         <label class="GIFLabel">姓名： </label>
         <form:input path="guideName" class="inputBoxAdd"/></br></br></br>
 
         <label class="GIFLabel">個人簡述： </label>
-        <form:textarea path="guideDescription" class="textareaAdd"/></br></br></br>
+        <form:textarea path="guideDescription" class="textareaAdd"/></br></br></br></br></br>
+        <button type="button" onclick="submitForm(form)" class="btn btn-primary">送出</button>
+      </div>
+
+      <div id="rightPart">
 
         <label class="GIFLabel">生日： </label>
         <form:input type="date" path="guideBirthday" class="inputBoxAdd"/></br></br></br>
 
         <label class="GIFLabel">性別： </label>
 
-        <div class="btn-group" role="group" aria-label="Basic radio toggle button group" style="float:right; margin-right: 130px;">
+        <div class="btn-group" role="group" aria-label="Basic radio toggle button group" style="float:right; margin-right: 50px;">
             <form:radiobutton path="guideGender" value="男性" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off"/>
             <label class="btn btn-outline-primary" for="btnradio1" style="border-radius: 5px 0px 0px 5px;">男性</label>
     
@@ -67,11 +72,32 @@
 
         <label class="GIFLabel">證照號碼： </label>
         <form:input path="licenceNo" class="inputBoxAdd"/></br></br></br>
-
-        <button type="submit" class="btn btn-primary">送出</button>
+      </div>
     </form:form>
 
 </div>
+
+<script>
+  function submitForm(form){
+	  Swal.fire({
+		  title: '確認新增導遊帳號？',
+		  showDenyButton: true,
+		  confirmButtonText: '確認',
+		  denyButtonText: '取消',
+		}).then((result) => {
+		  /* Read more about isConfirmed, isDenied below */
+		  if (result.isConfirmed) {
+// 		    Swal.fire('Saved!', '', 'success')
+		    form.submit(form);
+		    
+		  } else if (result.isDenied) {
+		    
+		    return false;
+		  }
+		})
+  }
+</script>
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script> 
 
 </fieldset>
 </div>

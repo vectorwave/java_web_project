@@ -9,9 +9,9 @@ import com.group1project.model.bean.Guide;
 public interface GuideService {
 
 	Guide saveGuide(Guide guide);
-	Guide getGuideById(int loginId);
+	Guide getGuideById(Integer accountId);
 	List<Guide> getAllGuide();
-	void deleteGuideById(int loginId);
+	void deleteGuideById(Integer accountId);
 	Page<Guide> findByPage(Integer pageNumber);
 	
 }

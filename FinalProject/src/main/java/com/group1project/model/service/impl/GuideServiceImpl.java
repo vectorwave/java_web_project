@@ -33,8 +33,8 @@ public class GuideServiceImpl implements GuideService {
 
 	//單筆查詢
 	@Override
-	public Guide getGuideById(int loginId) {
-		Optional<Guide> guide = gDao.findById(loginId);
+	public Guide getGuideById(Integer accountId) {
+		Optional<Guide> guide = gDao.findById(accountId);
 		
 		if(guide.isPresent()) return guide.get();
 		
@@ -51,7 +51,7 @@ public class GuideServiceImpl implements GuideService {
 
 	//透過ID刪除
 	@Override
-	public void deleteGuideById(int accountId) {
+	public void deleteGuideById(Integer accountId) {
 		gDao.deleteById(accountId);
 	}
 
@@ -59,7 +59,7 @@ public class GuideServiceImpl implements GuideService {
 	//page 物件
 	@Override
 	public Page<Guide> findByPage(Integer pageNumber) {
-		Pageable pgb = PageRequest.of(pageNumber-1 ,10 , Sort.Direction.ASC,"accountId");
+		Pageable pgb = PageRequest.of(pageNumber-1 ,5 , Sort.Direction.ASC,"accountId");
 		Page<Guide> page = gDao.findAll(pgb);
 		return page;
 	}
