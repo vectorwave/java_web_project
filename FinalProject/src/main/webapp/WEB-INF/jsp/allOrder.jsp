@@ -121,7 +121,14 @@ var vm = new Vue({
 	  delDetail(i,c){
 		  index = i;
 		 cindex = c;
-	  }
+	  },
+	  getTotalPrice(index){
+		  var total = 0;
+		  this.orders[index].orderDetails.forEach(function(detail){
+			  total += detail.product.productPrice*detail.amount;
+		  });
+		  return total;
+	  },
   },
 });
 jQuery.ajax({

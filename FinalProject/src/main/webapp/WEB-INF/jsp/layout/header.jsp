@@ -36,6 +36,7 @@
 <!-- <link rel="stylesheet" href="${contextRoot}/css/bootstrap.min.css"> -->
 </head>
 
+
 <body style="background-color: #8E8E8E">
 
 	<!-- 頂部橫條列 -->
@@ -95,7 +96,7 @@
 					</button>
 					<div class="dropdown-content">
 						<a class="dropdown-item" href="${contextRoot}/back/allOrder">所有訂單</a>
-						<a href="#">匯出訂單</a>
+						<a class="dropdown-item" href="${contextRoot}/back/downloadOrder">匯出訂單</a>
 					</div>
 				</div>
 
@@ -151,3 +152,4 @@
 			</nav>
 
 			<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+

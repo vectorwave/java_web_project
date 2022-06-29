@@ -16,21 +16,23 @@
 <br><form:hidden value="${accountId}" id="accountId" path="accountId"/>
 <br>帳號<form:input type="text" value="" path="accountName" id="accountName" class="form-control" placeholder="帳號"/><span id="maccountName"></span>
 <br>密碼<form:input type="text" value="" path="password" id="password" class="form-control" placeholder="密碼"/><span id="mpassword"></span>
-<br>身分<form:input type="text" value="" path="title" id="title" class="form-control" placeholder="身分" /><span id="mtitle"></span>
-<br>帳號狀態<form:input type="text" value="" path="status" id="status" class="form-control" placeholder="帳號狀態"/><span id="mstatus"></span>
+身分:<form:select path="title" class="form-select" required="required">
+  <form:option value="商家" >商家</form:option>
+  <form:option value="會員">會員</form:option>
+  </form:select><br>帳號狀態<form:input type="text" value="" path="status" id="status" class="form-control" placeholder="帳號狀態"/><span id="mstatus"></span>
 <br><form:input type="hidden" value="" path="signupDate" id="signupDate" class="form-control" placeholder=""/><span id="msignDate"></span>
 
-		
+		<input type="submit" value="修改" class="btn btn-lg btn-success btn-block" id="send"/>
 </form:form>
-<input type="button" value="修改" class="btn btn-lg btn-success btn-block" id="send"/>
+
 </div>
 
  
 <script type="text/javascript">
 
 $(function(){
+
 	$('#send').click(function(){
-		
 		$('form span').text('');
 		
 		var accountName = $('#accountName').val();
@@ -59,7 +61,7 @@ $(function(){
 			return;
 		}
 		if( $.trim(title)==''){
-			$('#mtitle).text('身分不可為空');
+			$('#mtitle').text('身分不可為空');
 			Swal.fire({
 				  icon: 'error',
 				  title: 'Oops...',
@@ -83,24 +85,24 @@ $(function(){
 		 var data=JSON.stringify(params);
 		 console.log(data)
 		 
-		 	$.ajax({
-	    		url:'${contextRoot}/login/edit/${accountId}',
-	    		method:'put',
-	    		contentType:'application/json',
-	    		data: data,
-	    		success:function(res){
-	    			if(res=='eidt'){
-	    				Swal.fire({
-	    					  icon: 'success',
-	    					  title: '修改成功',
-	    					  showConfirmButton: false,
-	    					  timer: 2500
-	    					}).then(function(){
-	    					 window.location.href = "${contextRoot}/login/findall"
-	    					})
-	    			}	    	
-	    		}
-	    	});
+// 		 	$.ajax({
+// 	    		url:'${contextRoot}/login/edit/${accountId}',
+// 	    		method:'put',
+// 	    		contentType:'application/json',
+// 	    		data: data,
+// 	    		success:function(res){
+// 	    			if(res=='update'){
+// 	    				Swal.fire({
+// 	    					  icon: 'success',
+// 	    					  title: '修改成功',
+// 	    					  showConfirmButton: false,
+// 	    					  timer: 2500
+// 	    					}).then(function(){
+// 	    					 window.location.href = "${contextRoot}/login/findall"
+// 	    					})
+// 	    			}	    	
+// 	    		}
+// 	    	});
 				
 	});
 	

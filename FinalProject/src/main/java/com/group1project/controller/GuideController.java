@@ -71,13 +71,12 @@ public class GuideController {
 	//修改導遊資料
 	@PostMapping("edit")
 	public String updateGuideInfo(@ModelAttribute("guideUpdate") Guide guide, Model m,@RequestParam("profilePic") MultipartFile profilePic) {
-		
 		try {
 			guide.setGuidePhoto(profilePic.getBytes());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+		guide.setAccountId(guide.getAccount().getAccountId());
 		Guide updated = gService.saveGuide(guide);
 		m.addAttribute("guideInfo",updated);
 		

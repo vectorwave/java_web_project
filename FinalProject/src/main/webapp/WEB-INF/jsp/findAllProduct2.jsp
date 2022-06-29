@@ -30,7 +30,7 @@ td
 <div id="newTable">
 <c:forEach var="value" items="${page.content}">
 <tr> 
-<td><a href="ProductComment/add?id=${value.productId}"><button onclick="del()" >評論</button></a></td>
+<td><a href="ProductComment/add?id=${value.productId}"><button onclick="upd()" >評論</button></a></td>
 <td> <c:out value="${value.productId}"/></td>
 <td> <c:out value="${value.account.accountId}"/></td>
 <td> <c:out value="${value.productName}"/></td>
@@ -40,10 +40,12 @@ td
 <td> <img src="${contextRoot}/back/product/photo/${value.productId}" width="100px" height="100px"> </td>      	     		
 <td> <fmt:formatDate pattern="yyyy 年 MM 月 dd 日 a hh:mm:ss " value="${value.updatedTime}"/></td> 
 
-<td> <c:out value="${value.status}"/></td> 
 <td> <c:out value="${value.productArea}"/></td> 
-<td><a href="product/editProduct?id=${value.productId}"><button class="delt" onclick="return del()">📝</button></a></td> 
-<td><a href="product/delete/${value.productId}"><button class="delt" onclick="return del()">✂</button></a></td> 
+<td> <c:out value="${value.status}"/></td> 
+<td><button class="delt" onclick="upd('${value.productId}')" >📝</button></td> 
+<td><button class="delt" onclick="del('${value.productId}')" >✂</button></td> 
+<%-- <td><a href="product/editProduct?id=${value.productId}"><button class="delt" onclick="return del()">📝</button></a></td>  --%>
+<%-- <td><a href="product/delete/${value.productId}"><button class="delt" onclick="return del()">✂</button></a></td>  --%>
 </tr>
 </c:forEach>
 </div>
@@ -76,21 +78,69 @@ td
 
 
 <script>
-//  var button = document.querySelectorAll('.delt');
-  function del(e) {
-  if (confirm("確認要執行嗎?") == true) {
-   return true
-//       window.location.href='deletedepot.jsp?id='+id;點確認連到下個連結
-  } else {
-   window.event.returnValue = false; 
-  }
- };
-//  button.addEventListener('click', del);
- button.forEach(delt => {
-  delt.addEventListener('click', del);
-  });
+// //  var button = document.querySelectorAll('.delt');
+//   function del(e) {
+//   if (confirm("確認要執行嗎?") == true) {
+//    return true
+// //       window.location.href='deletedepot.jsp?id='+id;點確認連到下個連結
+//   } else {
+//    window.event.returnValue = false; 
+//   }
+//  };
+// //  button.addEventListener('click', del);
+//  button.forEach(delt => {
+//   delt.addEventListener('click', del);
+//   });
  
+  function upd(e){
+	 Swal.fire({
+		  title: '確認修改嗎?',
+		//   text: "You won't be able to revert this!",
+		  icon: 'question',
+		  showCancelButton: true,
+		  confirmButtonColor: '#3085d6',
+		  cancelButtonColor: '#d33',
+		  confirmButtonText: 'Yes!',
+		  
+		}).then((result) => {
+		  if (result.isConfirmed) {
+// 		    Swal.fire(
+// 		      'Deleted!',
+// 		      'Your file has been deleted.',
+// 		      'success'
+// 		    )
+			document.location.href='product/editProduct?id='+e;
+		  }else if (result.isDenied) {
+			    
+			    return false;
+			  }
+		});
+ }
  
+ function del(e){
+	 Swal.fire({
+		  title: '確認刪除嗎?',
+		//   text: "You won't be able to revert this!",
+		  icon: 'question',
+		  showCancelButton: true,
+		  confirmButtonColor: '#3085d6',
+		  cancelButtonColor: '#d33',
+		  confirmButtonText: 'Yes!',
+		  
+		}).then((result) => {
+		  if (result.isConfirmed) {
+// 		    Swal.fire(
+// 		      'Deleted!',
+// 		      'Your file has been deleted.',
+// 		      'success'
+// 		    )
+			document.location.href='product/delete/'+e;
+		  }else if (result.isDenied) {
+			  
+			    return false;
+			  }
+		});
+ }
  
  
 </script>

@@ -23,6 +23,7 @@ public class OrderController {
 	@GetMapping("all")
 	public Object getAllOrder(HttpSession session) {
 		Integer accountId = (Integer)session.getAttribute("loginuser.accountId");
+		accountId = 1;
 		return orderService.findByAccountId(accountId);
 	}
 	
