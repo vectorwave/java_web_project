@@ -22,9 +22,9 @@
 
       <div id="leftPart">
 
+        
         <img class="guide_pic" src="${contextRoot}/guide_info/photo/${guideUpdate.accountId}" width="150"/></br></br>
-
-
+        
         <label class="GIFLabel">個人圖片： </label>
         <input class="form-control" type="file" name="profilePic" id="formFile" accept="image/*" style="width:250px;height: 35px;"></br>
 
