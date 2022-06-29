@@ -25,7 +25,7 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
 @Table(name="product_comment")
-public class ProdcutComment implements Serializable{
+public class ProductComment implements Serializable{
 	
 	
 	private static final long serialVersionUID = 1L;

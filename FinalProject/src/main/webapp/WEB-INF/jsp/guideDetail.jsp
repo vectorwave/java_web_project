@@ -18,6 +18,7 @@
 
     <form:form class="form" method="post" modelAttribute="guideInfo">
 
+
 <div id="leftPart">
 
   <img class="guide_pic" src="${contextRoot}/guide_info/photo/${guideInfo.accountId}" width="150"/></br></br></br>
@@ -53,6 +54,7 @@
 
   <label class="GIFLabel">證照類型： </label>
   <form:input path="licenceType" readonly="true" class="inputBox1"/></br></br></br>
+
 
   <label class="GIFLabel">證照號碼： </label>
   <form:input path="licenceNo" readonly="true" class="inputBox1"/></br></br></br>

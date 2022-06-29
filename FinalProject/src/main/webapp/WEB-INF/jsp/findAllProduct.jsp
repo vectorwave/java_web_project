@@ -33,7 +33,7 @@
       	     	$.each(result ,function(index ,value){
       	     		msg_data += '<tr>'
       	     		msg_data += '<td>' + value.productId + '</td>'
-      	     		msg_data += '<td>' + value.account.acountId + '</td>'
+      	     		msg_data += '<td>' + value.account + '</td>'
       	     		msg_data += '<td>' + value.productName + '</td>'
       	     		msg_data += '<td>' + value.productPrice + '</td>'      	     		
       	     		msg_data += '<td>' + value.startDate + '</td>'      	     		

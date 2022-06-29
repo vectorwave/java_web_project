@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -88,7 +89,7 @@ public class Product implements Serializable{
 	private Date updatedTime;
 	
 	@JsonIgnore
-	@OneToMany(mappedBy = "product",fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "product",fetch = FetchType.LAZY,cascade = CascadeType.REMOVE)
 	private List<OrderDetail> detail;
 	
 	// 檢查是否有時間，沒有的話依照現在時間產生
