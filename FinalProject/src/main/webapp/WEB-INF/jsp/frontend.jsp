@@ -703,6 +703,10 @@ footer{
         <span>&copy;  Selmi Abderrahim | All Rights Reserved</span>
     </footer>
     <script type="text/javascript">
+    var rock="true";
+    var rock1="false"
+    document.cookie = 'test=true';
+    
   //NavBar
     function hideIconBar(){
         var iconBar = document.getElementById("iconBar");
@@ -743,7 +747,7 @@ var jkf1=rrrr.indexOf("台北");
 
 if(jkf1!=-1){
 	var el1 = document.getElementById("krisrock1");
-	el1.innerHTML = "<a href='http://localhost:8081/jotravel/article/all?key=66'/><button type='button' class='btn btn-info'>台北</button>";
+	el1.innerHTML = "<a href='http://localhost:8081/jotravel/article/all?key=台北'/><button type='button' class='btn btn-info'>台北</button>";
 
 
 }
@@ -752,9 +756,41 @@ console.log(rrrr);
 console.log(jkf);
 console.log(jkf1);
    
+window.onload=navigator.geolocation.getCurrentPosition(successCallback);  
+function successCallback(position){  
+    var lat1 = position.coords.latitude;  
+    var long1 = position.coords.longitude;  
+    console.log(lat1);
+    console.log(long1);
+    setCookie("lat1",lat1);
+    setCookie("long1",long1);
+    
+//     document.getElementById(
+//           "result"
+//         ).innerHTML = `<a href="geolat.jsp">666666</a>`;
+// //         latlong?${lat1}+${long1}
+   }
    
+function setCookie(name,value){
+	document.cookie = name + "=" +escape(value) +";path=/";
+}
+
+function getCookie(name){
+	var arr,reg = new RegExp("(^|)" + name + "=([^;]*)(;|$)");
+	if(arr = document.cookie.match(reg))
+		return unescape(arr[2]);
+	else
+		return null;
+}
+//设置cookie值
+var a = "xxx";
+setCookie("a",a);  
+
 
 </script>
+
+
+
     
     
 <jsp:include page="layout/footer.jsp" />
