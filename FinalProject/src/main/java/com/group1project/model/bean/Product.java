@@ -68,6 +68,13 @@ public class Product implements Serializable{
 	@Column(name="product_area")
 	private String productArea;
 	
+	@Column(name="product_simple_description" ,columnDefinition = "nvarchar(50)")
+	private String productSimpleDescription;
+	
+	@Column(name="product_description",columnDefinition = "nvarchar(300)")
+	private String productDescription;
+	
+	
 	@Column(name="product_price", nullable = false)
 	private int productPrice;
 	

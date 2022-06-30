@@ -31,7 +31,12 @@
   <form:option value="西部">西部</form:option>
   <form:option value="外島">外島</form:option>
 </form:select>
+<br/>
+  商品簡述(50字內):<form:input type="text" path="productSimpleDescription" class="form-control" maxlength="50" required="required"/><br/>
 
+
+  商品詳述(300字內):<form:input type="textarea" path="productDescription" class="form-control" maxlength="300" required="required"/><br/>
+  
   
   上架狀態:<form:select path="status" class="form-select" required="required">
   <form:option value="上架" >上架</form:option>

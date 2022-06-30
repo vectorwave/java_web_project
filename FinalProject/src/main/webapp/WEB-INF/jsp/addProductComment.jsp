@@ -23,7 +23,7 @@
   <form:form class="form" method="post" action="${contextRoot}/back/productcomment/addgo" modelAttribute="pdComment">
   
   <div class="form-group">
-<%--   																		${loginuser.accountId}${pd.productId} --%>
+  
   會員編號：<input  name="accountId" class="form-control" type="text" value="${loginuser.accountId}" readonly="readonly"/><br/>
   產品編號：<input  name="productId" type="text" class="form-control" value="${pid}" readonly="readonly" /><br/>
  
