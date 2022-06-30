@@ -64,6 +64,7 @@ td {
 		</table>
 	</div>
 	<div class="row justify-content-center">
+	<div class="col-9" style="text-align: center;">
 		<c:forEach var="pageNumber" begin="1" end="${page.totalPages}">
 
 			<c:choose>
@@ -82,6 +83,7 @@ td {
    
 
 		</c:forEach>
+	</div>
 	</div>
 </div>
 
