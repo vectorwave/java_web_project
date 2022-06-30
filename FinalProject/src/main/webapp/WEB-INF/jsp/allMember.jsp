@@ -41,12 +41,14 @@
 						<td><c:out value="${member.address}" />
 						<td><c:out value="${member.gender}" />
 						<td><img src="${contextRoot}/member/photo/${member.account.accountId}" width="100px" height="100px">						
-						<td><a
-							href='<c:out value="${contextRoot}"/>/member/edit?id=${member.account.accountId}'>
-							<button>📝</button></a>
-						<td><a
-							href='<c:out value="${contextRoot}"/>/member/delete/${member.memberId}'>
-							<button onclick="submitForm(form)">🗑️</button></a> 
+<!-- 						<td><a -->
+<%-- 							href='<c:out value="${contextRoot}"/>/member/edit?id=${member.account.accountId}'> --%>
+<!-- 							<button type="button">📝</button></a> -->
+<!-- 						<td><a -->
+<%-- 							href='<c:out value="${contextRoot}"/>/member/delete/${member.memberId}'> --%>
+<!-- 							<button type="button" onclick="submitForm(form)">🗑️</button></a>  -->
+						<td><button type="button" class="delt" onclick="upd('${member.account.accountId}')" >📝</button></td> 
+						<td><button type="button" class="delt" onclick="del('${member.memberId}')" >🗑️</button></td>
 					</tr>
 				</c:forEach>
 
@@ -55,28 +57,47 @@
 	</div>
 <%-- </form:form> --%>
  <script type="text/javascript">
-function submitForm(form){
-	 Swal.fire({
-	   title: '確定刪除?',
-	   text: "You won't be able to revert this!",
-	   icon: 'warning',
-	   showCancelButton: true,
-	   confirmButtonColor: '#3085d6',
-	   cancelButtonColor: '#d33',
-	   confirmButtonText: 'Yes, delete it!'
-	 }).then((result) => {
-		 if (result.isConfirmed) {
-//			    Swal.fire('Saved!', '', 'success')
-			    form.submit(form);
-			    
-			  } else if (result.isDenied) {
-			    
-			    return false;
-			  }
-			})
-	}
+ function upd(e){
+	  Swal.fire({
+	    title: '確認修改嗎?',
+	  //   text: "You won't be able to revert this!",
+	    icon: 'question',
+	    showCancelButton: true,
+	    confirmButtonColor: '#3085d6',
+	    cancelButtonColor: '#d33',
+	    confirmButtonText: 'Yes!',
+	    
+	  }).then((result) => {
+	    if (result.isConfirmed) {
 
+	   document.location.href='/jotravel/member/edit?id='+e;
+	    }else if (result.isDenied) {
+	       
+	       return false;
+	     }
+	  });
+	 }
+	 
+	 function del(e){
+	  Swal.fire({
+	    title: '確認刪除嗎?',
+	  //   text: "You won't be able to revert this!",
+	    icon: 'question',
+	    showCancelButton: true,
+	    confirmButtonColor: '#3085d6',
+	    cancelButtonColor: '#d33',
+	    confirmButtonText: 'Yes!',
+	    
+	  }).then((result) => {
+	    if (result.isConfirmed) {
 
+	   document.location.href='/jotravel/member/delete/'+e;
+	    }else if (result.isDenied) {
+	     
+	       return false;
+	     }
+	  });
+	 }
 </script>
 
 <jsp:include page="layout/footer.jsp" />

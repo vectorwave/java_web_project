@@ -12,7 +12,7 @@
 <form:form method="post" enctype="multipart/form-data" action="${contextRoot}/member/add" modelAttribute="member">
 
   <form:input path="memberId" type="hidden" />
-  <input id=accountId name="accountId" value="${loginuser.accountId}" />
+  <input type="hidden" id="accountId" name="accountId" value="${loginuser.accountId}" />
   <div class="form-group" style="width: 300px;margin: auto;text-align: center;">
   姓名： <form:input type="text" path="memberName" class="form-control"/><br/><span id="mmemberName"></span>
   地址：<form:input type="text" path="address" class="form-control"/><br/><span id="maddress"></span>
@@ -117,22 +117,66 @@
 		});
 	});
   function submitForm(form){
-	  Swal.fire({
-		  title: '確認新增?',
-		  showDenyButton: true,
-		  confirmButtonText: '儲存',
-		  denyButtonText: '取消',
-		}).then((result) => {
-		  /* Read more about isConfirmed, isDenied below */
-		  if (result.isConfirmed) {
-//		    Swal.fire('Saved!', '', 'success')
-		    form.submit(form);
-		    
-		  } else if (result.isDenied) {
-		    
-		    return false;
+	  let aid = $('#accountId').val()
+	  console.log(form)
+	  $.ajax({
+		  type: "get",
+		  url: "/jotravel/member/searchAccountId/" + aid,
+		  success: function(response){
+			  console.log(response.result)
+			  if(response.result == "true"){
+				  Swal.fire({
+					  title: '確認新增?',
+					  showDenyButton: true,
+					  confirmButtonText: '儲存',
+					  denyButtonText: '取消',
+					}).then((result) => {
+					  /* Read more about isConfirmed, isDenied below */
+					  if (result.isConfirmed) {
+//					    Swal.fire('Saved!', '', 'success')
+					    form.submit(form);
+					  } else if (result.isDenied) {
+					    return false;
+					  }
+					})
+			  }else{
+				  Swal.fire({
+					  title: '已有相關資料',
+					  showDenyButton: true,
+					  confirmButtonText: '確定',
+					  denyButtonText: '取消',
+					}).then((result) => {
+					  /* Read more about isConfirmed, isDenied below */
+					  if (result.isConfirmed) {
+					    return true;
+					  } else if (result.isDenied) {
+					    return false;
+					  }
+					})
+			  }
+			  
+		  },	
+		  error: function(xhr,ajaxOptions,throwError){
+			  console.log('error')
 		  }
-		})
+	  })
+	  
+// 	  Swal.fire({
+// 		  title: '確認新增?',
+// 		  showDenyButton: true,
+// 		  confirmButtonText: '儲存',
+// 		  denyButtonText: '取消',
+// 		}).then((result) => {
+// 		  /* Read more about isConfirmed, isDenied below */
+// 		  if (result.isConfirmed) {
+// //		    Swal.fire('Saved!', '', 'success')
+// 		    form.submit(form);
+		    
+// 		  } else if (result.isDenied) {
+		    
+// 		    return false;
+// 		  }
+// 		})
 }
   </script> 
 <jsp:include page="layout/footer.jsp" />

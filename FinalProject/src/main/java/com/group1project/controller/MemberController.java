@@ -1,7 +1,9 @@
 package com.group1project.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -24,42 +26,46 @@ import com.group1project.model.bean.Account;
 import com.group1project.model.bean.Member;
 import com.group1project.model.service.MemberService;
 
-
-
 @Controller
 public class MemberController {
-	
+
 	@Autowired
 	private MemberService mService;
 
 	// 新增
 	@PostMapping("/member/add")
-	public String addMember(@ModelAttribute("member") Member member,@RequestParam("file") MultipartFile file ,@RequestParam("accountId") Integer accountId, Model model) {
+	public String addMember(@ModelAttribute("member") Member member, @RequestParam("file") MultipartFile file,
+			@RequestParam("accountId") Integer accountId, Model model) {
+		
+		System.out.println("test"+accountId);
 		
 		Account accId = new Account();
 		accId.setAccountId(accountId);
-		
+
 		member.setAccount(accId);
-		
+
 //		member.toString();
 		try {
 			member.setPhotoPath(file.getBytes());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
-		mService.saveMember(member);
-		return "redirect:/member/findall";
+		Member result = mService.getMemberByAccountId(accountId);
+		if (result == null) {
+			mService.saveMember(member);
+			return "redirect:/member/findall";
+		} else {
+			return "redirect:/member/findall";
+		}
 	}
-	
 
 	// 刪除
-	@RequestMapping(value="/member/delete/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/member/delete/{id}", method = RequestMethod.GET)
 	public String deleteMemberById(@PathVariable("id") Integer memberId) {
 		mService.deleteMember(memberId);
 		return "redirect:/member/findall";
 	}
-	
+
 //	//搜尋全部
 //	@GetMapping("/member/findallmember")
 //	public String FindAllMember(Model model){
@@ -70,51 +76,52 @@ public class MemberController {
 //	}
 //	
 	@GetMapping("/member/findById/{memberid}")
-	public Member findById(@PathVariable Integer accountId){
+	public Member findById(@PathVariable Integer accountId) {
 		return mService.getMemberById(accountId);
 	}
-	
-	//修改
+
+	// 修改
 	@GetMapping("/member/edit")
 	public String editMember(@RequestParam("id") Integer accountId, Model model) {
 		Member newMember = mService.getMemberByAccountId(accountId);
-		
+
 //		Member member = new Member();
 		model.addAttribute("newMember", newMember);
-		return "editMember";//回到頁面
+		return "editMember";// 回到頁面
 	}
-	
-	//模糊搜尋
-		@GetMapping("searchMember")
-		@ResponseBody
-		public List<Member>searchMember(@RequestParam("key") String key,Model m) {
-		
-			List<Member> searchMember= mService.searchMemberByName(key);
-			
-			m.addAttribute("searchMember", searchMember);
-			
-			return searchMember;
-		
-		}
 
-	
+	// 模糊搜尋
+	@GetMapping("searchMember")
+	@ResponseBody
+	public List<Member> searchMember(@RequestParam("key") String key, Model m) {
+
+		List<Member> searchMember = mService.searchMemberByName(key);
+
+		m.addAttribute("searchMember", searchMember);
+
+		return searchMember;
+
+	}
+
 	@PostMapping("/member/edit")
-    public String postEditMember(@ModelAttribute(name="newMember") Member newMember, @RequestParam("file") MultipartFile file,@RequestParam("accountId") Integer accountId) {
+	public String postEditMember(@ModelAttribute(name = "newMember") Member newMember,
+			@RequestParam("file") MultipartFile file, @RequestParam("accountId") Integer accountId) {
 		Account accId = new Account();
 		accId.setAccountId(accountId);
-		
+
 		newMember.setAccount(accId);
-		
+
 		try {
 			newMember.setPhotoPath(file.getBytes());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		mService.saveMember(newMember);
-		
+
 		return "redirect:/member/findall";
-		
+
 	}
+
 //	@PostMapping("/member/add")
 //	 public String saveMember(@ModelAttribute("newPd") Member mem, Model model) {
 //	  mService.saveMember(mem);
@@ -130,17 +137,29 @@ public class MemberController {
 //	  return "addMember";
 //	 }
 	@GetMapping("/member/photo/{accountId}")
-	public ResponseEntity<byte[]> downloadImage(@PathVariable("accountId") Integer accountId){
+	public ResponseEntity<byte[]> downloadImage(@PathVariable("accountId") Integer accountId) {
 		Member photo1 = mService.getMemberByAccountId(accountId);
-		
+
 		byte[] photoFile = photo1.getPhotoPath();
 
-		
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.IMAGE_JPEG);
-		                               // 要回傳的物件, header , httpstatus 回應
+		// 要回傳的物件, header , httpstatus 回應
 		return new ResponseEntity<byte[]>(photoFile, headers, HttpStatus.OK);
 	}
-
+	
+	@GetMapping("/member/searchAccountId/{accountId}")
+	@ResponseBody
+	public Map<String,Object> searchMemberId(@PathVariable("accountId") Integer accountId) {
+		Member result = mService.getMemberByAccountId(accountId);
+		
+		Map<String,Object> rmap = new HashMap<>();
+		if(result != null) {
+			rmap.put("result","false");
+			return rmap;
+		}
+		rmap.put("result","true");
+		return rmap;
+	}
 
 }
