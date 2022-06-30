@@ -164,6 +164,8 @@
 						data-dismiss="modal">離開</button>
 					<a href='<c:out value="${contextRoot}"/>/login/insert'
 						class="try-me btn btn-info">我要註冊</a>
+						<button id="one" type="button" class="btn btn-secondary"
+						data-dismiss="modal">一鍵輸入</button>
 				</div>
 			</div>
 		</div>
@@ -265,6 +267,14 @@
 
 // 			});
 // 		});
+
+	$('#one').click(function(){
+		let checkword = $('#checkCode').text();
+		console.log(checkword)
+		$('#inputAccount').val("ooo");
+		$('#inputPassword').val("ooo");
+		$('#inputCode').val(checkword);
+	})
 	</script>
 
 	<jsp:include page="layout/footer.jsp" />
