@@ -7,10 +7,7 @@
 <script type="text/javascript" src="${contextRoot}/js/vue.min.js"></script>
 
 <div id="app" style="color: black">
-
 	<div class="row justify-content-center mt-4">
-
-
 		<div class="h3 d-inline-block mt-2 d-flex row">
 			<div class="col-sm text-center">訂單編號</div>
 			<div class="col-sm text-center">金流</div>
@@ -31,7 +28,7 @@
 							<button class="btn btn-primary btn-sm" type="button"
 								data-toggle="collapse" :data-target="'#collapse-'+index">
 								顯示訂單細節</button>
-							<button type="button" @click="delOrder(index)"
+							<button type="button" @click="delOrder(index);delModal()"
 								class="btn btn-danger btn-xs" data-toggle="modal"
 								data-target="#purchaseModal">🗑️</button>
 						</div>
@@ -41,7 +38,9 @@
 					:aria-labelledby="'heading-'+index" data-parent="#accordionExample">
 					<table class="table table-sm">
 						<thead>
-							<tr><th width="20"></th><th width="60"></th>
+							<tr>
+								<th width="20"></th>
+								<th width="60"></th>
 								<th>商品名稱</th>
 								<th>價格</th>
 								<th>數量</th>
@@ -53,7 +52,7 @@
 						<tbody v-for="(detail,cindex) in order.orderDetails">
 							<tr>
 								<td class="align-middle"><button type="button"
-										@click="delDetail(index,cindex)" class="btn btn-danger btn-sm"
+										@click="delDetail(index,cindex);delModal()" class="btn btn-danger btn-sm"
 										data-toggle="modal" data-target="#purchaseModal">🗑️</button>
 								<td class="align-middle"><img
 									:src="'${contextRoot}/back/product/photo/'+detail.product.productId"
@@ -72,25 +71,6 @@
 			</div>
 		</div>
 	</div>
-	<div class="modal fade" id="purchaseModal" tabindex="-1" role="dialog"
-		aria-labelledby="purchaseLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-hidden="true">&times;</button>
-				</div>
-				<div class="modal-body">
-					<h2>確定刪除?</h2>
-				</div>
-				<div class="modal-footer">
-					<button type="button" @click="delModal()" class="btn btn-danger"
-						data-dismiss="modal">是</button>
-					<button type="button" class="btn btn-default" data-dismiss="modal">否</button>
-				</div>
-			</div>
-		</div>
-	</div>
 </div>
 <script>
 
@@ -102,7 +82,16 @@ var vm = new Vue({
   data:{orders:null},
   methods:{
 	  delModal(){
-		 if(cindex == null){
+		  Swal.fire({
+		  title: '確認刪除嗎?',
+		  icon: 'question',
+		  showCancelButton: true,
+		  confirmButtonColor: '#3085d6',
+		  cancelButtonColor: '#d33',
+		  confirmButtonText: 'Yes!',
+		}).then(result=>{
+			if(result.isConfirmed){
+			if(cindex == null){
 			 let o = this.orders;
 			 del(''+o[index].orderId);
 			 o.splice(index,1);
@@ -114,6 +103,8 @@ var vm = new Vue({
 		 }
 		 index = null;
 		 cindex = null;
+			Swal.fire('刪除成功!', '', 'success');
+		}})
 	  },
 	  delOrder(i){
 		 index = i;
