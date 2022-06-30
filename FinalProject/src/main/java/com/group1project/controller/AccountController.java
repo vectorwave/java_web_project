@@ -56,7 +56,7 @@ public class AccountController {
 
 		aService.saveAccount(account);
 		
-		return "redirect:/";
+		return "redirect:/login";
 	}
 	
 	// 商家新增帳號用 
