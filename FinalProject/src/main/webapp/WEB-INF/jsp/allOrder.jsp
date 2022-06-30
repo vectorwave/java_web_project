@@ -18,7 +18,7 @@
 			<div id="accordionExample" v-for="(order,index) in orders"
 				:key="order.orderId">
 				<div class="card card-bottom">
-					<div class="card-header fs-2 d-flex row" :id="'heading-'+index">
+					<div class="card-header fs-4 d-flex row" :id="'heading-'+index">
 						<div class="col-sm text-center">{{order.orderId}}</div>
 						<div class="col-sm text-center">{{order.cashFlow}}</div>
 						<div class="col-sm text-center">{{order.status}}</div>
