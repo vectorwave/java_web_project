@@ -5,7 +5,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <script type="text/javascript" src="${contextRoot}/js/vue.min.js"></script>
-
 <div id="app" style="color: black">
 	<div class="row justify-content-center mt-4">
 		<div class="h3 d-inline-block mt-2 d-flex row">
@@ -52,8 +51,9 @@
 						<tbody v-for="(detail,cindex) in order.orderDetails">
 							<tr>
 								<td class="align-middle"><button type="button"
-										@click="delDetail(index,cindex);delModal()" class="btn btn-danger btn-sm"
-										data-toggle="modal" data-target="#purchaseModal">🗑️</button>
+										@click="delDetail(index,cindex);delModal()"
+										class="btn btn-danger btn-sm" data-toggle="modal"
+										data-target="#purchaseModal">🗑️</button>
 								<td class="align-middle"><img
 									:src="'${contextRoot}/back/product/photo/'+detail.product.productId"
 									alt="..." width="80px;"></td>
@@ -69,7 +69,20 @@
 				</div>
 				<br />
 			</div>
+			<nav aria-label="Page navigation example">
+				<ul class="pagination justify-content-center">
+					<li :class="{'disabled':nowPage == 1}"><a class="page-link" type="button"
+						aria-label="Previous" @click="changePage(nowPage-1)"> <span aria-hidden="true">&laquo;</span>
+					</a></li>
+					<li v-for="n in totalPages" :class="{'active':nowPage == n}"><a
+						class="page-link" type="button" @click="changePage(n)">{{n}}</a></li>
+					<li :class="{'disabled':nowPage == totalPages}"><a class="page-link" type="button" aria-label="Next"> <span
+							aria-hidden="true" @click="changePage(nowPage+1)">&raquo;</span>
+					</a></li>
+				</ul>
+			</nav>
 		</div>
+
 	</div>
 </div>
 <script>
@@ -79,7 +92,7 @@ var index = null;
 var cindex = null;
 var vm = new Vue({
   el:'#app',
-  data:{orders:null},
+  data:{orders:null,totalPages:null,nowPage:1},
   methods:{
 	  delModal(){
 		  Swal.fire({
@@ -126,15 +139,30 @@ jQuery.ajax({
 	url:'${contextRoot}/order/all',
   async :false, 
 	success:function(res){
-		if(res.length == 0){
+		if(res.orders.length == 0){
 			$('#app').html('<img class="mb-4 rounded mx-auto d-block" src="${contextRoot}/assets/img/noOrder.png" alt="" width="700" height="700">');			
 		}
-		vm.$data.orders = res;
+		vm.$data.orders = res.orders;
+		vm.$data.totalPages = res.totalPages;
 	},
 	error:function(err){
 		console.log(err);
 	}
 });
+function changePage(page){
+	jQuery.ajax({
+		url:'${contextRoot}/order/all/'+page,
+		async:false,
+		type:'GET',
+		success:res=>{
+			vm.$data.orders = res;
+			vm.$data.nowPage = page;
+		},
+		error:err=>{
+			console.log(err);
+		}
+	});
+}
 function del(id){
 	jQuery.ajax({
 		url:delUrl+id,
