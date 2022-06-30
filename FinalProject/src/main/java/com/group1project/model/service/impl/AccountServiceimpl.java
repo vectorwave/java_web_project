@@ -22,6 +22,8 @@ public class AccountServiceimpl implements AccountService {
 
 	@Autowired
 	private AccountRepository aDao;
+	
+	private AccountService aService;
 
 	@Override
 	public Account saveAccount(Account account) {
@@ -80,6 +82,18 @@ public class AccountServiceimpl implements AccountService {
 		return aDao.findAllByAccountNameLike("%" + key + "%");
 		
 	}
+
+	@Override
+	public String findIdByName(String accountName) {
+
+		String user = aService.findIdByName(accountName);
+		if(accountName.isBlank()) {
+			return null;
+		}
+		return user;
+	}
+	
+
 
 
 

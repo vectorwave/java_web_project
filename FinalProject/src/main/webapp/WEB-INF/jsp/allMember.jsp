@@ -7,6 +7,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <h3 style="text-align: center">所有會員資訊</h3>
+<form action="/jotravel/member/findall" method="get" >
+<input type="text" name="key" placeholder="搜尋" id="key"> <input type="submit" id="send" value="🔍" > <a href="http://localhost:8081/jotravel/member/findall"><input type="button" value="全部帳號" ></a>  
 
 
 <%-- <form:form method="post" action="${contextRoot}/member/findall modelAttribute="member"> --%>
@@ -44,7 +46,7 @@
 							<button>📝</button></a>
 						<td><a
 							href='<c:out value="${contextRoot}"/>/member/delete/${member.memberId}'>
-							<button>🗑️</button></a> 
+							<button onclick="submitForm(form)">🗑️</button></a> 
 					</tr>
 				</c:forEach>
 
@@ -52,5 +54,29 @@
 		</table>
 	</div>
 <%-- </form:form> --%>
+ <script type="text/javascript">
+function submitForm(form){
+	 Swal.fire({
+	   title: '確定刪除?',
+	   text: "You won't be able to revert this!",
+	   icon: 'warning',
+	   showCancelButton: true,
+	   confirmButtonColor: '#3085d6',
+	   cancelButtonColor: '#d33',
+	   confirmButtonText: 'Yes, delete it!'
+	 }).then((result) => {
+		 if (result.isConfirmed) {
+//			    Swal.fire('Saved!', '', 'success')
+			    form.submit(form);
+			    
+			  } else if (result.isDenied) {
+			    
+			    return false;
+			  }
+			})
+	}
+
+
+</script>
 
 <jsp:include page="layout/footer.jsp" />

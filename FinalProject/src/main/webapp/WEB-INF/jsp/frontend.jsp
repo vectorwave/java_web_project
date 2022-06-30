@@ -462,8 +462,13 @@ footer{
 
   </style>
 
-  <h1 id="rrr">台北一日遊</h1>
-<button  style="width:80px" id="tp">台北</button>
+  <div id="rrr">台北一日遊</div>
+
+  <p id="krisrock"></p>
+
+  <p id="krisrock1"></p>
+
+<!-- <button  style="width:80px" id="tp">台北</button> -->
  <br>
   
 
@@ -698,6 +703,10 @@ footer{
         <span>&copy;  Selmi Abderrahim | All Rights Reserved</span>
     </footer>
     <script type="text/javascript">
+    var rock="true";
+    var rock1="false"
+    document.cookie = 'test=true';
+    
   //NavBar
     function hideIconBar(){
         var iconBar = document.getElementById("iconBar");
@@ -727,13 +736,61 @@ footer{
 
 var rrrr=document.getElementById("rrr").innerText;
 
-var jkf=rrrr.indexOf("台南00");
+var jkf=rrrr.indexOf("一日遊");
+if(jkf!=-1){
+	var el = document.getElementById("krisrock");
+	el.innerHTML = "<a href='https://www.youtube.com/?gl=TW&hl=zh-tw'/><button type='button' class='btn btn-info'>一日遊</button>";
+
+
+}
+var jkf1=rrrr.indexOf("台北");
+
+if(jkf1!=-1){
+	var el1 = document.getElementById("krisrock1");
+	el1.innerHTML = "<a href='http://localhost:8081/jotravel/article/all?key=台北'/><button type='button' class='btn btn-info'>台北</button>";
+
+
+}
+  
 console.log(rrrr);
 console.log(jkf);
-    
+console.log(jkf1);
    
+window.onload=navigator.geolocation.getCurrentPosition(successCallback);  
+function successCallback(position){  
+    var lat1 = position.coords.latitude;  
+    var long1 = position.coords.longitude;  
+    console.log(lat1);
+    console.log(long1);
+    setCookie("lat1",lat1);
+    setCookie("long1",long1);
+    
+//     document.getElementById(
+//           "result"
+//         ).innerHTML = `<a href="geolat.jsp">666666</a>`;
+// //         latlong?${lat1}+${long1}
+   }
+   
+function setCookie(name,value){
+	document.cookie = name + "=" +escape(value) +";path=/";
+}
+
+function getCookie(name){
+	var arr,reg = new RegExp("(^|)" + name + "=([^;]*)(;|$)");
+	if(arr = document.cookie.match(reg))
+		return unescape(arr[2]);
+	else
+		return null;
+}
+//设置cookie值
+var a = "xxx";
+setCookie("a",a);  
+
 
 </script>
+
+
+
     
     
 <jsp:include page="layout/footer.jsp" />

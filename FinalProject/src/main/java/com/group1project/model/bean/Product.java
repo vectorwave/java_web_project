@@ -29,6 +29,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Data
 @NoArgsConstructor
@@ -52,6 +53,11 @@ public class Product implements Serializable{
 	@JsonIgnore
 	@JoinColumn(name="account_id")
 	private Account account;
+	
+	@OneToMany(fetch = FetchType.LAZY,mappedBy = "product",cascade = CascadeType.REMOVE)
+	@JsonIgnore
+	@ToString.Exclude
+	private List<ProductComment> comments;
 	
 	@Column(name="product_name", nullable = false)
 	private String productName;
