@@ -166,6 +166,10 @@
 						class="try-me btn btn-info">我要註冊</a>
 						<button id="one" type="button" class="btn btn-secondary"
 						data-dismiss="modal">一鍵輸入</button>
+<!-- 					一鍵輸入<form:select path="title" id="one" class='btn btn-info dropdown-toggle' required="required"> -->
+<!--   					<form:option value="ooo" >ooo</form:option> -->
+<!--   					<form:option value="yyy">yyy</form:option> -->
+<!--   					</form:select> -->
 				</div>
 			</div>
 		</div>

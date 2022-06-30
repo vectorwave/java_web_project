@@ -13,15 +13,16 @@
   <form:input path="accountId" type="hidden" />
   
   <div class="form-group" style="width: 300px;margin: auto;text-align: center;">
-  帳號： <form:input type="text" path="accountName" class="form-control"/><br/>
-  密碼：<form:input type="text" path="password" class="form-control"/><br/>
+  帳號： <form:input type="text" path="accountName" class="form-control" id="inputAccount"/><br/><span id="maccountName"></span>
+  密碼：<form:input type="text" path="password" class="form-control" id="inputPassword"/><br/><span id="mpassword"></span>
 <%--   身分： <form:input type="text" path="title" class="form-control" /><br/> --%>
-  身分:<form:select path="title" class="form-select" required="required">
-  <form:option value="商家" >商家</form:option>
+  身分:<form:select path="title" class="form-select" required="required"><span id="mtitle"></span>
   <form:option value="會員">會員</form:option>
+  <form:option value="商家" >商家</form:option>
   </form:select>
  <form:input type="hidden" path="status" class="form-control" value="1"/><br/>
- 
+ <button id="one" type="button" class="btn btn-secondary"
+						>一鍵輸入</button>
   <input type="button" onclick="submitForm(form)" id="send" value="新增" class="btn btn-lg btn-success btn-block">
   </div>	
   
@@ -31,57 +32,48 @@
   <div> 
   </div>
   <script type="text/javascript">
+// $(function(){
 
-$(function(){
-
-	$('#send').click(function(){
-		$('form span').text('');
+// 	$('#send').click(function(){
+// 		$('form span').text('');
 		
-		var accountName = $('#accountName').val();
-		var password = $('#password').val();
-		var title = $('#title').val();
-		var status = $('#status').val();
-		var signupDate = $('#signupDate').val();
+// 		var accountName = $('#accountName').val();
+// 		var password = $('#password').val();
+// 		var title = $('#title').val();
+// 		var status = $('#status').val();
+// 		var signupDate = $('#signupDate').val();
 		
 
-		if( $.trim(accountName)==''){
-				$('#maccountName').text('帳號不可為空');
-				Swal.fire({
-					  icon: 'error',
-					  title: 'Oops...',
-					  text: 'Something went wrong!'					  
-					})
-				return;
-		}
-		if( $.trim(password)==''){
-			$('#mpassword').text('密碼不可為空');
-			Swal.fire({
-				  icon: 'error',
-				  title: 'Oops...',
-				  text: 'Something went wrong!'					  
-				})
-			return;
-		}
-		if( $.trim(title)==''){
-			$('#mtitle').text('身分不可為空');
-			Swal.fire({
-				  icon: 'error',
-				  title: 'Oops...',
-				  text: 'Something went wrong!'					  
-				})
-			return;
-		}
-		if( $.trim(status)==''){
-			$('#mstatus').text('身分不可為空');
-			Swal.fire({
-				  icon: 'error',
-				  title: 'Oops...',
-				  text: 'Something went wrong!'					  
-				})
-			return;
-		}	
-	});
-});
+// 		if( $.trim(accountName)==''){
+// 				$('#maccountName').text('帳號不可為空');
+// 				Swal.fire({
+// 					  icon: 'error',
+// 					  title: 'Oops...',
+// 					  text: 'Something went wrong!!!!'					  
+// 					})
+// 				return;
+// 		}
+// 		if( $.trim(password)==''){
+// 			$('#mpassword').text('密碼不可為空');
+// 			Swal.fire({
+// 				  icon: 'error',
+// 				  title: 'Oops...',
+// 				  text: 'Something went wrong!'					  
+// 				})
+// 			return;
+// 		}
+// 		if( $.trim(title)==''){
+// 			$('#mtitle').text('身分不可為空');
+// 			Swal.fire({
+// 				  icon: 'error',
+// 				  title: 'Oops...',
+// 				  text: 'Something went wrong!'					  
+// 				})
+// 			return;
+// 		}
+	
+// 	});
+// });
 function submitForm(form){
 	  Swal.fire({
 		  title: '確認新增?',
@@ -100,6 +92,12 @@ function submitForm(form){
 		  }
 		})
 }
+  $('#one').click(function(){
+		$('#inputAccount').val("ooo");
+		$('#inputPassword').val("ooo");
+		
+	})
+  
 
 
 </script>

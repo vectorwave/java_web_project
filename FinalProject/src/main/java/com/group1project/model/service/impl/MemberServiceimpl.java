@@ -103,4 +103,9 @@ public class MemberServiceimpl implements MemberService {
 		return mDao.findAllByMemberNameLike("%" + key + "%");
 	}
 
+	@Override
+	public List<Member> findIdMembertitle(String key) {
+		return mDao.findIdMembertitle(key);
+	}
+
 }

@@ -79,7 +79,13 @@ public class MemberController {
 	public Member findById(@PathVariable Integer accountId) {
 		return mService.getMemberById(accountId);
 	}
-
+//	@GetMapping("/member/findall")
+//	public String FindAllMember(Model model){
+//		List<Member> mems = mService.getAllMember();
+//		model.addAttribute("member", mems);
+//		
+//		return "allMember";
+//	}
 	// 修改
 	@GetMapping("/member/edit")
 	public String editMember(@RequestParam("id") Integer accountId, Model model) {
@@ -147,7 +153,7 @@ public class MemberController {
 		// 要回傳的物件, header , httpstatus 回應
 		return new ResponseEntity<byte[]>(photoFile, headers, HttpStatus.OK);
 	}
-	
+	//取到ID候用Json傳出
 	@GetMapping("/member/searchAccountId/{accountId}")
 	@ResponseBody
 	public Map<String,Object> searchMemberId(@PathVariable("accountId") Integer accountId) {

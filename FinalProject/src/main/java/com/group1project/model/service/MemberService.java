@@ -16,6 +16,7 @@ public interface MemberService {
 	void deleteMember(Integer memberId);
 	Page<Member> findByPage(Integer pageNumber);
 	List<Member> searchMemberByName(String key);
+	List<Member> findIdMembertitle(String title);
 
 	
 }
