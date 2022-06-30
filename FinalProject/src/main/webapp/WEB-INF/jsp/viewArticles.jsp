@@ -4,10 +4,95 @@
 <jsp:include page="layout/header.jsp" />
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+ <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <!-- jsFiddle will insert css and js -->
+  
+
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 
 <script>
+document.cookie = 'cookie3=value3';
+
+var lat2 = getCookie("lat1");
+console.log(lat2);
+var long2 = getCookie("long1");
+console.log(long2);
+  function initMap() {
+    const map = new google.maps.Map(document.getElementById("map"), {
+      zoom: 8,
+      center: { lat: 40.714224, lng: -73.961452 },
+    });
+    const geocoder = new google.maps.Geocoder();
+    const infowindow = new google.maps.InfoWindow();
+
+    geocodeLatLng(geocoder, map, infowindow);
+
+    document.getElementById("submit").addEventListener("click", () => {
+      geocodeLatLng(geocoder, map, infowindow);
+    });
+  }
+
+  function geocodeLatLng(geocoder, map, infowindow) {
+    const input = document.getElementById("latlng").value;
+    const latlngStr = input.split(",", 2);
+    const latlng = {
+  		  
+  		  lat:parseFloat(lat2),
+  		  lng:parseFloat(long2)
+//      lat: parseFloat(latlngStr[0]),
+  //    lng: parseFloat(latlngStr[1]),
+////      lat:40.714224,
+  ///   lng:-73.961452   
+
+    };
+
+    geocoder
+      .geocode({ location: latlng })
+      .then((response) => {
+        if (response.results[0]) {
+          map.setZoom(11);
+
+          const marker = new google.maps.Marker({
+            position: latlng,
+            map: map,
+          });
+
+          infowindow.setContent(response.results[0].formatted_address);
+          var kris=response.results[0].formatted_address;
+          console.log(kris);
+          setCookie("address",kris);
+          var address1 = getCookie("address");
+          var address2=address1.substring(5,8)
+          console.log(address1);
+          console.log(address2);
+
+//           document.getElementById(
+//             "result"
+//           ).innerHTML = `<h1 style="text-align:center;" >${response.results[0].formatted_address}</h1>`;
+          
+          infowindow.open(map, marker);
+        } else {
+          window.alert("No results found");
+        }
+      })
+      .catch((e) => window.alert("Geocoder failed due to: " + e));
+  }
+  function getCookie(name){
+  	var arr,reg = new RegExp("(^|)" + name + "=([^;]*)(;|$)");
+  	if(arr = document.cookie.match(reg))
+  		return unescape(arr[2]);
+  	else
+  		return null;
+  }
+  
+  function setCookie(name,value){
+  	document.cookie = name + "=" +escape(value) +";path=/";
+  }
+
+
 //   var button = document.querySelectorAll('#delete');
 //   function del(e) {
 //   if (confirm("確認要刪除嗎?") == true) {
@@ -74,7 +159,27 @@ function upd(e){
 
 
  </script>
+ <div style="visibility:hidden">
+  <div id="floating-panel">
+      <input id="latlng" type="text" value="40.714224,-73.961452" />
+      <input id="submit" type="button" value="Reverse Geocode" />
+    </div>
 
+    <div id="result"></div>
+
+    <div style="visibility:hidden" id="map"></div></div>
+<!--     <div id="map"></div> -->
+
+    <br /><br />
+
+    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmEBK0G5eNsuBCbrJzIYY88lee1rT_S_o&callback=initMap&v=weekly&channel=2"
+      async
+    ></script>
+<div id="result"></div>
+
+    <div style="visibility:hidden" id="map"></div>
 <div id="kkk">
 <br>
 
