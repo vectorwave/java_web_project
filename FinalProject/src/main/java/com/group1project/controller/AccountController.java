@@ -1,5 +1,7 @@
 package com.group1project.controller;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 import java.util.List;
 
@@ -53,9 +55,10 @@ public class AccountController {
 	public String inserAccount(@ModelAttribute("account") Account account, Model model) {
 		Date nowdate = new Date();
 		account.setSignupDate(nowdate);
-
+		String password = getStringHash(account.getPassword(), "SHA-512");
+		account.setPassword(password);
 		aService.saveAccount(account);
-		
+
 		return "redirect:/login";
 	}
 	
@@ -89,25 +92,47 @@ public class AccountController {
 	
 	@PostMapping("/login/edit")
     public String postEditAccount(@ModelAttribute(name="newAccount") Account newAccount) {
-		
+		String password = getStringHash(newAccount.getPassword(), "SHA-512");
+		newAccount.setPassword(password);
 		aService.saveAccount(newAccount);
 		
 		return "redirect:/login/findall";
 		
 	}
 	
+	private static String getStringHash(String message, String algorithm) {
+		final StringBuffer buffer = new StringBuffer();
+		try {
+			MessageDigest md = MessageDigest.getInstance(algorithm);
+			md.update(message.getBytes());
+			byte[] digest = md.digest();
+
+			for (int i = 0; i < digest.length; ++i) {
+				byte b = digest[i];
+				String s = Integer.toHexString(Byte.toUnsignedInt(b));
+				s = s.length() < 2 ? "0" + s : "" + s;
+				buffer.append(s);
+			}
+		} catch (NoSuchAlgorithmException e) {
+//			System.out.println("請檢查使用的演算法，演算法有誤");
+			return null;
+		}
+		return buffer.toString();
+	}
+	
 	//登入
 	@RequestMapping(path = "/logingo", method=RequestMethod.POST)
 	public String loginCheck(@RequestParam("inputAccount") String inputAccount, @RequestParam("inputPassword") String inputPassword, Model model) {
 		
-		Account queryMember = aService.findByAccPwd(inputAccount, inputPassword );
-		
+		String password = getStringHash(inputPassword, "SHA-512");
+		Account queryMember = aService.findByAccPwd(inputAccount, password );
+
 		System.out.println("queryMember=" + queryMember);
 				
 		if(queryMember == null) {	
 			model.addAttribute("loginErrorMsg", "登入失敗,帳號不存在");
 			return "login";
-		} else if(!queryMember.getPassword().equals(inputPassword)){
+		} else if(!queryMember.getPassword().equals(password)){
 			model.addAttribute("loginErrorMsg", "登入失敗,密碼錯誤");
 			return "login";
 		} else if(queryMember.getAccountName().equals("")) {
