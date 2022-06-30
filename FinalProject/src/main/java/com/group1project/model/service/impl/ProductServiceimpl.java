@@ -58,7 +58,7 @@ public class ProductServiceimpl implements ProductService {
 	
 	@Override
 	public Page<Product> findByPage(Integer pageNumber) {
-		   Pageable pgb = PageRequest.of(pageNumber - 1, 4 ,Sort.Direction.DESC,"productId");
+		   Pageable pgb = PageRequest.of(pageNumber - 1, 6 ,Sort.Direction.DESC,"productId");
 		   
 		   Page<Product> page = pDao.findAll(pgb);
 		   
