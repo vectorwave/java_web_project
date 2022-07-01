@@ -92,4 +92,4 @@ function deleteGuide(){
 </script>
 <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script> 
 
-<jsp:include page="layout/footer.jsp" />
+<jsp:include page="layout/footer.jsp"/>

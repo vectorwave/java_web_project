@@ -65,7 +65,7 @@
             <label class="btn btn-outline-dark" for="btnradio3">保密</label>
           </div></br></br>
 
-        <c:set var="guideGender" value="${guideUpdate.guideGender}" />
+        <c:set var="guideGender" value="${guideUpdate.guideGender}"/>
 
         <label class="GIFLabel">聯絡電話： </label>
 
