@@ -131,7 +131,8 @@ public class ProductCommentController {
 		return "redirect:/back/ProductComment/all";
 		
 	}
-	
+}
+
 //	@GetMapping("searchProductComment")
 //	@ResponseBody
 //	public List<ProductComment> searchProductComment(@RequestParam("key") String key,Model m) {
@@ -139,5 +140,5 @@ public class ProductCommentController {
 		 
 //		 return pService.searchProductByNameWithPage(key);
 	
-	}
+//	}
 	
