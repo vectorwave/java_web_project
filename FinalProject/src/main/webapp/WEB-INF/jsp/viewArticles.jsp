@@ -184,7 +184,7 @@ function upd(e){
 <br>
 
 <form action="/jotravel/article/all" method="get" >
-<input type="text" name="key" placeholder="搜尋文章名稱" id="key"> <input type="submit" id="send" value="🔍" > <a href="http://localhost:8081/jotravel/article/all"><input type="button" value="全部商品" ></a>  
+<input type="text" name="key" placeholder="搜尋文章名稱" id="key"> <input type="submit" id="send" value="🔍" > <a href="http://localhost:8081/jotravel/article/all"><input type="button" value="全部文章" ></a>  
 </form>
 <br><br>
 
