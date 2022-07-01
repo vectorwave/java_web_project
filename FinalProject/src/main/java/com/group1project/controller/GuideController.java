@@ -68,7 +68,7 @@ public class GuideController {
 		guideAccount.setAccountName(accountName);
 		guideAccount.setPassword(pwd);
 		guideAccount.setStatus("1");
-		guideAccount.setTitle("guide");
+		guideAccount.setTitle("商家");
 		
 		Date nowdate = new Date();
 		guideAccount.setSignupDate(nowdate);
@@ -101,9 +101,13 @@ public class GuideController {
 	@PostMapping("edit")
 	public String updateGuideInfo(@ModelAttribute("guideUpdate") Guide guide, Model m,@RequestParam("profilePic") MultipartFile profilePic) {
 		
+		Guide originalGuide = gService.getGuideById(guide.getAccountId());
+		guide.setGuidePhoto(originalGuide.getGuidePhoto());
 		
 		try {
-			guide.setGuidePhoto(profilePic.getBytes());
+			
+			if(!(profilePic.getSize() == 0)) {
+			guide.setGuidePhoto(profilePic.getBytes());}	
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

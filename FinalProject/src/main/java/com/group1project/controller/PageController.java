@@ -32,7 +32,11 @@ public class PageController {
 	@Autowired
 	private ProductService pService ;
 	
-	
+
+	@Autowired
+	private ArticleService aService;
+
+
 	
 	@GetMapping("/back")
 	public String backIndexPage(){
