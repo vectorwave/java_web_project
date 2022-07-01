@@ -24,7 +24,7 @@ import com.group1project.model.service.ProductCommentService;
 import com.group1project.model.bean.Article;
 import com.group1project.model.service.ArticleService;
 import com.group1project.model.bean.Account;
-import com.group1project.model.bean.Feedback;
+
 import com.group1project.model.service.FeedbackService;
 import com.group1project.model.service.ProductService;
 
@@ -178,20 +178,10 @@ public class PageController {
 	
 	
 	// ##### Start ##### feedback Page Controller
-	@Autowired
-	private FeedbackService fService;
 	
 	
-	@GetMapping("back/allFeedback")
-	public ModelAndView Feedback(ModelAndView mav, 
-			@RequestParam(name="p", defaultValue="1") Integer pageNumber) {
-		System.out.println(pageNumber);
-		Page<Feedback> page = fService.findByPage(pageNumber);
-		
-		mav.getModel().put("page", page);
-		mav.setViewName("findAllFeedback");
-		return mav;
-	}
+	
+	
 	
 
 	@GetMapping("article/add")
