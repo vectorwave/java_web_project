@@ -56,7 +56,7 @@ public  class ArticleServiceimpl implements ArticleService {
 	}
 	
 	public Page<Article> findByPage(Integer pageNumber){
-		Pageable pgb = PageRequest.of(pageNumber-1, 3 ,Sort.Direction.DESC ,"articleId");
+		Pageable pgb = PageRequest.of(pageNumber-1, 6 ,Sort.Direction.DESC ,"articleId");
 		
 		Page<Article> page = aDao.findAll(pgb);
 		
