@@ -55,8 +55,11 @@ public class AccountController {
 	public String inserAccount(@ModelAttribute("account") Account account, Model model) {
 		Date nowdate = new Date();
 		account.setSignupDate(nowdate);
+		
+		//加密功能
 		String password = getStringHash(account.getPassword(), "SHA-512");
 		account.setPassword(password);
+		
 		aService.saveAccount(account);
 
 		return "redirect:/login";
@@ -92,8 +95,11 @@ public class AccountController {
 	//修改
 	@PostMapping("/login/edit")
     public String postEditAccount(@ModelAttribute(name="newAccount") Account newAccount) {
+		
+		//加密功能
 		String password = getStringHash(newAccount.getPassword(), "SHA-512");
 		newAccount.setPassword(password);
+		
 		aService.saveAccount(newAccount);
 		
 		return "redirect:/login/findall";
@@ -125,7 +131,7 @@ public class AccountController {
 	@RequestMapping(path = "/logingo", method=RequestMethod.POST)
 	public String loginCheck(@RequestParam("inputAccount") String inputAccount, @RequestParam("inputPassword") String inputPassword, Model model) {
 		
-		//密碼加密
+		//加密功能
 		String password = getStringHash(inputPassword, "SHA-512");
 		Account queryMember = aService.findByAccPwd(inputAccount, password );
 
