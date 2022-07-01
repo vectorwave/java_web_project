@@ -277,6 +277,25 @@ public class PageController {
 	@GetMapping("front/")
 	public String frontPage(){
 		return "frontend";
+	}
+//	@GetMapping("blogIndex/")
+//	public String blogIndexPage(){
+//		return "blogIndex";
+//	} 
+	//前台商品頁面含page方法
+		@GetMapping("front/blogIndex")
+		public ModelAndView viewAllArticlePage(ModelAndView mav, 
+				@RequestParam(name="p", defaultValue="1") Integer pageNumber) {
+			Page<Article> page = aService.findByPage(pageNumber);
+			
+			mav.getModel().put("page", page);
+			mav.setViewName("blogIndex");
+			return mav;
+		
+		}
+	@GetMapping("blogPage/")
+	public String blogPage(){
+		return "blogPage";
 	} 
 }
 
