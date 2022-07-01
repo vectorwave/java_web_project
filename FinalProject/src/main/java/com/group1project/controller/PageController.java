@@ -34,6 +34,7 @@ public class PageController {
 	
 	@Autowired
 	private ArticleService aService;
+
 	
 	@GetMapping("/back")
 	public String backIndexPage(){

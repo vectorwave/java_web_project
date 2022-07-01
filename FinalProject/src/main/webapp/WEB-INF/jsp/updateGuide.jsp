@@ -23,20 +23,20 @@
       <div id="leftPart">
 
         
-        <img class="guide_pic" src="${contextRoot}/guide_info/photo/${guideUpdate.accountId}" width="150"/></br></br>
+        <img class="guide_pic" src="${contextRoot}/guide_info/photo/${guideUpdate.accountId}" width="150" id="output"/></br></br>
         
         <label class="GIFLabel">個人圖片： </label>
-        <input class="form-control" type="file" name="profilePic" id="formFile" accept="image/*" style="width:250px;height: 35px;"></br>
+        <input class="form-control" type="file" name="profilePic" id="formFile" accept="image/*" style="width:250px;height: 35px;" onchange="loadFile(event)"></br>
 
         <label class="GIFLabel">會員編號： </label>
         <form:input path="accountId" readonly="true" class="inputBox1"/></br></br>
 
         <label class="GIFLabel">主頁名稱： </label>
-        <form:input path="profileName" class="inputBoxAdd"/></br></br></br>
+        <form:input path="profileName" class="inputBoxAdd"/></br></br>
 
         <label class="GIFLabel">姓名： </label>
 
-        <form:input path="guideName" class="inputBoxAdd"/></br></br></br>
+        <form:input path="guideName" class="inputBoxAdd"/></br></br>
 
         <label class="GIFLabel">個人簡述： </label>
         <form:textarea path="guideDescription" class="textareaAdd"/></br></br></br>
@@ -50,7 +50,7 @@
       <div id="rightPart">
 
         <label class="GIFLabel">生日： </label>
-        <form:input path="guideBirthday" class="inputBoxAdd"/></br></br></br>
+        <form:input path="guideBirthday" class="inputBoxAdd"/></br></br>
 
         <label class="GIFLabel">性別： </label>
         <div class="btn-group" role="group" aria-label="Basic radio toggle button group" style="float:right; margin-right: 50px;">
@@ -63,25 +63,25 @@
 
             <form:radiobutton path="guideGender" value="保密" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off"/>
             <label class="btn btn-outline-dark" for="btnradio3">保密</label>
-          </div></br></br></br>
+          </div></br></br>
 
         <c:set var="guideGender" value="${guideUpdate.guideGender}" />
 
         <label class="GIFLabel">聯絡電話： </label>
 
-        <form:input path="guidePhone" class="inputBoxAdd"/></br></br></br>
+        <form:input path="guidePhone" class="inputBoxAdd"/></br></br>
 
         <label class="GIFLabel">電子郵件： </label>
-        <form:input path="guideEmail" class="inputBoxAdd"/></br></br></br>
+        <form:input path="guideEmail" class="inputBoxAdd"/></br></br>
 
         <label class="GIFLabel">聯絡地址： </label>
-        <form:textarea path="guideAddress" class="textareaAdd"/></br></br></br>
+        <form:textarea path="guideAddress" class="textareaAdd"/></br></br>
 
         <label class="GIFLabel">證照類型： </label>
-        <form:input path="licenceType" class="inputBoxAdd"/></br></br></br>
+        <form:input path="licenceType" class="inputBoxAdd"/></br></br>
 
         <label class="GIFLabel">證照號碼： </label>
-        <form:input path="licenceNo" class="inputBoxAdd"/></br></br></br>
+        <form:input path="licenceNo" class="inputBoxAdd"/></br></br>
 
 
       </div>
@@ -93,6 +93,17 @@
 </div>
 
 <script>
+  // 圖片處理
+  var loadFile = function(event) {
+    var output = document.getElementById('output');
+    output.src = URL.createObjectURL(event.target.files[0]);
+    output.onload = function() {
+      URL.revokeObjectURL(output.src) // free memory
+    }
+  };
+
+
+// 性別Radio
     const r1 = document.getElementById('btnradio1');
     const r2 = document.getElementById('btnradio2');
     const r3 = document.getElementById('btnradio3');
