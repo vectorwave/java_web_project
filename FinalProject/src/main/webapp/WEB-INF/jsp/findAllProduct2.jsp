@@ -25,11 +25,12 @@ td
 <!-- class="row justify-content-center" -->
 <table class="table" border="1">
 <tr style="background-color:#fac473">
-<th>評論<th>商品編號<th>商家編號<th>商品名稱<th>商品價格<th>上架時間<th>下架時間<th>商品圖片<th>更新時間<th>區域分類<th>上架狀態<th>修改<th>刪除</tr> 
+<th>商品評論<th>評論<th>商品編號<th>商家編號<th>商品名稱<th>商品價格<th>上架時間<th>下架時間<th>商品圖片<th>更新時間<th>區域分類<th>上架狀態<th>修改<th>刪除</tr> 
 
 <div id="newTable">
 <c:forEach var="value" items="${page.content}">
 <tr> 
+<td><a href="ProductComment/search?id=${value.productId}"><button >評論</button></a></td>
 <td><a href="ProductComment/add?id=${value.productId}"><button >評論</button></a></td>
 <td> <c:out value="${value.productId}"/></td>
 <td> <c:out value="${value.account.accountId}"/></td>
