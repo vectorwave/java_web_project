@@ -130,7 +130,7 @@ public class ProductCommentController {
 		
 		return "redirect:/back/ProductComment/all";
 		
-	}
+	}}
 	
 //	@GetMapping("searchProductComment")
 //	@ResponseBody
