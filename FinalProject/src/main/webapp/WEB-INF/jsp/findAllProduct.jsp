@@ -18,7 +18,7 @@
 //       	e.preventDefault();
 		//查詢所有商品      	
       	 $.ajax({
-      	     url:'http://localhost:8081/jotravel/back/product/',
+      	     url:'http://localhost:8081/jotravel/back/product/?key='${},
       	     method: 'get',
       	     contentType: 'application/json', // 送過去的 
       	     dataType: 'json',
