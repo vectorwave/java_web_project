@@ -73,8 +73,8 @@
 <td> <c:out value="${value.account.accountName}"/></td>
 <td> <c:out value="${value.productComment}"/></td>     	     		   	     		
 <td> <fmt:formatDate pattern="yyyy 年 MM 月 dd 日 a hh:mm:ss " value="${value.updatedTime}"/></td> 
-<td><button class="delt" onclick="upd('${value.product.productId}')" >📝</button></td> 
-<td><button class="delt" onclick="del('${value.product.productId}')" >✂</button></td> 
+<td><button class="delt" onclick="upd('${value.prouctCommentId}')" >📝</button></td> 
+<td><button class="delt" onclick="del('${value.prouctCommentId}')" >✂</button></td> 
 <%-- <td><a href="product/editProduct?id=${value.productId}"><button class="delt" onclick="return del()">📝</button></a></td>  --%>
 <%-- <td><a href="product/delete/${value.productId}"><button class="delt" onclick="return del()">✂</button></a></td>  --%>
 </tr>
@@ -84,47 +84,62 @@
 
 </table>
 
-<%-- <h3>共 ${count} 筆商品資料 </h3> --%>
 
-<!-- <div id="div1" ></div> -->
-
-<!-- <div class="row justify-content-center"> -->
-<!--  	<div class="col-9" style="text-align: center;"> -->
-<%-- 	<c:forEach var="pageNumber" begin="1" end="${page.totalPages}"> --%>
-<%--   	<c:choose>  --%>
-<%--   	<c:when test="${pageNumber!= page.number+1}"  >  --%>
-<%--   	<a href="${contextRoot}/jotravel/back/allProduct?key=searchKey&p=${pageNumber}"><c:out value="${pageNumber}"/></a> --%>
-<%-- <%--   	<c:if test="${pageNumber != page.totalPages}"><span>|</span></c:if> --%> 
-<%--  	</c:when> --%>
-<%--  	<c:otherwise> --%>
-<%-- <%--  	<span><c:out value="${pageNumber}"/> |</span> --%> 
-<%--  	<c:out value="${pageNumber}"/> --%>
-<%--  	</c:otherwise> --%>
-<%--  	</c:choose> --%>
- 	
-<%--  	 <c:if test="${pageNumber != page.totalPages}"> --%>
-<!--    | -->
-<%--    </c:if> --%>
-<%--  	</c:forEach> --%>
- 
-<!--  </div> -->
-<!-- </div> -->
 
 <script>
- var button = document.querySelectorAll('.delt');
   function del(e) {
   if (confirm("確認要執行嗎?") == true) {
    return true
-//       window.location.href='deletedepot.jsp?id='+id;點確認連到下個連結
   } else {
    window.event.returnValue = false; 
   }
  };
-//  button.addEventListener('click', del);
 
  button.forEach(delt => {
   delt.addEventListener('click', del);
   });
+ 
+ function upd(e){
+	 Swal.fire({
+		  title: '確認修改嗎?',
+		//   text: "You won't be able to revert this!",
+		  icon: 'question',
+		  showCancelButton: true,
+		  confirmButtonColor: '#3085d6',
+		  cancelButtonColor: '#d33',
+		  confirmButtonText: 'Yes!',
+		  
+		}).then((result) => {
+		  if (result.isConfirmed) {
+			  
+			document.location.href='http://localhost:8081/jotravel/back/productcomment/editProductComment?id='+e;
+		  }else if (result.isDenied) {
+			    
+			    return false;
+			  }
+		});
+ }
+ 
+ function del(e){
+	 Swal.fire({
+		  title: '確認刪除嗎?',
+		//   text: "You won't be able to revert this!",
+		  icon: 'question',
+		  showCancelButton: true,
+		  confirmButtonColor: '#3085d6',
+		  cancelButtonColor: '#d33',
+		  confirmButtonText: 'Yes!',
+		  
+		}).then((result) => {
+		  if (result.isConfirmed) {
+
+			document.location.href='http://localhost:8081/jotravel/back/productcomment/delete/'+e;
+		  }else if (result.isDenied) {
+			  
+			    return false;
+			  }
+		});
+ }
  
  
  
