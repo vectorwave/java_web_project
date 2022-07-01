@@ -63,7 +63,7 @@ class Workbook {
 const workbook = new Workbook();
 var temp = [['orderId','cashFlow','status','productName','price','amount','date','totalDays']];
 jQuery.ajax({
-	url:'${contextRoot}/order/all',
+	url:'${contextRoot}/order/download',
   async :false, 
 	success:function(res){
 		res.forEach(function(order){

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.group1project.model.bean.Order;
@@ -19,12 +20,10 @@ public class OrderServiceImpl implements OrderService{
 	
 	@Autowired OrderRepository orderRepository;
 	@Autowired OrderDetailRepository detailRepository;
-
-	
-
+	private static final Integer pensPerPage = 4;
 	@Override
 	public List<Order> findByAccountId(Integer accountId, Integer page) {
-		PageRequest request = PageRequest.of(page-1, 3);
+		PageRequest request = PageRequest.of(page-1, pensPerPage,Sort.by("orderId").descending());
 		return orderRepository.findByAccountAccountId(accountId, request).getContent();
 	}
 
@@ -35,13 +34,14 @@ public class OrderServiceImpl implements OrderService{
 
 	@Override
 	public List<Order> findAll(Integer page) {
-		Pageable pageable = PageRequest.of(page-1, 3);
+		Pageable pageable = PageRequest.of(0, pensPerPage);
 		return orderRepository.findAll(pageable).getContent();
 	}
 
 	@Override
-	public List<Order> findByAccountId(Integer accountId) {
-		return  orderRepository.findByAccountAccountId(accountId);
+	public Page<Order> findByAccountId(Integer accountId) {
+		PageRequest request = PageRequest.of(0, pensPerPage,Sort.by("orderId").descending());
+		return  orderRepository.findByAccountAccountId(accountId,request);
 	}
 
 
@@ -70,6 +70,11 @@ public class OrderServiceImpl implements OrderService{
 		OrderDetailId detailId = new OrderDetailId(orderId,productId);
 		detailRepository.deleteById(detailId);
 		detailRepository.flush();
+	}
+
+	@Override
+	public List<Order> findAllByAccountId(Integer accountId) {
+		return orderRepository.findByAccountAccountId(accountId);
 	}
 
 }

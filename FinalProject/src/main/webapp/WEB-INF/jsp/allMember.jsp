@@ -41,6 +41,7 @@
 						<td><c:out value="${member.address}" />
 						<td><c:out value="${member.gender}" />
 						<td><img src="${contextRoot}/member/photo/${member.account.accountId}" width="100px" height="100px">						
+
 <!-- 						<td><a -->
 <%-- 							href='<c:out value="${contextRoot}"/>/member/edit?id=${member.account.accountId}'> --%>
 <!-- 							<button type="button">📝</button></a> -->

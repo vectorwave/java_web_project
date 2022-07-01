@@ -132,17 +132,6 @@
 						<a href="#">商品分類</a>
 					</div>
 				</div>
-
-				<div class="dropdown">
-					<button class="dropbtn">
-						<span class="material-icons">hiking</span>商家管理
-					</button>
-					<div class="dropdown-content">
-						<a href="/jotravel/guidemanagement">所有商家</a> <a href="#">商家權限</a>
-						<a href="/jotravel/guidemanagement/addguide">新增商家</a>
-					</div>
-				</div>
-
 				<div class="dropdown">
 					<button class="dropbtn">
 						<span class="material-icons">rate_review</span>論壇管理

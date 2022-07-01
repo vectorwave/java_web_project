@@ -70,9 +70,6 @@ public class ProductCommentController {
 			Model model) {
 		
 		
-//		Object object =service.findById(id);
-//		Account aaa = productComment.setAccount(accService.getAccountById(accountId));
-//		Product ppp = productComment.setProduct(pdService.getProductById(productId));
 		Account member = new Account();
 		Product pd = new Product();
 		member.setAccountId(accountId);
@@ -102,7 +99,7 @@ public class ProductCommentController {
 	
 	
 	@GetMapping("editProductComment")
-	public String editProducteComment(@RequestParam("id") int productCommnetId, Model model) {
+	public String editProducteCommentPage(@RequestParam("id") int productCommnetId, Model model) {
 		ProductComment newPdComment = pService.getProductCommentById(productCommnetId);
 
 		model.addAttribute("newPdComment", newPdComment);
@@ -112,8 +109,9 @@ public class ProductCommentController {
 	
 
 	
-	@PostMapping("editProductComment")
-    public String postEditMessage(@ModelAttribute(name="newPd") ProductComment newPdComment ,
+	@PostMapping("editProductComment/edit")
+	@ResponseBody
+    public String editProducteComment(@RequestBody ProductComment newPdComment, @ModelAttribute(name="newPd") ProductComment newPdComment2 ,
     		Model model) {
 		
 		Date nowDate = new Date();

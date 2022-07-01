@@ -11,8 +11,10 @@
 
 <form:form method="post" enctype="multipart/form-data" action="${contextRoot}/member/add" modelAttribute="member">
 
+
   <form:input path="memberId" type="hidden" />
   <input type="hidden" id="accountId" name="accountId" value="${loginuser.accountId}" />
+
   <div class="form-group" style="width: 300px;margin: auto;text-align: center;">
   姓名： <form:input type="text" path="memberName" class="form-control" id="memberName"/><br/><span id="mmemberName"></span>
   地址：<form:input type="text" path="address" class="form-control" id="address"/><br/><span id="maddress"></span>
