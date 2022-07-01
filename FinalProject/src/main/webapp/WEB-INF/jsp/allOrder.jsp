@@ -33,7 +33,7 @@
 						</div>
 					</div>
 				</div>
-				<div :id="'collapse-'+index" class="collapse show "
+				<div :id="'collapse-'+index" class="collapse "
 					:aria-labelledby="'heading-'+index" data-parent="#accordionExample">
 					<table class="table table-sm">
 						<thead>

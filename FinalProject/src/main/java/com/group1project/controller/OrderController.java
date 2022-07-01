@@ -57,5 +57,13 @@ public class OrderController {
 			orderService.deleteOrderDetail(productId, orderId);
 
 	}
+	
+	@GetMapping("download")
+	public List<Order> downloadOrder(HttpSession session){
+		Integer accountId= (Integer) session.getAttribute("accountId");
+		if(accountId == null)
+			accountId = 1;
+		return orderService.findAllByAccountId(accountId);
+	}
 
 }

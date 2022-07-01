@@ -15,7 +15,7 @@
 <script type="text/javascript" src="${contextRoot}/js/vue.min.js"></script>
 </head>
 <body>
-	<div class="container mt-5">
+	<div class="container mt-5" id = "container">
 		<div class="h1 text-center">
 			<strong>JOTRAVEL 訂單頁面</strong>
 		</div>
@@ -119,7 +119,7 @@
                         </div>
 						<div class="mt-3 d-flex justify-content-end">
 							<button type="button" class="btn btn-primary mr-2" onclick="autoInput()">一鍵輸入</button>
-							<button type="button" class="btn btn-primary">確認付款</button>
+							<button type="button" class="btn btn-primary" onclick="sent()">確認付款</button>
 						</div>
 				</div>
 			</div>
@@ -163,6 +163,21 @@
 	}else{
 		console.log("你有購物車");
 	};
+	let testJson = {"account":1,"cashFlow":"credic","status":"good","orderDetails":[{"product":4,"amount":10}]};
+	function sent(){
+		jQuery.ajax({
+			url:'${contextRoot}/ECPay/go',
+			method:'POST',
+		  	contentType:'application/json; charset=utf-8',
+		  	data:JSON.stringify(testJson),
+			success:function(res){
+				$('#container').html(res);
+			},
+			error:function(err){
+				console.log(err);
+			}
+		});
+	}
 	
 	</script>
 </body>

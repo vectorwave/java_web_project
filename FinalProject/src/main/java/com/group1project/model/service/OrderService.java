@@ -9,6 +9,7 @@ import com.group1project.model.bean.Order;
 
 public interface OrderService {
 	
+	public List<Order> findAllByAccountId(Integer accountId);
 	public Page<Order> findByAccountId(Integer accountId);
 	public List<Order> findByAccountId(Integer accountId,Integer page);
 	public List<Order> findAll();

@@ -72,4 +72,9 @@ public class OrderServiceImpl implements OrderService{
 		detailRepository.flush();
 	}
 
+	@Override
+	public List<Order> findAllByAccountId(Integer accountId) {
+		return orderRepository.findByAccountAccountId(accountId);
+	}
+
 }
