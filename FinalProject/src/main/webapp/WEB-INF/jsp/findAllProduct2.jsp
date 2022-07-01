@@ -104,11 +104,7 @@ td
 		  
 		}).then((result) => {
 		  if (result.isConfirmed) {
-// 		    Swal.fire(
-// 		      'Deleted!',
-// 		      'Your file has been deleted.',
-// 		      'success'
-// 		    )
+
 			document.location.href='product/editProduct?id='+e;
 		  }else if (result.isDenied) {
 			    
@@ -129,11 +125,7 @@ td
 		  
 		}).then((result) => {
 		  if (result.isConfirmed) {
-// 		    Swal.fire(
-// 		      'Deleted!',
-// 		      'Your file has been deleted.',
-// 		      'success'
-// 		    )
+
 			document.location.href='product/delete/'+e;
 		  }else if (result.isDenied) {
 			  

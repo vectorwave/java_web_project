@@ -5,12 +5,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <script type="text/javascript" src="${contextRoot}/js/vue.min.js"></script>
-
 <div id="app" style="color: black">
-
 	<div class="row justify-content-center mt-4">
-
-
 		<div class="h3 d-inline-block mt-2 d-flex row">
 			<div class="col-sm text-center">訂單編號</div>
 			<div class="col-sm text-center">金流</div>
@@ -22,7 +18,7 @@
 			<div id="accordionExample" v-for="(order,index) in orders"
 				:key="order.orderId">
 				<div class="card card-bottom">
-					<div class="card-header fs-2 d-flex row" :id="'heading-'+index">
+					<div class="card-header fs-4 d-flex row" :id="'heading-'+index">
 						<div class="col-sm text-center">{{order.orderId}}</div>
 						<div class="col-sm text-center">{{order.cashFlow}}</div>
 						<div class="col-sm text-center">{{order.status}}</div>
@@ -31,17 +27,19 @@
 							<button class="btn btn-primary btn-sm" type="button"
 								data-toggle="collapse" :data-target="'#collapse-'+index">
 								顯示訂單細節</button>
-							<button type="button" @click="delOrder(index)"
+							<button type="button" @click="delOrder(index);delModal()"
 								class="btn btn-danger btn-xs" data-toggle="modal"
 								data-target="#purchaseModal">🗑️</button>
 						</div>
 					</div>
 				</div>
-				<div :id="'collapse-'+index" class="collapse show "
+				<div :id="'collapse-'+index" class="collapse "
 					:aria-labelledby="'heading-'+index" data-parent="#accordionExample">
 					<table class="table table-sm">
 						<thead>
-							<tr><th width="20"></th><th width="60"></th>
+							<tr>
+								<th width="20"></th>
+								<th width="60"></th>
 								<th>商品名稱</th>
 								<th>價格</th>
 								<th>數量</th>
@@ -53,8 +51,9 @@
 						<tbody v-for="(detail,cindex) in order.orderDetails">
 							<tr>
 								<td class="align-middle"><button type="button"
-										@click="delDetail(index,cindex)" class="btn btn-danger btn-sm"
-										data-toggle="modal" data-target="#purchaseModal">🗑️</button>
+										@click="delDetail(index,cindex);delModal()"
+										class="btn btn-danger btn-sm" data-toggle="modal"
+										data-target="#purchaseModal">🗑️</button>
 								<td class="align-middle"><img
 									:src="'${contextRoot}/back/product/photo/'+detail.product.productId"
 									alt="..." width="80px;"></td>
@@ -70,26 +69,20 @@
 				</div>
 				<br />
 			</div>
+			<nav aria-label="Page navigation example">
+				<ul class="pagination justify-content-center">
+					<li :class="{'disabled':nowPage == 1}"><a class="page-link" type="button"
+						aria-label="Previous" @click="changePage(nowPage-1)"> <span aria-hidden="true">&laquo;</span>
+					</a></li>
+					<li v-for="n in totalPages" :class="{'active':nowPage == n}"><a
+						class="page-link" type="button" @click="changePage(n)">{{n}}</a></li>
+					<li :class="{'disabled':nowPage == totalPages}"><a class="page-link" type="button" aria-label="Next"> <span
+							aria-hidden="true" @click="changePage(nowPage+1)">&raquo;</span>
+					</a></li>
+				</ul>
+			</nav>
 		</div>
-	</div>
-	<div class="modal fade" id="purchaseModal" tabindex="-1" role="dialog"
-		aria-labelledby="purchaseLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-hidden="true">&times;</button>
-				</div>
-				<div class="modal-body">
-					<h2>確定刪除?</h2>
-				</div>
-				<div class="modal-footer">
-					<button type="button" @click="delModal()" class="btn btn-danger"
-						data-dismiss="modal">是</button>
-					<button type="button" class="btn btn-default" data-dismiss="modal">否</button>
-				</div>
-			</div>
-		</div>
+
 	</div>
 </div>
 <script>
@@ -99,10 +92,19 @@ var index = null;
 var cindex = null;
 var vm = new Vue({
   el:'#app',
-  data:{orders:null},
+  data:{orders:null,totalPages:null,nowPage:1},
   methods:{
 	  delModal(){
-		 if(cindex == null){
+		  Swal.fire({
+		  title: '確認刪除嗎?',
+		  icon: 'question',
+		  showCancelButton: true,
+		  confirmButtonColor: '#3085d6',
+		  cancelButtonColor: '#d33',
+		  confirmButtonText: 'Yes!',
+		}).then(result=>{
+			if(result.isConfirmed){
+			if(cindex == null){
 			 let o = this.orders;
 			 del(''+o[index].orderId);
 			 o.splice(index,1);
@@ -114,6 +116,8 @@ var vm = new Vue({
 		 }
 		 index = null;
 		 cindex = null;
+			Swal.fire('刪除成功!', '', 'success');
+		}})
 	  },
 	  delOrder(i){
 		 index = i;
@@ -135,15 +139,30 @@ jQuery.ajax({
 	url:'${contextRoot}/order/all',
   async :false, 
 	success:function(res){
-		if(res.length == 0){
+		if(res.orders.length == 0){
 			$('#app').html('<img class="mb-4 rounded mx-auto d-block" src="${contextRoot}/assets/img/noOrder.png" alt="" width="700" height="700">');			
 		}
-		vm.$data.orders = res;
+		vm.$data.orders = res.orders;
+		vm.$data.totalPages = res.totalPages;
 	},
 	error:function(err){
 		console.log(err);
 	}
 });
+function changePage(page){
+	jQuery.ajax({
+		url:'${contextRoot}/order/all/'+page,
+		async:false,
+		type:'GET',
+		success:res=>{
+			vm.$data.orders = res;
+			vm.$data.nowPage = page;
+		},
+		error:err=>{
+			console.log(err);
+		}
+	});
+}
 function del(id){
 	jQuery.ajax({
 		url:delUrl+id,

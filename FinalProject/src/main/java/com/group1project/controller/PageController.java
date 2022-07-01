@@ -44,7 +44,7 @@ public class PageController {
 	} 
 	@GetMapping("/back/car2")
 	public String carPage2(){
-		return "frontProductPage";
+		return "front/frontProductList";
 	} 
 	
 	@GetMapping("back/addProduct")
@@ -85,17 +85,18 @@ public class PageController {
 //		return "findAllProduct2";
 //		
 //	}
-	//原本方法
-//	@GetMapping("back/allProduct")
-//	public ModelAndView viewAllProducts(ModelAndView mav, 
-//			@RequestParam(name="p", defaultValue="1") Integer pageNumber) {
-//		Page<Product> page = pService.findByPage(pageNumber);
-//		
-//		mav.getModel().put("page", page);
-//		mav.setViewName("findAllProduct2");
-//		return mav;
-//	
-//	}
+	//前台商品頁面含page方法
+	@GetMapping("front/allProduct")
+	public ModelAndView viewAllProducts(ModelAndView mav, 
+			@RequestParam(name="p", defaultValue="1") Integer pageNumber) {
+		Page<Product> page = pService.findByPage(pageNumber);
+		
+		mav.getModel().put("page", page);
+		mav.setViewName("front/frontProductList");
+		return mav;
+	
+	}
+	
 	
 	@GetMapping("back/allProduct")
 	@ResponseBody

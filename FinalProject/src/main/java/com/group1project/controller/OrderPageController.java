@@ -9,9 +9,9 @@ public class OrderPageController {
 	public String allOrderPage() {
 		return "allOrder";
 	}
-	@GetMapping("order/addOrder")
+	@GetMapping("checkout")
 	public String addOrder() {
-		return "addOrder";
+		return "checkout";
 	}
 	@GetMapping("back/downloadOrder")
 	public String downloadOrder() {

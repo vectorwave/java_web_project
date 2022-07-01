@@ -43,7 +43,7 @@
 						<td><img src="${contextRoot}/member/photo/${member.account.accountId}" width="100px" height="100px">						
 						<td><a
 							href='<c:out value="${contextRoot}"/>/member/edit?id=${member.account.accountId}'>
-							<button>📝</button></a>
+							<button type="button">📝</button></a>
 						<td><a
 							href='<c:out value="${contextRoot}"/>/member/delete/${member.memberId}'>
 							<button onclick="submitForm(form)">🗑️</button></a> 

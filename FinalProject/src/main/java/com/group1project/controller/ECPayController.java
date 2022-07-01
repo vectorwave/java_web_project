@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.group1project.model.bean.Order;
+import com.group1project.model.bean.OrderDetail;
 import com.group1project.model.service.OrderService;
 
 import ecpay.payment.integration.AllInOne;
@@ -40,7 +41,9 @@ public class ECPayController {
 		sdf.setLenient(false);
 		aioCheck.setMerchantTradeDate(sdf.format(new Date()));
 		//特店交易編號
-		aioCheck.setMerchantTradeNo("jotravelorder"+(1233+order.getOrderId()));
+		SimpleDateFormat sdf2 = new SimpleDateFormat("MMddHHmmss");
+		aioCheck.setMerchantTradeNo(sdf2.format(new Date())+order.getOrderId());
+		System.out.println(sdf2.format(new Date())+order.getOrderId());
 		//交易金額
 		aioCheck.setTotalAmount("123");
 		//交易描述
@@ -69,7 +72,7 @@ public class ECPayController {
 				request.getRemoteAddr().equalsIgnoreCase("175.99.72.24")||
 				request.getRemoteAddr().equalsIgnoreCase("175.99.72.28")||
 				request.getRemoteAddr().equalsIgnoreCase("175.99.72.32"))&&RtnCode == 1) {
-			String orderIdStr = MerchantTradeNo.substring(8);
+			String orderIdStr = MerchantTradeNo.substring(10);
 			int orderId = Integer.parseInt(orderIdStr);
 		}
 	}
