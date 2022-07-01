@@ -121,6 +121,9 @@ public class PageController {
 		return mav;
 	
 	}
+	
+//	####Start 商品評論####
+	
 	@GetMapping("back/ProductComment/add")
 	public String addProductComment(@RequestParam(name="id") Integer productId,Model model) {
 		
@@ -130,6 +133,12 @@ public class PageController {
 		return "addProductComment";
 	}
 	
+	@GetMapping("back/ProductComment/all")
+	public String findAllPrdouctComment(Model model) {
+		
+		return "findAllProductComment";
+		
+	}
 
 	
 	
@@ -145,6 +154,8 @@ public class PageController {
 //	
 //	}
 
+	
+	
 	// ##### Start ##### feedback Page Controller
 	@Autowired
 	private FeedbackService fService;
