@@ -40,7 +40,9 @@ public class PageController {
 
 	@Autowired
 	private ProductCommentService pcService;
-
+	
+	@Autowired
+	private GuideService gService;
 	
 	@GetMapping("/back")
 	public String backIndexPage(){
@@ -190,9 +192,6 @@ public class PageController {
 		return mav;
 	}
 	
-	@Autowired
-	private ArticleService aService;
-	
 	@GetMapping("article/add")
 	public String addArticlePage(Model model) {
 		
@@ -225,8 +224,7 @@ public class PageController {
 	
 
 
-	@Autowired
-	private GuideService gService;
+	
 	
 	//所有商家頁面
 	@GetMapping("/guidemanagement")
