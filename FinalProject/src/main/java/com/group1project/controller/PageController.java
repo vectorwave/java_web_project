@@ -35,7 +35,14 @@ public class PageController {
 	private ProductService pService ;
 	
 	@Autowired
+	private ArticleService aService;
+
+	@Autowired
+
 	private ProductCommentService pcService;
+	
+	@Autowired
+	private GuideService gService;
 	
 	@GetMapping("/back")
 	public String backIndexPage(){
@@ -166,9 +173,7 @@ public class PageController {
 		return mav;
 	}
 	
-	@Autowired
-	private ArticleService aService;
-	
+
 	@GetMapping("article/add")
 	public String addArticlePage(Model model) {
 		
@@ -201,8 +206,6 @@ public class PageController {
 	
 
 
-	@Autowired
-	private GuideService gService;
 	
 	//所有商家頁面
 	@GetMapping("/guidemanagement")
@@ -283,9 +286,8 @@ public class PageController {
 			Page<Article> page = aService.findByPage(pageNumber);
 			
 			mav.getModel().put("page", page);
-			mav.setViewName("front/JoTravel front module/blogIndex");
+			mav.setViewName("front/JoTravelFront/blogIndex");
 			return mav;
-		
 		}
 	@GetMapping("blogPage/")
 	public String blogPage(){
