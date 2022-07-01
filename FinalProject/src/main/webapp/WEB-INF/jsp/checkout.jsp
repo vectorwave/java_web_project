@@ -1,97 +1,81 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-    <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-  <link rel="stylesheet" href="${contextRoot}/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="${contextRoot}/css/all.min.css"/>
-    <link rel="stylesheet" href="${contextRoot}/css/cart.css">
-  
-    <script src="${contextRoot}/js/jquery-3.6.0.min.js"></script>
-    <script src="${contextRoot}/js/bootstrap.bundle.min.js"></script>
-
+<title>JOTRAVEL 訂單頁面</title>
+<link rel="stylesheet" href="${contextRoot}/css/bootstrap.min.css" />
+<link rel="stylesheet" href="${contextRoot}/css/all.min.css" />
+<script src="${contextRoot}/js/jquery-3.6.0.min.js"></script>
+<script src="${contextRoot}/js/bootstrap.bundle.min.js"></script>
+<script src="${contextRoot}/js/js.cookie.min.js"></script>
+<script type="text/javascript" src="${contextRoot}/js/vue.min.js"></script>
 </head>
 <body>
-<div class="container mt-5" >
-        <div class="h1 text-center"><strong>六角血拚 訂單確認</strong></div>
-        <div class="row mt-3">
-            <div class="col-12 col-md">
-                <div class="alert alert-success alert-rounded text-center" role="alert">1.輸入訂單資料</div>
-            </div>
-            <div class="col-12 col-md">
-                <div class="alert alert-light alert-rounded text-center" role="alert">2.金流付款</div>
-            </div>
-            <div class="col-12 col-md">
-                <div class="alert alert-light alert-rounded text-center" role="alert">3.訂單完成</div>
-            </div>
-        </div>
-
-        <div class="row justify-content-center mt-4">
-            <div class="col-md-8">
-                <div class="accordion" id="accordionExample">
-                    <div class="card card-bottom">
-                        <div class="card-header  d-flex justify-content-between" id="headingOne">
-                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
-                                aria-expanded="true" aria-controls="collapseOne">
-                                顯示購物車細節
-                            </button>
-                            <div class="h3 d-inline-block mt-2">
-                                <strong>$ 1059</strong>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div id="collapseOne" class="collapse show " aria-labelledby="headingOne" data-parent="#accordionExample">
-                        <table class="table table-sm">
-                            <thead>
-                                <tr>
-                                    <th width="20"></th>
-                                    <th width="100"></th>
-                                    <th> 商品名稱</th>
-                                    <th>數量</th>
-                                    <th class="text-center" width="120">小計</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="align-middle"><a href="#removeModal" class="text-dark" data-price="999"
-                                            data-title="一級偽裝帽" data-toggle="modal" data-target="#removeModal"><i class="far fa-trash-alt mr-3"></i></a></td>
-                                    <td class="align-middle">
-                                        <div class="card p-1 card-bottom">
-                                            <img src="https://images.unsplash.com/photo-1447005497901-b3e9ee359928?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80"
-                                                alt="..." width="80px;">
-                                        </div>
-                                    </td>
-                                    <td class="align-middle "> 一級偽裝帽</td>
-                                    <td class="align-middle">1件</td>
-                                    <td class="align-middle text-right">$999</td>
-                                </tr>
-                                <tr class="text-right">
-                                    <td colspan="4"><strong>運費</strong></td>
-                                    <td><strong>$ 60</strong></td>
-                                </tr>
-                                <tr class="text-right">
-                                    <td colspan="4"><strong>合計</strong></td>
-                                    <td><strong>$ 1059</strong></td>
-                                </tr>
-                            </tbody>
-
-                        </table>
-
-
-                    </div>
-                </div>
-
-                <div class="card text-center my-5 border-0">
-                    <div class="card-header border-0">
-                        <div class="h3 mt-1"> 訂購人資訊 </div>
-                    </div>
-                    <form class="needs-validation" novalidate>
-                        <div class="form-row text-left mt-3">
+	<div class="container mt-5" id = "container">
+		<div class="h1 text-center">
+			<strong>JOTRAVEL 訂單頁面</strong>
+		</div>
+		<div class="row mt-3">
+			<div class="col-12 col-md">
+				<div id="alert1" class="alert alert-success alert-rounded text-center"
+					role="alert">1.檢查購物車資料</div>
+			</div>
+			<div class="col-12 col-md">
+				<div id="alert2"  class="alert alert-light alert-rounded text-center"
+					role="alert">2.填寫付款資料</div>
+			</div>
+			<div  class="col-12 col-md">
+				<div id="alert3" class="alert alert-light alert-rounded text-center"
+					role="alert">3.完成交易</div>
+			</div>
+		</div>
+		<div class="row justify-content-center mt-4">
+			<div class="col-md-10 tab-content">
+				<div id="cartpage" class="accordion tab-pane fade show active">
+					<div>
+						<table class="table table-sm">
+							<thead>
+								<tr>
+									<th width="20"></th>
+									<th width="100"></th>
+									<th>商品名稱</th>
+									<th>數量</th>
+									<th class="text-center" width="120">小計</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="align-middle"><a href="#removeModal"
+										class="text-dark" data-price="999" data-title="一級偽裝帽"
+										data-toggle="modal" data-target="#removeModal" style="text-decoration:none">🗑️</a></td>
+									<td class="align-middle">
+										<div class="card p-1 card-bottom">
+											<img
+												src="https://images.unsplash.com/photo-1447005497901-b3e9ee359928?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80"
+												alt="..." width="80px;">
+										</div>
+									</td>
+									<td class="align-middle ">一級偽裝帽</td>
+									<td class="align-middle">1件</td>
+									<td class="align-middle text-right">$999</td>
+								</tr>
+								<tr class="text-right">
+									<td colspan="4"><strong>合計</strong></td>
+									<td><strong>$ 1059</strong></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="mt-3 d-flex justify-content-end">
+							<button type="button" class="btn btn-primary" data-toggle="tab" data-target="#paypage" onclick="changeColor()">前往付款頁面</button>
+						</div>
+				</div>
+				<div id="paypage" class=" text-center border-0 tab-pane">
+					 <div class="form-row text-left mt-3">
                             <div class="form-group col-md-6">
                                 <label for="name">姓名</label>
                                 <input type="text" class="form-control " id="name" placeholder="姓名" required>
@@ -107,17 +91,13 @@
                             <div class="form-group col-md-4">
                                 <label for="section">國家</label>
                                 <select name="" id="section" class="form-control">
-                                    <option value="">台灣</option>
+                                    <option value="台灣">台灣</option>
                                     <option value="">...</option>
                                 </select>
                             </div>
                             <div class="form-group col-md-4">
-                                <label for="zone">城市</label>
-                                <select name="" id="zone" class="form-control">
-                                    <option value="">台北市</option>
-                                    <option value="">台中市</option>
-                                    <option value="">高雄市</option>
-                                </select>
+                                <label for="postal-code">身分證字號</label>
+                                <input type="text" class="form-control" id="id-number" placeholder="" required>
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="postal-code">郵遞區號</label>
@@ -126,39 +106,79 @@
                         </div>
                         <div class="form-row">
                             <label for="address">地址</label>
-                            <input type="text" class="form-control" id="mail" placeholder="永遠開心一路123號" required>
+                            <input type="text" class="form-control" id="address" required>
                         </div>
-                        <div class="mt-3 d-flex justify-content-end">
-                            <button class="btn btn-secondary mr-2">繼續選購</button>
-                            <button type="submit" class="btn btn-primary">確認付款</button>
+                         <div class="form-row">
+                            <label for="cashFlow">付款方式</label>
+                            <select name="" id="cashFlow" class="form-control">
+                                    <option value="LINE Pay">LINE Pay</option>
+                                    <option value="信用卡">信用卡/簽帳金融卡</option>
+                                    <option value="國民旅遊卡">國民旅遊卡</option>
+                                    <option value="街口支付">街口支付</option>
+                                </select>
                         </div>
-                    </form>
-
-                    <script>
-                        // Example starter JavaScript for disabling form submissions if there are invalid fields
-                        (function () {
-                            'use strict';
-                            window.addEventListener('load', function () {
-                                // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                                var forms = document.getElementsByClassName('needs-validation');
-                                // Loop over them and prevent submission
-                                var validation = Array.prototype.filter.call(forms, function (form) {
-                                    form.addEventListener('submit', function (event) {
-                                        if (form.checkValidity() === false) {
-                                            event.preventDefault();
-                                            event.stopPropagation();
-                                        }
-                                        form.classList.add('was-validated');
-                                    }, false);
-                                });
-                            }, false);
-                        })();
-                    </script>
-
-                </div>
-            </div>
-        </div>
-
-    </div>
+						<div class="mt-3 d-flex justify-content-end">
+							<button type="button" class="btn btn-primary mr-2" onclick="autoInput()">一鍵輸入</button>
+							<button type="button" class="btn btn-primary" onclick="sent()">確認付款</button>
+						</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+	function autoInput(){
+		$('#section').val('台灣')
+		$('#id-number').val('Y10000001');
+		$('#name').val('張君雅');
+		$('#cashFlow').val('信用卡');
+		$('#mail').val('iservice@ispan.com.tw');
+		$('#postal-code').val(106);
+		$('#address').val('台北市大安區復興南路一段390號2樓');
+	}
+	function changeColor(){
+		$('#alert1').removeClass('alert-success');
+		$('#alert1').addClass('alert-light');
+		$('#alert2').removeClass('alert-light');
+		$('#alert2').addClass('alert-success');
+	}
+	window.onbeforeunload = e => {
+		Cookies.set('cart',testcart,{sameSite:'none'});
+	};
+	var vm = new Vue({
+		  el:'#app',
+		  data:{orders:null},
+		  methods:{
+			  getTotalPrice(index){
+				  var total = 0;
+				  this.orders[index].orderDetails.forEach(function(detail){
+					  total += detail.product.productPrice*detail.amount;
+				  });
+				  return total;
+			  },
+		  },
+		});
+	var testcart = '';
+	if(Cookies.get('cart')==undefined){
+		Cookies.set('cart',testcart,{sameSite:'none'});
+	}else{
+		console.log("你有購物車");
+	};
+	let testJson = {"account":1,"cashFlow":"credic","status":"good","orderDetails":[{"product":4,"amount":10}]};
+	function sent(){
+		jQuery.ajax({
+			url:'${contextRoot}/ECPay/go',
+			method:'POST',
+		  	contentType:'application/json; charset=utf-8',
+		  	data:JSON.stringify(testJson),
+			success:function(res){
+				$('#container').html(res);
+			},
+			error:function(err){
+				console.log(err);
+			}
+		});
+	}
+	
+	</script>
 </body>
 </html>

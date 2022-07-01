@@ -51,6 +51,9 @@ public class Article implements Serializable{
 	@Column(name="article_text", nullable = false)
 	private String articleText;
 	
+	@Column(name="article_jogroup")
+	private Integer articleJogroup;
+	
 	@Column(name="pic_id", nullable = false)
 	private int picId;
 	

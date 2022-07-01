@@ -65,10 +65,17 @@ public class ArticleController {
 	@GetMapping("update/{id}")
 	public String updateProductById2(Model model,@PathVariable("id") int articleId) {
 		
+
+
 		
         Article article=new Article();
 		article = aService.getArticleById(articleId);
-		
+//		Account accId = new Account();
+//
+//		accId.setAccountId(accountId);
+//
+//		
+//		article.setAccount(accId);
 		
 		model.addAttribute("article", article);
 	
@@ -77,12 +84,15 @@ public class ArticleController {
 	}
 	
 
-	private Integer accountId;
+//	private Integer accountId;
 	@PostMapping("editArticle")
     public String editArticle(@ModelAttribute("article") Article arc, Model model,@RequestParam("file") MultipartFile file, @RequestParam("accountId") Integer accountId) {
-		this.accountId=accountId;
-		Account acc=new Account();
-		acc.setAccountId(accountId);
+		Account accId = new Account();
+
+		accId.setAccountId(accountId);
+
+		
+		arc.setAccount(accId);
 
 		try {
 			arc.setArticlePic(file.getBytes());

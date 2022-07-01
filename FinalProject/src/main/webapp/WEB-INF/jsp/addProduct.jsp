@@ -14,7 +14,7 @@
 
 <h1> 新增產品 </h1>
 
-<form:form method="post" enctype="multipart/form-data" action="${contextRoot}/back/product" modelAttribute="newPd" >
+<form:form  class="form-floating" method="post" enctype="multipart/form-data" action="${contextRoot}/back/product" modelAttribute="newPd" >
 
   <form:input path="productId" type="hidden" />
   
@@ -22,8 +22,8 @@
   商家編號：<input name="accountId" class="form-control" type="text" value="${loginuser.accountId}" readonly="readonly"><br/>
   產品名稱：<form:input type="text" path="productName" class="form-control" required="required" placeholder="商品名稱" /><br/>
   產品價格：<form:input type="text" path="productPrice" class="form-control" value="1000" required="required"/><br/>
-  上架時間：<form:input type="date" path="startDate" class="form-control" required="required" /><br/>
-  下架時間：<form:input type="date" path="endDate" class="form-control"  required="required"/><br/>
+  上架時間：<form:input type="date" path="startDate" class="form-control" required="required" readonly="readonly" /><br/>
+  下架時間：<form:input type="date" path="endDate" class="form-control"  required="required" readonly="readonly"/><br/>
   產品圖片：<img id="output" width="300" height="300"/><br/><br/>
   
   <input type="file" class="form-control" name="file" accept="image/*" onchange="loadFile(event)"/><br/>
@@ -35,6 +35,13 @@
   <form:option value="西部">西部</form:option>
   <form:option value="外島">外島</form:option>
 </form:select>
+  <br/>
+  
+  商品簡述(50字內):<form:input type="text" path="productSimpleDescription" class="form-control" maxlength="50" required="required"/><br/>
+
+
+  商品詳述(300字內):<form:input type="textarea" path="productDescription" class="form-control" maxlength="300" required="required"/><br/>
+  
   
   上架狀態:<form:select path="status" class="form-select" required="required">
   <form:option value="上架" >上架</form:option>

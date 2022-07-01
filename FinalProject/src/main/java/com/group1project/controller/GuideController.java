@@ -108,6 +108,7 @@ public class GuideController {
 			
 			if(!(profilePic.getSize() == 0)) {
 			guide.setGuidePhoto(profilePic.getBytes());}	
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

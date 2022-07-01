@@ -55,7 +55,7 @@ public class Account implements Serializable{
 	private String accountName;
 	
 	
-	@Column(name="password", nullable = false, columnDefinition = "varchar(20)")
+	@Column(name="password", nullable = false, columnDefinition = "varchar(max)")
 	private String password;
 	
 	@Column(name="title", nullable = false, columnDefinition = "nvarchar(20)")

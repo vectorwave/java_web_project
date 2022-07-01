@@ -41,7 +41,7 @@ public class ProductCommentController {
 	private AccountService accService;
 	
 	//查詢所有商品評論
-	@GetMapping
+	@GetMapping()
 	@ResponseBody //回傳json格式的資料
 	public List<ProductComment> getAllCommnets(Model m) {
 		List<ProductComment> list = pService.getAllProductComment(); 
@@ -50,6 +50,7 @@ public class ProductCommentController {
 		
 		return list;
 	}
+	
 	
 	
 	//查詢單筆商品
@@ -70,9 +71,6 @@ public class ProductCommentController {
 			Model model) {
 		
 		
-//		Object object =service.findById(id);
-//		Account aaa = productComment.setAccount(accService.getAccountById(accountId));
-//		Product ppp = productComment.setProduct(pdService.getProductById(productId));
 		Account member = new Account();
 		Product pd = new Product();
 		member.setAccountId(accountId);
@@ -94,18 +92,18 @@ public class ProductCommentController {
 	}
 	
 	//以非rest風格的方式刪除商品
-	@RequestMapping(value="delete/{id}" , method = RequestMethod.GET)
+	@GetMapping("delete/{id}")
 	public String deleteProductById(@PathVariable("id") int productCommnetId) {
 		pService.deleteProductComment(productCommnetId);
-		return "redirect:/back/allProduct";
+		return "redirect:/back/ProductComment/all";
 	}
 	
-	
+	//轉跳頁面
 	@GetMapping("editProductComment")
-	public String editProducteComment(@RequestParam("id") int productCommnetId, Model model) {
+	public String editProducteCommentPage(@RequestParam("id") int productCommnetId, Model model) {
 		ProductComment newPdComment = pService.getProductCommentById(productCommnetId);
 
-		model.addAttribute("newPdComment", newPdComment);
+		model.addAttribute("newPdC", newPdComment);
 		
 		return "editProductComment";//回到頁面
 	}
@@ -113,18 +111,33 @@ public class ProductCommentController {
 
 	
 	@PostMapping("editProductComment")
-    public String postEditMessage(@ModelAttribute(name="newPd") ProductComment newPdComment ,
+    public String editProducteComment(@ModelAttribute(name="newPdC") ProductComment newPdComment ,
+    		@RequestParam("accountId") Integer aId,
+		    @RequestParam("productId") Integer pId,    		
     		Model model) {
 		
 		Date nowDate = new Date();
 		newPdComment.setUpdatedTime(nowDate);
+		Account member = new Account();
+		Product pd = new Product();
+		member.setAccountId(aId);
+		pd.setProductId(pId);
 		
+		newPdComment.setAccount(member);
+		newPdComment.setProduct(pd);
 		
 		pService.saveProductComment(newPdComment);
 		
-		return "redirect:/back/allProduct";
+		return "redirect:/back/ProductComment/all";
 		
-	}
+	}}
 	
+//	@GetMapping("searchProductComment")
+//	@ResponseBody
+//	public List<ProductComment> searchProductComment(@RequestParam("key") String key,Model m) {
+//	
+		 
+//		 return pService.searchProductByNameWithPage(key);
 	
-}
+//	}
+	

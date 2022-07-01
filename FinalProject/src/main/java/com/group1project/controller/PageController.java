@@ -35,10 +35,19 @@ public class PageController {
 	@Autowired
 	private ArticleService aService;
 
+
 	
 	@GetMapping("/back")
 	public String backIndexPage(){
 		return "backIndex";
+	}
+	@GetMapping("/back/car")
+	public String carPage(){
+		return "cart";
+	} 
+	@GetMapping("/back/car2")
+	public String carPage2(){
+		return "front/frontProductList";
 	} 
 	
 	@GetMapping("back/addProduct")
@@ -79,17 +88,18 @@ public class PageController {
 //		return "findAllProduct2";
 //		
 //	}
-	//原本方法
-//	@GetMapping("back/allProduct")
-//	public ModelAndView viewAllProducts(ModelAndView mav, 
-//			@RequestParam(name="p", defaultValue="1") Integer pageNumber) {
-//		Page<Product> page = pService.findByPage(pageNumber);
-//		
-//		mav.getModel().put("page", page);
-//		mav.setViewName("findAllProduct2");
-//		return mav;
-//	
-//	}
+	//前台商品頁面含page方法
+	@GetMapping("front/allProduct")
+	public ModelAndView viewAllProducts(ModelAndView mav, 
+			@RequestParam(name="p", defaultValue="1") Integer pageNumber) {
+		Page<Product> page = pService.findByPage(pageNumber);
+		
+		mav.getModel().put("page", page);
+		mav.setViewName("front/frontProductList");
+		return mav;
+	
+	}
+	
 	
 	@GetMapping("back/allProduct")
 	@ResponseBody
@@ -114,6 +124,9 @@ public class PageController {
 		return mav;
 	
 	}
+	
+//	####Start 商品評論####
+	
 	@GetMapping("back/ProductComment/add")
 	public String addProductComment(@RequestParam(name="id") Integer productId,Model model) {
 		
@@ -123,6 +136,12 @@ public class PageController {
 		return "addProductComment";
 	}
 	
+	@GetMapping("back/ProductComment/all")
+	public String findAllPrdouctComment(Model model) {
+		
+		return "findAllProductComment";
+		
+	}
 
 	
 	
@@ -138,6 +157,8 @@ public class PageController {
 //	
 //	}
 
+	
+	
 	// ##### Start ##### feedback Page Controller
 	@Autowired
 	private FeedbackService fService;
@@ -154,6 +175,8 @@ public class PageController {
 		return mav;
 	}
 	
+	@Autowired
+	private ArticleService aService;
 	
 	@GetMapping("article/add")
 	public String addArticlePage(Model model) {
@@ -239,10 +262,15 @@ public class PageController {
 	
 	@GetMapping("article/all")
 	public ModelAndView viewAllArticles(ModelAndView mav, 
-			@RequestParam(name="p", defaultValue = "1") Integer pageNumber) {
-		Page<Article> page = aService.findByPage(pageNumber);
+			@RequestParam(name="p", defaultValue = "1") Integer pageNumber,@RequestParam(value="key",defaultValue="" ,required = false) String key,Model m) {
+		//Page<Article> page = aService.findByPage(pageNumber);
 		
+		Pageable pgb = PageRequest.of(pageNumber - 1, 5 ,Sort.Direction.DESC,"articleId");
+
+		Page<Article> page = aService.searchArticleByTitleWithPage(key, pgb);
+
 		mav.getModel().put("page", page);
+		mav.getModel().put("key", key);
 		mav.setViewName("viewArticles");
 		return mav;
 	}
@@ -252,6 +280,25 @@ public class PageController {
 	@GetMapping("front/")
 	public String frontPage(){
 		return "frontend";
+	}
+//	@GetMapping("blogIndex/")
+//	public String blogIndexPage(){
+//		return "blogIndex";
+//	} 
+	//前台商品頁面含page方法
+		@GetMapping("front/blogIndex")
+		public ModelAndView viewAllArticlePage(ModelAndView mav, 
+				@RequestParam(name="p", defaultValue="1") Integer pageNumber) {
+			Page<Article> page = aService.findByPage(pageNumber);
+			
+			mav.getModel().put("page", page);
+			mav.setViewName("front/JoTravel front module/blogIndex");
+			return mav;
+		
+		}
+	@GetMapping("blogPage/")
+	public String blogPage(){
+		return "blogPage";
 	} 
 }
 

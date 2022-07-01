@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.group1project.model.bean.Account;
 import com.group1project.model.bean.Member;
@@ -26,11 +29,24 @@ public class MemberPageController {
 	}
 	
 	
+//	@GetMapping("/member/findall")
+//	public String FindAllMember(Model model){
+//		List<Member> mems = mService.getAllMember();
+//		model.addAttribute("member", mems);
+//		
+//		return "allMember";
+//	}
 	@GetMapping("/member/findall")
-	public String FindAllMember(Model model){
-		List<Member> mems = mService.getAllMember();
-		model.addAttribute("member", mems);
-		
-		return "allMember";
+	@ResponseBody
+	public ModelAndView searchMemberByName(ModelAndView mav,
+			@RequestParam(value = "key", defaultValue = "", required = false) String key, Model m) {
+
+		List<Member> member = mService.findIdMembertitle(key);
+
+		mav.getModel().put("key", key);
+		mav.getModel().put("member", member);
+		mav.setViewName("allMember");
+		return mav;
 	}
+
 }
