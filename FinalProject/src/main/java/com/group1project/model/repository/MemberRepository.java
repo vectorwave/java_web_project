@@ -9,10 +9,11 @@ import org.springframework.data.repository.query.Param;
 import com.group1project.model.bean.Account;
 import com.group1project.model.bean.Member;
 
+
 public interface MemberRepository extends JpaRepository<Member, Integer> {
 	
 	public List<Member> findAllByMemberNameLike(String key);
-	
+	// 
 	@Query(value="select b.* from login_info a,member_info b "
 			+ "where a.account_id = b.account_id "
 			+ "and b.member_name LIKE CONCAT('%',:key,'%') and a.title='會員'", 

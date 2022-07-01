@@ -9,7 +9,7 @@
 
 <style>
 .div_td_pad {
-    max-width: 500px;
+    max-width: 600px;
     overflow-wrap: break-word;
 }
 </style>
