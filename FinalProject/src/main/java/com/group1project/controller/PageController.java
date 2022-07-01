@@ -278,9 +278,8 @@ public class PageController {
 			Page<Article> page = aService.findByPage(pageNumber);
 			
 			mav.getModel().put("page", page);
-			mav.setViewName("front/JoTravel front module/blogIndex");
+			mav.setViewName("front/JoTravelFront/blogIndex");
 			return mav;
-		
 		}
 	@GetMapping("blogPage/")
 	public String blogPage(){
