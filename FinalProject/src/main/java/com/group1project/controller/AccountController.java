@@ -89,7 +89,7 @@ public class AccountController {
 		model.addAttribute("newAccount", newAccount);
 		return "editAccount";// 回到頁面
 	}
-	
+	//修改
 	@PostMapping("/login/edit")
     public String postEditAccount(@ModelAttribute(name="newAccount") Account newAccount) {
 		String password = getStringHash(newAccount.getPassword(), "SHA-512");
@@ -100,6 +100,7 @@ public class AccountController {
 		
 	}
 	
+	//加密
 	private static String getStringHash(String message, String algorithm) {
 		final StringBuffer buffer = new StringBuffer();
 		try {
@@ -124,6 +125,7 @@ public class AccountController {
 	@RequestMapping(path = "/logingo", method=RequestMethod.POST)
 	public String loginCheck(@RequestParam("inputAccount") String inputAccount, @RequestParam("inputPassword") String inputPassword, Model model) {
 		
+		//密碼加密
 		String password = getStringHash(inputPassword, "SHA-512");
 		Account queryMember = aService.findByAccPwd(inputAccount, password );
 

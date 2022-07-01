@@ -21,7 +21,7 @@
   生日： <form:input type="date" path="birthDate" class="form-control" id="birthdate"/><br/><span id="mbirthDate"></span>
   email：<form:input type="text" path="email" class="form-control" id="email"/><br/><span id="memail"></span>
 <%--   性別：<form:input type="redio" path="gender" class="form-control" placeholder="0=女，1=男"/><br/> --%>
- <label class="GIFLabel" id="gender">性別： </label>
+ <label class="GIFLabel" >性別： </label>
 
         <div class="btn-group" role="group" aria-label="Basic radio toggle button group" style="float:right; margin-right: 130px;">
             <form:radiobutton path="gender" value="男性" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off"/>
@@ -90,15 +90,15 @@
 					})
 				return;
 			}		
-			if( $.trim(birthDate)==''){
-				$('#mbirthDate').text('生日不可為空');
-				Swal.fire({
-					  icon: 'error',
-					  title: 'Oops...',
-					  text: 'Something went wrong!'					  
-					})
-				return;
-			}
+// 			if( $.trim(birthDate)==''){
+// 				$('#mbirthDate').text('生日不可為空');
+// 				Swal.fire({
+// 					  icon: 'error',
+// 					  title: 'Oops...',
+// 					  text: 'Something went wrong!'					  
+// 					})
+// 				return;
+// 			}
 			if( $.trim(email)==''){
 				$('#memail').text('email不可為空');
 				Swal.fire({
@@ -125,9 +125,9 @@
   $('#one').click(function(){
 		$('#memberName').val("杜同學");
 		$('#address').val("台北市復興南路一段390巷");
-		$('#birthdate').val("1998/03/25");
+		$('#birthdate').val("1998-03-25");
 		$('#email').val("karen1111@yahoo.com.tw");
-		$('#gender').val("女性");
+		$('#btnradio1').prop("checked",true);
 		$('#phone').val("0912123123");
 		
 	})
