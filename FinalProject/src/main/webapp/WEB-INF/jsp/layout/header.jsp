@@ -55,6 +55,7 @@
 
 		<!--   <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search"> -->
 
+
 		<a class="nav-link" href="http://localhost:8081/jotravel/loginout">
 			<button type="button" class="btn btn-secondary"
 				style="position: absolute; right: 90px; top: 11px;">登出</button>
