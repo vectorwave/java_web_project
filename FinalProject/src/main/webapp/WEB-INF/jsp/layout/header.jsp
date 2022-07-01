@@ -129,9 +129,11 @@
 					<div class="dropdown-content">
 						<a class="dropdown-item" href="${contextRoot}/back/allProduct">所有商品</a>
 						<a class="dropdown-item" href="${contextRoot}/back/addProduct">新增商品</a>
+						<a class="dropdown-item" href="${contextRoot}/back/ProductComment/all">商品評論管理</a>
 						<a href="#">商品分類</a>
 					</div>
 				</div>
+
 				<div class="dropdown">
 					<button class="dropbtn">
 						<span class="material-icons">rate_review</span>論壇管理
