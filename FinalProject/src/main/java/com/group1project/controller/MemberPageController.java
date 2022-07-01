@@ -41,7 +41,7 @@ public class MemberPageController {
 	public ModelAndView searchMemberByName(ModelAndView mav,
 			@RequestParam(value = "key", defaultValue = "", required = false) String key, Model m) {
 
-		List<Member> member = mService.searchMemberByName(key);
+		List<Member> member = mService.findIdMembertitle(key);
 
 		mav.getModel().put("key", key);
 		mav.getModel().put("member", member);

@@ -10,5 +10,6 @@ public interface ProductCommentService {
 	ProductComment getProductCommentById(Integer productCommentId);
 	List<ProductComment> getAllProductComment();
 	void deleteProductComment(Integer productCommentId);
-	
+	List<ProductComment> getAllProductCommentByProductId(Integer productId);
+
 }

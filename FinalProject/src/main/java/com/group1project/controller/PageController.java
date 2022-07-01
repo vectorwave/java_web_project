@@ -1,5 +1,7 @@
 package com.group1project.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -18,6 +20,7 @@ import com.group1project.model.bean.Guide;
 import com.group1project.model.bean.Product;
 import com.group1project.model.bean.ProductComment;
 import com.group1project.model.service.GuideService;
+import com.group1project.model.service.ProductCommentService;
 import com.group1project.model.bean.Article;
 import com.group1project.model.service.ArticleService;
 import com.group1project.model.bean.Account;
@@ -32,7 +35,15 @@ public class PageController {
 	@Autowired
 	private ProductService pService ;
 	
+	@Autowired
+	private ArticleService aService;
+
+	@Autowired
+
+	private ProductCommentService pcService;
 	
+	@Autowired
+	private GuideService gService;
 	
 	@GetMapping("/back")
 	public String backIndexPage(){
@@ -111,16 +122,12 @@ public class PageController {
 		mav.setViewName("findAllProduct2");
 		
 		
-		
-		//test
-		
-//		m.addAttribute("account", accountBean.getId);
-//		System.out.println("123");;
-//		
-//		
 		return mav;
 	
 	}
+	
+//	####Start 商品評論####
+	
 	@GetMapping("back/ProductComment/add")
 	public String addProductComment(@RequestParam(name="id") Integer productId,Model model) {
 		
@@ -130,7 +137,30 @@ public class PageController {
 		return "addProductComment";
 	}
 	
+	@GetMapping("back/ProductComment/all")
+	public String findAllPrdouctComment(Model model) {
+		
+		return "findAllProductComment";
+		
+	}
+	
+	@GetMapping("back/ProductComment/search")
+	public String findAllPrdouctComment(@RequestParam(value="id", defaultValue="" ,required = false) Integer prdouctId ,Model model) {
+		
+		
+		List<ProductComment> searchPdC =  pcService.getAllProductCommentByProductId(prdouctId);
+		
+		for(ProductComment one:searchPdC) {
+		System.out.println(one.getProuctCommentId());
+		System.out.println(one.getAccount());
+		System.out.println(one.getProductComment());
 
+		}
+		model.addAttribute("searchPdC", searchPdC);
+		
+		return "searchProductComment";
+		
+	}
 	
 	
 //	@GetMapping("searchProduct")
@@ -145,6 +175,8 @@ public class PageController {
 //	
 //	}
 
+	
+	
 	// ##### Start ##### feedback Page Controller
 	@Autowired
 	private FeedbackService fService;
@@ -161,9 +193,7 @@ public class PageController {
 		return mav;
 	}
 	
-	@Autowired
-	private ArticleService aService;
-	
+
 	@GetMapping("article/add")
 	public String addArticlePage(Model model) {
 		
@@ -196,8 +226,6 @@ public class PageController {
 	
 
 
-	@Autowired
-	private GuideService gService;
 	
 	//所有商家頁面
 	@GetMapping("/guidemanagement")
@@ -266,6 +294,25 @@ public class PageController {
 	@GetMapping("front/")
 	public String frontPage(){
 		return "frontend";
+	}
+//	@GetMapping("blogIndex/")
+//	public String blogIndexPage(){
+//		return "blogIndex";
+//	} 
+	//前台商品頁面含page方法
+		@GetMapping("front/blogIndex")
+		public ModelAndView viewAllArticlePage(ModelAndView mav, 
+				@RequestParam(name="p", defaultValue="1") Integer pageNumber) {
+			Page<Article> page = aService.findByPage(pageNumber);
+			
+			mav.getModel().put("page", page);
+			mav.setViewName("front/JoTravel front module/blogIndex");
+			return mav;
+		
+		}
+	@GetMapping("blogPage/")
+	public String blogPage(){
+		return "blogPage";
 	} 
 }
 

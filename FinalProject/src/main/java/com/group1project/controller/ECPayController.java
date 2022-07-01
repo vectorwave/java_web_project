@@ -2,6 +2,7 @@ package com.group1project.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -18,9 +19,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.group1project.model.bean.Order;
 import com.group1project.model.bean.OrderDetail;
+import com.group1project.model.repository.OrderRepository;
 import com.group1project.model.service.OrderService;
 
 import ecpay.payment.integration.AllInOne;
+import ecpay.payment.integration.domain.AioCheckOutALL;
 import ecpay.payment.integration.domain.AioCheckOutDevide;
 
 @Controller
@@ -28,14 +31,15 @@ import ecpay.payment.integration.domain.AioCheckOutDevide;
 public class ECPayController {
 	
 	@Autowired OrderService orderService;
+	@Autowired OrderRepository orderRepository;
 	@PostMapping("go")
 	public void goECPay(HttpServletResponse response,@RequestBody Order order) {
 		orderService.save(order);
 		//設定金流
 		AllInOne aio = new AllInOne("");
-		AioCheckOutDevide aioCheck = new AioCheckOutDevide();
+		AioCheckOutALL aioCheck = new AioCheckOutALL();
 		//特店編號
-		aioCheck.setMerchantID("200214");
+		aioCheck.setMerchantID("2000214");
 		//特店交易時間
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		sdf.setLenient(false);
@@ -43,17 +47,18 @@ public class ECPayController {
 		//特店交易編號
 		SimpleDateFormat sdf2 = new SimpleDateFormat("MMddHHmmss");
 		aioCheck.setMerchantTradeNo(sdf2.format(new Date())+order.getOrderId());
-		System.out.println(sdf2.format(new Date())+order.getOrderId());
 		//交易金額
-		aioCheck.setTotalAmount("123");
+		aioCheck.setTotalAmount(orderService.countTotalAmount(order)+"");
 		//交易描述
 		aioCheck.setTradeDesc("ddd");
 		//商品名稱
-		aioCheck.setItemName("cool*2#supercool*3");
+		aioCheck.setItemName("gg");
 		//付款完成通知回傳網址
 		aioCheck.setReturnURL("localhost:8081/jotravel/ECPay/returnURL");
 		//Clinet端回傳付款結果網址
 		aioCheck.setClientBackURL("http://localhost:8081/jotravel/ECPay/show");
+		
+		//印出付款頁面
 		try {
 			PrintWriter out =response.getWriter();
 			response.setContentType("text/html");

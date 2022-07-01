@@ -10,17 +10,13 @@
 <title>JoTravel 管理平台</title>
 
 
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
-	rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
 
 
 <!-- 引入JS -->
 
-<script type="text/javascript"
-	src="${contextRoot}/js/jquery-3.6.0.min.js"></script>
-<script type="text/javascript"
-	src="${contextRoot}/jQueryconfirm/jquery-confirm.js"></script>
+<script type="text/javascript" src="${contextRoot}/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="${contextRoot}/jQueryconfirm/jquery-confirm.js"></script>
 
 <!-- 引入sweetalert2 -->
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -30,14 +26,9 @@
 
 
 <!-- 引入CSS -->
-<link rel="stylesheet"
-	href="${contextRoot}/jQueryconfirm/jquery-confirm.css">
-<script type="text/javascript"
-	src="${contextRoot}/js/bootstrap.bundle.min.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
-	integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
-	crossorigin="anonymous"></script>
+<link rel="stylesheet" href="${contextRoot}/jQueryconfirm/jquery-confirm.css">
+<script type="text/javascript" src="${contextRoot}/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 <link href="${contextRoot}/css/dashboard.css" rel="stylesheet">
 <link href="${contextRoot}/css/leftMenuBar.css" rel="stylesheet">
 <link rel="stylesheet" href="${contextRoot}/css/ManagementPage.css">
@@ -47,7 +38,7 @@
 </head>
 
 
-<body style="background-color: rgb(243, 243, 245)">
+<body style="background-color:rgb(243, 243, 245) ">
 
 
 	<!-- 頂部橫條列 -->
@@ -63,13 +54,17 @@
 		</button>
 
 		<!--   <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search"> -->
+
+
 		<a class="nav-link" href="http://localhost:8081/jotravel/loginout">
 			<button type="button" class="btn btn-secondary"
-				style="margin-right: 20px;">登出</button>
+				style="position: absolute; right: 90px; top: 11px;">登出</button>
 		</a> <a class="nav-link" href="http://localhost:8081/jotravel/login">
 			<button type="button" class="btn btn-secondary"
-				style="margin-right: 20px;">登入</button>
+				style="margin-right: 20px; position: relative;">登入</button>
 		</a>
+
+		
 	</nav>
 
 
@@ -95,32 +90,22 @@
 					<div class="dropdown-content">
 						<%--            <a class="dropdown-item" href="${contextRoot}/member/add">新增會員資料</a> --%>
 						<a class="dropdown-item" href="${contextRoot}/member/findall">所有會員資訊</a>
-						<%-- 						<a class="dropdown-item" href="${contextRoot}/login/insert">新增帳號</a> --%>
+<%-- 						<a class="dropdown-item" href="${contextRoot}/login/insert">新增帳號</a> --%>
 						<a class="dropdown-item" href="${contextRoot}/login/findall">所有帳號</a>
-						<a class="dropdown-item"
-							href="${contextRoot}/login.password.update">修改密碼</a> <a
-							class="dropdown-item" href="#">會員分級</a>
+						<a class="dropdown-item" href="${contextRoot}/login.password.update">修改密碼</a>
+
+						<a class="dropdown-item" href="#">會員分級</a>
 					</div>
 				</div>
-				<div class="dropdown">
-					<button class="dropbtn">
-						<span class="material-icons">content_paste</span>訂單管理
-					</button>
-					<div class="dropdown-content">
-						<a class="dropdown-item" href="${contextRoot}/back/allOrder">所有訂單</a>
-						<a class="dropdown-item" href="${contextRoot}/back/downloadOrder">匯出訂單</a>
-					</div>
-				</div>
-				<div class="dropdown">
-					<button class="dropbtn">
-						<span class="material-icons">hiking</span>商家管理
-					</button>
-					<div class="dropdown-content">
-						<a href="${contextRoot}/guidemanagement">所有商家</a> <a
-							href="${contextRoot}/guidemanagement/addguide">新增商家</a> <a
-							href="#">權限管理</a>
-					</div>
-				</div>
+
+      <div class="dropdown">
+        <button class="dropbtn"><span class="material-icons">hiking</span>商家管理</button>
+        <div class="dropdown-content">
+          <a href="${contextRoot}/guidemanagement">所有商家</a>
+          <a href="${contextRoot}/guidemanagement/addguide">新增商家</a>
+          <a href="#">權限管理</a>
+        </div>
+      </div>
 
 				<div class="dropdown">
 					<button class="dropbtn">
@@ -132,6 +117,17 @@
 						<a href="#">商品分類</a>
 					</div>
 				</div>
+
+				<div class="dropdown">
+					<button class="dropbtn">
+						<span class="material-icons">hiking</span>商家管理
+					</button>
+					<div class="dropdown-content">
+						<a href="/jotravel/guidemanagement">所有商家</a> <a href="#">商家權限</a>
+						<a href="/jotravel/guidemanagement/addguide">新增商家</a>
+					</div>
+				</div>
+
 				<div class="dropdown">
 					<button class="dropbtn">
 						<span class="material-icons">rate_review</span>論壇管理
@@ -163,3 +159,4 @@
 			</nav>
 
 			<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+

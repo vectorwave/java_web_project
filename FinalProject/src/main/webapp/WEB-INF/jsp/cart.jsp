@@ -18,12 +18,49 @@
     <script src="${contextRoot}/js/jquery-3.6.0.min.js"></script>
     <script src="${contextRoot}/js/bootstrap.bundle.min.js"></script>
 
-    <title>CH11.Cart-Page</title>
+    <title>揪遊四國 JoTravel</title>
 </head>
 
 <body>
-    <nav class="navbar navbar-light bg-light ">
+    <nav class="navbar navbar-light bg-light" id="navbartop" style="background-color: orange;">
         <a href="#" class="navbar-brand mb-0 h1" style="font-weight: bold;"><i class="fas fa-heart text-info mr-1"></i>六角血拚賣賣</a>
+
+        <div class="dropdown ml-auto">
+            <button class="btn btn-cart btn-sm" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-shopping-cart text-dark fa-2x"></i>
+                <span class="badge badge-pill badge-danger">9</span>
+            </button>
+            <div class="dropdown-menu dropdown-menu-right" style="min-width: 300px" aria-labelledby="dropdownMenuButton">
+                <div class="p-3">
+                    <table class="table table-sm ">
+                        <h6>已選擇商品</h6>
+                        <tbody>
+                            <tr>
+                                <td class="align-middle text-center">
+                                    <a href="#removeModal" data-price="1999" data-title="不求人" data-toggle="modal"
+                                        data-target="#removeModal"><i class="far fa-trash-alt "></i></a>
+                                </td>
+                                <td class="align-middle">不求人</td>
+                                <td class="align-middle">1件</td>
+                                <td class="align-middle text-right">$1999</td>
+                            </tr>
+                            <tr>
+                                <td class="align-middle text-center">
+                                    <a href="#removeModal" data-price="999" data-title="一級偽裝帽" data-toggle="modal"
+                                        data-target="#removeModal"><i class="far fa-trash-alt "></i></a>
+                                </td>
+                                <td class="align-middle">一級偽裝帽</td>
+                                <td class="align-middle">1件</td>
+                                <td class="align-middle text-right">$999</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <a href="#" class="btn btn-block btn-primary btn-sm text-white">確認結帳</a>
+                </div>
+            </div>
+        </div>
+
         <div class="dropdown ml-auto">
             <button class="btn btn-cart btn-sm" type="button" id="dropdownMenuButton" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">

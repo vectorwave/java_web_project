@@ -24,40 +24,40 @@
   <img class="guide_pic" src="${contextRoot}/guide_info/photo/${guideInfo.accountId}" width="150"/></br></br></br>
 
   <label class="GIFLabel">會員編號： </label>
-  <form:input path="accountId" readonly="true" class="inputBox1"/></br></br></br>
+  <form:input path="accountId" readonly="true" class="inputBox1"/></br></br>
 
   <label class="GIFLabel">主頁名稱： </label>
-  <form:input path="profileName" readonly="true" class="inputBox1"/></br></br></br>
+  <form:input path="profileName" readonly="true" class="inputBox1"/></br></br>
 
   <label class="GIFLabel">姓名： </label>
-  <form:input path="guideName" readonly="true" class="inputBox1"/></br></br></br>
+  <form:input path="guideName" readonly="true" class="inputBox1"/></br></br>
 
   <label class="GIFLabel">個人簡述： </label>
-  <form:textarea path="guideDescription" readonly="true" class="textarea1"/></br></br></br>
+  <form:textarea path="guideDescription" readonly="true" class="textarea1"/></br></br>
 </div>
 
 <div id="rightPart">
   <label class="GIFLabel">生日： </label>
-  <form:input path="guideBirthday" readonly="true" class="inputBox1"/></br></br></br>
+  <form:input path="guideBirthday" readonly="true" class="inputBox1"/></br></br>
 
   <label class="GIFLabel">性別： </label>
-  <form:input path="guideGender" readonly="true" class="inputBox1"/></br></br></br>
+  <form:input path="guideGender" readonly="true" class="inputBox1"/></br></br>
 
   <label class="GIFLabel">聯絡電話： </label>
-  <form:input path="guidePhone" readonly="true" class="inputBox1"/></br></br></br>
+  <form:input path="guidePhone" readonly="true" class="inputBox1"/></br></br>
 
   <label class="GIFLabel">電子郵件： </label>
-  <form:input path="guideEmail" readonly="true" class="inputBox1"/></br></br></br>
+  <form:input path="guideEmail" readonly="true" class="inputBox1"/></br></br>
 
   <label class="GIFLabel">聯絡地址： </label>
-  <form:textarea path="guideAddress" readonly="true" class="textarea1"/></br></br></br>
+  <form:textarea path="guideAddress" readonly="true" class="textarea1"/></br></br>
 
   <label class="GIFLabel">證照類型： </label>
-  <form:input path="licenceType" readonly="true" class="inputBox1"/></br></br></br>
+  <form:input path="licenceType" readonly="true" class="inputBox1"/></br></br>
 
 
   <label class="GIFLabel">證照號碼： </label>
-  <form:input path="licenceNo" readonly="true" class="inputBox1"/></br></br></br>
+  <form:input path="licenceNo" readonly="true" class="inputBox1"/></br></br>
 </div>
 
     </form:form>
@@ -81,7 +81,7 @@ function deleteGuide(){
         /* Read more about isConfirmed, isDenied below */
         if (result.isConfirmed) {
 // 		    Swal.fire('Saved!', '', 'success')
-        location='${contextRoot}/guide_info/delete/${guideInfo.accountId}'
+          Swal.fire('已成功刪除！','','success').then(()=>{location='${contextRoot}/guide_info/delete/${guideInfo.accountId}'});
           
         } else if (result.isDenied) {
           
@@ -92,4 +92,4 @@ function deleteGuide(){
 </script>
 <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script> 
 
-<jsp:include page="layout/footer.jsp" />
+<jsp:include page="layout/footer.jsp"/>

@@ -1,6 +1,7 @@
 package com.group1project.model.service.impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -71,5 +72,32 @@ public class OrderServiceImpl implements OrderService{
 		detailRepository.deleteById(detailId);
 		detailRepository.flush();
 	}
+
+	@Override
+	public List<Order> findAllByAccountId(Integer accountId) {
+		return orderRepository.findByAccountAccountId(accountId);
+	}
+
+	@Override
+	public String getECPayItem(Order order) {
+		String ecp = "";
+		for(OrderDetail detail :order.getOrderDetails()) {
+			ecp+=detail.getProduct().getProductName()+"*"+detail.getAmount()+"#";
+		}
+		ecp = ecp.substring(0, ecp.length()-1);
+		return ecp;
+	}
+
+	@Override
+	public Long countTotalAmount(Order order) {
+		Long totalAmount = 0L;
+		for(OrderDetail detail : order.getOrderDetails()) {
+			totalAmount += detail.getAmount()*detail.getProduct().getProductPrice();
+		}
+		return totalAmount;
+	}
+
+	
+
 
 }

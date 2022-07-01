@@ -59,15 +59,15 @@ public class MemberServiceimpl implements MemberService {
 
 		TypedQuery<Member> query = entityManager.createQuery(hql, Member.class);
 		query.setParameter("accountId", accountId);
-
-		Member member = query.getSingleResult();
-
-		if (member != null) {
-			return member;
-		} else {
+		
+		Member member = null;
+		
+		try {
+			member = query.getSingleResult();
+		}catch (NoResultException e) {
 			return null;
 		}
-
+		return member;
 	}
 
 	@Override
@@ -101,6 +101,11 @@ public class MemberServiceimpl implements MemberService {
 	public List<Member> searchMemberByName(String key) {
 
 		return mDao.findAllByMemberNameLike("%" + key + "%");
+	}
+
+	@Override
+	public List<Member> findIdMembertitle(String key) {
+		return mDao.findIdMembertitle(key);
 	}
 
 }
