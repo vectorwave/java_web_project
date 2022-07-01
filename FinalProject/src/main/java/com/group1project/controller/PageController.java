@@ -28,7 +28,7 @@ import com.group1project.model.service.ProductService;
 @SessionAttributes("account")
 @Controller
 public class PageController {
-	
+	 
 	@Autowired
 	private ProductService pService ;
 	
