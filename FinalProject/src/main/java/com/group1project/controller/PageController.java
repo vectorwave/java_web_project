@@ -39,6 +39,7 @@ public class PageController {
 	private ArticleService aService;
 
 	@Autowired
+
 	private ProductCommentService pcService;
 	
 	@Autowired
@@ -192,6 +193,7 @@ public class PageController {
 		return mav;
 	}
 	
+
 	@GetMapping("article/add")
 	public String addArticlePage(Model model) {
 		
@@ -224,7 +226,6 @@ public class PageController {
 	
 
 
-	
 	
 	//所有商家頁面
 	@GetMapping("/guidemanagement")
