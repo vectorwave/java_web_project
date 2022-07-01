@@ -9,8 +9,15 @@
 
 <style>
 .div_td_pad {
-    max-width: 600px;
-    overflow-wrap: break-word;
+max-width: 600px;
+overflow-wrap: break-word;
+/* width:200px; */
+/* word-break:break-all; */
+/* text-overflow:ellipsis; */
+/* display:-webkit-box; */
+/* -wibkit-box-orient:vertical; */
+/* -webkit-line-clamp:2; */
+/* overflow:hidden; */
 }
 </style>
 <h3 style="text-align: center">所有帳號</h3>
