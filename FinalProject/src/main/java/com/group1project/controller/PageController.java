@@ -44,36 +44,13 @@ public class PageController {
 	@Autowired
 	private GuideService gService;
 	
-	@GetMapping("/back")
-	public String backIndexPage(){
-		return "backIndex";
-	}
-	@GetMapping("/back/car")
-	public String carPage(){
-		return "cart";
-	} 
-	@GetMapping("/back/car2")
-	public String carPage2(){
-		return "front/frontProductList";
-	} 
 	
-	@GetMapping("back/addProduct")
-	public String addProduct(Model model){
-
-//		Account account = new Account();
-		Product newPd = new Product();
-				
-//		Integer userId = account.getAccountId();
-//		Integer userId = null;
-		model.addAttribute("newPd", newPd);
-//		model.addAttribute("userId", userId);
-
-		return "addProduct";
-	}
 	
-
+//	########################前台商品頁面########################
+	
+	
 	//前台商品頁面含page方法
-	@GetMapping("mainpage")
+	@GetMapping("front/productPage")
 	public ModelAndView viewAllProducts(ModelAndView mav, 
 			@RequestParam(name="p", defaultValue="1") Integer pageNumber) {
 		Page<Product> page = pService.findByPage(pageNumber);
@@ -81,13 +58,38 @@ public class PageController {
 		mav.getModel().put("page", page);
 		mav.setViewName("front/JoTravel front module/frontProductPage");
 		return mav;
-	
+		
 	}
-	@GetMapping("/mainpage2")
-	public String frontIndexPage(){
-		return "front/JoTravel front module/frontProductPage";
+	@GetMapping("/front/productPage/detail")
+	public String frontIndexPage(@RequestParam("id") Integer productId,Model model){
+		
+		Product product= pService.getProductById(productId);
+		List<ProductComment> pdComment =  pcService.getAllProductCommentByProductId(productId);
+	
+		model.addAttribute("product", product);
+		model.addAttribute("pdComment", pdComment);
+		
+		return "front/JoTravel front module/frontProductDetail";
 	} 
 	
+	
+//	########################後台商品頁面########################
+	
+	@GetMapping("/back")
+	public String backIndexPage(){
+		return "backIndex";
+	}
+	
+	@GetMapping("back/addProduct")
+	public String addProduct(Model model){
+
+		Product newPd = new Product();
+
+		model.addAttribute("newPd", newPd);
+
+		return "addProduct";
+	}
+		
 	
 	@GetMapping("back/allProduct")
 	@ResponseBody
@@ -106,7 +108,7 @@ public class PageController {
 	
 	}
 	
-//	####Start 商品評論####
+//	###################Start 商品評論############################
 	
 	@GetMapping("back/ProductComment/add")
 	public String addProductComment(@RequestParam(name="id") Integer productId,Model model) {
