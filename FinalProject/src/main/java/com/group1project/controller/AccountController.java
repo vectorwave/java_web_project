@@ -256,31 +256,31 @@ public class AccountController {
 		@RequestMapping(value = "page/login/delete/{id}", method = RequestMethod.GET)
 		public String pagedeleteAccount(@PathVariable("id") Integer accountId) {
 			aService.deleteAccount(accountId);
-			return "redirect:/login/findall";
+			return "redirect:/";
 		}
 		
 		// 修改
-		@GetMapping("page/login/edit")
-		public String pageeditAccount(@RequestParam("id") Integer accountId, Model model) {
-			Account newAccount = aService.getAccountById(accountId);
-
-//						Login login = new Login();
-			model.addAttribute("newAccount", newAccount);
-			return "editAccount";// 回到頁面
-		}
+//		@GetMapping("page/login/edit")
+//		public String pageeditAccount(@RequestParam("id") Integer accountId, Model model) {
+//			Account newAccount = aService.getAccountById(accountId);
+//
+////						Login login = new Login();
+//			model.addAttribute("newAccount", newAccount);
+//			return "editAccount";// 回到頁面
+//		}
 		//修改
-		@PostMapping("page/login/edit")
-	    public String pagepostEditAccount(@ModelAttribute(name="newAccount") Account newAccount) {
-			
-			//加密功能
-			String password = getStringHash(newAccount.getPassword(), "SHA-512");
-			newAccount.setPassword(password);
-			
-			aService.saveAccount(newAccount);
-			
-			return "redirect:/login/findall";
-			
-		}
+//		@PostMapping("page/login/edit")
+//	    public String pagepostEditAccount(@ModelAttribute(name="newAccount") Account newAccount) {
+//			
+//			//加密功能
+//			String password = getStringHash(newAccount.getPassword(), "SHA-512");
+//			newAccount.setPassword(password);
+//			
+//			aService.saveAccount(newAccount);
+//			
+//			return "redirect:/login/findall";
+//			
+//		}
 		
 		
 		

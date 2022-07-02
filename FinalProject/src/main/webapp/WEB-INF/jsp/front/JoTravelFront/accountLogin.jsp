@@ -176,7 +176,7 @@ a:hover {
 				</h3>
 			</div>
 			<div class="modal-body">
-				<form class="form-login" method="post" action="page/logingo"
+				<form class="form-login" method="post" action="/jotravel/page/logingo"
 					onsubmit="return validateCode()">
 					<!-- 					<img class="mb-4 rounded mx-auto d-block" src="assets/img/logo.png" -->
 					<!-- 						alt="" width="310" height="250">  -->

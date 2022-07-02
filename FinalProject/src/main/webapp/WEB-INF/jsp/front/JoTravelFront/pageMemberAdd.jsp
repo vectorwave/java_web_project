@@ -129,7 +129,7 @@ margin:auto;
 
 
 		<form:input path="memberId" type="hidden" />
-		<input type="hidden" id="accountId" name="accountId"
+		<input id="accountId" name="accountId"
 			value="${loginuser.accountId}" />
 
 		<div class="form-group"
