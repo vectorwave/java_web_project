@@ -31,6 +31,7 @@
       	     		msg_data += '<td>' + value.product.productName + '</td>'
       	     		msg_data += '<td>' + value.account.accountName + '</td>'
       	     		msg_data += '<td>' + value.productComment + '</td>'      	     		
+      	     		msg_data += '<td>' + value.commentScore + '</td>'      	     		
       	     		msg_data += '<td>' + value.updatedTime + '</td>'      	     		
 //       	     		msg_data += '<td>' + '<img src="${contextRoot}/jotravel/back/product/photo/' + value.productId + '" width="100px" height="100px" >' +'</td>'  
       	     		msg_data += '<td>' + '<a href="http://localhost:8081/jotravel/back/productcomment/editProductComment?id=' +value.prouctCommentId +'"><button class="delt" onclick="return del()">📝</button></a>' + '</td>'      	     		
@@ -64,7 +65,7 @@
 </form>
 <table class="table" border="1"  id="table1">
 <tr style="background-color:#fac473">
-<th>評論編號<th>商品名稱<th>會員名稱<th>評論內容<th>更新時間<th>修改<th>刪除
+<th>評論編號<th>商品名稱<th>會員名稱<th>評論內容<th>分數(滿分5分)<th>更新時間<th>修改<th>刪除
 </table>
 
 <%-- <h3>共 ${count} 筆商品資料 </h3> --%>

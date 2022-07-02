@@ -51,6 +51,19 @@ public class ProductCommentController {
 		return list;
 	}
 	
+	//查詢指定商品的評論
+	@GetMapping("find")
+	@ResponseBody
+	public List<ProductComment> findAllPrdouctComment(@RequestParam(value="id", defaultValue="" ,required = false) Integer prdouctId ,Model model) {
+		
+		
+		List<ProductComment> productComment =  pService.getAllProductCommentByProductId(prdouctId);
+		
+		model.addAttribute("productComment", productComment);
+		
+		return productComment;
+		
+	}
 	
 	
 	//查詢單筆商品
@@ -68,6 +81,7 @@ public class ProductCommentController {
 	public String addProductComment(@ModelAttribute("pdComment") ProductComment productComment,
 			@RequestParam(value="accountId", required = false ) Integer accountId,
 			@RequestParam(value="productId", required = false ) Integer productId, 
+			@RequestParam(value="inlineRadioOptions", required = false ) Integer score, 
 			Model model) {
 		
 		
@@ -78,6 +92,7 @@ public class ProductCommentController {
 		
 		productComment.setAccount(member);
 		productComment.setProduct(pd);
+		productComment.setCommentScore(score);
 		
 		Date nowDate = new Date();
 		productComment.setUpdatedTime(nowDate);

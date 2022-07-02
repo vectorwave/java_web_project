@@ -6,7 +6,6 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
-
 <!doctype html>
 <html lang="en">
       <head>
@@ -191,6 +190,8 @@
                                 </div>
                                 <br/><br/>
                                 <button type="submit" name="addtocart" value="5" class="btn btn-primary">加入購物車</button>
+                                <a href="http://localhost:8081/jotravel/back/ProductComment/add?id=${product.productId}"<button name="addcomment" class="btn btn-primary">評論商品</button></a>
+            
                             </form>
 
                         </div>
@@ -204,11 +205,11 @@
         <!--================ start Product Comment Area  =================-->	
         
 <div id=div2>
-<h2>商品評論列表</h2>
+<h4>商品評論區</h4>
 </div>
 <table class="table" border="1"  id="table1">
-<tr style="background-color:#fac473">
-<th>評論編號<th>商品名稱<th>會員名稱<th>評論內容<th>更新時間<th>修改<th>刪除
+<tr style="background-color:#547adb">
+<th>會員<th>評論內容<th>滿意度<th>更新時間
 </table>
 
 
@@ -316,10 +317,11 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
         <script type="text/javascript"> 
         
   $(function(){
-
+	//   window.onload=function(){
 		//查詢所有商品評論      	
       	 $.ajax({
-      	     url:'http://localhost:8081/jotravel/back/productcomment',
+            
+      	     url:'http://localhost:8081/jotravel/back/productcomment/find?id='+<c:out value="${product.productId}"/>,
       	     method: 'get',
       	     contentType: 'application/json', // 送過去的 
       	     dataType: 'json',
@@ -327,17 +329,19 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
       	     success: function(result){
       	    	$('#table1 tr td').remove()
       	        console.log("result=" +result)
+      	        console.log("Id=" )
 				
       	     	msg_data = ''     
       	     	$.each(result ,function(index ,value){
       	     		msg_data += '<tr>'
-      	     		msg_data += '<td>' + value.prouctCommentId + '</td>'
-      	     		msg_data += '<td>' + value.product.productName + '</td>'
+      	     		// msg_data += '<td>' + value.prouctCommentId + '</td>'
+      	     		// msg_data += '<td>' + value.product.productName + '</td>'
       	     		msg_data += '<td>' + value.account.accountName + '</td>'
       	     		msg_data += '<td>' + value.productComment + '</td>'      	     		
-      	     		msg_data += '<td>' + value.updatedTime + '</td>'      	     		
-      	     		msg_data += '<td>' + '<a href="http://localhost:8081/jotravel/back/productcomment/editProductComment?id=' +value.prouctCommentId +'"><button class="delt" onclick="return del()">📝</button></a>' + '</td>'      	     		
-      	     		msg_data += '<td>' + '<a href="http://localhost:8081/jotravel/back/productcomment/delete/'+ value.prouctCommentId +'"><button class="delt" onclick="return del()">✂</button></a>' + '</td>'      	     		
+      	     		msg_data += '<td>' + value.commentScore + '</td>'   
+                    msg_data += '<td>' + value.updatedTime + '</td>'      	     		
+      	     		// msg_data += '<td>' + '<a href="http://localhost:8081/jotravel/back/productcomment/editProductComment?id=' +value.prouctCommentId +'"><button class="delt" onclick="return del()">📝</button></a>' + '</td>'      	     		
+      	     		// msg_data += '<td>' + '<a href="http://localhost:8081/jotravel/back/productcomment/delete/'+ value.prouctCommentId +'"><button class="delt" onclick="return del()">✂</button></a>' + '</td>'      	     		
       	            msg_data += '<tr>'
       	            	
       	     	})
@@ -345,8 +349,9 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
       	     	$('#table1').append(msg_data)
       	     
       	     },
-
-      	   })
+      	 
+        	});
+        });
         </script>
     </body>
 </html>
