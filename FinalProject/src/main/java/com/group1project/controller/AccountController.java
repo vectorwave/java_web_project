@@ -62,7 +62,7 @@ public class AccountController {
 		
 		aService.saveAccount(account);
 
-		return "redirect:/login";
+		return "redirect:/login/findall";
 	}
 	
 	// 商家新增帳號用 
@@ -145,10 +145,10 @@ public class AccountController {
 			return "login";
 		} else if(queryMember.getAccountName().equals("")) {
 			model.addAttribute("loginuser", queryMember);
-			return "redirect:front/JoTravel front module/pageAccountAdd";
+			return "redirect:front/JoTravelFront/pageAccountAdd";
 		} else {
 			model.addAttribute("loginuser", queryMember);
-			return "redirect:front/JoTravel front module/pageAccountAdd";
+			return "redirect:front/JoTravelFront/pageAccountAdd";
 		}
 	}
 	
@@ -221,7 +221,7 @@ public class AccountController {
 			
 			aService.saveAccount(account);
 
-			return "redirect:front/JoTravel front module/accountLogin";
+			return "redirect:/";
 		}
 	
 }
