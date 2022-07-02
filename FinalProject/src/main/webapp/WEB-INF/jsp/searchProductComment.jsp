@@ -64,14 +64,15 @@
 <%-- </form> --%>
 <table class="table" border="1"  id="table1">
 <tr style="background-color:#fac473">
-<th>評論編號<th>商品名稱<th>會員名稱<th>評論內容<th>更新時間<th>修改<th>刪除
+<th>評論編號<th>商品名稱<th>會員名稱<th>評論內容<th>分數(滿分5分)<th>更新時間<th>修改<th>刪除
 <div id="newTable">
 <c:forEach var="value" items="${searchPdC}">
 <tr> 
 <td> <c:out value="${value.prouctCommentId}"/></td>
 <td> <c:out value="${value.product.productName}"/></td>
 <td> <c:out value="${value.account.accountName}"/></td>
-<td> <c:out value="${value.productComment}"/></td>     	     		   	     		
+<td> <c:out value="${value.productComment}"/></td>     	
+<td> <c:out value="${value.commentScore}"/></td>     	
 <td> <fmt:formatDate pattern="yyyy 年 MM 月 dd 日 a hh:mm:ss " value="${value.updatedTime}"/></td> 
 <td><button class="delt" onclick="upd('${value.prouctCommentId}')" >📝</button></td> 
 <td><button class="delt" onclick="del('${value.prouctCommentId}')" >✂</button></td> 
