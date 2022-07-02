@@ -127,33 +127,10 @@ public class AccountController {
 		return buffer.toString();
 	}
 	
-	//登入
-//	@RequestMapping(path = "/logingo", method=RequestMethod.POST)
-//	public String loginCheck(@RequestParam("inputAccount") String inputAccount, @RequestParam("inputPassword") String inputPassword, Model model) {
-//		
-//		//加密功能
-//		String password = getStringHash(inputPassword, "SHA-512");
-//		Account queryMember = aService.findByAccPwd(inputAccount, password );
-//
-//		System.out.println("queryMember=" + queryMember);
-//				
-//		if(queryMember == null) {	
-//			model.addAttribute("loginErrorMsg", "登入失敗,帳號不存在");
-//			return "login";
-//		} else if(!queryMember.getPassword().equals(password)){
-//			model.addAttribute("loginErrorMsg", "登入失敗,密碼錯誤");
-//			return "login";
-//		} else if(queryMember.getAccountName().equals("")) {
-//			model.addAttribute("loginuser", queryMember);
-//			return "redirect:front/JoTravelFront/pageAccountAdd";
-//		} else {
-//			model.addAttribute("loginuser", queryMember);
-//			return "redirect:front/JoTravelFront/pageAccountAdd";
-//		}
-//	}
+	
 	
 	//登入
-	@RequestMapping(path = "/logingo", method=RequestMethod.POST)
+	@RequestMapping(path = "logingo", method=RequestMethod.POST)
 	public String loginCheck(@RequestParam("inputAccount") String inputAccount, @RequestParam("inputPassword") String inputPassword, Model model) {
 		
 		//加密功能
@@ -224,5 +201,88 @@ public class AccountController {
 
 			return "redirect:/";
 		}
+		
+		// 商家新增帳號用 
+		@PostMapping("page/login/guide/insert")
+		public String pageinserGuideAccount(@ModelAttribute("account") Account account, Model model) {
+			Date nowdate = new Date();
+			account.setSignupDate(nowdate);
+
+			aService.saveAccount(account);
+			
+			return "redirect:XXXXXXXXX";
+		}
 	
+		
+		//登入
+		@RequestMapping(path = "page/logingo", method=RequestMethod.POST)
+		public String pageloginCheck(@RequestParam("inputAccount") String inputAccount, @RequestParam("inputPassword") String inputPassword, Model model) {
+			
+			//加密功能
+			String password = getStringHash(inputPassword, "SHA-512");
+			Account queryMember = aService.findByAccPwd(inputAccount, password );
+
+			System.out.println("queryMember=" + queryMember);
+					
+			if(queryMember == null) {	
+				model.addAttribute("loginErrorMsg", "登入失敗,帳號不存在");
+				return "/";
+			} else if(!queryMember.getPassword().equals(password)){
+				model.addAttribute("loginErrorMsg", "登入失敗,密碼錯誤");
+				return "/";
+			} else if(queryMember.getAccountName().equals("")) {
+				model.addAttribute("loginuser", queryMember);
+				return "redirect:/";
+			} else {
+				model.addAttribute("loginuser", queryMember);
+				return "redirect:/";
+				
+			}
+		}
+		
+		@GetMapping("page/loginout")
+		public String pagelogin(SessionStatus status) {
+			status.setComplete();
+			return "redirect:/";
+		}
+		// 查詢單筆帳號資料
+		@GetMapping("page/login/{accountid}")
+		@ResponseBody
+		public Account pagegetAccountById(@PathVariable("accountid") Integer accountId) {
+			return aService.getAccountById(accountId);
+		}
+		
+		// 刪除帳號
+		@RequestMapping(value = "page/login/delete/{id}", method = RequestMethod.GET)
+		public String pagedeleteAccount(@PathVariable("id") Integer accountId) {
+			aService.deleteAccount(accountId);
+			return "redirect:/login/findall";
+		}
+		
+		// 修改
+		@GetMapping("page/login/edit")
+		public String pageeditAccount(@RequestParam("id") Integer accountId, Model model) {
+			Account newAccount = aService.getAccountById(accountId);
+
+//						Login login = new Login();
+			model.addAttribute("newAccount", newAccount);
+			return "editAccount";// 回到頁面
+		}
+		//修改
+		@PostMapping("page/login/edit")
+	    public String pagepostEditAccount(@ModelAttribute(name="newAccount") Account newAccount) {
+			
+			//加密功能
+			String password = getStringHash(newAccount.getPassword(), "SHA-512");
+			newAccount.setPassword(password);
+			
+			aService.saveAccount(newAccount);
+			
+			return "redirect:/login/findall";
+			
+		}
+		
+		
+		
+
 }

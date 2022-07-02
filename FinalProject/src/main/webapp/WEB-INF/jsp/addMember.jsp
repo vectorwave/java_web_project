@@ -156,7 +156,7 @@
 					})
 			  }else{
 				  Swal.fire({
-					  title: '已有相關會員資料',
+					  title: '已有相關會員資料，請至修改會員資料',
 					  showDenyButton: true,
 					  confirmButtonText: 'OK',
 					  denyButtonText: '取消',

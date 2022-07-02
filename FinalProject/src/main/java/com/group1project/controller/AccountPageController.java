@@ -37,6 +37,12 @@ public class AccountPageController {
 	
 	@GetMapping("/")
 	public String WelcomeAccount() {
+		return "/front/JoTravelFront/frontAccount";
+	}
+	
+
+	@GetMapping("page/login")
+	public String pageWelcomeAccount() {
 		return "/front/JoTravelFront/accountLogin";
 	}
 
@@ -70,6 +76,19 @@ public class AccountPageController {
 
 		model.addAttribute("account", account);
 		return "/front/JoTravelFront/pageAccountAdd";
+	}
+	
+	@GetMapping("page/login/findall")
+	@ResponseBody
+	public ModelAndView pagesearchAccountByName(ModelAndView mav,
+			@RequestParam(value = "key", defaultValue = "", required = false) String key, Model m) {
+
+		List<Account> account = aService.searchAccountByName(key);
+
+		mav.getModel().put("key", key);
+		mav.getModel().put("account", account);
+		mav.setViewName("allAccount");
+		return mav;
 	}
 
 }
