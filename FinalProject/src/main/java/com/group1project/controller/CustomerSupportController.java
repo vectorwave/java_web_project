@@ -55,7 +55,7 @@ public class CustomerSupportController {
 	@GetMapping("/ai")
 	public String ai() {
 
-		return "customerSupport/ai";
+		return "customer/ai";
 
 	}
 
@@ -63,7 +63,7 @@ public class CustomerSupportController {
 	@GetMapping("/message/sendMail")
 	public String mail() {
 		mail.SendMail();
-		return "Success";
+		return "customer/success";
 	}
 
 
@@ -73,7 +73,7 @@ public class CustomerSupportController {
 		
 		CustomerBean lastMag = csService.findById(null);
 		mav.getModel().put("lastMag", lastMag);
-		mav.setViewName("customerSupport/selectOne");
+		mav.setViewName("customer/selectOne");
 		return mav;
 	}
 
@@ -86,7 +86,7 @@ public class CustomerSupportController {
 //		List<CustomerBean> allCus = csService.findAllCustomer();
 		mav.getModel().put("page", page);
 //		mav.getModel().put("allCus", allCus);
-		mav.setViewName("customerSupport/selectAll");
+		mav.setViewName("customer/selectAll");
 		return mav;
 
 	}
@@ -98,7 +98,7 @@ public class CustomerSupportController {
 
 		mav.getModel().put("allCus", allCus);
 
-		mav.setViewName("customerSupport/serviceInfo");
+		mav.setViewName("customer/serviceInfo");
 
 		return mav;
 
@@ -115,7 +115,7 @@ public class CustomerSupportController {
 		CustomerBean cs = new CustomerBean();
 
 		mav.getModel().put("CustomerBean", cs); // java bean 塞進 model
-		mav.setViewName("customerSupportForm"); // ModelAndView 裡規定去哪個 jsp
+		mav.setViewName("customer/form"); // ModelAndView 裡規定去哪個 jsp
 		return mav;
 	}
 
@@ -134,7 +134,7 @@ public class CustomerSupportController {
 		ModelAndView mav = new ModelAndView();
 		CustomerBean csResult = csService.findById(csb.getId());
 		mav.getModel().put("csResult", csResult);
-		mav.setViewName("customerSupport/selectOne");
+		mav.setViewName("customer/selectOne");
 		return mav;
 	}
 
@@ -149,7 +149,7 @@ public class CustomerSupportController {
 		List<CustomerBean> allCus = csService.findAllCustomer();
 		mav.getModel().put("allCus", allCus);
 
-		mav.setViewName("customerSupport/editForm");
+		mav.setViewName("customer/editForm");
 
 		return mav;
 	}
