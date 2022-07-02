@@ -33,6 +33,13 @@ public class AccountPageController {
 	public String Welcome() {
 		return "index";
 	}
+	
+	
+	@GetMapping("accountLogin")
+	public String WelcomeAccount() {
+		return "front/JoTravel front module/accountLogin";
+	}
+
 
 	@GetMapping("/login/insert")
 	public String insertAccountPage(Model model) {
