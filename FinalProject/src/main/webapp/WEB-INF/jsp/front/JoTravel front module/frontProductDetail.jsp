@@ -26,6 +26,9 @@
         <!-- main css -->
         <link rel="stylesheet" href="<c:url value="/css/blog/style.css"/>">
         <link rel="stylesheet" href="<c:url value="/css/blog/responsive.css"/>">
+        <link rel="stylesheet" href="<c:url value="/css/blog/responsive.css"/>">
+        <link rel="stylesheet" href="<c:url value="/css/core-style"/>">      
+        
     </head>
     <body>
         <!--================Header Area =================-->
@@ -68,7 +71,7 @@
             <div class="overlay bg-parallax" data-stellar-ratio="0.8" data-stellar-vertical-offset="0" data-background=""></div>
             <div class="container">
                 <div class="page-cover text-center">
-                    <h2 class="page-cover-tittle">Gallery</h2>
+                    <h2 class="page-cover-tittle">Product Detail</h2>
                     <ol class="breadcrumb">
                         <li><a href="index.html">Home</a></li>
                         <li class="active">Gallery</li>
@@ -78,134 +81,140 @@
         </section>
         <!--================Breadcrumb Area =================-->
         
-        <!--================Breadcrumb Area =================-->
+        <!-- Product Details Area Start -->
+       
         <section class="gallery_area section_gap" style="padding:10px 0px 10px 0px">
-            <div class="container">
-<!--                 <div class="section_title text-center"> -->
-<!--                     <h2 class="title_color">Royal Hotel Gallery</h2> -->
-<!--                     <p>Who are in extremely love with eco friendly system.</p> -->
-<!--                 </div> -->
-			 <div class="section_title text-center">
-			     <h1 class="jumbotron-heading">JoTravel 商品頁面</h1>
-			     <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</p>
-			     <p><a href="#" class="btn btn-primary my-2">最夯熱門旅遊</a>
-			     <a href="#" class="btn btn-secondary my-2">旅遊許願池</a>
-			     </p>
-			 </div>
-               
 
-			<div class="row imageGallery1" id="gallery">
-                
-                
-                    <!-- <div class="col-md-4 gallery_item"> -->
-                        <!-- <div class="gallery_img"> -->
-                        <!-- <img src="<c:url value="images/01.jpeg"/>" alt=""> -->
-                            <!-- <div class="hover"> -->
-                            	<!-- <a class="light" href="<c:url value="images/01.jpeg"/>"><i class="fa fa-expand"></i></a> -->
-                         
+        <div class="single-product-area section-padding-100 clearfix">
+            <div class="container-fluid">
+
+<!--  ==============左上連結Bar=================== -->
+                <div class="row">
+                    <div class="col-12">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb mt-50">
+                                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                <li class="breadcrumb-item"><a href="#">Furniture</a></li>
+                                <li class="breadcrumb-item"><a href="#">Chairs</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">${product.productName}</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+
+<!--  ============== 商品圖片跑馬燈 =================== -->
+                <div class="row">
+                    <div class="col-12 col-lg-7">
+                        <div class="single_product_thumb">
+                            <div id="product_details_slider" class="carousel slide" data-ride="carousel">
+                                <ol class="carousel-indicators">
+                                    <li class="active" data-target="#product_details_slider" data-slide-to="0" style="background-image: url(img/product-img/pro-big-1.jpg);">
+                                    </li>
+                                    <li data-target="#product_details_slider" data-slide-to="1" style="background-image: url(img/product-img/pro-big-2.jpg);">
+                                    </li>
+                                    <li data-target="#product_details_slider" data-slide-to="2" style="background-image: url(img/product-img/pro-big-3.jpg);">
+                                    </li>
+                                    <li data-target="#product_details_slider" data-slide-to="3" style="background-image: url(img/product-img/pro-big-4.jpg);">
+                                    </li>
+                                </ol>
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <a class="gallery_img" href="img/product-img/pro-big-1.jpg">
+<!--                                             <img class="d-block w-100" src="img/product-img/pro-big-1.jpg" alt="First slide"> -->
+                                        	<img class="d-block w-100" src="${contextRoot}/back/product/photo/${product.productId}"  height="600px" alt="First slide"> 
+                                        </a>
+                                    </div>
+<!--                                     <div class="carousel-item"> -->
+<!--                                         <a class="gallery_img" href="img/product-img/pro-big-2.jpg"> -->
+<!--                                             <img class="d-block w-100" src="img/product-img/pro-big-2.jpg" alt="Second slide"> -->
+<!--                                         </a> -->
+<!--                                     </div> -->
+<!--                                     <div class="carousel-item"> -->
+<!--                                         <a class="gallery_img" href="img/product-img/pro-big-3.jpg"> -->
+<!--                                             <img class="d-block w-100" src="img/product-img/pro-big-3.jpg" alt="Third slide"> -->
+<!--                                         </a> -->
+<!--                                     </div> -->
+<!--                                     <div class="carousel-item"> -->
+<!--                                         <a class="gallery_img" href="img/product-img/pro-big-4.jpg"> -->
+<!--                                             <img class="d-block w-100" src="img/product-img/pro-big-4.jpg" alt="Fourth slide"> -->
+<!--                                         </a> -->
+<!--                                     </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     
-					            <c:forEach items="${page.content}" var="product">
-					            <div class="col-md-4">
-					              <div class="card mb-4 box-shadow">
-									<a href="${contextRoot}/front/productPage/detail?id=${product.productId}" > 
-					               <img class="card-img-top" src="${contextRoot}/back/product/photo/${product.productId}" width="160px" height="300px" alt="Card image cap"> </a>
-					<!--  <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap"> -->
-					                <div class="card-body" style="height:202px">
-					                     <div class="text-nowrap bg-light border text-center" style="width: 19rem;">
-					                <a href="${contextRoot}/front/productPage/detail?id=${product.productId}" > <span>商品名稱: ${product.productName}</span></a><br/>
-					              		 </div><br/>
-					 
-					                  <p class="card-text" style="height:24px">${product.productSimpleDescription}</p>
-					                 
-					                  優惠售價:$ ${product.productPrice} <br>
-					                  <div class="d-flex justify-content-between align-items-center">
-					                  
-					                    <div class="btn-group">
-					                      <button type="button" class="btn btn-sm btn-outline-secondary">🛒加入購物車</button>
-					                      <button type="button" class="btn btn-sm btn-outline-secondary">立即購買</button>
-					                    </div>
-					                    <small class="text-muted">揪團只到:<br/><fmt:formatDate pattern="MM 月 dd 日 " value="${product.endDate}"/></small>
-					          
-					                  </div>
-					                </div>
-					              </div>
-					            </div>
-							</c:forEach>
+                    <div class="col-12 col-lg-5">
+                        <div class="single_product_desc">
+                            <!-- Product Meta Data -->
+                            <div class="product-meta-data">
+                                <div class="line"></div>
+                                
+                                <a href="product-details.html">
+                                    <h6>${product.productName}</h6>
+                                </a>
+                                <!-- Ratings & Review 星星 -->
+                                <div class="ratings-review mb-15 d-flex align-items-center justify-content-between">
+                                    <div class="ratings">
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true">5</i>
+                                    </div>
+								<!-- 商品名稱 -->
+                                    <div class="review">
+                                        <a href="#">Write A Review</a>
+                                    </div>
+                               
+                                </div>
+                                <!-- 商品特點簡述 -->
+                                <p class="avaibility"><i class="fa fa-circle"></i> In Stock</p>
+                            </div>
+	
+							<!--=====商品敘述====== -->
+                            <div class="short_overview my-5">
+                                <p>${product.productSimpleDescription}</p>
+<!--                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid quae eveniet culpa officia quidem mollitia impedit iste asperiores nisi reprehenderit consequatur, autem, nostrum pariatur enim?</p> -->
+                            </div>
 
-                       </div>
-                      </div>
+                            <!-- Add to Cart Form -->
+                            <form class="cart clearfix" method="post">
+                                <div class="product-price">商品價格: &nbsp $ ${product.productPrice}</div>
+                                <div class="cart-btn d-flex mb-50">
+                                    <p>商品數量: &nbsp &nbsp </p>
+                                    <div class="quantity">
+                                        <span class="qty-minus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) effect.value--;return false;"><i class="fa fa-caret-down" aria-hidden="true"></i></span>
+                                        <input type="number" class="qty-text" id="qty" step="1" min="1" max="300" name="quantity" value="1">
+                                        <span class="qty-plus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"><i class="fa fa-caret-up" aria-hidden="true"></i></span>
+                                    </div>
+                                </div>
+                                <br/><br/>
+                                <button type="submit" name="addtocart" value="5" class="btn btn-primary">加入購物車</button>
+                            </form>
 
-                <!-- </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div> -->
+        </div>
     </section>    
+        <!-- ===============Product Details Area End============ -->
                     
-<!--                     <div class="col-md-4 gallery_item"> -->
-<!--                         <div class="gallery_img"> -->
-<!--                             <img src="image/gallery/02.jpg" alt=""> -->
-<!--                             <div class="hover"> -->
-<!--                             	<a class="light" href="image/gallery/02.jpg"><i class="fa fa-expand"></i></a> -->
-<!--                             </div> -->
-<!--                         </div> -->
-<!--                     </div> -->
-<!--                     <div class="col-md-4 gallery_item"> -->
-<!--                         <div class="gallery_img"> -->
-<!--                             <img src="image/gallery/03.jpg" alt=""> -->
-<!--                             <div class="hover"> -->
-<!--                             	<a class="light" href="image/gallery/03.jpg"><i class="fa fa-expand"></i></a> -->
-<!--                             </div> -->
-<!--                         </div> -->
-<!--                     </div> -->
-<!--                     <div class="col-md-4 gallery_item"> -->
-<!--                         <div class="gallery_img"> -->
-<!--                             <img src="image/gallery/04.jpg" alt=""> -->
-<!--                             <div class="hover"> -->
-<!--                             	<a class="light" href="image/gallery/04.jpg"><i class="fa fa-expand"></i></a> -->
-<!--                             </div> -->
-<!--                         </div> -->
-<!--                     </div> -->
-                    
-<!--                     <div class="col-md-4 gallery_item"> -->
-<!--                         <div class="gallery_img"> -->
-<!--                             <img src="image/gallery/06.jpg" alt=""> -->
-<!--                             <div class="hover"> -->
-<!--                             	<a class="light" href="image/gallery/05.jpg"><i class="fa fa-expand"></i></a> -->
-<!--                             </div> -->
-<!--                         </div> -->
-<!--                     </div> -->
-<!--                     <div class="col-md-4 gallery_item"> -->
-<!--                         <div class="gallery_img"> -->
-<!--                             <img src="image/gallery/05.jpg" alt=""> -->
-<!--                             <div class="hover"> -->
-<!--                             	<a class="light" href="image/gallery/06.jpg"><i class="fa fa-expand"></i></a> -->
-<!--                             </div> -->
-<!--                         </div> -->
-<!--                     </div> -->
-<!--                     <div class="col-md-4 gallery_item"> -->
-<!--                         <div class="gallery_img"> -->
-<!--                             <img src="image/gallery/01-1.jpg" alt=""> -->
-<!--                             <div class="hover"> -->
-<!--                             	<a class="light" href="image/gallery/01-1.jpg"><i class="fa fa-expand"></i></a> -->
-<!--                             </div> -->
-<!--                         </div> -->
-<!--                     </div> -->
-<!--                     <div class="col-md-4 gallery_item"> -->
-<!--                         <div class="gallery_img"> -->
-<!--                             <img src="image/gallery/02-1.jpg" alt=""> -->
-<!--                             <div class="hover"> -->
-<!--                             	<a class="light" href="image/gallery/02-1.jpg"><i class="fa fa-expand"></i></a> -->
-<!--                             </div> -->
-<!--                         </div> -->
-<!--                     </div> -->
-<!--                     <div class="col-md-4 gallery_item"> -->
-<!--                         <div class="gallery_img"> -->
-<!--                             <img src="image/gallery/03-1.jpg" alt=""> -->
-<!--                             <div class="hover"> -->
-<!--                             	<a class="light" href="image/gallery/03-1.jpg"><i class="fa fa-expand"></i></a> -->
-<!--                             </div> -->
-<!--                         </div> -->
-         
-        <!--================Breadcrumb Area =================-->
+        <!--================ start Product Comment Area  =================-->	
+        
+<div id=div2>
+<h2>商品評論列表</h2>
+</div>
+<table class="table" border="1"  id="table1">
+<tr style="background-color:#fac473">
+<th>評論編號<th>商品名稱<th>會員名稱<th>評論內容<th>更新時間<th>修改<th>刪除
+</table>
+
+
+        
+        <!--================ end Product Comment  =================-->	
+        
         
         <!--================ start footer Area  =================-->	
         <footer class="footer-area section_gap">
@@ -302,5 +311,42 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
         <script src="<c:url value="/js/blog/stellar.js"/>"></script>
         <script src="<c:url value="/css/blog//vendors/lightbox/simpleLightbox.min.js"/>"></script>
         <script src="<c:url value="/js/blog/custom.js"/>"></script>
+        
+        
+        <script type="text/javascript"> 
+        
+  $(function(){
+
+		//查詢所有商品評論      	
+      	 $.ajax({
+      	     url:'http://localhost:8081/jotravel/back/productcomment',
+      	     method: 'get',
+      	     contentType: 'application/json', // 送過去的 
+      	     dataType: 'json',
+      	     
+      	     success: function(result){
+      	    	$('#table1 tr td').remove()
+      	        console.log("result=" +result)
+				
+      	     	msg_data = ''     
+      	     	$.each(result ,function(index ,value){
+      	     		msg_data += '<tr>'
+      	     		msg_data += '<td>' + value.prouctCommentId + '</td>'
+      	     		msg_data += '<td>' + value.product.productName + '</td>'
+      	     		msg_data += '<td>' + value.account.accountName + '</td>'
+      	     		msg_data += '<td>' + value.productComment + '</td>'      	     		
+      	     		msg_data += '<td>' + value.updatedTime + '</td>'      	     		
+      	     		msg_data += '<td>' + '<a href="http://localhost:8081/jotravel/back/productcomment/editProductComment?id=' +value.prouctCommentId +'"><button class="delt" onclick="return del()">📝</button></a>' + '</td>'      	     		
+      	     		msg_data += '<td>' + '<a href="http://localhost:8081/jotravel/back/productcomment/delete/'+ value.prouctCommentId +'"><button class="delt" onclick="return del()">✂</button></a>' + '</td>'      	     		
+      	            msg_data += '<tr>'
+      	            	
+      	     	})
+      	     	
+      	     	$('#table1').append(msg_data)
+      	     
+      	     },
+
+      	   })
+        </script>
     </body>
 </html>
