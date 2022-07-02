@@ -10,7 +10,7 @@
 
 <form:form method="post" action="${contextRoot}/login/member/insert" modelAttribute="account">
 
-  <form:input path="accountId" type="hidden"/>
+  <form:input path="accountId" type="hidden" />
   
   <div class="form-group" style="width: 300px;margin: auto;text-align: center;">
   帳號： <form:input type="text" path="accountName" class="form-control" id="inputAccount"/><br/><span id="maccountName"></span>
