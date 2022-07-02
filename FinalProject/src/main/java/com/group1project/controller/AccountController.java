@@ -55,11 +55,14 @@ public class AccountController {
 	public String inserAccount(@ModelAttribute("account") Account account, Model model) {
 		Date nowdate = new Date();
 		account.setSignupDate(nowdate);
+		
+		//加密功能
 		String password = getStringHash(account.getPassword(), "SHA-512");
 		account.setPassword(password);
+		
 		aService.saveAccount(account);
 
-		return "redirect:/login";
+		return "redirect:/login/findall";
 	}
 	
 	// 商家新增帳號用 
@@ -92,8 +95,11 @@ public class AccountController {
 	//修改
 	@PostMapping("/login/edit")
     public String postEditAccount(@ModelAttribute(name="newAccount") Account newAccount) {
+		
+		//加密功能
 		String password = getStringHash(newAccount.getPassword(), "SHA-512");
 		newAccount.setPassword(password);
+		
 		aService.saveAccount(newAccount);
 		
 		return "redirect:/login/findall";
@@ -122,10 +128,35 @@ public class AccountController {
 	}
 	
 	//登入
+//	@RequestMapping(path = "/logingo", method=RequestMethod.POST)
+//	public String loginCheck(@RequestParam("inputAccount") String inputAccount, @RequestParam("inputPassword") String inputPassword, Model model) {
+//		
+//		//加密功能
+//		String password = getStringHash(inputPassword, "SHA-512");
+//		Account queryMember = aService.findByAccPwd(inputAccount, password );
+//
+//		System.out.println("queryMember=" + queryMember);
+//				
+//		if(queryMember == null) {	
+//			model.addAttribute("loginErrorMsg", "登入失敗,帳號不存在");
+//			return "login";
+//		} else if(!queryMember.getPassword().equals(password)){
+//			model.addAttribute("loginErrorMsg", "登入失敗,密碼錯誤");
+//			return "login";
+//		} else if(queryMember.getAccountName().equals("")) {
+//			model.addAttribute("loginuser", queryMember);
+//			return "redirect:front/JoTravelFront/pageAccountAdd";
+//		} else {
+//			model.addAttribute("loginuser", queryMember);
+//			return "redirect:front/JoTravelFront/pageAccountAdd";
+//		}
+//	}
+	
+	//登入
 	@RequestMapping(path = "/logingo", method=RequestMethod.POST)
 	public String loginCheck(@RequestParam("inputAccount") String inputAccount, @RequestParam("inputPassword") String inputPassword, Model model) {
 		
-		//密碼加密
+		//加密功能
 		String password = getStringHash(inputPassword, "SHA-512");
 		Account queryMember = aService.findByAccPwd(inputAccount, password );
 
@@ -139,10 +170,10 @@ public class AccountController {
 			return "login";
 		} else if(queryMember.getAccountName().equals("")) {
 			model.addAttribute("loginuser", queryMember);
-			return "redirect:/member/add";
+			return "redirect:/login/findall";
 		} else {
 			model.addAttribute("loginuser", queryMember);
-			return "redirect:/member/add";
+			return "redirect:/login/findall";
 		}
 	}
 	
@@ -176,5 +207,22 @@ public class AccountController {
 		status.setComplete();
 		return "login";
 	}
+	
+	//前台page---------------------------------------------------------------
 
+	// 會員帳號新增  
+		@PostMapping("page/login/member/insert")
+		public String pageinserAccount(@ModelAttribute("account") Account account, Model model) {
+			Date nowdate = new Date();
+			account.setSignupDate(nowdate);
+			
+			//加密功能
+			String password = getStringHash(account.getPassword(), "SHA-512");
+			account.setPassword(password);
+			
+			aService.saveAccount(account);
+
+			return "redirect:/";
+		}
+	
 }

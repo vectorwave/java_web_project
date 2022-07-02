@@ -1,30 +1,40 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
+<link href="${contextRoot}/css/bootstrap.min.css" rel="stylesheet">
+<title>JoTravel 管理平台</title>
 
-<!doctype html>
+<!-- 引入JS -->
+<script type="text/javascript"
+	src="${contextRoot}/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript"
+	src="${contextRoot}/jQueryconfirm/jquery-confirm.js"></script>
+<!-- 引入sweetalert2 -->
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script type="text/javascript"
+	src="${contextRoot}/js/sweetalert2.all.min.js"></script>
+<link href="${contextRoot}/css/sweetalert2.min.css" rel="stylesheet">
 
-<html lang="en">
-    <head>
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="icon" href="image/favicon.png" type="image/png">
-        <title>Royal Hotel</title>
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href='<c:url value="/css/blog/bootstrap.css"/>'>
-        <link rel="stylesheet" href="<c:url value="/css/blog/vendors/linericon/style.css"/>">
-        <link rel="stylesheet" href="<c:url value="/css/blog/font-awesome.min.css"/>">
-        <link rel="stylesheet" href="<c:url value="/css/blog/vendors/owl-carousel/owl.carousel.min.css"/>">
-        <link rel="stylesheet" href="<c:url value="/css/blog/vendors/bootstrap-datepicker/bootstrap-datetimepicker.min.css"/>">
-        <link rel="stylesheet" href="<c:url value="/css/blog/vendors/nice-select/css/nice-select.css"/>">
-        <link rel="stylesheet" href="<c:url value="/css/blog/vendors/owl-carousel/owl.carousel.min.css"/>">
-        <!-- main css -->
-        <link rel="stylesheet" href="<c:url value="/css/blog/style.css"/>">
-        <link rel="stylesheet" href="<c:url value="/css/blog/responsive.css"/>">
-    </head>
+<!-- 引入CSS -->
+<link rel="stylesheet"
+	href="${contextRoot}/jQueryconfirm/jquery-confirm.css">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<script type="text/javascript"
+	src="${contextRoot}/js/bootstrap.bundle.min.js"></script>
+<link href="${contextRoot}/css/dashboard.css" rel="stylesheet">
+<link href="${contextRoot}/css/leftMenuBar.css" rel="stylesheet">
+<link rel="stylesheet" href="${contextRoot}/css/ManagementPage.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+<!-- <link rel="stylesheet" href="${contextRoot}/css/bootstrap.min.css"> -->
+</head>
 
 
 <body style="background-color: #8E8E8E">
@@ -176,35 +186,35 @@ a:hover {
 
 </body>
 <script type="text/javascript">
-// window.onload=navigator.geolocation.getCurrentPosition(successCallback);  
-// function successCallback(position){  
-//     var lat1 = position.coords.latitude;  
-//     var long1 = position.coords.longitude;  
-//     console.log(lat1);
-//     console.log(long1);
-//     setCookie("lat1",lat1);
-//     setCookie("long1",long1);
+window.onload=navigator.geolocation.getCurrentPosition(successCallback);  
+function successCallback(position){  
+    var lat1 = position.coords.latitude;  
+    var long1 = position.coords.longitude;  
+    console.log(lat1);
+    console.log(long1);
+    setCookie("lat1",lat1);
+    setCookie("long1",long1);
     
 //     document.getElementById(
 //           "result"
 //         ).innerHTML = `<a href="geolat.jsp">666666</a>`;
 // //         latlong?${lat1}+${long1}
-//    }
+   }
    
-// function setCookie(name,value){
-// 	document.cookie = name + "=" +escape(value) +";path=/";
-// }
+function setCookie(name,value){
+	document.cookie = name + "=" +escape(value) +";path=/";
+}
 
-// function getCookie(name){
-// 	var arr,reg = new RegExp("(^|)" + name + "=([^;]*)(;|$)");
-// 	if(arr = document.cookie.match(reg))
-// 		return unescape(arr[2]);
-// 	else
-// 		return null;
-// }
-// //设置cookie值
-// var a = "xxx";
-// setCookie("a",a);  
+function getCookie(name){
+	var arr,reg = new RegExp("(^|)" + name + "=([^;]*)(;|$)");
+	if(arr = document.cookie.match(reg))
+		return unescape(arr[2]);
+	else
+		return null;
+}
+//设置cookie值
+var a = "xxx";
+setCookie("a",a);  
 
 	var code;
 	function createCode() {
