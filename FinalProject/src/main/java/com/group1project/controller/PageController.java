@@ -25,7 +25,7 @@ import com.group1project.model.bean.Article;
 import com.group1project.model.service.ArticleService;
 import com.group1project.model.bean.Account;
 
-import com.group1project.model.service.FeedbackService;
+
 import com.group1project.model.service.ProductService;
 
 @SessionAttributes("account")
