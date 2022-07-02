@@ -29,13 +29,13 @@ public class AccountPageController {
 		return "login";
 	}
 	
+//	@GetMapping("/")
+//	public String Welcome() {
+//		return "front/JotravelFront/accountLogin";
+//	}
+	
+	
 	@GetMapping("/")
-	public String Welcome() {
-		return "index";
-	}
-	
-	
-	@GetMapping("accountLogin")
 	public String WelcomeAccount() {
 		return "front/JoTravel front module/accountLogin";
 	}
@@ -48,7 +48,7 @@ public class AccountPageController {
 		model.addAttribute("account", account);
 		return "addAccount";
 	}
-
+	
 	@GetMapping("/login/findall")
 	@ResponseBody
 	public ModelAndView searchAccountByName(ModelAndView mav,
@@ -60,6 +60,15 @@ public class AccountPageController {
 		mav.getModel().put("account", account);
 		mav.setViewName("allAccount");
 		return mav;
+	}
+	
+	//前台page----------------------------------------------------------------
+	@GetMapping("page/login/member/insert")
+	public String pageinsertAccountPage(Model model) {
+		Account account = new Account();
+
+		model.addAttribute("account", account);
+		return "front/JoTravel front module/pageAccountAdd";
 	}
 
 }
