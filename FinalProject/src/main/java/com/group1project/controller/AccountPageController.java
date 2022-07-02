@@ -37,7 +37,7 @@ public class AccountPageController {
 	
 	@GetMapping("/")
 	public String WelcomeAccount() {
-		return "front/JoTravel front module/accountLogin";
+		return "/front/JoTravelFront/accountLogin";
 	}
 
 
@@ -63,12 +63,13 @@ public class AccountPageController {
 	}
 	
 	//前台page----------------------------------------------------------------
-	@GetMapping("page/login/member/insert")
+	
+	@GetMapping("/page/login/member/insert")
 	public String pageinsertAccountPage(Model model) {
 		Account account = new Account();
 
 		model.addAttribute("account", account);
-		return "front/JoTravel front module/pageAccountAdd";
+		return "/front/JoTravelFront/pageAccountAdd";
 	}
 
 }

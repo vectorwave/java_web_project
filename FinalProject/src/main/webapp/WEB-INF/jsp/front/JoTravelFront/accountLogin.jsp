@@ -10,8 +10,8 @@
 <style>
 .backgroundCSS {
 	background-image:
-		url("http://localhost:8081/jotravel/images/blog/room4.jpg");
-background-size: cover;
+		url("http://localhost:8081/jotravel/images/blog/about_banner.jpg");
+	background-size: cover;
 }
 
 .v_code {
@@ -21,7 +21,7 @@ background-size: cover;
 
 .right {
 	margin: auto;
-/* 	Float: right */
+	/* 	Float: right */
 }
 
 .v_code>input {
@@ -200,7 +200,7 @@ a:hover {
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">離開</button>
-				<a href='<c:out value="${contextRoot}"/>/login/insert'
+				<a href='<c:out value="${contextRoot}"/>/page/login/member/insert'
 					class="try-me btn btn-info">我要註冊</a>
 				<button id="one" type="button" class="btn btn-secondary"
 					data-dismiss="modal">一鍵輸入</button>
