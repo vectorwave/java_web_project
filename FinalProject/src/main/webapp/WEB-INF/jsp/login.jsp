@@ -176,6 +176,7 @@ a:hover {
 
 </body>
 <script type="text/javascript">
+	
 // window.onload=navigator.geolocation.getCurrentPosition(successCallback);  
 // function successCallback(position){  
 //     var lat1 = position.coords.latitude;  
@@ -262,6 +263,7 @@ a:hover {
 			validateCode();
 		}
 	}
+
 	// 		$(function() {
 	// 			$('#send').click(function() {
 	// 				$('#nameresult').text('');
@@ -306,15 +308,14 @@ a:hover {
 
 	// 			});
 	// 		});
-
-	$('#one').click(function() {
-		let checkword = $('#checkCode').text();
-		console.log(checkword)
-		$('#inputAccount').val("ooo");
-		$('#inputPassword').val("ooo");
-		$('#inputCode').val(checkword);
-	})
-
+$('#one').click(function() {
+			let checkword = $('#checkCode').text();
+			console.log(checkword)
+			$('#inputAccount').val("ooo");
+			$('#inputPassword').val("ooo");
+			$('#inputCode').val(checkword);
+		})
+	
 
 </script>
 
