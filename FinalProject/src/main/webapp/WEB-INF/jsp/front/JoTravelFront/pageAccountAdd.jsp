@@ -74,8 +74,13 @@
 								<li class="nav-item"><a class="nav-link"
 									href="blog-single.html">Blog Details</a></li>
 							</ul></li>
-						<li class="nav-item"><a class="nav-link" href="elements.html">Elemests</a></li>
-						<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+							<li class="nav-item"><a class="nav-link" href="http://localhost:8081/jotravel/page/member/add">新增個人資料</a></li>
+								<li class="nav-item"><a class="nav-link" href="blog.html">修改個人資料</a></li>
+								<li class="nav-item"><a class="nav-link" href="blog-single.html">刪除帳號</a></li>
+								<li class="nav-item"><a class="nav-link" href="blog-single.html">查看訂單</a></li>
+								<li class="nav-item"><a class="nav-link" href="http://localhost:8081/jotravel/page/login">登入</a></li>
+								<li class="nav-item"><a class="nav-link" href="http://localhost:8081/jotravel/page/loginout">登出</a></li>
+							
 					</ul>
 				</div>
 			</nav>

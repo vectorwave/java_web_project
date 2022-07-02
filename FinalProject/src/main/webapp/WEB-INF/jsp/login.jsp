@@ -1,30 +1,39 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 
 <!doctype html>
 
 <html lang="en">
-    <head>
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="icon" href="image/favicon.png" type="image/png">
-        <title>Royal Hotel</title>
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href='<c:url value="/css/blog/bootstrap.css"/>'>
-        <link rel="stylesheet" href="<c:url value="/css/blog/vendors/linericon/style.css"/>">
-        <link rel="stylesheet" href="<c:url value="/css/blog/font-awesome.min.css"/>">
-        <link rel="stylesheet" href="<c:url value="/css/blog/vendors/owl-carousel/owl.carousel.min.css"/>">
-        <link rel="stylesheet" href="<c:url value="/css/blog/vendors/bootstrap-datepicker/bootstrap-datetimepicker.min.css"/>">
-        <link rel="stylesheet" href="<c:url value="/css/blog/vendors/nice-select/css/nice-select.css"/>">
-        <link rel="stylesheet" href="<c:url value="/css/blog/vendors/owl-carousel/owl.carousel.min.css"/>">
-        <!-- main css -->
-        <link rel="stylesheet" href="<c:url value="/css/blog/style.css"/>">
-        <link rel="stylesheet" href="<c:url value="/css/blog/responsive.css"/>">
-    </head>
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="icon" href="image/favicon.png" type="image/png">
+<title>Royal Hotel</title>
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href='<c:url value="/css/blog/bootstrap.css"/>'>
+<link rel="stylesheet"
+	href="<c:url value="/css/blog/vendors/linericon/style.css"/>">
+<link rel="stylesheet"
+	href="<c:url value="/css/blog/font-awesome.min.css"/>">
+<link rel="stylesheet"
+	href="<c:url value="/css/blog/vendors/owl-carousel/owl.carousel.min.css"/>">
+<link rel="stylesheet"
+	href="<c:url value="/css/blog/vendors/bootstrap-datepicker/bootstrap-datetimepicker.min.css"/>">
+<link rel="stylesheet"
+	href="<c:url value="/css/blog/vendors/nice-select/css/nice-select.css"/>">
+<link rel="stylesheet"
+	href="<c:url value="/css/blog/vendors/owl-carousel/owl.carousel.min.css"/>">
+<!-- main css -->
+<link rel="stylesheet" href="<c:url value="/css/blog/style.css"/>">
+<link rel="stylesheet" href="<c:url value="/css/blog/responsive.css"/>">
+</head>
 
 
 <body style="background-color: #8E8E8E">
@@ -134,8 +143,8 @@ a:hover {
 						type="password" id="inputPassword" name="inputPassword"
 						class="form-control" placeholder="Password" required>
 					<div class="checkbox mt-1 mb-3">
-						<label> <input onclick="successCallback(position)" type="checkbox" value="remember-me">
-							Remember me
+						<label> <input onclick="successCallback(position)"
+							type="checkbox" value="remember-me"> Remember me
 						</label>
 					</div>
 					<div class="v_code">
@@ -174,9 +183,14 @@ a:hover {
 
 
 
-</body>
+
+<script src="<c:url value="/js/blog/jquery-3.2.1.min.js"/>"></script>
+
+<script src="<c:url value="/js/blog/jquery.ajaxchimp.min.js"/>"></script>
+<script
+	src="<c:url value="/css/blog//vendors/nice-select/js/jquery.nice-select.js"/>"></script>
 <script type="text/javascript">
-	
+
 // window.onload=navigator.geolocation.getCurrentPosition(successCallback);  
 // function successCallback(position){  
 //     var lat1 = position.coords.latitude;  
@@ -263,7 +277,6 @@ a:hover {
 			validateCode();
 		}
 	}
-
 	// 		$(function() {
 	// 			$('#send').click(function() {
 	// 				$('#nameresult').text('');
@@ -308,15 +321,16 @@ a:hover {
 
 	// 			});
 	// 		});
-$('#one').click(function() {
-			let checkword = $('#checkCode').text();
-			console.log(checkword)
-			$('#inputAccount').val("ooo");
-			$('#inputPassword').val("ooo");
-			$('#inputCode').val(checkword);
-		})
-	
+
+	$('#one').click(function() {
+		let checkword = $('#checkCode').text();
+		console.log(checkword)
+		$('#inputAccount').val("ooo");
+		$('#inputPassword').val("ooo");
+		$('#inputCode').val(checkword);
+	})
+
 
 </script>
-
+</body>
 <jsp:include page="layout/footer.jsp" />
