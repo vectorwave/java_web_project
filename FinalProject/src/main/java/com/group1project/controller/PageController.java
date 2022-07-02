@@ -10,22 +10,21 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.group1project.model.bean.Article;
+import com.group1project.model.bean.Feedback;
 import com.group1project.model.bean.Guide;
 import com.group1project.model.bean.Product;
 import com.group1project.model.bean.ProductComment;
+import com.group1project.model.service.ArticleService;
+import com.group1project.model.service.FeedbackService;
 import com.group1project.model.service.GuideService;
 import com.group1project.model.service.ProductCommentService;
-import com.group1project.model.bean.Article;
-import com.group1project.model.service.ArticleService;
-import com.group1project.model.bean.Account;
-import com.group1project.model.bean.Feedback;
-import com.group1project.model.service.FeedbackService;
 import com.group1project.model.service.ProductService;
 
 @SessionAttributes("account")
@@ -72,41 +71,22 @@ public class PageController {
 		return "addProduct";
 	}
 	
-//	@GetMapping("/login/insert")
-//	public String insertAccountPage(Model model) {
-//		Account account = new Account();
-//		
-//		model.addAttribute("account", account);
-//		return "addAccount";
-//	}
-	
-//	@GetMapping("back/allProduct2")
-//	public String productAll() {
-//		return "findAllProduct";
-//	}
-//	
-	
-//	@GetMapping("back/Product/all")
-//	public String findAllPrdouct(@RequestParam(name="p", defaultValue = "1") Integer pageNumber, Model model) {
-//		
-//		Page<Product> page = pService.findByPage(pageNumber);
-//		
-//		model.addAttribute("page", page);
-//		
-//		return "findAllProduct2";
-//		
-//	}
+
 	//前台商品頁面含page方法
-	@GetMapping("front/allProduct")
+	@GetMapping("mainpage")
 	public ModelAndView viewAllProducts(ModelAndView mav, 
 			@RequestParam(name="p", defaultValue="1") Integer pageNumber) {
 		Page<Product> page = pService.findByPage(pageNumber);
 		
 		mav.getModel().put("page", page);
-		mav.setViewName("front/frontProductList");
+		mav.setViewName("front/JoTravel front module/frontProductPage");
 		return mav;
 	
 	}
+	@GetMapping("/mainpage2")
+	public String frontIndexPage(){
+		return "front/JoTravel front module/frontProductPage";
+	} 
 	
 	
 	@GetMapping("back/allProduct")
