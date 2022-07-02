@@ -128,6 +128,31 @@ public class AccountController {
 	}
 	
 	//登入
+//	@RequestMapping(path = "/logingo", method=RequestMethod.POST)
+//	public String loginCheck(@RequestParam("inputAccount") String inputAccount, @RequestParam("inputPassword") String inputPassword, Model model) {
+//		
+//		//加密功能
+//		String password = getStringHash(inputPassword, "SHA-512");
+//		Account queryMember = aService.findByAccPwd(inputAccount, password );
+//
+//		System.out.println("queryMember=" + queryMember);
+//				
+//		if(queryMember == null) {	
+//			model.addAttribute("loginErrorMsg", "登入失敗,帳號不存在");
+//			return "login";
+//		} else if(!queryMember.getPassword().equals(password)){
+//			model.addAttribute("loginErrorMsg", "登入失敗,密碼錯誤");
+//			return "login";
+//		} else if(queryMember.getAccountName().equals("")) {
+//			model.addAttribute("loginuser", queryMember);
+//			return "redirect:front/JoTravelFront/pageAccountAdd";
+//		} else {
+//			model.addAttribute("loginuser", queryMember);
+//			return "redirect:front/JoTravelFront/pageAccountAdd";
+//		}
+//	}
+	
+	//登入
 	@RequestMapping(path = "/logingo", method=RequestMethod.POST)
 	public String loginCheck(@RequestParam("inputAccount") String inputAccount, @RequestParam("inputPassword") String inputPassword, Model model) {
 		
@@ -145,36 +170,12 @@ public class AccountController {
 			return "login";
 		} else if(queryMember.getAccountName().equals("")) {
 			model.addAttribute("loginuser", queryMember);
-			return "redirect:front/JoTravelFront/pageAccountAdd";
+			return "redirect:/login/findall";
 		} else {
 			model.addAttribute("loginuser", queryMember);
-			return "redirect:front/JoTravelFront/pageAccountAdd";
+			return "redirect:/login/findall";
 		}
 	}
-	
-//	@RequestMapping(path = "page/logingo", method=RequestMethod.POST)
-//	public String pageloginCheck(@RequestParam("inputAccount") String inputAccount, @RequestParam("inputPassword") String inputPassword, Model model) {
-//		
-//		//加密功能
-//		String password = getStringHash(inputPassword, "SHA-512");
-//		Account queryMember = aService.findByAccPwd(inputAccount, password );
-//
-//		System.out.println("queryMember=" + queryMember);
-//				
-//		if(queryMember == null) {	
-//			model.addAttribute("loginErrorMsg", "登入失敗,帳號不存在");
-//			return "login";
-//		} else if(!queryMember.getPassword().equals(password)){
-//			model.addAttribute("loginErrorMsg", "登入失敗,密碼錯誤");
-//			return "login";
-//		} else if(queryMember.getAccountName().equals("")) {
-//			model.addAttribute("loginuser", queryMember);
-//			return "redirect:/member/add";
-//		} else {
-//			model.addAttribute("loginuser", queryMember);
-//			return "redirect:front/JoTravel front module/pageAccountAdd";
-//		}
-//	}
 	
 //	@RequestMapping(path = "/login.password.update", method = RequestMethod.POST)
 //	@ResponseBody
