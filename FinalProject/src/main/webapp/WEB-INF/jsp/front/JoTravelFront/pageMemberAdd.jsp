@@ -36,7 +36,8 @@
 </head>
 <style>
 .justify-content{
-justify-content: center;
+/* justify-content: center; */
+align-items: center;
 }
 
 .context{
@@ -89,7 +90,7 @@ margin:auto;
 							<ul class="dropdown-menu">
 								<li class="nav-item"><a class="nav-link"
 									href="http://localhost:8081/jotravel/page/member/add">新增個人資料</a></li>
-								<li class="nav-item"><a class="nav-link" href="blog.html">修改個人資料</a></li>
+								<li class="nav-item"><a class="nav-link" href="http://localhost:8081/jotravel/page/member/edit?id=${loginuser.accountId}">修改個人資料</a></li>
 								<li class="nav-item"><a class="nav-link"
 									href="blog-single.html">刪除帳號</a></li>
 								<li class="nav-item"><a class="nav-link"
@@ -149,7 +150,7 @@ margin:auto;
 			<%--   性別：<form:input type="redio" path="gender" class="form-control" placeholder="0=女，1=男"/><br/> --%>
 			<label class="GIFLabel">性別： </label>
 
-			<div class="btn-group" role="group"
+			<div class="btn-group justify-content" role="group"
 				aria-label="Basic radio toggle button group"
 				style="float: right; margin-right: 130px;">
 				<form:radiobutton path="gender" value="男性" class="btn-check"
@@ -401,7 +402,8 @@ margin:auto;
 	  console.log(form)
 	  $.ajax({
 		  type: "get",
-		  url: "page/member/searchAccountId/" + aid,
+		  url: "http://localhost:8081/jotravel/page/member/searchAccountId/" + aid,
+		  
 		  success: function(response){
 			  console.log(response.result)
 			  if(response.result == "true"){
