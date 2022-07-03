@@ -44,12 +44,34 @@ padding: 30px;
 /* guideDetail.jsp 樣式 */
 #GIFormContainer1 {
     padding: 20px;
+}
+
+#formFieldset {
+    background-color: white;
+    border-radius: 30px;
     width: 800px;
 }
 
-#leftPart {float:left}
+#guideLegend {
+    padding-top: 20px;
+}
 
-#rightPart {float:right}
+.formLabel {
+    background-color: rgb(221, 221, 221);
+    border: 5px solid white;
+    padding:10px;
+}
+
+.formContent {
+    background-color: rgb(243, 243, 245);
+    border: 5px solid white;
+    padding:10px;
+}
+
+.btn-container {
+    margin-bottom: 30px;
+
+}
 
 .inputBox1 {
 margin-top: 5px;
@@ -57,7 +79,6 @@ margin-bottom: 5px;
 width: 250px;
 background-color: transparent;
 border: none;
-float: right;
 }
 
 .textarea1 {
@@ -67,7 +88,6 @@ width: 250px;
 background-color: transparent;
 resize:none;
 border: none;
-float: right;
 }
 
 .inputBoxAdd{
@@ -75,7 +95,6 @@ float: right;
     margin-bottom: 5px;
 width: 250px;
 border: none;
-float: right;
 border-radius: 3px;
 }
 
@@ -85,12 +104,15 @@ border-radius: 3px;
 width: 250px;
 resize:none;
 border: none;
-float: right;
 border-radius: 3px;
 }
 
 .GIFLabel {
     margin-top: 5px;
     margin-bottom: 5px;
-    float: left;
+}
+
+.check {
+    font-size: 5px;
+    color:gray;
 }

@@ -4,7 +4,10 @@ import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.MapsId;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -119,6 +122,15 @@ public class GuideController {
 		return "guideDetail";
 	}
 	
+	//修改帳號狀態
+//	@PostMapping("editAcc/{id}")
+//	public void updateAccountStatus(@PathVariable("id") Integer id,@RequestParam(name="status") String status) {
+//		Account guideAccount = aService.getAccountById(id);
+//		guideAccount.setStatus(status);
+//		
+//		Account newAcc = aService.saveAccount(guideAccount);
+//	}
+	
 	//刪除導遊資料  (沒有前端接boolean會丟錯誤訊息，不過資料庫還是會做刪除)
 	@GetMapping("delete/{id}")
 	public String deleteById(@PathVariable("id") Integer id) {
@@ -126,6 +138,24 @@ public class GuideController {
 		 aService.deleteAccount(id);
 		 return "redirect:/guidemanagement";
 	 }
+	
+	//模糊搜尋
+//	@GetMapping("searchGuide")
+//	@ResponseBody
+//	public Page<Guide> searchGuide(@RequestParam("key") String key,Model m) {
+//	
+//		Page<Guide> searchResult = gService.searchGuideByProfileName(key);
+//		
+//		System.out.println("==============================");
+//		System.out.println(searchResult);
+//		System.out.println("==============================");
+//		
+//		m.addAttribute("searchResult", searchResult);
+//		
+//		
+//		return searchResult;
+//	
+//	}
 	
 	//顯示圖片Controller
 	@GetMapping("photo/{id}")

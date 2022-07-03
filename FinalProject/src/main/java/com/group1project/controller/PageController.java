@@ -1,5 +1,7 @@
 package com.group1project.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -19,6 +21,7 @@ import com.group1project.model.bean.Product;
 import com.group1project.model.bean.ProductComment;
 import com.group1project.model.service.GuideService;
 import com.group1project.model.bean.Article;
+import com.group1project.model.service.AccountService;
 import com.group1project.model.service.ArticleService;
 import com.group1project.model.bean.Account;
 import com.group1project.model.bean.Feedback;
@@ -35,7 +38,11 @@ public class PageController {
 	@Autowired
 	private ArticleService aService;
 
-
+	@Autowired
+	private GuideService gService;
+	
+	@Autowired
+	private AccountService acService;
 	
 	@GetMapping("/back")
 	public String backIndexPage(){
@@ -207,12 +214,6 @@ public class PageController {
 	
 	}
 	
-	
-
-
-	@Autowired
-	private GuideService gService;
-	
 	//所有商家頁面
 	@GetMapping("/guidemanagement")
 	public ModelAndView allGuidePage(ModelAndView mav, @RequestParam(name="p", defaultValue = "1") Integer pageNumber) {
@@ -231,7 +232,10 @@ public class PageController {
 	@GetMapping("/guidemanagement/info/{id}")
 	public ModelAndView guideDetails(ModelAndView mav, @PathVariable("id") int id) {
 		Guide guideInfo = gService.getGuideById(id);
+		Account guideAcc = acService.getAccountById(id);
+		
 		mav.getModel().put("guideInfo", guideInfo);
+		mav.getModel().put("guideAcc", guideAcc);
 		mav.setViewName("guideDetail");
 		return mav;
 	}
@@ -252,9 +256,65 @@ public class PageController {
 	@GetMapping("/guidemanagement/update/{id}")
 	public ModelAndView updateGuideInfo(ModelAndView mav, @PathVariable("id") int id) {
 		Guide guideUpdate = gService.getGuideById(id);
+		Account guideAcc = acService.getAccountById(id);
+		
 		mav.getModel().put("guideUpdate", guideUpdate);
+		mav.getModel().put("accUpdate", guideAcc);
 		mav.setViewName("updateGuide");
 		return mav;
+	}
+	
+	//搜尋功能
+	@GetMapping("/guidemanagement/search")
+	@ResponseBody
+	public ModelAndView searchAccountByName(ModelAndView mav,
+			@RequestParam(value = "key", defaultValue = "", required = false) String key,String con, Model m) {
+
+		if(con.equals("name")) {
+			List<Guide> searchGuide = gService.searchGuideByProfileName(key);
+			
+			if(searchGuide.isEmpty()) {
+				mav.setViewName("noGuide");
+				
+				return mav;
+			}
+			
+			mav.getModel().put("key", key);
+			mav.getModel().put("searchGuide", searchGuide);
+			mav.setViewName("allGuideSearch");
+			return mav;
+		};
+		
+		if(con.equals("id")) {
+			
+			boolean isNumeric =  key.matches("[+-]?\\d*(\\.\\d+)?");
+			
+			if(!isNumeric || key.equals("")) {
+				mav.setViewName("noGuide");
+				return mav;
+			}
+			
+			Integer id = Integer.parseInt(key);
+			Guide oneGuide = gService.getGuideById(id);
+			
+			if(oneGuide == null) {
+
+				mav.setViewName("noGuide");
+				
+				return mav;
+				
+			} else {
+				
+				mav.getModel().put("key", key);
+				mav.getModel().put("guideInfo", oneGuide);
+				mav.setViewName("guideDetail");
+				
+				return mav;
+			}
+			
+		};
+		
+		return null;		
 	}
 	
 	// ##### End ##### 商家導遊 Page Controller 
