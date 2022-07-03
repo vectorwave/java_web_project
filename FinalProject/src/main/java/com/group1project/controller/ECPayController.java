@@ -50,9 +50,9 @@ public class ECPayController {
 		//交易金額
 		aioCheck.setTotalAmount(orderService.countTotalAmount(order)+"");
 		//交易描述
-		aioCheck.setTradeDesc("ddd");
+		aioCheck.setTradeDesc("ddd");//因為某種超自然原因，他這個交易描述不給我打中文，官方手冊建議是直接不打
 		//商品名稱
-		aioCheck.setItemName("gg");
+		aioCheck.setItemName("Jotravel");//同上
 		//付款完成通知回傳網址
 		aioCheck.setReturnURL("localhost:8081/jotravel/ECPay/returnURL");
 		//Clinet端回傳付款結果網址

@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
+<jsp:include page="front/JoTravelFront/frontLayout/frontHeader.jsp" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +16,7 @@
 <script type="text/javascript" src="${contextRoot}/js/vue.min.js"></script>
 </head>
 <body>
-	<div class="container mt-5" id="container">
+	<div class="container my-5" id="container">
 		<div class="h1 text-center">
 			<strong>JOTRAVEL 訂單頁面</strong>
 		</div>
@@ -52,7 +53,7 @@
 							</thead>
 							<tbody v-for="(detail,index) in orderDetails">
 								<tr>
-									<td class="align-middle"><button type="button" @click=""
+									<td class="align-middle"><button type="button" @click="delDetail(index)"
 											class="btn btn-danger btn-sm" data-toggle="modal">🗑️</button>
 									<td class="align-middle"><img
 										:src="'${contextRoot}/back/product/photo/'+detail.product.productId"
@@ -143,12 +144,12 @@
 		$('#alert2').addClass('alert-success');
 	}
 	//購物車cookie格式  商品編號,訂購數量,日期,天數;商品編號,訂購數量,日期
-	var testcart = '4,1,2023-09-15,3;5,1,2023-09-15,5';
+	var testcart = '1,1,2023-09-15,3;2,1,2023-09-15,5';
 	if(!Cookies.get('cart') || Cookies.get('cart') == ''){
 		Cookies.set('cart',testcart);
 	}
 	function cookieToData(){
-		let arr1 = testcart.split(';');
+		let arr1 = Cookies.get('cart').split(';');
 		let details = [];
 		arr1.forEach(arr=>{
 			let arr2 = arr.split(',');
@@ -177,6 +178,12 @@
 				  });
 				  return total;
 			  },
+			  delDetail(index){
+				  this.orderDetails.splice(index,1);
+				  let cookie = Cookies.get('cart').split(';');
+				  cookie.splice(index,1);
+				  Cookies.set('cart',cookie.join(';'));
+			  }
 		  },
 		});
 	//將訂單送往綠界金流
@@ -188,6 +195,7 @@
 		  	contentType:'application/json; charset=utf-8',
 		  	data:JSON.stringify(vm.$data),
 			success:function(res){
+				Cookies.set('cart','');
 				$('#container').html(res);
 			},
 			error:function(err){
@@ -214,3 +222,5 @@
 	</script>
 </body>
 </html>
+
+ <jsp:include page="front/JoTravelFront/frontLayout/frontFooter.jsp" />

@@ -17,12 +17,10 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.group1project.model.bean.Article;
-import com.group1project.model.bean.Feedback;
 import com.group1project.model.bean.Guide;
 import com.group1project.model.bean.Product;
 import com.group1project.model.bean.ProductComment;
 import com.group1project.model.service.ArticleService;
-import com.group1project.model.service.FeedbackService;
 import com.group1project.model.service.GuideService;
 import com.group1project.model.service.ProductCommentService;
 import com.group1project.model.service.ProductService;
@@ -38,56 +36,57 @@ public class PageController {
 	private ArticleService aService;
 
 	@Autowired
-
 	private ProductCommentService pcService;
 	
 	@Autowired
 	private GuideService gService;
 	
-	@GetMapping("/back")
-	public String backIndexPage(){
-		return "backIndex";
-	}
-	@GetMapping("/back/car")
-	public String carPage(){
-		return "cart";
-	} 
-	@GetMapping("/back/car2")
-	public String carPage2(){
-		return "front/frontProductList";
-	} 
 	
-	@GetMapping("back/addProduct")
-	public String addProduct(Model model){
-
-//		Account account = new Account();
-		Product newPd = new Product();
-				
-//		Integer userId = account.getAccountId();
-//		Integer userId = null;
-		model.addAttribute("newPd", newPd);
-//		model.addAttribute("userId", userId);
-
-		return "addProduct";
-	}
 	
-
+//	########################前台商品頁面########################
+	
+	
 	//前台商品頁面含page方法
-	@GetMapping("mainpage")
+	@GetMapping("front/productPage")
 	public ModelAndView viewAllProducts(ModelAndView mav, 
 			@RequestParam(name="p", defaultValue="1") Integer pageNumber) {
 		Page<Product> page = pService.findByPage(pageNumber);
 		
 		mav.getModel().put("page", page);
-		mav.setViewName("front/JoTravel front module/frontProductPage");
+		mav.setViewName("front/JoTravelFront/frontProductPage");
 		return mav;
-	
+		
 	}
-	@GetMapping("/mainpage2")
-	public String frontIndexPage(){
-		return "front/JoTravel front module/frontProductPage";
+	@GetMapping("/front/productPage/detail")
+	public String frontIndexPage(@RequestParam("id") Integer productId,Model model){
+		
+		Product product= pService.getProductById(productId);
+		List<ProductComment> pdComment =  pcService.getAllProductCommentByProductId(productId);
+	
+		model.addAttribute("product", product);
+		model.addAttribute("pdComment", pdComment);
+		
+		return "front/JoTravelFront/frontProductDetail";
 	} 
 	
+	
+//	########################後台商品頁面########################
+	
+	@GetMapping("/back")
+	public String backIndexPage(){
+		return "backIndex";
+	}
+	
+	@GetMapping("back/addProduct")
+	public String addProduct(Model model){
+
+		Product newPd = new Product();
+
+		model.addAttribute("newPd", newPd);
+
+		return "addProduct";
+	}
+		
 	
 	@GetMapping("back/allProduct")
 	@ResponseBody
@@ -106,7 +105,7 @@ public class PageController {
 	
 	}
 	
-//	####Start 商品評論####
+//	###################Start 商品評論############################
 	
 	@GetMapping("back/ProductComment/add")
 	public String addProductComment(@RequestParam(name="id") Integer productId,Model model) {
@@ -158,20 +157,10 @@ public class PageController {
 	
 	
 	// ##### Start ##### feedback Page Controller
-	@Autowired
-	private FeedbackService fService;
 	
 	
-	@GetMapping("back/allFeedback")
-	public ModelAndView Feedback(ModelAndView mav, 
-			@RequestParam(name="p", defaultValue="1") Integer pageNumber) {
-		System.out.println(pageNumber);
-		Page<Feedback> page = fService.findByPage(pageNumber);
-		
-		mav.getModel().put("page", page);
-		mav.setViewName("findAllFeedback");
-		return mav;
-	}
+	
+	
 	
 
 	@GetMapping("article/add")
@@ -282,13 +271,25 @@ public class PageController {
 	//前台商品頁面含page方法
 		@GetMapping("front/blogIndex")
 		public ModelAndView viewAllArticlePage(ModelAndView mav, 
-				@RequestParam(name="p", defaultValue="1") Integer pageNumber) {
-			Page<Article> page = aService.findByPage(pageNumber);
-			
+				@RequestParam(name="p", defaultValue="1") Integer pageNumber,@RequestParam(value="key",defaultValue="" ,required = false) String key,Model m) {
+//			Page<Article> page = aService.findByPage(pageNumber);
+//			
+//			mav.getModel().put("page", page);
+//			mav.getModel().put("key", key);
+			Pageable pgb = PageRequest.of(pageNumber - 1, 5 ,Sort.Direction.DESC,"articleId");
+
+			Page<Article> page = aService.searchArticleByTitleWithPage(key, pgb);
+
 			mav.getModel().put("page", page);
+			mav.getModel().put("key", key);
 			mav.setViewName("front/JoTravelFront/blogIndex");
 			return mav;
 		}
+		
+		@GetMapping("front/blogSingle")
+		public String blogSingle(){
+			return "front/JoTravelFront/blogSingle";
+		} 	
 	@GetMapping("blogPage/")
 	public String blogPage(){
 		return "blogPage";

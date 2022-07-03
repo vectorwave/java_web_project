@@ -125,7 +125,7 @@
 					<div class="dropdown-content">
 						<a class="dropdown-item" href="${contextRoot}/back/allProduct">所有商品</a>
 						<a class="dropdown-item" href="${contextRoot}/back/addProduct">新增商品</a>
-						<a href="#">商品分類</a>
+						<a class="dropdown-item" href="${contextRoot}/back/ProductComment/all">商品評論</a>
 					</div>
 				</div>
 
@@ -155,7 +155,7 @@
 					</button>
 					<div class="dropdown-content">
 						<a href="#">未回覆問題</a> <a class="dropdown-item"
-							href="/jotravel/back/allFeedback">所有問題</a> <a href="#">即時回回覆</a>
+							href="${contextRoot}/message/form">所有問題</a> <a href="#">即時回回覆</a>
 					</div>
 				</div>
 

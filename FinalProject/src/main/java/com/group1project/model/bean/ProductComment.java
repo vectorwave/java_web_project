@@ -59,4 +59,6 @@ public class ProductComment implements Serializable{
 	@Column(name="updated_time",columnDefinition="datetime")
 	private Date updatedTime;
 	
+	@Column(name="commentScore")
+	private Integer commentScore;
 }

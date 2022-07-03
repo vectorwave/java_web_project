@@ -93,19 +93,7 @@ console.log(long2);
   }
 
 
-//   var button = document.querySelectorAll('#delete');
-//   function del(e) {
-//   if (confirm("確認要刪除嗎?") == true) {
-//    return true
-// //       window.location.href='deletedepot.jsp?id='+id;點確認連到下個連結
-//   } else {
-//    window.event.returnValue = false; 
-//   }
-//  };
-// //  button.addEventListener('click', del);
-// //  button.forEach(delt => {
-// //   delt.addEventListener('click', del);
-// //   });
+
 
 function upd(e){
 	 Swal.fire({

@@ -55,16 +55,18 @@ public class ProductServiceimpl implements ProductService {
 		return pDao.findAll();
 	}
 	
-	
+	//0713等待修改
 	@Override
 	public Page<Product> findByPage(Integer pageNumber) {
-		   Pageable pgb = PageRequest.of(pageNumber - 1, 6 ,Sort.Direction.DESC,"productId");
-		   
-		   Page<Product> page = pDao.findAll(pgb);
-		   
-		   return page;
+		   Pageable pgb = PageRequest.of(pageNumber - 1, 6 );
+//		   startDate productId ,Sort.Direction.DESC,"startDate"
+//		   Page<Product> page = pDao.findAll(pgb);
+		   Page<Product> page2 = pDao.findAllOnSaleProduct(pgb);
+		   return page2;
 		  }
 
+	
+	
 	@Override
 	public List<Product> searchProductByName(String key) {
 		
