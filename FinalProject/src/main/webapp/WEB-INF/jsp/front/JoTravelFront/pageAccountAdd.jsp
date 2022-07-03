@@ -134,8 +134,8 @@
 			})
 	}
 	  $('#one').click(function(){
-			$('#inputAccount').val("ooo");
-			$('#inputPassword').val("ooo");
+			$('#inputAccount').val("k123");
+			$('#inputPassword').val("k123");
 			
 		})
 	  

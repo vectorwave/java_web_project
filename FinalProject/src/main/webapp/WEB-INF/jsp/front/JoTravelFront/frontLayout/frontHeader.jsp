@@ -65,6 +65,7 @@
 									<li class="nav-item"><a class="nav-link" href="blog-single.html">查看訂單</a></li>
 									<li class="nav-item"><a class="nav-link" href="http://localhost:8081/jotravel/page/login">登入</a></li>
 									<li class="nav-item"><a class="nav-link" href="http://localhost:8081/jotravel/page/loginout">登出</a></li>
+									<li class="nav-item"><a class="nav-link" href="http://localhost:8081/jotravel/login">管理員</a></li>
 							
 									
 

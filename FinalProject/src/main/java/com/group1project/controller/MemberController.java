@@ -192,9 +192,9 @@ public class MemberController {
 		Member result = mService.getMemberByAccountId(accountId);
 		if (result == null) {
 			mService.saveMember(member);
-			return "redirect:page/member/findall";
+			return "redirect:/";
 		} else {
-			return "redirect:page/member/findall";
+			return "redirect:/";
 		}
 	}
 
@@ -241,7 +241,7 @@ public class MemberController {
 			}
 			mService.saveMember(newMember);
 
-			return "redirect:/";
+			return "front/JoTravelFront/pageMemberEdit";
 
 		}
 

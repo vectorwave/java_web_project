@@ -25,7 +25,7 @@ overflow-wrap: break-word;
 <input type="text" name="key" placeholder="搜尋帳號" id="key"> <input type="submit" id="send" value="🔍" > <a href="http://localhost:8081/jotravel/login/findall"><input type="button" value="全部帳號" ></a>  
 </form>
 
-  <input id=accountId name="accountId" value="${loginuser.accountId}" />
+  <input type="hidden" id=accountId name="accountId" value="${loginuser.accountId}" />
 
 <%-- <form:form method="post" action="${contextRoot}/member/findall modelAttribute="member"> --%>
 
