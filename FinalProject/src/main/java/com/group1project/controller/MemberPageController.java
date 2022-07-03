@@ -41,7 +41,28 @@ public class MemberPageController {
 	public ModelAndView searchMemberByName(ModelAndView mav,
 			@RequestParam(value = "key", defaultValue = "", required = false) String key, Model m) {
 
-		List<Member> member = mService.searchMemberByName(key);
+		List<Member> member = mService.findIdMembertitle(key);
+
+		mav.getModel().put("key", key);
+		mav.getModel().put("member", member);
+		mav.setViewName("allMember");
+		return mav;
+	}
+	//前台----------------------------------------------------
+	@GetMapping("page/member/add")
+	public String pgaeaddMemberPage(Model model) {
+		Member member = new Member();
+
+		model.addAttribute("member", member);
+		return "/front/JoTravelFront/pageMemberAdd";
+	}
+	
+	@GetMapping("page/member/findall")
+	@ResponseBody
+	public ModelAndView pagesearchMemberByName(ModelAndView mav,
+			@RequestParam(value = "key", defaultValue = "", required = false) String key, Model m) {
+
+		List<Member> member = mService.findIdMembertitle(key);
 
 		mav.getModel().put("key", key);
 		mav.getModel().put("member", member);

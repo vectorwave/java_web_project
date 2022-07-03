@@ -63,13 +63,17 @@
 		</button>
 
 		<!--   <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search"> -->
+
+
 		<a class="nav-link" href="http://localhost:8081/jotravel/loginout">
 			<button type="button" class="btn btn-secondary"
-				style="margin-right: 20px;">登出</button>
+				style="position: absolute; right: 90px; top: 11px;">登出</button>
 		</a> <a class="nav-link" href="http://localhost:8081/jotravel/login">
 			<button type="button" class="btn btn-secondary"
-				style="margin-right: 20px;">登入</button>
+				style="margin-right: 20px; position: relative;">登入</button>
 		</a>
+
+
 	</nav>
 
 
@@ -93,24 +97,16 @@
 						<span class="material-icons">people</span>會員管理
 					</button>
 					<div class="dropdown-content">
-						<%--            <a class="dropdown-item" href="${contextRoot}/member/add">新增會員資料</a> --%>
+						<a class="dropdown-item" href="${contextRoot}/member/add">新增會員資料</a>
 						<a class="dropdown-item" href="${contextRoot}/member/findall">所有會員資訊</a>
-						<%-- 						<a class="dropdown-item" href="${contextRoot}/login/insert">新增帳號</a> --%>
+						<a class="dropdown-item" href="${contextRoot}/login/insert">新增帳號</a>
 						<a class="dropdown-item" href="${contextRoot}/login/findall">所有帳號</a>
 						<a class="dropdown-item"
 							href="${contextRoot}/login.password.update">修改密碼</a> <a
 							class="dropdown-item" href="#">會員分級</a>
 					</div>
 				</div>
-				<div class="dropdown">
-					<button class="dropbtn">
-						<span class="material-icons">content_paste</span>訂單管理
-					</button>
-					<div class="dropdown-content">
-						<a class="dropdown-item" href="${contextRoot}/back/allOrder">所有訂單</a>
-						<a class="dropdown-item" href="${contextRoot}/back/downloadOrder">匯出訂單</a>
-					</div>
-				</div>
+
 				<div class="dropdown">
 					<button class="dropbtn">
 						<span class="material-icons">hiking</span>商家管理
@@ -132,6 +128,17 @@
 						<a href="#">商品分類</a>
 					</div>
 				</div>
+
+				<div class="dropdown">
+					<button class="dropbtn">
+						<span class="material-icons">hiking</span>商家管理
+					</button>
+					<div class="dropdown-content">
+						<a href="/jotravel/guidemanagement">所有商家</a> <a href="#">商家權限</a>
+						<a href="/jotravel/guidemanagement/addguide">新增商家</a>
+					</div>
+				</div>
+
 				<div class="dropdown">
 					<button class="dropbtn">
 						<span class="material-icons">rate_review</span>論壇管理
@@ -148,7 +155,7 @@
 					</button>
 					<div class="dropdown-content">
 						<a href="#">未回覆問題</a> <a class="dropdown-item"
-							href="/jotravel/back/allFeedback">所有問題</a> <a href="#">即時回回覆</a>
+							href="${contextRoot}/message/form">所有問題</a> <a href="#">即時回回覆</a>
 					</div>
 				</div>
 

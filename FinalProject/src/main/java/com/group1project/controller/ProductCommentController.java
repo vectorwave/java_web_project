@@ -41,7 +41,7 @@ public class ProductCommentController {
 	private AccountService accService;
 	
 	//查詢所有商品評論
-	@GetMapping
+	@GetMapping()
 	@ResponseBody //回傳json格式的資料
 	public List<ProductComment> getAllCommnets(Model m) {
 		List<ProductComment> list = pService.getAllProductComment(); 
@@ -49,6 +49,20 @@ public class ProductCommentController {
 		m.addAttribute("list", list);
 		
 		return list;
+	}
+	
+	//查詢指定商品的評論
+	@GetMapping("find")
+	@ResponseBody
+	public List<ProductComment> findAllPrdouctComment(@RequestParam(value="id", defaultValue="" ,required = false) Integer prdouctId ,Model model) {
+		
+		
+		List<ProductComment> productComment =  pService.getAllProductCommentByProductId(prdouctId);
+		
+		model.addAttribute("productComment", productComment);
+		
+		return productComment;
+		
 	}
 	
 	
@@ -67,6 +81,7 @@ public class ProductCommentController {
 	public String addProductComment(@ModelAttribute("pdComment") ProductComment productComment,
 			@RequestParam(value="accountId", required = false ) Integer accountId,
 			@RequestParam(value="productId", required = false ) Integer productId, 
+			@RequestParam(value="inlineRadioOptions", required = false ) Integer score, 
 			Model model) {
 		
 		
@@ -77,6 +92,7 @@ public class ProductCommentController {
 		
 		productComment.setAccount(member);
 		productComment.setProduct(pd);
+		productComment.setCommentScore(score);
 		
 		Date nowDate = new Date();
 		productComment.setUpdatedTime(nowDate);
@@ -91,38 +107,55 @@ public class ProductCommentController {
 	}
 	
 	//以非rest風格的方式刪除商品
-	@RequestMapping(value="delete/{id}" , method = RequestMethod.GET)
+	@GetMapping("delete/{id}")
 	public String deleteProductById(@PathVariable("id") int productCommnetId) {
 		pService.deleteProductComment(productCommnetId);
-		return "redirect:/back/allProduct";
+		return "redirect:/back/ProductComment/all";
 	}
 	
-	
+	//轉跳頁面
 	@GetMapping("editProductComment")
 	public String editProducteCommentPage(@RequestParam("id") int productCommnetId, Model model) {
 		ProductComment newPdComment = pService.getProductCommentById(productCommnetId);
 
-		model.addAttribute("newPdComment", newPdComment);
+		model.addAttribute("newPdC", newPdComment);
 		
 		return "editProductComment";//回到頁面
 	}
 	
 
 	
-	@PostMapping("editProductComment/edit")
-	@ResponseBody
-    public String editProducteComment(@RequestBody ProductComment newPdComment, @ModelAttribute(name="newPd") ProductComment newPdComment2 ,
+	@PostMapping("editProductComment")
+    public String editProducteComment(@ModelAttribute(name="newPdC") ProductComment newPdComment ,
+    		@RequestParam("accountId") Integer aId,
+		    @RequestParam("productId") Integer pId,    		
     		Model model) {
 		
 		Date nowDate = new Date();
 		newPdComment.setUpdatedTime(nowDate);
+		Account member = new Account();
+		Product pd = new Product();
+		member.setAccountId(aId);
+		pd.setProductId(pId);
 		
+		newPdComment.setAccount(member);
+		newPdComment.setProduct(pd);
 		
 		pService.saveProductComment(newPdComment);
 		
-		return "redirect:/back/allProduct";
+		return "redirect:/back/ProductComment/all";
 		
+
 	}
-	
-	
 }
+
+
+//	@GetMapping("searchProductComment")
+//	@ResponseBody
+//	public List<ProductComment> searchProductComment(@RequestParam("key") String key,Model m) {
+//	
+		 
+//		 return pService.searchProductByNameWithPage(key);
+	
+//	}
+	

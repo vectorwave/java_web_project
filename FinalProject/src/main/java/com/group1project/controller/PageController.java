@@ -1,5 +1,7 @@
 package com.group1project.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -8,21 +10,19 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.group1project.model.bean.Article;
+import com.group1project.model.bean.Feedback;
 import com.group1project.model.bean.Guide;
 import com.group1project.model.bean.Product;
 import com.group1project.model.bean.ProductComment;
-import com.group1project.model.service.GuideService;
-import com.group1project.model.bean.Article;
 import com.group1project.model.service.ArticleService;
 import com.group1project.model.bean.Account;
-import com.group1project.model.bean.Feedback;
-import com.group1project.model.service.FeedbackService;
 import com.group1project.model.service.ProductService;
 
 @SessionAttributes("account")
@@ -32,71 +32,62 @@ public class PageController {
 	@Autowired
 	private ProductService pService ;
 	
-	
-	
-	@GetMapping("/back")
-	public String backIndexPage(){
-		return "backIndex";
-	}
-	@GetMapping("/back/car")
-	public String carPage(){
-		return "cart";
-	} 
-	@GetMapping("/back/car2")
-	public String carPage2(){
-		return "front/frontProductList";
-	} 
-	
-	@GetMapping("back/addProduct")
-	public String addProduct(Model model){
+	@Autowired
+	private ArticleService aService;
 
-//		Account account = new Account();
-		Product newPd = new Product();
-				
-//		Integer userId = account.getAccountId();
-//		Integer userId = null;
-		model.addAttribute("newPd", newPd);
-//		model.addAttribute("userId", userId);
+	@Autowired
 
-		return "addProduct";
-	}
+	private ProductCommentService pcService;
 	
-//	@GetMapping("/login/insert")
-//	public String insertAccountPage(Model model) {
-//		Account account = new Account();
-//		
-//		model.addAttribute("account", account);
-//		return "addAccount";
-//	}
+	@Autowired
+	private GuideService gService;
 	
-//	@GetMapping("back/allProduct2")
-//	public String productAll() {
-//		return "findAllProduct";
-//	}
-//	
 	
-//	@GetMapping("back/Product/all")
-//	public String findAllPrdouct(@RequestParam(name="p", defaultValue = "1") Integer pageNumber, Model model) {
-//		
-//		Page<Product> page = pService.findByPage(pageNumber);
-//		
-//		model.addAttribute("page", page);
-//		
-//		return "findAllProduct2";
-//		
-//	}
+	
+//	########################前台商品頁面########################
+	
+	
 	//前台商品頁面含page方法
-	@GetMapping("front/allProduct")
+	@GetMapping("front/productPage")
 	public ModelAndView viewAllProducts(ModelAndView mav, 
 			@RequestParam(name="p", defaultValue="1") Integer pageNumber) {
 		Page<Product> page = pService.findByPage(pageNumber);
 		
 		mav.getModel().put("page", page);
-		mav.setViewName("front/frontProductList");
+		mav.setViewName("front/JoTravel front module/frontProductPage");
 		return mav;
+		
+	}
+	@GetMapping("/front/productPage/detail")
+	public String frontIndexPage(@RequestParam("id") Integer productId,Model model){
+		
+		Product product= pService.getProductById(productId);
+		List<ProductComment> pdComment =  pcService.getAllProductCommentByProductId(productId);
 	
+		model.addAttribute("product", product);
+		model.addAttribute("pdComment", pdComment);
+		
+		return "front/JoTravel front module/frontProductDetail";
+	} 
+	
+	
+//	########################後台商品頁面########################
+	
+	@GetMapping("/back")
+	public String backIndexPage(){
+		return "backIndex";
 	}
 	
+	@GetMapping("back/addProduct")
+	public String addProduct(Model model){
+
+		Product newPd = new Product();
+
+		model.addAttribute("newPd", newPd);
+
+		return "addProduct";
+	}
+		
 	
 	@GetMapping("back/allProduct")
 	@ResponseBody
@@ -111,16 +102,12 @@ public class PageController {
 		mav.setViewName("findAllProduct2");
 		
 		
-		
-		//test
-		
-//		m.addAttribute("account", accountBean.getId);
-//		System.out.println("123");;
-//		
-//		
 		return mav;
 	
 	}
+	
+//	###################Start 商品評論############################
+	
 	@GetMapping("back/ProductComment/add")
 	public String addProductComment(@RequestParam(name="id") Integer productId,Model model) {
 		
@@ -130,7 +117,30 @@ public class PageController {
 		return "addProductComment";
 	}
 	
+	@GetMapping("back/ProductComment/all")
+	public String findAllPrdouctComment(Model model) {
+		
+		return "findAllProductComment";
+		
+	}
+	
+	@GetMapping("back/ProductComment/search")
+	public String findAllPrdouctComment(@RequestParam(value="id", defaultValue="" ,required = false) Integer prdouctId ,Model model) {
+		
+		
+		List<ProductComment> searchPdC =  pcService.getAllProductCommentByProductId(prdouctId);
+		
+		for(ProductComment one:searchPdC) {
+		System.out.println(one.getProuctCommentId());
+		System.out.println(one.getAccount());
+		System.out.println(one.getProductComment());
 
+		}
+		model.addAttribute("searchPdC", searchPdC);
+		
+		return "searchProductComment";
+		
+	}
 	
 	
 //	@GetMapping("searchProduct")
@@ -145,25 +155,15 @@ public class PageController {
 //	
 //	}
 
+	
+	
 	// ##### Start ##### feedback Page Controller
-	@Autowired
-	private FeedbackService fService;
 	
 	
-	@GetMapping("back/allFeedback")
-	public ModelAndView Feedback(ModelAndView mav, 
-			@RequestParam(name="p", defaultValue="1") Integer pageNumber) {
-		System.out.println(pageNumber);
-		Page<Feedback> page = fService.findByPage(pageNumber);
-		
-		mav.getModel().put("page", page);
-		mav.setViewName("findAllFeedback");
-		return mav;
-	}
 	
-	@Autowired
-	private ArticleService aService;
 	
+	
+
 	@GetMapping("article/add")
 	public String addArticlePage(Model model) {
 		
@@ -196,8 +196,6 @@ public class PageController {
 	
 
 
-	@Autowired
-	private GuideService gService;
 	
 	//所有商家頁面
 	@GetMapping("/guidemanagement")

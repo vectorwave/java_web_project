@@ -1,5 +1,7 @@
 package com.group1project.controller;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 import java.util.List;
 
@@ -53,10 +55,14 @@ public class AccountController {
 	public String inserAccount(@ModelAttribute("account") Account account, Model model) {
 		Date nowdate = new Date();
 		account.setSignupDate(nowdate);
-
-		aService.saveAccount(account);
 		
-		return "redirect:/";
+		//加密功能
+		String password = getStringHash(account.getPassword(), "SHA-512");
+		account.setPassword(password);
+		
+		aService.saveAccount(account);
+
+		return "redirect:/login/findall";
 	}
 	
 	// 商家新增帳號用 
@@ -86,9 +92,13 @@ public class AccountController {
 		model.addAttribute("newAccount", newAccount);
 		return "editAccount";// 回到頁面
 	}
-	
+	//修改
 	@PostMapping("/login/edit")
     public String postEditAccount(@ModelAttribute(name="newAccount") Account newAccount) {
+		
+		//加密功能
+		String password = getStringHash(newAccount.getPassword(), "SHA-512");
+		newAccount.setPassword(password);
 		
 		aService.saveAccount(newAccount);
 		
@@ -96,26 +106,51 @@ public class AccountController {
 		
 	}
 	
+	//加密
+	private static String getStringHash(String message, String algorithm) {
+		final StringBuffer buffer = new StringBuffer();
+		try {
+			MessageDigest md = MessageDigest.getInstance(algorithm);
+			md.update(message.getBytes());
+			byte[] digest = md.digest();
+
+			for (int i = 0; i < digest.length; ++i) {
+				byte b = digest[i];
+				String s = Integer.toHexString(Byte.toUnsignedInt(b));
+				s = s.length() < 2 ? "0" + s : "" + s;
+				buffer.append(s);
+			}
+		} catch (NoSuchAlgorithmException e) {
+//			System.out.println("請檢查使用的演算法，演算法有誤");
+			return null;
+		}
+		return buffer.toString();
+	}
+	
+	
+	
 	//登入
-	@RequestMapping(path = "/logingo", method=RequestMethod.POST)
+	@RequestMapping(path = "logingo", method=RequestMethod.POST)
 	public String loginCheck(@RequestParam("inputAccount") String inputAccount, @RequestParam("inputPassword") String inputPassword, Model model) {
 		
-		Account queryMember = aService.findByAccPwd(inputAccount, inputPassword );
-		
+		//加密功能
+		String password = getStringHash(inputPassword, "SHA-512");
+		Account queryMember = aService.findByAccPwd(inputAccount, password );
+
 		System.out.println("queryMember=" + queryMember);
 				
 		if(queryMember == null) {	
 			model.addAttribute("loginErrorMsg", "登入失敗,帳號不存在");
 			return "login";
-		} else if(!queryMember.getPassword().equals(inputPassword)){
+		} else if(!queryMember.getPassword().equals(password)){
 			model.addAttribute("loginErrorMsg", "登入失敗,密碼錯誤");
 			return "login";
 		} else if(queryMember.getAccountName().equals("")) {
 			model.addAttribute("loginuser", queryMember);
-			return "redirect:/member/add";
+			return "redirect:/login/findall";
 		} else {
 			model.addAttribute("loginuser", queryMember);
-			return "redirect:/member/add";
+			return "redirect:/login/findall";
 		}
 	}
 	
@@ -149,5 +184,105 @@ public class AccountController {
 		status.setComplete();
 		return "login";
 	}
+	
+	//前台page---------------------------------------------------------------
+
+	// 會員帳號新增  
+		@PostMapping("page/login/member/insert")
+		public String pageinserAccount(@ModelAttribute("account") Account account, Model model) {
+			Date nowdate = new Date();
+			account.setSignupDate(nowdate);
+			
+			//加密功能
+			String password = getStringHash(account.getPassword(), "SHA-512");
+			account.setPassword(password);
+			
+			aService.saveAccount(account);
+
+			return "redirect:/";
+		}
+		
+		// 商家新增帳號用 
+		@PostMapping("page/login/guide/insert")
+		public String pageinserGuideAccount(@ModelAttribute("account") Account account, Model model) {
+			Date nowdate = new Date();
+			account.setSignupDate(nowdate);
+
+			aService.saveAccount(account);
+			
+			return "redirect:XXXXXXXXX";
+		}
+	
+		
+		//登入
+		@RequestMapping(path = "page/logingo", method=RequestMethod.POST)
+		public String pageloginCheck(@RequestParam("inputAccount") String inputAccount, @RequestParam("inputPassword") String inputPassword, Model model) {
+			
+			//加密功能
+			String password = getStringHash(inputPassword, "SHA-512");
+			Account queryMember = aService.findByAccPwd(inputAccount, password );
+
+			System.out.println("queryMember=" + queryMember);
+					
+			if(queryMember == null) {	
+				model.addAttribute("loginErrorMsg", "登入失敗,帳號不存在");
+				return "/";
+			} else if(!queryMember.getPassword().equals(password)){
+				model.addAttribute("loginErrorMsg", "登入失敗,密碼錯誤");
+				return "/";
+			} else if(queryMember.getAccountName().equals("")) {
+				model.addAttribute("loginuser", queryMember);
+				return "redirect:/";
+			} else {
+				model.addAttribute("loginuser", queryMember);
+				return "redirect:/";
+				
+			}
+		}
+		
+		@GetMapping("page/loginout")
+		public String pagelogin(SessionStatus status) {
+			status.setComplete();
+			return "redirect:/";
+		}
+		// 查詢單筆帳號資料
+		@GetMapping("page/login/{accountid}")
+		@ResponseBody
+		public Account pagegetAccountById(@PathVariable("accountid") Integer accountId) {
+			return aService.getAccountById(accountId);
+		}
+		
+		// 刪除帳號
+		@RequestMapping(value = "page/login/delete/{id}", method = RequestMethod.GET)
+		public String pagedeleteAccount(@PathVariable("id") Integer accountId) {
+			aService.deleteAccount(accountId);
+			return "redirect:/";
+		}
+		
+		// 修改
+//		@GetMapping("page/login/edit")
+//		public String pageeditAccount(@RequestParam("id") Integer accountId, Model model) {
+//			Account newAccount = aService.getAccountById(accountId);
+//
+////						Login login = new Login();
+//			model.addAttribute("newAccount", newAccount);
+//			return "editAccount";// 回到頁面
+//		}
+		//修改
+//		@PostMapping("page/login/edit")
+//	    public String pagepostEditAccount(@ModelAttribute(name="newAccount") Account newAccount) {
+//			
+//			//加密功能
+//			String password = getStringHash(newAccount.getPassword(), "SHA-512");
+//			newAccount.setPassword(password);
+//			
+//			aService.saveAccount(newAccount);
+//			
+//			return "redirect:/login/findall";
+//			
+//		}
+		
+		
+		
 
 }

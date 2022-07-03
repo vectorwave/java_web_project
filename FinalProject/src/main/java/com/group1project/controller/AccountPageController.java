@@ -29,10 +29,23 @@ public class AccountPageController {
 		return "login";
 	}
 	
+//	@GetMapping("/")
+//	public String Welcome() {
+//		return "front/JotravelFront/accountLogin";
+//	}
+	
+	
 	@GetMapping("/")
-	public String Welcome() {
-		return "index";
+	public String WelcomeAccount() {
+		return "/front/JoTravelFront/frontAccount";
 	}
+	
+
+	@GetMapping("page/login")
+	public String pageWelcomeAccount() {
+		return "/front/JoTravelFront/accountLogin";
+	}
+
 
 	@GetMapping("/login/insert")
 	public String insertAccountPage(Model model) {
@@ -41,10 +54,33 @@ public class AccountPageController {
 		model.addAttribute("account", account);
 		return "addAccount";
 	}
-
+	
 	@GetMapping("/login/findall")
 	@ResponseBody
 	public ModelAndView searchAccountByName(ModelAndView mav,
+			@RequestParam(value = "key", defaultValue = "", required = false) String key, Model m) {
+
+		List<Account> account = aService.searchAccountByName(key);
+
+		mav.getModel().put("key", key);
+		mav.getModel().put("account", account);
+		mav.setViewName("allAccount");
+		return mav;
+	}
+	
+	//前台page----------------------------------------------------------------
+	
+	@GetMapping("/page/login/member/insert")
+	public String pageinsertAccountPage(Model model) {
+		Account account = new Account();
+
+		model.addAttribute("account", account);
+		return "/front/JoTravelFront/pageAccountAdd";
+	}
+	
+	@GetMapping("page/login/findall")
+	@ResponseBody
+	public ModelAndView pagesearchAccountByName(ModelAndView mav,
 			@RequestParam(value = "key", defaultValue = "", required = false) String key, Model m) {
 
 		List<Account> account = aService.searchAccountByName(key);

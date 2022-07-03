@@ -6,7 +6,21 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
-<h3 style="text-align: center">所有會員</h3>
+
+<style>
+.div_td_pad {
+max-width: 600px;
+overflow-wrap: break-word;
+/* width:200px; */
+/* word-break:break-all; */
+/* text-overflow:ellipsis; */
+/* display:-webkit-box; */
+/* -wibkit-box-orient:vertical; */
+/* -webkit-line-clamp:2; */
+/* overflow:hidden; */
+}
+</style>
+<h3 style="text-align: center">所有帳號</h3>
 <form action="/jotravel/login/findall" method="get" >
 <input type="text" name="key" placeholder="搜尋帳號" id="key"> <input type="submit" id="send" value="🔍" > <a href="http://localhost:8081/jotravel/login/findall"><input type="button" value="全部帳號" ></a>  
 </form>
@@ -36,17 +50,19 @@
 					<tr>
 						<td><c:out value="${account.accountId}" /><td hidden><c:out value="${account.accountId}" />
 						<td><c:out value="${account.accountName}" />
-						<td><c:out value="${account.password}" />
+						<td class="div_td_pad"><c:out value="${account.password}"/>
 						<td><c:out value="${account.title}" />
 						<td><c:out value="${account.status}" />
 						<td><c:out value="${account.signupDate}" />
-						<td><a
-							href='<c:out value="${contextRoot}"/>/login/edit?id=${account.accountId}'>
-							<button>📝</button></a>
-						<td><a
-							href='<c:out value="${contextRoot}"/>/login/delete/${account.accountId}'>
-							<button onclick="submitForm(form)">🗑️</button></a> 
-					</tr>
+<!-- 						<td><a -->
+<%-- 							href='<c:out value="${contextRoot}"/>/login/edit?id=${account.accountId}'> --%>
+<!-- 							<button>📝</button></a> -->
+<!-- 						<td><a -->
+<%-- 							href='<c:out value="${contextRoot}"/>/login/delete/${account.accountId}'> --%>
+<!-- 							<button onclick="submitForm(form)">🗑️</button></a>  -->
+<!-- 					</tr> -->
+	<td><button type="button" class="delt" onclick="upd('${account.accountId}')" >📝</button></td> 
+						<td><button type="button" class="delt" onclick="del('${account.accountId}')" >🗑️</button></td>
 				</c:forEach>
 
 			</tbody>
@@ -54,28 +70,47 @@
 	</div>
 <%-- </form:form> --%>
  <script type="text/javascript">
-function submitForm(form){
-	 Swal.fire({
-	   title: '確定刪除?',
-	   text: "You won't be able to revert this!",
-	   icon: 'warning',
-	   showCancelButton: true,
-	   confirmButtonColor: '#3085d6',
-	   cancelButtonColor: '#d33',
-	   confirmButtonText: 'Yes, delete it!'
-	 }).then((result) => {
-		 if (result.isConfirmed) {
-//			    Swal.fire('Saved!', '', 'success')
-			    form.submit(form);
-			    
-			  } else if (result.isDenied) {
-			    
-			    return false;
-			  }
-			})
-	}
+ function upd(e){
+	  Swal.fire({
+	    title: '確認修改嗎?',
+	  //   text: "You won't be able to revert this!",
+	    icon: 'question',
+	    showCancelButton: true,
+	    confirmButtonColor: '#3085d6',
+	    cancelButtonColor: '#d33',
+	    confirmButtonText: 'Yes!',
+	    
+	  }).then((result) => {
+	    if (result.isConfirmed) {
 
+	   document.location.href='/jotravel/login/edit?id='+e;
+	    }else if (result.isDenied) {
+	       
+	       return false;
+	     }
+	  });
+	 }
+	 
+	 function del(e){
+	  Swal.fire({
+	    title: '確認刪除嗎?',
+	  //   text: "You won't be able to revert this!",
+	    icon: 'question',
+	    showCancelButton: true,
+	    confirmButtonColor: '#3085d6',
+	    cancelButtonColor: '#d33',
+	    confirmButtonText: 'Yes!',
+	    
+	  }).then((result) => {
+	    if (result.isConfirmed) {
 
+	   document.location.href='/jotravel/login/delete/'+e;
+	    }else if (result.isDenied) {
+	     
+	       return false;
+	     }
+	  });
+	 }
 </script>
 
 <jsp:include page="layout/footer.jsp" />

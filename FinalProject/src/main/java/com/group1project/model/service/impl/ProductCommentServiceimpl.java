@@ -53,6 +53,10 @@ public class ProductCommentServiceimpl implements ProductCommentService {
 		pcDao.deleteById(productCommentId);
 		
 	}
+	@Override
+	public List<ProductComment> getAllProductCommentByProductId(Integer productId) {
+		return pcDao.findAllByProductProductId(productId);
+	}
 	
 	
 	
