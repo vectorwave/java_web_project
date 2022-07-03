@@ -12,7 +12,7 @@
 <style>
 .backgroundCSS {
 	background-image:
-		url("http://localhost:8081/jotravel/images/blog/room4.jpg");
+		url("http://localhost:8081/jotravel/images/blog/about_banner.jpg");
 	background-size: cover;
 }
 </style>
@@ -81,14 +81,20 @@
 							class="nav-link dropdown-toggle" data-toggle="dropdown"
 							role="button" aria-haspopup="true" aria-expanded="false">會員</a>
 							<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="http://localhost:8081/jotravel/page/member/add">新增個人資料</a></li>
-								<li class="nav-item"><a class="nav-link" href="http://localhost:8081/jotravel/page/member/edit?id=">修改個人資料</a></li>
-								<li class="nav-item"><a class="nav-link" href="blog-single.html">修改密碼</a></li>
-								<li class="nav-item"><a class="nav-link" href="blog-single.html">查看訂單</a></li>
-								<li class="nav-item"><a class="nav-link" href="http://localhost:8081/jotravel/page/login">登入</a></li>
-								<li class="nav-item"><a class="nav-link" href="http://localhost:8081/jotravel/page/loginout">登出</a></li>
-							
-											</ul></li>
+								<li class="nav-item"><a class="nav-link"
+									href="http://localhost:8081/jotravel/page/member/add">新增個人資料</a></li>
+								<li class="nav-item"><a class="nav-link"
+									href="http://localhost:8081/jotravel/page/member/edit?id=">修改個人資料</a></li>
+								<li class="nav-item"><a class="nav-link"
+									href="blog-single.html">修改密碼</a></li>
+								<li class="nav-item"><a class="nav-link"
+									href="blog-single.html">查看訂單</a></li>
+								<li class="nav-item"><a class="nav-link"
+									href="http://localhost:8081/jotravel/page/login">登入</a></li>
+								<li class="nav-item"><a class="nav-link"
+									href="http://localhost:8081/jotravel/page/loginout">登出</a></li>
+
+							</ul></li>
 					</ul>
 				</div>
 			</nav>
@@ -108,60 +114,61 @@
 	<br>
 	<br>
 	<br>
+	<div class="class="modal-body"">
+		<h1 style="text-align: center">新增帳號</h1>
 
-	<h1 style="text-align: center">新增帳號</h1>
+		<form:form method="post"
+			action="${contextRoot}/page/login/member/insert"
+			modelAttribute="account">
 
-	<form:form method="post"
-		action="${contextRoot}/page/login/member/insert"
-		modelAttribute="account">
+			<form:input path="accountId" type="hidden" />
 
-		<form:input path="accountId" type="hidden" />
+			<div class="form-group"
+				style="width: 300px; margin: auto; text-align: center;">
+				帳號：
+				<form:input type="text" path="accountName" class="form-control"
+					id="inputAccount" />
+				<br /> <span id="maccountName"></span> 密碼：
+				<form:input type="text" path="password" class="form-control"
+					id="inputPassword" />
+				<br /> <span id="mpassword"></span> 身分:
+				<form:select path="title" class="form-select" required="required">
+					<span id="mtitle"></span>
+					<form:option value="會員">會員</form:option>
+					<form:option value="商家">商家</form:option>
+				</form:select>
+				<br /> <br /> <br /> <br />
+				<form:input type="hidden" path="status" class="form-control"
+					value="1" />
+				<br /> <input type="button" onclick="submitForm(form)" id="send"
+					value="新增" class="btn btn-lg btn-success btn-block">
 
-		<div class="form-group"
-			style="width: 300px; margin: auto; text-align: center;">
-			帳號：<form:input type="text" path="accountName" class="form-control" id="inputAccount" /><br />
-				<span id="maccountName"></span>
-			密碼：<form:input type="text" path="password" class="form-control" id="inputPassword" /><br />
-			<span id="mpassword"></span>
-			身分:<form:select path="title" class="form-select" required="required">
-				<span id="mtitle"></span>
-				<form:option value="會員">會員</form:option>
-				<form:option value="商家">商家</form:option>
-			</form:select>
-			<br />
-			<br />
-			<br />
-			<br />
-			<form:input type="hidden" path="status" class="form-control" value="1" /><br /> 
+				<button id="one" type="button" class="btn btn-secondary">一鍵輸入</button>
+			</div>
+		</form:form>
+	</div>
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="<c:url value="/js/blog/jquery-3.2.1.min.js"/>"></script>
+	<script src="<c:url value="/js/blog/popper.js"/>"></script>
+	<script src="<c:url value="/js/blog/bootstrap.min.js"/>"></script>
+	<script
+		src="<c:url value="/css/blog/vendors/owl-carousel/owl.carousel.min.js"/>"></script>
+	<script src="<c:url value="/js/blog/jquery.ajaxchimp.min.js"/>"></script>
+	<script src="<c:url value="/js/blog/mail-script.js"/>"></script>
+	<script
+		src="<c:url value="/css/blog//vendors/bootstrap-datepicker/bootstrap-datetimepicker.min.js"/>"></script>
+	<script
+		src="<c:url value="/css/blog//vendors/nice-select/js/jquery.nice-select.js"/>"></script>
+	<script src="<c:url value="/js/blog/mail-script.js"/>"></script>
+	<script src="<c:url value="/js/blog/stellar.js"/>"></script>
+	<script
+		src="<c:url value="/css/blog//vendors/lightbox/simpleLightbox.min.js"/>"></script>
+	<script src="<c:url value="/js/blog/custom.js"/>"></script>
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-			  <input type="button" onclick="submitForm(form)" id="send" value="新增" class="btn btn-lg btn-success btn-block">
 
-			<button id="one" type="button" class="btn btn-secondary">一鍵輸入</button>
-		</div>
-		  </form:form>
-
-		<!-- Optional JavaScript -->
-		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-		<script src="<c:url value="/js/blog/jquery-3.2.1.min.js"/>"></script>
-		<script src="<c:url value="/js/blog/popper.js"/>"></script>
-		<script src="<c:url value="/js/blog/bootstrap.min.js"/>"></script>
-		<script
-			src="<c:url value="/css/blog/vendors/owl-carousel/owl.carousel.min.js"/>"></script>
-		<script src="<c:url value="/js/blog/jquery.ajaxchimp.min.js"/>"></script>
-		<script src="<c:url value="/js/blog/mail-script.js"/>"></script>
-		<script
-			src="<c:url value="/css/blog//vendors/bootstrap-datepicker/bootstrap-datetimepicker.min.js"/>"></script>
-		<script
-			src="<c:url value="/css/blog//vendors/nice-select/js/jquery.nice-select.js"/>"></script>
-		<script src="<c:url value="/js/blog/mail-script.js"/>"></script>
-		<script src="<c:url value="/js/blog/stellar.js"/>"></script>
-		<script
-			src="<c:url value="/css/blog//vendors/lightbox/simpleLightbox.min.js"/>"></script>
-		<script src="<c:url value="/js/blog/custom.js"/>"></script>
-		<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-		
-
-<!-- 	<div></div> -->
+	<!-- 	<div></div> -->
 	<script type="text/javascript">
 	function submitForm(form){
 		  Swal.fire({

@@ -124,12 +124,12 @@ a:hover {
 		<div class="modal-content">
 			<div class="modal-header">
 				<h3 class="modal-title" id="LoginTitle">
-					會員登入<i class="bi bi-toggle-off" id="master"></i>
+					管理員登入<i class="bi bi-toggle-off" id="master"></i>
 				</h3>
-				<button type="button" class="close" data-dismiss="modal"
-					aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
+<!-- 				<button type="button" class="close" data-dismiss="modal" -->
+<!-- 					aria-label="Close"> -->
+<!-- 					<span aria-hidden="true">&times;</span> -->
+<!-- 				</button> -->
 			</div>
 			<div class="modal-body">
 				<form class="form-login" method="post" action="logingo"
@@ -167,9 +167,8 @@ a:hover {
 				</form>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">離開</button>
-				<a href='<c:out value="${contextRoot}"/>/login/insert'
-					class="try-me btn btn-info">我要註冊</a>
+<%-- 				<a href='<c:out value="${contextRoot}"/>/login/insert' --%>
+<!-- 					class="try-me btn btn-info">我要註冊</a> -->
 				<button id="one" type="button" class="btn btn-secondary"
 					data-dismiss="modal">一鍵輸入</button>
 				<!-- 					一鍵輸入<form:select path="title" id="one" class='btn btn-info dropdown-toggle' required="required"> -->
