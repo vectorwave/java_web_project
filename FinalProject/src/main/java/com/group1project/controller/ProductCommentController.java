@@ -102,8 +102,8 @@ public class ProductCommentController {
 //		
 //		message.put("okMsg", "insertOK");
 //		model.addAttribute("msg", message);
-		
-		return "redirect:/back/allProduct";
+		return "redirect:/front/productPage/detail?id="+productId;
+//		return "redirect:/back/allProduct";
 	}
 	
 	//以非rest風格的方式刪除商品
@@ -154,8 +154,6 @@ public class ProductCommentController {
 //	@ResponseBody
 //	public List<ProductComment> searchProductComment(@RequestParam("key") String key,Model m) {
 //	
-		 
 //		 return pService.searchProductByNameWithPage(key);
-	
 //	}
 	
