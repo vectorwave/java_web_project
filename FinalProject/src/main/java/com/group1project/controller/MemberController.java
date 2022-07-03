@@ -211,7 +211,8 @@ public class MemberController {
 
 //			Member member = new Member();
 			model.addAttribute("newMember", newMember);
-			return "editMember";// 回到頁面
+			return "front/JoTravelFront/pageMemberEdit";// 回到頁面
+			
 		}
 		
 		@PostMapping("page/member/edit")
@@ -229,7 +230,7 @@ public class MemberController {
 			}
 			mService.saveMember(newMember);
 
-			return "redirect:page/member/findall";
+			return "redirect:/";
 
 		}
 		// 模糊搜尋
