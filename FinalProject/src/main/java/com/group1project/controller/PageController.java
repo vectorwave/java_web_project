@@ -272,13 +272,25 @@ public class PageController {
 	//前台商品頁面含page方法
 		@GetMapping("front/blogIndex")
 		public ModelAndView viewAllArticlePage(ModelAndView mav, 
-				@RequestParam(name="p", defaultValue="1") Integer pageNumber) {
-			Page<Article> page = aService.findByPage(pageNumber);
-			
+				@RequestParam(name="p", defaultValue="1") Integer pageNumber,@RequestParam(value="key",defaultValue="" ,required = false) String key,Model m) {
+//			Page<Article> page = aService.findByPage(pageNumber);
+//			
+//			mav.getModel().put("page", page);
+//			mav.getModel().put("key", key);
+			Pageable pgb = PageRequest.of(pageNumber - 1, 5 ,Sort.Direction.DESC,"articleId");
+
+			Page<Article> page = aService.searchArticleByTitleWithPage(key, pgb);
+
 			mav.getModel().put("page", page);
+			mav.getModel().put("key", key);
 			mav.setViewName("front/JoTravelFront/blogIndex");
 			return mav;
 		}
+		
+		@GetMapping("front/blogSingle")
+		public String blogSingle(){
+			return "front/JoTravelFront/blogSingle";
+		} 	
 	@GetMapping("blogPage/")
 	public String blogPage(){
 		return "blogPage";
