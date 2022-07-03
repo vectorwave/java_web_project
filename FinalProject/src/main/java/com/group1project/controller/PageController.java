@@ -260,7 +260,7 @@ public class PageController {
 
 	
 	
-	@GetMapping("front/")
+	@GetMapping("front666/")
 	public String frontPage(){
 		return "frontend";
 	}
@@ -297,6 +297,19 @@ public class PageController {
 			
 			return "front/JoTravelFront/blogSingle";
 		} 
+		
+		@GetMapping("/front/addBlogPage")
+		public String addFrontBlogPage(Model model){
+			
+			Article article=new Article();
+			
+			
+			
+			model.addAttribute("article", article);
+			
+			return "front/JoTravelFront/addBlog";
+		} 
+		
 	}
 		
 //		@GetMapping("front/blogSingle")

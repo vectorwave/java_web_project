@@ -114,6 +114,35 @@ public class ArticleController {
 		return "redirect:/article/all";
 		
 	}
+	@PostMapping("editFrontArticle")
+    public String editFrontArticle(@ModelAttribute("article") Article arc, Model model,@RequestParam("file") MultipartFile file, @RequestParam("accountId") Integer accountId) {
+		Account accId = new Account();
+
+		accId.setAccountId(accountId);
+
+		
+		arc.setAccount(accId);
+
+		try {
+			arc.setArticlePic(file.getBytes());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		Date nowDate = new Date();
+		arc.setArticleDate(nowDate);
+		System.out.println(nowDate);
+		aService.saveArticle(arc);
+		
+		
+		Article newArc = new Article();
+		
+		model.addAttribute("Article", newArc);
+		
+
+		return "redirect:/front/blogIndex";
+		
+	}
 	@GetMapping("photo/{id}")
 	public ResponseEntity<byte[]> downloadImage(@PathVariable("id") Integer id){
 		Article photo1 = aService.getArticleById(id);
