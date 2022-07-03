@@ -183,7 +183,7 @@
 											<p>
 												<c:out value="${value.articleText}" />
 											</p>
-											<a href="#" class="view_btn button_hover">View More </a>
+											<a href="${contextRoot}/front/blogPage/detail?id=${value.articleId}" class="view_btn button_hover">View More </a>
 										</div>
 									</div>
 								</div>

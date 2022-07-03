@@ -286,13 +286,26 @@ public class PageController {
 			return mav;
 		}
 		
-		@GetMapping("front/blogSingle")
-		public String blogSingle(){
+		@GetMapping("/front/blogPage/detail")
+		public String frontBlogPage(@RequestParam("id") Integer articleId,Model model){
+			
+			Article article= aService.getArticleById(articleId);
+//			List<ProductComment> pdComment =  pcService.getAllProductCommentByProductId(articleId);
+		
+			model.addAttribute("article", article);
+//			model.addAttribute("pdComment", pdComment);
+			
 			return "front/JoTravelFront/blogSingle";
-		} 	
-	@GetMapping("blogPage/")
-	public String blogPage(){
-		return "blogPage";
-	} 
-}
+		} 
+	}
+		
+//		@GetMapping("front/blogSingle")
+//		public String blogSingle(){
+//			return "front/JoTravelFront/blogSingle";
+//		} 	
+//	@GetMapping("blogPage/")
+//	public String blogPage(){
+//		return "blogPage";
+//	} 
+//}
 
