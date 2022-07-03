@@ -182,8 +182,6 @@ public class PageController {
 		return mav;
 	}
 	
-	@Autowired
-	private ArticleService aService;
 	
 	@GetMapping("article/add")
 	public String addArticlePage(Model model) {
@@ -305,7 +303,10 @@ public class PageController {
 				
 			} else {
 				
+				Account guideAcc = acService.getAccountById(id);
+				
 				mav.getModel().put("key", key);
+				mav.getModel().put("guideAcc", guideAcc);
 				mav.getModel().put("guideInfo", oneGuide);
 				mav.setViewName("guideDetail");
 				
