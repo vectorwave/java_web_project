@@ -125,7 +125,7 @@
 					<div class="dropdown-content">
 						<a class="dropdown-item" href="${contextRoot}/back/allProduct">所有商品</a>
 						<a class="dropdown-item" href="${contextRoot}/back/addProduct">新增商品</a>
-						<a href="#">商品分類</a>
+						<a class="dropdown-item" href="${contextRoot}/back/ProductComment/all">商品評論</a>
 					</div>
 				</div>
 

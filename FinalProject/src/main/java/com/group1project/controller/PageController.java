@@ -17,12 +17,12 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.group1project.model.bean.Article;
-import com.group1project.model.bean.Feedback;
 import com.group1project.model.bean.Guide;
 import com.group1project.model.bean.Product;
 import com.group1project.model.bean.ProductComment;
 import com.group1project.model.service.ArticleService;
-import com.group1project.model.bean.Account;
+import com.group1project.model.service.GuideService;
+import com.group1project.model.service.ProductCommentService;
 import com.group1project.model.service.ProductService;
 
 @SessionAttributes("account")
@@ -36,7 +36,6 @@ public class PageController {
 	private ArticleService aService;
 
 	@Autowired
-
 	private ProductCommentService pcService;
 	
 	@Autowired
@@ -54,7 +53,7 @@ public class PageController {
 		Page<Product> page = pService.findByPage(pageNumber);
 		
 		mav.getModel().put("page", page);
-		mav.setViewName("front/JoTravel front module/frontProductPage");
+		mav.setViewName("front/JoTravelFront/frontProductPage");
 		return mav;
 		
 	}
@@ -67,7 +66,7 @@ public class PageController {
 		model.addAttribute("product", product);
 		model.addAttribute("pdComment", pdComment);
 		
-		return "front/JoTravel front module/frontProductDetail";
+		return "front/JoTravelFront/frontProductDetail";
 	} 
 	
 	

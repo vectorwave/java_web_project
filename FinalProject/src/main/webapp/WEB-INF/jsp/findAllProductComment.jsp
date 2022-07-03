@@ -60,9 +60,9 @@
 <div id=div2>
 <h2>商品評論列表</h2>
 </div>
-<form>
-<input type="text" name="searchBar" placeholder="搜尋商品名稱" id="searchBar"> <input type="submit" id="send" value="🔍" > <a href="http://localhost:8081/jotravel/back/allProduct"><input type="button" value="全部商品" ></a>  
-</form>
+<%-- <form> --%>
+<!-- <input type="text" name="searchBar" placeholder="搜尋商品名稱" id="searchBar"> <input type="submit" id="send" value="🔍" > <a href="http://localhost:8081/jotravel/back/allProduct"><input type="button" value="全部商品" ></a>   -->
+<%-- </form> --%>
 <table class="table" border="1"  id="table1">
 <tr style="background-color:#fac473">
 <th>評論編號<th>商品名稱<th>會員名稱<th>評論內容<th>分數(滿分5分)<th>更新時間<th>修改<th>刪除

@@ -1,13 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<jsp:include page="layout/header.jsp" />
+<%-- <jsp:include page="layout/header.jsp" /> --%>
+
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
+<html>
+<head>
+<meta charset="UTF-8">
+<c:set var="contextRoot" value="${pageContext.request.contextPath}" />
+<link href="${contextRoot}/css/bootstrap.min.css" rel="stylesheet">
+
+
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 
-<br/>
 
 <div class="container" style="color:black;"> 
 
@@ -27,7 +35,7 @@
   會員編號：<input  name="accountId" class="form-control" type="text" value="${loginuser.accountId}" readonly="readonly"/><br/>
   產品編號：<input  name="productId" type="text" class="form-control" value="${pid}" readonly="readonly" /><br/>
  
-  評論訊息:<form:textarea path="productComment" class="form-control"/><br/>
+  評論訊息:<form:textarea path="productComment" class="form-control" required="required"/><br/>
   評論等級:<br>
     
   <div class="form-check form-check-inline">
@@ -71,4 +79,8 @@
 
 </div> 
 <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script> 
-<jsp:include page="layout/footer.jsp" />
+
+ 
+
+</body>
+</html>
