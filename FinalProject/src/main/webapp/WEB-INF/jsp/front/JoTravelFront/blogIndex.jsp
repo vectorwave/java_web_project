@@ -108,7 +108,7 @@
 							alt="post">
 						<div class="categories_details">
 							<div class="categories_text">
-								<a href="blog-details.html"><h5>台北</h5></a>
+								<a href="http://localhost:8081/jotravel/front/blogIndex?key=台北"><h5>台北</h5></a>
 								<div class="border_line"></div>
 								<p>Taipei Nightlife</p>
 							</div>
@@ -122,7 +122,7 @@
 							alt="post">
 						<div class="categories_details">
 							<div class="categories_text">
-								<a href="blog-details.html"><h5>台南</h5></a>
+								<a href="http://localhost:8081/jotravel/front/blogIndex?key=台南"><h5>台南</h5></a>
 								<div class="border_line"></div>
 								<p>History Culture Nightmarket</p>
 							</div>
@@ -135,7 +135,7 @@
 					width=400px	height=240px	alt="post">
 						<div class="categories_details">
 							<div class="categories_text">
-								<a href="blog-details.html"><h5>墾丁</h5></a>
+								<a href="http://localhost:8081/jotravel/front/blogIndex?key=墾丁"><h5>墾丁</h5></a>
 								<div class="border_line"></div>
 								<p>Sea ,Surfing ,Tropical vibe</p>
 							</div>
@@ -158,10 +158,11 @@
 								<div class="col-md-3">
 
 									<div class="blog_info text-right">
-<!-- 										<div class="post_tag"> -->
+										<div class="post_tag" style="font-size:20px">
+										<strong style="color:rgb(56, 154, 171);background-color:rgb(249, 239, 220);border-radius: 10px;font-weight:bold;"><c:out value="${value.articleCategory}" /></strong>
 <!-- 											<a href="#">Food,</a> <a href="#">Technology,</a> <a href="#">Politics,</a> -->
 <!-- 											<a href="#">Lifestyle</a> -->
-<!-- 										</div> -->
+										</div>
 										<ul class="blog_meta list_style">
 											<li><c:out value="${value.account.accountName}" /><nobr>   </nobr><i class="lnr lnr-user"></i></li>
 											<li><fmt:formatDate pattern="yyyy/MM/dd HH:mm " value="${value.articleDate}" /><i
