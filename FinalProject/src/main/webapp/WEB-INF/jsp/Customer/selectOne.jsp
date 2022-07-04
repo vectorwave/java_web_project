@@ -33,11 +33,8 @@
             <div class="overlay bg-parallax" data-stellar-ratio="0.8" data-stellar-vertical-offset="0" data-background=""></div>
             <div class="container">
                 <div class="page-cover text-center">
-                    <h2 class="page-cover-tittle">Gallery</h2>
-                    <ol class="breadcrumb">
-                        <li><a href="${contextRoot}/">Home</a></li>
-                        <li class="active">Gallery</li>
-                    </ol>
+                    <h2 class="page-cover-tittle">以下是您的表單紀錄，請妥善保存</h2>
+                  
                 </div>
             </div>
         </section>
@@ -49,7 +46,7 @@
 <div class="card">
 
 <div class="card-body">
-<h1>以下是您的表單紀錄，請妥善保存</h1>
+
 	<table border="1" style="width:300px">
 		<tr style="background-color: orange" >
 			

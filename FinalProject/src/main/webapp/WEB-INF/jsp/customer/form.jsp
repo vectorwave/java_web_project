@@ -38,18 +38,14 @@
             <div class="overlay bg-parallax" data-stellar-ratio="0.8" data-stellar-vertical-offset="0" data-background=""></div>
             <div class="container">
                 <div class="page-cover text-center">
-                    <h2 class="page-cover-tittle">Gallery</h2>
-                    <ol class="breadcrumb">
-                        <li><a href="${contextRoot}/">Home</a></li>
-                        <li class="active">Gallery</li>
-                    </ol>
+                     <h2 class="page-cover-tittle">客服表單</h2>
                 </div>
             </div>
         </section>
 	<div class="row justify-content-center">
 		<div class="col-9">
 			<div class="card" id="cusForm">
-				<div style="color: #3c3c3c;" class="card-header formHead">客服表單</div>
+				
 				<div class="card-body">
 					<form:form action="${contextRoot}/message/insert" class="form"
 						method="GET" modelAttribute="CustomerBean">
@@ -146,7 +142,7 @@
 		</div>
 
 	</div>
-</div>
+
 </body>
 <!-- 引入jquery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"
