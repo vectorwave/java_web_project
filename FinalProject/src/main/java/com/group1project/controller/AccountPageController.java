@@ -35,11 +35,12 @@ public class AccountPageController {
 //	}
 	
 	
-	@GetMapping("/")
-	public String WelcomeAccount() {
-		return "/front/JoTravelFront/frontAccount";
-	}
-	
+//	@GetMapping("/")
+//	public String WelcomeAccount() {		
+//		
+//		return "front/JoTravelFront/frontIndex";
+//	}
+//	
 
 	@GetMapping("page/login")
 	public String pageWelcomeAccount() {

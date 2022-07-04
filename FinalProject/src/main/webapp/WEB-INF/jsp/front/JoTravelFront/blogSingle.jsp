@@ -110,6 +110,11 @@
                             </div>
                             <div class="col-lg-3  col-md-3">
                                 <div class="blog_info text-right">
+                                <div class="post_tag" style="font-size:20px">
+										<strong style="color:rgb(56, 154, 171);background-color:rgb(249, 239, 220);border-radius: 10px;font-weight:bold;"><c:out value="${article.articleCategory}" /></strong>
+<!-- 											<a href="#">Food,</a> <a href="#">Technology,</a> <a href="#">Politics,</a> -->
+<!-- 											<a href="#">Lifestyle</a> -->
+										</div>
 <!--                                     <div class="post_tag"> -->
 <!--                                         <a href="#">Food,</a> -->
 <!--                                         <a href="#">Technology,</a> -->
@@ -132,49 +137,7 @@
                             </div>
                             <div class="col-lg-9 col-md-9 blog_details">
                                 <h2>${article.articleTitle}</h2>
-                                <p class="excert">${article.articleText}科技日新月異，但不少長輩追不上，仍停留在數十年前的使用習慣。近日師大知名教授林
-芳玫到音響店購物，不料過程中與店員產生不愉快，回家後在臉書貼上千字文控訴對方態
-度差、太冷漠，文章引發極大回響，但許多人認為是林芳玫自己科技知識不足，更意外引
-爆世代大戰。
-
-林芳玫日前在上月底PO文，表示自己使用20年的BOSE CD播放器壞掉，因此前往音響店打
-算買新的，但才開口詢問，立刻被店員打槍「沒賣CD Player，現在只有藍芽音響」，當
-場被賞了個句號，對方也無意向她介紹產品，大嘆店員「中性、禮貌、冷淡」。即便後來
-挑了台5000多元、長得像鉛筆盒的藍芽喇叭試聽，過程中仍是店員毫無反應，她忍不住詢
-問「你有聽過這些音樂嗎」，店員只淡淡回「沒聽過」，但既然聽得還算滿意，她還是出
-錢買單。
-
-但過了幾天音樂檔無法啟動，於是林芳玫帶著手機和藍芽音響到另一家店詢問，店員幫她
-簡單測試後，僅回「都沒問題」，讓她傻眼，直說自己又被句點，對方又是「中性、禮貌
-、冷漠」的口氣，不解丈夫花了30分鐘開車載她來，結果店員只用5秒就要打發她，於是
-不死心繼續問問題，但店員冷淡回「音樂APP太多，我們無法知道每個APP」。
-
-林芳玫傻眼說，藍芽音響不就是標榜無線上網聽音樂，怎麼會不關音樂APP的事，最終自
-己不斷詢問下，終於找到答案，原來是沒有花錢訂閱YouTube，所以免費期限到期，但也
-不解，質疑店員一開始就可以跟她說這個可能性，卻還是自己死纏爛打提問才知道，對方
-一聽則回「我們的產品，主要消費者是40歲以下的年輕人」，氣得她大罵「這什麼鬼話，
-我買了你家產品，就是你們BOSE顧客，怎麼可以這樣對顧客，只想句點我，根本沒打算幫
-我解決問題」。
-
-店員事後雖然提供另一個免費聽音樂管道「Spotify」，但林芳玫因為聽不懂，於是要店
-員寫在紙條上給她，對方卻稱「你不能要求我做這些事」，她則反駁「我是請教不是要求
-」，最終店員妥協，拿起手機打開文件夾給她看，林芳玫一看嘆氣「就這幾個字，寫紙條
-那麼難」，繼續追問「這跟YouTube有何不同」，店員才終於第一次回話超過10個字。
-
-文章曝光後引發熱烈討論，但由於字行間可明顯看出林芳玫對於藍芽不甚了解，與現今科
-技脫節太多，不少網友開炮反酸「這麼基本的都不懂，難怪店員不爽」、「有大把時間打
-千字文，卻不願意花個幾分鐘去Google」、「店員對你還能有耐心已經該偷笑了」、「讓
-人不爽的不是你的問題，而是你充滿優越感，以上對下的態度」、「難怪人家都說老師都
-是奧客」、「自己也都知道是在拗了，還一副施捨、教育對方的態度」、「根本巨嬰」、
-「一堆長輩都仗著自己年紀大，認為年輕人幫他弄到好是應該的，自己卻不會想學習」、
-「一直強調中性、禮貌、冷漠在幹嘛，文章就看得讓人夠煩躁，想必口氣也讓店員很不舒
-服」。
-
-也有人認為：「兩邊都有問題，教授自以為，店員態度差也是事實」、「BOSE店員我倒是
-不太意外」。臉書《通告人生》也對此評論，表示無意指責誰對誰錯，但只能說人跟人相
-處實在不容易，但有時人們時常自以為批評別人不友善，卻忽略自己無意間做了讓人不月
-的舉動，尤其是一些「是個咖」的大人們，很容易就把那套上對下、專業菁英的驕傲代入
-，實在大可不必。</p>
+                                <p class="excert">${article.articleText}</p>
 <!--                                 <p> -->
 <!--                                     Boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the camp price. However, who has the willpower to actually sit through a self-imposed MCSE training. who has the willpower to actually sit through a self-imposed -->
 <!--                                 </p> -->
