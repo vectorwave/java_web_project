@@ -230,10 +230,10 @@ public class PageController {
 	@GetMapping("/guidemanagement/info/{id}")
 	public ModelAndView guideDetails(ModelAndView mav, @PathVariable("id") int id) {
 		Guide guideInfo = gService.getGuideById(id);
-		Account guideAcc = acService.getAccountById(id);
+//		Account guideAcc = acService.getAccountById(id);
 		
 		mav.getModel().put("guideInfo", guideInfo);
-		mav.getModel().put("guideAcc", guideAcc);
+//		mav.getModel().put("guideAcc", guideAcc);
 		mav.setViewName("guideDetail");
 		return mav;
 	}

@@ -76,7 +76,7 @@ padding: 30px;
 .inputBox1 {
 margin-top: 5px;
 margin-bottom: 5px;
-width: 250px;
+width: 300px;
 background-color: transparent;
 border: none;
 }
@@ -84,7 +84,8 @@ border: none;
 .textarea1 {
     margin-top: 5px;
     margin-bottom: 5px;
-width: 250px;
+width: 300px;
+height: 80px;
 background-color: transparent;
 resize:none;
 border: none;
@@ -93,7 +94,7 @@ border: none;
 .inputBoxAdd{
     margin-top: 5px;
     margin-bottom: 5px;
-width: 250px;
+width: 300px;
 border: none;
 border-radius: 3px;
 }
@@ -101,7 +102,8 @@ border-radius: 3px;
 .textareaAdd{
     margin-top: 5px;
     margin-bottom: 5px;
-width: 250px;
+width: 300px;
+height: 80px;
 resize:none;
 border: none;
 border-radius: 3px;
