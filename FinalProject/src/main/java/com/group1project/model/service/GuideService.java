@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.data.domain.Page;
 
+import com.group1project.model.bean.Account;
 import com.group1project.model.bean.Guide;
 
 public interface GuideService {
@@ -13,5 +14,6 @@ public interface GuideService {
 	List<Guide> getAllGuide();
 	void deleteGuideById(Integer accountId);
 	Page<Guide> findByPage(Integer pageNumber);
+	List<Guide> searchGuideByProfileName(String key);
 	
 }

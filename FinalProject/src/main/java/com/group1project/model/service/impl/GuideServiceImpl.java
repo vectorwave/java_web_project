@@ -63,6 +63,12 @@ public class GuideServiceImpl implements GuideService {
 		Page<Guide> page = gDao.findAll(pgb);
 		return page;
 	}
+
+	//搜尋功能
+	@Override
+	public List<Guide> searchGuideByProfileName(String key) {
+		return  gDao.findAllByProfileNameLike("%" + key + "%");
+	}
 	
 
 }
