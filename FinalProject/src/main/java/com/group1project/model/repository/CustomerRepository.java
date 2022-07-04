@@ -19,11 +19,11 @@ public CustomerBean findFirstByOrderByIdDesc();
 //	public void deleteCustomerById(Integer id);
 	
 	//單獨搜尋
-	@Query(value="select * from CustomerSupport where id=#{id}", nativeQuery = true)
+	@Query(value="select * from support where id=#{id}", nativeQuery = true)
 	public Optional<CustomerBean> findById(int id);
 	
 	//搜尋全部
-	@Query(value="select * from CustomerSupport", nativeQuery = true)
+	@Query(value="select * from support", nativeQuery = true)
 	public List<CustomerBean> findAll();
 	
 	//模糊搜尋
