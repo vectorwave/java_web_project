@@ -66,8 +66,16 @@ public class CustomerService {
 	}
 	
 	//分頁功能
-	public Page<CustomerBean> findByPage(Integer pageNumber){
+	public Page<CustomerBean> findAllByProcessStatus1(Integer pageNumber){
 		Pageable pgb = PageRequest.of(pageNumber-1, 5, Sort.Direction.DESC, "id");
+		
+		Page<CustomerBean> page = dao.findAllByProcessStatus1(pgb);
+		
+		return page;
+	}
+	
+	public Page<CustomerBean> findByPage(Integer pageNumber){
+		Pageable pgb = PageRequest.of(pageNumber-1, 5, Sort.Direction.DESC, "processStatus");
 		
 		Page<CustomerBean> page = dao.findAll(pgb);
 		
