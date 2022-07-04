@@ -46,6 +46,10 @@ public class AccountPageController {
 		return "/front/JoTravelFront/accountLogin";
 	}
 
+	@GetMapping("/index")
+	public String Welcome() {
+		return "index";
+	}
 
 	@GetMapping("/login/insert")
 	public String insertAccountPage(Model model) {

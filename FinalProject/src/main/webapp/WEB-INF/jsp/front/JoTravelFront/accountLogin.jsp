@@ -414,8 +414,8 @@ a:hover {
 		$('#one').click(function() {
 			let checkword = $('#checkCode').text();
 			console.log(checkword)
-			$('#inputAccount').val("ooo");
-			$('#inputPassword').val("ooo");
+			$('#inputAccount').val("k123");
+			$('#inputPassword').val("k123");
 			$('#inputCode').val(checkword);
 		})
 	</script>

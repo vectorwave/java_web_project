@@ -88,7 +88,7 @@
   $('#one').click(function(){
 	  $('#productName').val("火辣辣墾丁重砲海陸三日遊");
 	  $('#productPrice').val("6800");
-	  $('#startDate').val("2022-07-22");
+	  $('#startDate').val("2022-07-01");
 	  $('#endDate').val("2022-07-25");
 	  $('#productArea').val("南部");
 	  $('#productSimpleDescription').val("水上活動三選二,暢遊墾丁大街,包含兩天住宿,海鮮餐廳吃到飽!");
