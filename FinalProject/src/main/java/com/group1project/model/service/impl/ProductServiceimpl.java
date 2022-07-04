@@ -52,7 +52,7 @@ public class ProductServiceimpl implements ProductService {
 
 	@Override
 	public List<Product> getAllProduct() {
-		return pDao.findAll();
+		return pDao.findAllSaleProduct();
 	}
 	
 	//0713等待修改
@@ -77,6 +77,11 @@ public class ProductServiceimpl implements ProductService {
 	
 	public Page<Product> searchProductByNameWithPage(String key , Pageable pab) {
 		   return pDao.findAllByProductNameLike("%" + key + "%", pab);
+	}
+
+	@Override
+	public List<Product> findAllByAccountId(Integer accountId) {
+		return pDao.findAllByAccountId(accountId);
 	}
 	
 	
