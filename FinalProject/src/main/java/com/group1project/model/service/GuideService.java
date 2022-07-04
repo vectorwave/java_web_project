@@ -15,5 +15,6 @@ public interface GuideService {
 	void deleteGuideById(Integer accountId);
 	Page<Guide> findByPage(Integer pageNumber);
 	List<Guide> searchGuideByProfileName(String key);
+	Page<Guide> findByPage2(Integer pageNumber);
 	
 }

@@ -722,6 +722,13 @@ button:focus {
   
 }
 
+/* 導遊頁面偷來用一下 */
+.blog_banner .gd-parallax {
+  background: url(../image/banner/guideFrontPage.jpg) no-repeat scroll center center;
+  
+}
+
+
 .blog_banner .banner_content {
   margin-bottom: 0px;
   margin-top: 106px;

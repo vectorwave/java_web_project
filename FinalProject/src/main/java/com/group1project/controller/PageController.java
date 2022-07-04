@@ -40,14 +40,8 @@ public class PageController {
 
 	private ProductCommentService pcService;
 
-	@Autowired
-	private GuideService gService;
-	
-	@Autowired
-	private AccountService acService;
 
-	
-	
+		
 	
 //	########################前台商品頁面########################
 	
@@ -191,8 +185,6 @@ public class PageController {
 
 	
 	
-	// ##### Start ##### 商家導遊 Page Controller
-	
 
 	@GetMapping("searchProduct")
 	@ResponseBody
@@ -207,33 +199,24 @@ public class PageController {
 	
 	}
 
-	//所有商家頁面
-	@GetMapping("/guidemanagement")
-	public ModelAndView allGuidePage(ModelAndView mav, @RequestParam(name="p", defaultValue = "1") Integer pageNumber) {
+	
+	
+
+	@GetMapping("article/all")
+	public ModelAndView viewAllArticles(ModelAndView mav, 
+			@RequestParam(name="p", defaultValue = "1") Integer pageNumber,@RequestParam(value="key",defaultValue="" ,required = false) String key,Model m) {
+		//Page<Article> page = aService.findByPage(pageNumber);
 		
-		Page<Guide> page = gService.findByPage(pageNumber);
-		
-		Integer history = pageNumber;
-		
+		Pageable pgb = PageRequest.of(pageNumber - 1, 5 ,Sort.Direction.DESC,"articleId");
+
+		Page<Article> page = aService.searchArticleByTitleWithPage(key, pgb);
+
 		mav.getModel().put("page", page);
-		mav.setViewName("allGuide");
-		
+		mav.getModel().put("key", key);
+		mav.setViewName("viewArticles");
 		return mav;
 	}
-	
-	//導遊詳細資訊
-	@GetMapping("/guidemanagement/info/{id}")
-	public ModelAndView guideDetails(ModelAndView mav, @PathVariable("id") int id) {
-		Guide guideInfo = gService.getGuideById(id);
-//		Account guideAcc = acService.getAccountById(id);
-		
-		mav.getModel().put("guideInfo", guideInfo);
-//		mav.getModel().put("guideAcc", guideAcc);
-		mav.setViewName("guideDetail");
-		return mav;
-	}
-	
-	
+
 	//新增導遊
 	@GetMapping("/guidemanagement/addguide")
 	public ModelAndView insertGuide(ModelAndView mav) {
@@ -314,6 +297,7 @@ public class PageController {
 	}
 	
 	// ##### End ##### 商家導遊 Page Controller 
+
 
 	
 	
