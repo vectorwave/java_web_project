@@ -8,6 +8,7 @@ import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.group1project.model.bean.Account;
 import com.group1project.model.bean.Order;
 import com.group1project.model.bean.OrderDetail;
 import com.group1project.model.repository.OrderRepository;
@@ -33,7 +35,14 @@ public class ECPayController {
 	@Autowired OrderService orderService;
 	@Autowired OrderRepository orderRepository;
 	@PostMapping("go")
-	public void goECPay(HttpServletResponse response,@RequestBody Order order) {
+	public void goECPay(HttpServletResponse response,@RequestBody Order order,HttpSession session) {
+		if(session.getAttribute("loginuser")!=null) {
+			order.setAccount((Account)session.getAttribute("loginuser"));
+		}else {
+			Account account=new Account();
+			account.setAccountId(1);
+			order.setAccount(account);
+		}
 		orderService.save(order);
 		//設定金流
 		AllInOne aio = new AllInOne("");
@@ -56,7 +65,7 @@ public class ECPayController {
 		//付款完成通知回傳網址
 		aioCheck.setReturnURL("localhost:8081/jotravel/ECPay/returnURL");
 		//Clinet端回傳付款結果網址
-		aioCheck.setClientBackURL("http://localhost:8081/jotravel/ECPay/show");
+		aioCheck.setClientBackURL("http://localhost:8081/jotravel");
 		
 		//印出付款頁面
 		try {
@@ -80,9 +89,5 @@ public class ECPayController {
 			String orderIdStr = MerchantTradeNo.substring(10);
 			int orderId = Integer.parseInt(orderIdStr);
 		}
-	}
-	@GetMapping("show")
-	public String showECPayOrder() {
-		return "";
 	}
 }

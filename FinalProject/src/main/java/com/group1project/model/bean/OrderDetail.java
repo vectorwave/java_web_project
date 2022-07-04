@@ -24,6 +24,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Data
 @NoArgsConstructor
@@ -42,12 +43,14 @@ public class OrderDetail implements Serializable{
 	@EqualsAndHashCode.Include
 	private OrderDetailId detailId = new OrderDetailId();
 	
+	@ToString.Exclude
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JsonProperty(access = Access.WRITE_ONLY)
 	@MapsId(value = "orderId")
 	@JoinColumn(name="order_id")
 	private Order order;
 	
+	@ToString.Exclude
 	@MapsId(value="productId")
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="product_id")
