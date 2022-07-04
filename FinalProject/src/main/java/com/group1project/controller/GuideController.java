@@ -72,8 +72,9 @@ public class GuideController {
 		Account guideAccount = new Account();
 		guideAccount.setAccountName(accountName);
 		
-		String password = getStringHash(pwd, "SHA-512");
 		
+		//加密功能
+		String password = getStringHash(pwd, "SHA-512");
 		guideAccount.setPassword(password);
 		guideAccount.setStatus("1");
 		guideAccount.setTitle("商家");
@@ -162,20 +163,7 @@ public class GuideController {
 //	
 //	}
 	
-	//顯示圖片Controller
-	@GetMapping("photo/{id}")
-	public ResponseEntity<byte[]> downloadImage(@PathVariable("id") Integer id){
-		Guide guide = gService.getGuideById(id);
-		
-		byte[] guidePic = guide.getGuidePhoto();
-	
-		HttpHeaders headers = new HttpHeaders();
-		headers.setContentType(MediaType.IMAGE_JPEG);
-		                               // 要回傳的物件, header , httpstatus 回應
-		return new ResponseEntity<byte[]>(guidePic, headers, HttpStatus.OK);
-	}
-	
-	//密碼加密
+	//加密
 		private static String getStringHash(String message, String algorithm) {
 			final StringBuffer buffer = new StringBuffer();
 			try {
@@ -196,5 +184,18 @@ public class GuideController {
 			return buffer.toString();
 		}
 	
+	//顯示圖片Controller
+	@GetMapping("photo/{id}")
+	public ResponseEntity<byte[]> downloadImage(@PathVariable("id") Integer id){
+		Guide guide = gService.getGuideById(id);
+		
+		byte[] guidePic = guide.getGuidePhoto();
+	
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(MediaType.IMAGE_JPEG);
+		                               // 要回傳的物件, header , httpstatus 回應
+		return new ResponseEntity<byte[]>(guidePic, headers, HttpStatus.OK);
+	}
+
 
 }
