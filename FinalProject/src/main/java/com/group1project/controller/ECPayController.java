@@ -56,7 +56,7 @@ public class ECPayController {
 		//付款完成通知回傳網址
 		aioCheck.setReturnURL("localhost:8081/jotravel/ECPay/returnURL");
 		//Clinet端回傳付款結果網址
-		aioCheck.setClientBackURL("http://localhost:8081/jotravel/ECPay/show");
+		aioCheck.setClientBackURL("http://localhost:8081/jotravel");
 		
 		//印出付款頁面
 		try {
@@ -80,9 +80,5 @@ public class ECPayController {
 			String orderIdStr = MerchantTradeNo.substring(10);
 			int orderId = Integer.parseInt(orderIdStr);
 		}
-	}
-	@GetMapping("show")
-	public String showECPayOrder() {
-		return "";
 	}
 }

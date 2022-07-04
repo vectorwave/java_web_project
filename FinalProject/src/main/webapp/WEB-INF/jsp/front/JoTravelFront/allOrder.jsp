@@ -1,12 +1,56 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<jsp:include page="layout/header.jsp" />
+
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
+
+<!doctype html>
+<html lang="en">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="icon" href="image/favicon.png" type="image/png">
+<title>Jotravel 訂單頁面</title>
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href='<c:url value="/css/blog/bootstrap.css"/>'>
+<link rel="stylesheet"
+	href="<c:url value="/css/blog/vendors/linericon/style.css"/>">
+<link rel="stylesheet"
+	href="<c:url value="/css/blog/font-awesome.min.css"/>">
+<link rel="stylesheet"
+	href="<c:url value="/css/blog/vendors/owl-carousel/owl.carousel.min.css"/>">
+<link rel="stylesheet"
+	href="<c:url value="/css/blog/vendors/bootstrap-datepicker/bootstrap-datetimepicker.min.css"/>">
+<link rel="stylesheet"
+	href="<c:url value="/css/blog/vendors/nice-select/css/nice-select.css"/>">
+<link rel="stylesheet"
+	href="<c:url value="/css/blog/vendors/owl-carousel/owl.carousel.min.css"/>">
+<!-- main css -->
+<link rel="stylesheet" href="<c:url value="/css/blog/style.css"/>">
+<link rel="stylesheet" href="<c:url value="/css/blog/responsive.css"/>">
+<script type="text/javascript"
+	src="${contextRoot}/js/sweetalert2.all.min.js"></script>
+<script type="text/javascript" src="${contextRoot}/js/jquery-3.6.0.min.js"></script>
+<link href="${contextRoot}/css/sweetalert2.min.css" rel="stylesheet">
+<script type="text/javascript" src="${contextRoot}/js/bootstrap.bundle.min.js"></script>
+<script src="${contextRoot}/js/xlsx.mini.min.js"></script>
+<script src="${contextRoot}/js/FileSaver.js"></script>
+<script src="${contextRoot}/js/downloadOrder.js"></script>
 <script type="text/javascript" src="${contextRoot}/js/vue.min.js"></script>
-<div id="app" style="color: black">
-	<div class="row justify-content-center mt-4">
+<link href="${contextRoot}/css/sweetalert2.min.css" rel="stylesheet">
+</head>
+<body>
+	<!--================Header Area =================-->
+	 <jsp:include page="frontLayout/frontHeader.jsp" />
+
+
+<div id="app" class="mx-6 mt-5" style="padding:60px">
+	<div class="justify-content-center">
 		<div class="h3 d-inline-block mt-2 d-flex row">
 			<div class="col-sm text-center">訂單編號</div>
 			<div class="col-sm text-center">金流</div>
@@ -18,7 +62,7 @@
 			<div id="accordionExample" v-for="(order,index) in orders"
 				:key="order.orderId">
 				<div class="card card-bottom">
-					<div class="card-header fs-4 d-flex row" :id="'heading-'+index">
+					<div class="card-header d-flex row" style="font-size:large" :id="'heading-'+index">
 						<div class="col-sm text-center">{{order.orderId}}</div>
 						<div class="col-sm text-center">{{order.cashFlow}}</div>
 						<div class="col-sm text-center">{{order.status}}</div>
@@ -71,18 +115,20 @@
 			</div>
 			<nav aria-label="Page navigation example">
 				<ul class="pagination justify-content-center">
-					<li class="{'disabled':nowPage == 1}"><a class="page-link" type="button"
-						aria-label="Previous" @click="changePage(nowPage-1)"> <span aria-hidden="true">&laquo;</span>
+					<li :class="{'disabled':nowPage == 1}"><a class="page-link"
+						type="button" aria-label="Previous" @click="changePage(nowPage-1)">
+							<span aria-hidden="true">&laquo;</span>
 					</a></li>
 					<li v-for="n in totalPages" :class="{'active':nowPage == n}"><a
 						class="page-link" type="button" @click="changePage(n)">{{n}}</a></li>
-					<li :class="{'disabled':nowPage == totalPages}"><a class="page-link" type="button" aria-label="Next"> <span
+					<li :class="{'disabled':nowPage == totalPages}"><a
+						class="page-link" type="button" aria-label="Next"> <span
 							aria-hidden="true" @click="changePage(nowPage+1)">&raquo;</span>
 					</a></li>
 				</ul>
 			</nav>
 		</div>
-
+<button type="button" class="btn btn-primary btn-sm" style="float:right" onclick="download()">下載訂單</button>
 	</div>
 </div>
 <script>
@@ -140,7 +186,7 @@ jQuery.ajax({
   async :false, 
 	success:function(res){
 		if(res.orders.length == 0){
-			$('#app').html('<img class="mb-4 rounded mx-auto d-block" src="${contextRoot}/assets/img/noOrder.png" alt="" width="700" height="700">');			
+			$('#app').html('<br/><br/><img class="mb-6 rounded mx-auto d-block" src="${contextRoot}/assets/img/noOrder.png" alt="" width="700" height="700">');			
 		}
 		vm.$data.orders = res.orders;
 		vm.$data.totalPages = res.totalPages;
@@ -157,6 +203,7 @@ function changePage(page){
 		success:res=>{
 			vm.$data.orders = res;
 			vm.$data.nowPage = page;
+			console.log(page);
 		},
 		error:err=>{
 			console.log(err);
@@ -173,7 +220,39 @@ function del(id){
 		}
 	});
 }
-
-
+function dataToAOA() {
+	jQuery.ajax({
+		url: '${contextRoot}/order/download',
+		async: false,
+		success: function(res) {
+			res.forEach(function(order) {
+				let tempO = [];
+				tempO.push(order.orderId);
+				tempO.push(order.cashFlow);
+				tempO.push(order.status);
+				temp.push(tempO);
+				order.orderDetails.forEach(function(orderDetail) {
+					let tempD = [, , ,];
+					tempD.push(orderDetail.product.productName);
+					tempD.push(orderDetail.product.productPrice);
+					tempD.push(orderDetail.amount);
+					tempD.push(orderDetail.date);
+					tempD.push(orderDetail.totalDays);
+					temp.push(tempD);
+				});
+			});
+			const sheet = XLSX.utils.aoa_to_sheet(temp);
+			workbook.appendSheet(sheet, 'sheet_name_1');
+		},
+		error: function(err) {
+			console.log(err);
+		}
+	});
+}
+function download() {
+	dataToAOA();
+	saveAs(workbook.toBlob(), "myOrder.xls");
+}
 </script>
-<jsp:include page="layout/footer.jsp" />
+<script src="${contextRoot}/js/downloadOrder.js"></script>
+<jsp:include page="frontLayout/frontFooter.jsp" />

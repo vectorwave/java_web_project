@@ -3,6 +3,8 @@ package com.group1project.model.repository;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -38,7 +40,8 @@ public CustomerBean findFirstByOrderByIdDesc();
 	//圓餅圖查詢問題類型用
 	List<CustomerBean> findByServiceInfo(String findByServiceInfo);
 	
-
+	@Query(value="select * from support where processStatus='處理中'", nativeQuery = true)
+	Page<CustomerBean> findAllByProcessStatus1(Pageable pageable);
 	//刪除一筆
 //	@Modifying
 //	@Query(value="delete from CustomerSupport where id=#{id}", nativeQuery = true)
