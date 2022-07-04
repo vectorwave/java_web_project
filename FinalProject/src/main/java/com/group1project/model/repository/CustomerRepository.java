@@ -26,6 +26,9 @@ public CustomerBean findFirstByOrderByIdDesc();
 	@Query(value="select * from support", nativeQuery = true)
 	public List<CustomerBean> findAll();
 	
+	@Query(value="select * from support where processStatus='處理中'", nativeQuery = true)
+	public List<CustomerBean> findAllByProcessStatus();
+	
 	//模糊搜尋
 	List<CustomerBean> findByServiceInfoLike(String findByServiceInfoLike);
 	
