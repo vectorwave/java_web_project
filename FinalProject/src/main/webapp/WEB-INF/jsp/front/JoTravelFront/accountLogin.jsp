@@ -163,7 +163,9 @@ a:hover {
 				</form>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">離開</button>
+<!-- 				<button type="button" class="btn btn-secondary" data-dismiss="modal">離開</button> -->
+				<a href='http://localhost:8081/jotravel/'
+					class="btn btn-secondary"">離開</a>
 				<a href='<c:out value="${contextRoot}"/>/page/login/member/insert'
 					class="try-me btn btn-info">我要註冊</a>
 				<button id="one" type="button" class="btn btn-secondary"

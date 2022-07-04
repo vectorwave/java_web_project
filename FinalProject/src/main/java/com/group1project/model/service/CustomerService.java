@@ -104,6 +104,10 @@ public class CustomerService {
 		return null;
 	}
 
+	public List<CustomerBean> findAllByprocessStatus() {
+		return dao.findAllByProcessStatus();
+	}
+	
 
 	public List<CustomerBean> findByServiceInfo(String findByServiceInfo) {
 		return dao.findByServiceInfo(findByServiceInfo);

@@ -154,8 +154,8 @@
 						<span class="material-icons">chat</span>客服管理
 					</button>
 					<div class="dropdown-content">
-						<a href="#">未回覆問題</a> <a class="dropdown-item"
-							href="${contextRoot}/message/form">所有問題</a> <a href="#">即時回回覆</a>
+						<a class="dropdown-item"
+							href="${contextRoot}/staff/message/selectAll">所有問題</a> 
 					</div>
 				</div>
 

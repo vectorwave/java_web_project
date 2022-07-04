@@ -23,7 +23,7 @@
  <form:input type="hidden" path="status" class="form-control" value="1"/><br/>
  <button id="one" type="button" class="btn btn-secondary"
 						>一鍵輸入</button>
-  <input type="button" onclick="submitForm(form)" id="send" value="新增" class="btn btn-lg btn-success btn-block">
+  <input type="button" onclick="submitForm(form)" id="send" value="新增" class="btn btn-outline-success">
   </div>	
   
   

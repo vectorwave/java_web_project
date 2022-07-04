@@ -52,7 +52,14 @@
                                 </ul>
                             </li> 
                             <li class="nav-item"><a class="nav-link" href="elements.html">揪團</a></li>
-                            <li class="nav-item"><a class="nav-link" href="contact.html">聯絡我們</a></li>
+                           <li class="nav-item submenu dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">客服中心</a>
+                                <ul class="dropdown-menu">
+                                    <li class="nav-item"><a class="nav-link" href="${contextRoot}/message/form">客服表單</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="blog-single.html">智能客服</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="blog-single.html">線上客服中心</a></li>
+                                </ul>
+                            </li> 
                             
                             <li class="nav-item submenu dropdown">
                             	<a href="#"class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">會員</a>
