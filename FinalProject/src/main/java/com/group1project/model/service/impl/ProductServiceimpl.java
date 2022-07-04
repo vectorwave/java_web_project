@@ -78,6 +78,11 @@ public class ProductServiceimpl implements ProductService {
 	public Page<Product> searchProductByNameWithPage(String key , Pageable pab) {
 		   return pDao.findAllByProductNameLike("%" + key + "%", pab);
 	}
+
+	@Override
+	public List<Product> findAllByAccountId(Integer accountId) {
+		return pDao.findAllByAccountId(accountId);
+	}
 	
 	
 
