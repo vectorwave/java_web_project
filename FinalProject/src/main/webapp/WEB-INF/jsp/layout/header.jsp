@@ -65,14 +65,18 @@
 		<!--   <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search"> -->
 
 
+							<c:if test="${sessionScope.loginuser.accountId == null}">
+			<button type="button" class="btn btn-secondary"
+				style="margin-right: 20px; position: relative;">登入</button>
+									
+									</c:if>
+			<c:if test="${sessionScope.loginuser.accountId != null}">
 		<a class="nav-link" href="http://localhost:8081/jotravel/loginout">
 			<button type="button" class="btn btn-secondary"
 				style="position: absolute; right: 90px; top: 11px;">登出</button>
 		</a> <a class="nav-link" href="http://localhost:8081/jotravel/login">
-			<button type="button" class="btn btn-secondary"
-				style="margin-right: 20px; position: relative;">登入</button>
 		</a>
-
+									</c:if>
 
 	</nav>
 
