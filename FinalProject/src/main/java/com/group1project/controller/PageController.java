@@ -363,7 +363,7 @@ public class PageController {
 			return "front/JoTravelFront/blogSingle";
 		} 
 		
-		@GetMapping("/front/addBlogPage")
+		@GetMapping("front/addBlogPage")
 		public String addFrontBlogPage(Model model){
 			
 			Article article=new Article();
