@@ -105,7 +105,7 @@ Float: right
 	<br>
 	
 	<img src="${contextRoot}/member/photo/${newMember.account.accountId}" id="output" width="300" height="300"><br><br>
-	<input type="button" onclick="submitForm(form)" value="修改" class="btn btn-lg btn-success btn-block" id="send"/>
+	<input type="button" onclick="submitForm(form)" value="修改" class="btn btn-outline-success" id="send"/>
 	</div>	
 </form:form>
 
