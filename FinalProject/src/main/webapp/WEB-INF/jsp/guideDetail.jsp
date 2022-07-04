@@ -106,15 +106,6 @@
                         </td>
                       </tr>
 
-                      <form:form  method="post" modelAttribute="guideAcc">
-                      <tr>
-                        <td class="formLabel"><label class="GIFLabel">帳號狀態： </label></td>
-                        <td class="formContent">
-                          <form:input path="status" readonly="true" class="inputBox1" />
-                        </td>
-                      </tr>
-                    </form:form>
-
                     </form:form>
 
                   </table>

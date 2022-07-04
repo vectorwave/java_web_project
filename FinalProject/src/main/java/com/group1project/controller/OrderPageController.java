@@ -17,4 +17,8 @@ public class OrderPageController {
 	public String downloadOrder() {
 		return "downloadOrder";
 	}
+	@GetMapping("front/allOrder")
+	public String frontAllOrder() {
+		return "front/JoTravelFront/allOrder";
+	}
 }

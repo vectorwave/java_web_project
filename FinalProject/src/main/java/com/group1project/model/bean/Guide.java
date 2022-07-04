@@ -26,7 +26,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
-@Data
+
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
@@ -96,6 +96,116 @@ public class Guide implements Serializable {
 	public void setGuideGender(String guideGender) {
 		this.guideGender = guideGender;
 	}
-	
 
+	public Integer getAccountId() {
+		return accountId;
+	}
+
+	public void setAccountId(Integer accountId) {
+		this.accountId = accountId;
+	}
+
+	public Account getAccount() {
+		return account;
+	}
+
+	public void setAccount(Account account) {
+		this.account = account;
+	}
+
+	public String getProfileName() {
+		return profileName;
+	}
+
+	public void setProfileName(String profileName) {
+		this.profileName = profileName;
+	}
+
+	public String getGuideDescription() {
+		return guideDescription;
+	}
+
+	public void setGuideDescription(String guideDescription) {
+		this.guideDescription = guideDescription;
+	}
+
+	public String getGuideName() {
+		return guideName;
+	}
+
+	public void setGuideName(String guideName) {
+		this.guideName = guideName;
+	}
+
+	public Date getGuideBirthday() {
+		return guideBirthday;
+	}
+
+	public void setGuideBirthday(Date guideBirthday) {
+		this.guideBirthday = guideBirthday;
+	}
+
+	public String getGuidePhone() {
+		return guidePhone;
+	}
+
+	public void setGuidePhone(String guidePhone) {
+		this.guidePhone = guidePhone;
+	}
+
+	public String getGuideEmail() {
+		return guideEmail;
+	}
+
+	public void setGuideEmail(String guideEmail) {
+		this.guideEmail = guideEmail;
+	}
+
+	public String getGuideAddress() {
+		return guideAddress;
+	}
+
+	public void setGuideAddress(String guideAddress) {
+		this.guideAddress = guideAddress;
+	}
+
+	public String getLicenceType() {
+		return licenceType;
+	}
+
+	public void setLicenceType(String licenceType) {
+		this.licenceType = licenceType;
+	}
+
+	public String getLicenceNo() {
+		return licenceNo;
+	}
+
+	public void setLicenceNo(String licenceNo) {
+		this.licenceNo = licenceNo;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	public Guide(Integer accountId, String profileName, String guideDescription, String guideName,
+			Date guideBirthday, String guideGender, String guidePhone, String guideEmail, String guideAddress,
+			String licenceType, String licenceNo, byte[] guidePhoto) {
+		super();
+		this.accountId = accountId;
+		this.profileName = profileName;
+		this.guideDescription = guideDescription;
+		this.guideName = guideName;
+		this.guideBirthday = guideBirthday;
+		this.guideGender = guideGender;
+		this.guidePhone = guidePhone;
+		this.guideEmail = guideEmail;
+		this.guideAddress = guideAddress;
+		this.licenceType = licenceType;
+		this.licenceNo = licenceNo;
+		this.guidePhoto = guidePhoto;
+	}
+	
+	
 }
