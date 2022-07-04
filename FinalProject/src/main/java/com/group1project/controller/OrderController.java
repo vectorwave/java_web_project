@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.group1project.model.bean.Account;
 import com.group1project.model.bean.Order;
 import com.group1project.model.repository.OrderRepository;
 import com.group1project.model.service.OrderService;
@@ -29,7 +30,8 @@ public class OrderController {
 
 	@GetMapping("all")
 	public Object getAllOrder(HttpSession session) {
-		Integer accountId = (Integer) session.getAttribute("loginuser.accountId");
+		System.out.println(session.getAttribute("loginuser"));
+		Integer accountId = ((Account)session.getAttribute("loginuser")).getAccountId();
 		if (accountId == null)
 			accountId = 1;
 		Page<Order> orderPage=orderService.findByAccountId(accountId);
