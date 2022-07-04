@@ -147,10 +147,10 @@ public class AccountController {
 			return "login";
 		} else if(queryMember.getAccountName().equals("")) {
 			model.addAttribute("loginuser", queryMember);
-			return "redirect:/login/findall";
+			return "redirect:/index";
 		} else {
 			model.addAttribute("loginuser", queryMember);
-			return "redirect:/login/findall";
+			return "redirect:/index";
 		}
 	}
 	

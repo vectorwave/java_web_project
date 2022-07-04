@@ -12,7 +12,7 @@
 
 
 <%-- <form:form method="post" action="${contextRoot}/member/findall modelAttribute="member"> --%>
-<input id=accountId name="accountId" value="${loginuser.accountId}" />
+<input id=accountId type="hidden" name="accountId" value="${loginuser.accountId}" />
 	<div class="row">
 		<table class="table table-hover">
 			<thead>

@@ -87,7 +87,7 @@
 
 
 				<div class="dropdown" STYLE="margin-top: 30px;">
-					<a href="/jotravel"><button class="dropbtn">
+					<a href="/jotravel/index"><button class="dropbtn">
 							<span class="material-icons">home</span>回到首頁
 						</button></a>
 				</div>

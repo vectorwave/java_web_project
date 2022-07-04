@@ -123,12 +123,12 @@
 	});
   
   $('#one').click(function(){
-		$('#memberName').val("杜同學");
-		$('#address').val("台北市復興南路一段390巷");
+		$('#memberName').val("杜先生");
+		$('#address').val("台北市裕民二路33巷");
 		$('#birthdate').val("1998-03-25");
-		$('#email').val("karen1111@yahoo.com.tw");
+		$('#email').val("du111@yahoo.com.tw");
 		$('#btnradio1').prop("checked",true);
-		$('#phone').val("0912123123");
+		$('#phone').val("0912345345");
 		
 	})
   function submitForm(form){

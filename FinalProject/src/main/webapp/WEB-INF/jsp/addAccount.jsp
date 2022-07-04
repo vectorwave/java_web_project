@@ -93,8 +93,8 @@ function submitForm(form){
 		})
 }
   $('#one').click(function(){
-		$('#inputAccount').val("ooo");
-		$('#inputPassword').val("ooo");
+		$('#inputAccount').val("kkk");
+		$('#inputPassword').val("kkk");
 		
 	})
   

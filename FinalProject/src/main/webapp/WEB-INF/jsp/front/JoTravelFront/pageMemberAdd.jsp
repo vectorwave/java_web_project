@@ -50,64 +50,66 @@
 </style>
 <body>
 	<!--================Header Area =================-->
-<!-- 	<header class="header_area"> -->
-<!-- 		<div class="container"> -->
-<!-- 			<nav class="navbar navbar-expand-lg navbar-light"> -->
-<!-- 				Brand and toggle get grouped for better mobile display -->
-<!-- 				<a class="navbar-brand logo_h" href="index.html"><img -->
-<%-- 					src="<c:url value="/images/blog/Logo.png"/>" alt=""></a> --%>
-<%-- 				                    <a class="navbar-brand logo_h" href="index.html"><img src="<c:url value="/image/Logo.png"> alt=""></a> --%>
-<!-- 				<button class="navbar-toggler" type="button" data-toggle="collapse" -->
-<!-- 					data-target="#navbarSupportedContent" -->
-<!-- 					aria-controls="navbarSupportedContent" aria-expanded="false" -->
-<!-- 					aria-label="Toggle navigation"> -->
-<!-- 					<span class="icon-bar"></span> <span class="icon-bar"></span> <span -->
-<!-- 						class="icon-bar"></span> -->
-<!-- 				</button> -->
-<!-- 				Collect the nav links, forms, and other content for toggling -->
-<!-- 				<div class="collapse navbar-collapse offset" -->
-<!-- 					id="navbarSupportedContent"> -->
-<!-- 					<ul class="nav navbar-nav menu_nav ml-auto"> -->
-<!-- 						<li class="nav-item"><a class="nav-link" href="index.html">Home</a></li> -->
-<!-- 						<li class="nav-item"><a class="nav-link" href="about.html">About -->
-<!-- 								us</a></li> -->
-<!-- 						<li class="nav-item"><a class="nav-link" -->
-<!-- 							href="accomodation.html">Accomodation</a></li> -->
-<!-- 						<li class="nav-item active"><a class="nav-link" -->
-<!-- 							href="gallery.html">Gallery</a></li> -->
-<!-- 						<li class="nav-item submenu dropdown"><a href="#" -->
-<!-- 							class="nav-link dropdown-toggle" data-toggle="dropdown" -->
-<!-- 							role="button" aria-haspopup="true" aria-expanded="false">Blog</a> -->
-<!-- 							<ul class="dropdown-menu"> -->
-<!-- 								<li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li> -->
-<!-- 								<li class="nav-item"><a class="nav-link" -->
-<!-- 									href="blog-single.html">Blog Details</a></li> -->
-<!-- 							</ul></li> -->
-<!-- 						<li class="nav-item"><a class="nav-link" href="elements.html">Elemests</a></li> -->
-<!-- 						<li class="nav-item submenu dropdown"><a href="#" -->
-<!-- 							class="nav-link dropdown-toggle" data-toggle="dropdown" -->
-<!-- 							role="button" aria-haspopup="true" aria-expanded="false">會員</a> -->
-<!-- 							<ul class="dropdown-menu"> -->
-<!-- 								<li class="nav-item"><a class="nav-link" -->
-<!-- 									href="http://localhost:8081/jotravel/page/member/add">新增個人資料</a></li> -->
-<!-- 								<li class="nav-item"><a class="nav-link" -->
-<%-- 									href="http://localhost:8081/jotravel/page/member/edit?id=${loginuser.accountId}">修改個人資料</a></li> --%>
-<!-- <!-- 								<li class="nav-item"><a class="nav-link" --> -->
-<!-- <!-- 									href="blog-single.html">刪除帳號</a></li> --> -->
-<!-- 								<li class="nav-item"><a class="nav-link" -->
-<!-- 									href="blog-single.html">查看訂單</a></li> -->
-<!-- 								<li class="nav-item"><a class="nav-link" -->
-<!-- 									href="http://localhost:8081/jotravel/page/login">登入</a></li> -->
-<!-- 								<li class="nav-item"><a class="nav-link" -->
-<!-- 									href="http://localhost:8081/jotravel/page/loginout">登出</a></li> -->
+	<!-- 	<header class="header_area"> -->
+	<!-- 		<div class="container"> -->
+	<!-- 			<nav class="navbar navbar-expand-lg navbar-light"> -->
+	<!-- 				Brand and toggle get grouped for better mobile display -->
+	<!-- 				<a class="navbar-brand logo_h" href="index.html"><img -->
+	<%-- 					src="<c:url value="/images/blog/Logo.png"/>" alt=""></a> --%>
+	<%-- 				                    <a class="navbar-brand logo_h" href="index.html"><img src="<c:url value="/image/Logo.png"> alt=""></a> --%>
+	<!-- 				<button class="navbar-toggler" type="button" data-toggle="collapse" -->
+	<!-- 					data-target="#navbarSupportedContent" -->
+	<!-- 					aria-controls="navbarSupportedContent" aria-expanded="false" -->
+	<!-- 					aria-label="Toggle navigation"> -->
+	<!-- 					<span class="icon-bar"></span> <span class="icon-bar"></span> <span -->
+	<!-- 						class="icon-bar"></span> -->
+	<!-- 				</button> -->
+	<!-- 				Collect the nav links, forms, and other content for toggling -->
+	<!-- 				<div class="collapse navbar-collapse offset" -->
+	<!-- 					id="navbarSupportedContent"> -->
+	<!-- 					<ul class="nav navbar-nav menu_nav ml-auto"> -->
+	<!-- 						<li class="nav-item"><a class="nav-link" href="index.html">Home</a></li> -->
+	<!-- 						<li class="nav-item"><a class="nav-link" href="about.html">About -->
+	<!-- 								us</a></li> -->
+	<!-- 						<li class="nav-item"><a class="nav-link" -->
+	<!-- 							href="accomodation.html">Accomodation</a></li> -->
+	<!-- 						<li class="nav-item active"><a class="nav-link" -->
+	<!-- 							href="gallery.html">Gallery</a></li> -->
+	<!-- 						<li class="nav-item submenu dropdown"><a href="#" -->
+	<!-- 							class="nav-link dropdown-toggle" data-toggle="dropdown" -->
+	<!-- 							role="button" aria-haspopup="true" aria-expanded="false">Blog</a> -->
+	<!-- 							<ul class="dropdown-menu"> -->
+	<!-- 								<li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li> -->
+	<!-- 								<li class="nav-item"><a class="nav-link" -->
+	<!-- 									href="blog-single.html">Blog Details</a></li> -->
+	<!-- 							</ul></li> -->
+	<!-- 						<li class="nav-item"><a class="nav-link" href="elements.html">Elemests</a></li> -->
+	<!-- 						<li class="nav-item submenu dropdown"><a href="#" -->
+	<!-- 							class="nav-link dropdown-toggle" data-toggle="dropdown" -->
+	<!-- 							role="button" aria-haspopup="true" aria-expanded="false">會員</a> -->
+	<!-- 							<ul class="dropdown-menu"> -->
+	<!-- 								<li class="nav-item"><a class="nav-link" -->
+	<!-- 									href="http://localhost:8081/jotravel/page/member/add">新增個人資料</a></li> -->
+	<!-- 								<li class="nav-item"><a class="nav-link" -->
+	<%-- 									href="http://localhost:8081/jotravel/page/member/edit?id=${loginuser.accountId}">修改個人資料</a></li> --%>
+	<!-- <!-- 								<li class="nav-item"><a class="nav-link" -->
+	-->
+	<!-- <!-- 									href="blog-single.html">刪除帳號</a></li> -->
+	-->
+	<!-- 								<li class="nav-item"><a class="nav-link" -->
+	<!-- 									href="blog-single.html">查看訂單</a></li> -->
+	<!-- 								<li class="nav-item"><a class="nav-link" -->
+	<!-- 									href="http://localhost:8081/jotravel/page/login">登入</a></li> -->
+	<!-- 								<li class="nav-item"><a class="nav-link" -->
+	<!-- 									href="http://localhost:8081/jotravel/page/loginout">登出</a></li> -->
 
-<!-- 							</ul></li> -->
-<!-- 					</ul> -->
-<!-- 				</div> -->
-<!-- 			</nav> -->
-<!-- 		</div> -->
-<!-- 	</header> -->
- <jsp:include page="frontLayout/frontHeader.jsp" />
+	<!-- 							</ul></li> -->
+	<!-- 					</ul> -->
+	<!-- 				</div> -->
+	<!-- 			</nav> -->
+	<!-- 		</div> -->
+	<!-- 	</header> -->
+	<jsp:include page="frontLayout/frontHeader.jsp" />
 	<!--================Header Area =================-->
 
 	<!--================Breadcrumb Area =================-->
@@ -129,11 +131,12 @@
 	<h1 style="text-align: center">新增個人資料</h1>
 	<div class="context">
 		<form:form method="post" enctype="multipart/form-data"
-			action="${contextRoot}/member/add" modelAttribute="member">
+			action="${contextRoot}/page/member/add" modelAttribute="member">
 
 
 			<form:input path="memberId" type="hidden" />
-			<input type="hidden" id="accountId" name="accountId" value="${loginuser.accountId}" />
+			<input type="hidden" id="accountId" name="accountId"
+				value="${loginuser.accountId}" />
 
 			<div class="form-group"
 				style="width: 300px; margin: auto; text-align: center;">
@@ -166,7 +169,8 @@
 						name="btnradio" id="btnradio3" autocomplete="off" />
 					<label class="btn btn-outline-primary" for="btnradio3">保密</label>
 				</div>
-				</br><br>電話：
+				</br>
+				<br>電話：
 				<form:input type="text" path="phone" class="form-control" id="phone" />
 				<br /> <span id="mphone"></span> 會員圖片：<input type="file"
 					class="form-control" name="file" accept="image/*"
@@ -191,7 +195,7 @@
 
 
 	<!--================ start footer Area  =================-->
-	 <jsp:include page="frontLayout/frontFooter.jsp" />
+	<jsp:include page="frontLayout/frontFooter.jsp" />
 	<!--================ End footer Area  =================-->
 
 
@@ -216,7 +220,7 @@
 	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<script type="text/javascript"
 		src="${contextRoot}/js/sweetalert2.all.min.js"></script>
-	<link href="${contextRoot}/css/sweetalert2.min.css" rel="stylesheet">
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 	<script>
 	
@@ -327,7 +331,7 @@
 					})
 			  }else{
 				  Swal.fire({
-					  title: '已有相關會員資料',
+					  title: '已新增過相關會員資料，請至個人資料做修改',
 					  showDenyButton: true,
 					  confirmButtonText: 'OK',
 					  denyButtonText: '取消',
