@@ -34,8 +34,7 @@ public class PageController {
 	@Autowired
 	private ProductService pService ;
 	
-	@Autowired
-	private ArticleService aService;
+	
 
 	@Autowired
 
@@ -170,18 +169,7 @@ public class PageController {
 	
 	
 
-	@GetMapping("article/add")
-	public String addArticlePage(Model model) {
-		
-		Article article=new Article();
-		
-		
-		
-		model.addAttribute("article", article);
 	
-		
-		return "editArticle";
-	}
 	
 	// ##### Start ##### 商家導遊 Page Controller
 	
@@ -308,82 +296,8 @@ public class PageController {
 	// ##### End ##### 商家導遊 Page Controller 
 
 	
-	@GetMapping("article/all")
-	public ModelAndView viewAllArticles(ModelAndView mav, 
-			@RequestParam(name="p", defaultValue = "1") Integer pageNumber,@RequestParam(value="key",defaultValue="" ,required = false) String key,Model m) {
-		//Page<Article> page = aService.findByPage(pageNumber);
-		
-		Pageable pgb = PageRequest.of(pageNumber - 1, 5 ,Sort.Direction.DESC,"articleId");
-
-		Page<Article> page = aService.searchArticleByTitleWithPage(key, pgb);
-
-		mav.getModel().put("page", page);
-		mav.getModel().put("key", key);
-		mav.setViewName("viewArticles");
-		return mav;
-	}
+	
 
 	
-	
-	@GetMapping("front666/")
-	public String frontPage(){
-		return "frontend";
-	}
-//	@GetMapping("blogIndex/")
-//	public String blogIndexPage(){
-//		return "blogIndex";
-//	} 
-	//前台商品頁面含page方法
-		@GetMapping("front/blogIndex")
-		public ModelAndView viewAllArticlePage(ModelAndView mav, 
-				@RequestParam(name="p", defaultValue="1") Integer pageNumber,@RequestParam(value="key",defaultValue="" ,required = false) String key,Model m) {
-//			Page<Article> page = aService.findByPage(pageNumber);
-//			
-//			mav.getModel().put("page", page);
-//			mav.getModel().put("key", key);
-			Pageable pgb = PageRequest.of(pageNumber - 1, 5 ,Sort.Direction.DESC,"articleId");
-
-			Page<Article> page = aService.searchArticleByTitleWithPage(key, pgb);
-
-			mav.getModel().put("page", page);
-			mav.getModel().put("key", key);
-			mav.setViewName("front/JoTravelFront/blogIndex");
-			return mav;
-		}
-		
-		@GetMapping("/front/blogPage/detail")
-		public String frontBlogPage(@RequestParam("id") Integer articleId,Model model){
-			
-			Article article= aService.getArticleById(articleId);
-//			List<ProductComment> pdComment =  pcService.getAllProductCommentByProductId(articleId);
-		
-			model.addAttribute("article", article);
-//			model.addAttribute("pdComment", pdComment);
-			
-			return "front/JoTravelFront/blogSingle";
-		} 
-		
-		@GetMapping("front/addBlogPage")
-		public String addFrontBlogPage(Model model){
-			
-			Article article=new Article();
-			
-			
-			
-			model.addAttribute("article", article);
-			
-			return "front/JoTravelFront/addBlog";
-		} 
-		
-	}
-		
-//		@GetMapping("front/blogSingle")
-//		public String blogSingle(){
-//			return "front/JoTravelFront/blogSingle";
-//		} 	
-//	@GetMapping("blogPage/")
-//	public String blogPage(){
-//		return "blogPage";
-//	} 
-//}
+}
 
