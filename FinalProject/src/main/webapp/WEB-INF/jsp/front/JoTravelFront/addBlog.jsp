@@ -138,6 +138,7 @@
 <form:hidden path="articleId"/>
   <input id=accountId name="accountId" value="${loginuser.accountId}" style="visibility:hidden" /><br>
 <form:hidden path="picId"  value="${article.articleId}"/>
+<form:hidden path="articleJogroup"  value="1"/>
 
   <div >
     <!-- 文章標題 -->
@@ -152,6 +153,8 @@
       <option  value="分享" >分享</option>
       <option  value="廣告">廣告</option>
       <option  value="閒聊">閒聊</option>
+      <option  value="揪團">揪團</option>
+      
     </select>
     <form:hidden id="commentType" path="articleCategory" value="分享"/>
   </div></div>
@@ -339,7 +342,15 @@ $(function(){
 		var type =$('#exampleFormControlSelect1').val();
 		
 		$('#commentType').val(type);
-		console.log(type);
+// 		var arcCat=$('#commentType').val();
+		
+// 		if (arcCat=='揪團'){
+// 			var jonum =document.getElementById('arcCate'); 
+// 			$('#jonum').val(1);
+			
+// 		}
+//         console.log(arcCat)
+// 		console.log(type);
 		
 	})
 	
