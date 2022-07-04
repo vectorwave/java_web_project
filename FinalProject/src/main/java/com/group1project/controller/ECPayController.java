@@ -83,6 +83,6 @@ public class ECPayController {
 	}
 	@GetMapping("show")
 	public String showECPayOrder() {
-		return "order/historyOrder";
+		return "";
 	}
 }
