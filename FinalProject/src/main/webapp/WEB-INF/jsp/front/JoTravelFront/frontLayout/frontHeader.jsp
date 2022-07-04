@@ -19,7 +19,7 @@
                     <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                         <ul class="nav navbar-nav menu_nav ml-auto">
                             <li class="nav-item active"><a class="nav-link" href="${contextRoot}/">首頁</a></li> 
-                            <li class="nav-item"><a class="nav-link" href="about.html">關於我們</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#about_tag">關於我們</a></li>
                             <li class="nav-item"><a class="nav-link" href="gallery.html">藝廊</a></li>
                             <li class="nav-item submenu dropdown">
                                 <a href="" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">想趣旅遊</a>

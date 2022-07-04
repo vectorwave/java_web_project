@@ -128,7 +128,8 @@ public class ProductCommentController {
 	@PostMapping("editProductComment")
     public String editProducteComment(@ModelAttribute(name="newPdC") ProductComment newPdComment ,
     		@RequestParam("accountId") Integer aId,
-		    @RequestParam("productId") Integer pId,    		
+		    @RequestParam("productId") Integer pId,
+		    @RequestParam(value="inlineRadioOptions", required = false ) Integer score,
     		Model model) {
 		
 		Date nowDate = new Date();
@@ -140,7 +141,7 @@ public class ProductCommentController {
 		
 		newPdComment.setAccount(member);
 		newPdComment.setProduct(pd);
-		
+		newPdComment.setCommentScore(score);
 		pService.saveProductComment(newPdComment);
 		
 		return "redirect:/back/ProductComment/all";

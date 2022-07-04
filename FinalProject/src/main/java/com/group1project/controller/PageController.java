@@ -52,6 +52,14 @@ public class PageController {
 	
 //	########################前台商品頁面########################
 	
+	@GetMapping("/")
+	public String WelcomeAccount(Model m) {		
+		
+		List<Product> productList = pService.getAllProduct();
+		
+		m.addAttribute("productList", productList);
+		return "front/JoTravelFront/frontIndex";
+	}
 	
 	//前台商品頁面含page方法
 	@GetMapping("front/productPage")
@@ -81,7 +89,7 @@ public class PageController {
 	
 	@GetMapping("/back")
 	public String backIndexPage(){
-		return "backIndex";
+		return "index";
 	}
 	
 	@GetMapping("back/addProduct")
