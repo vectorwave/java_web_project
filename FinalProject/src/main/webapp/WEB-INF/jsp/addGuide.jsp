@@ -83,7 +83,7 @@
 
                       <td class="formContent">
                         <div class="btn-group" role="group" aria-label="Basic radio toggle button group"
-                          style="float:right; margin-right: 50px;">
+                          style="float:right; margin-right: 70px;">
                           <form:radiobutton path="guideGender" value="男性" class="btn-check" name="btnradio"
                             id="btnradio1" autocomplete="off" />
                           <label class="btn btn-outline-dark" for="btnradio1"
