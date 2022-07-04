@@ -39,15 +39,15 @@
             </div>
         </section>
 
-<div class="container">
+<div class="container" >
 <p/>
---<div class="row justify-content-left">--
-<div class="col-7">
+<div class="row justify-content-center">
+<div class="col-6">
 <div class="card">
 
 <div class="card-body">
 
-	<table border="1" style="width:300px">
+	<table border="1" style="width:300px;" >
 		<tr style="background-color: orange" >
 			
 			<th style="text-align: center">Id

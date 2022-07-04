@@ -94,13 +94,13 @@ td, input {
 				</ul>
 			
 			</div>
-		</section>
+		</section>-->
 
 		<!-- 核心內容標題 -->
 		<section class="is-hero-bar">
 			<div
 				class="flex flex-col md:flex-row items-center justify-between space-y-6 md:space-y-0">
-				<h1 class="title">查詢全部資料</h1>
+				<h1 class="title">待處理案件</h1>
 				
 			</div>
 		</section>
@@ -136,7 +136,7 @@ td, input {
 										<th style="text-align: center">Delete
 									</tr>
 									<%-- 					<form method="GET" action="HwUpdate"> --%>
-									<c:forEach items="${page.content}" var="customerBean">
+									<c:forEach items="${allCus}" var="customerBean">
 										<tr>
 											<td style="text-align: center">${customerBean.id}
 											<td style="text-align: center">${customerBean.serviceInfo}
@@ -151,8 +151,8 @@ td, input {
 											<td style="text-align: center">${customerBean.modifiedAt}
 												<!-- 										<td style="text-align: center"><a --> <%-- 											href="${contextRoot}/message/editForm?id=${customerBean.id}">修改</a> --%>
 												<!-- 										<td style="text-align: center"><a --> <%-- 											href="${contextRoot}/message/delete?id=${customerBean.id}" class="delete">刪除</a> --%>
-											<td style="text-align: center">
-												<div class="buttons right nowrap">
+											<td class="actions-cell" >
+												<div class="buttons right nowrap" style="text-align: center">
 													<!-- 修改 -->
 													<form method="get"
 														action="${contextRoot}/message/editForm${customerBean.id}">
