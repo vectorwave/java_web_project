@@ -51,6 +51,7 @@ public class PageController {
 	
 //	########################前台商品頁面########################
 	
+	//前台首頁網址
 	@GetMapping("/")
 	public String WelcomeAccount(Model m) {		
 		
@@ -58,6 +59,17 @@ public class PageController {
 		
 		m.addAttribute("productList", productList);
 		return "front/JoTravelFront/frontIndex";
+	}
+	
+	//前台新增商品頁面
+	@GetMapping("front/addProduct")
+	public String addProudct(Model m) {
+		
+		Product frontPd = new Product();
+
+		m.addAttribute("frontPd", frontPd);
+		
+		return "front/JoTravelFront/frontAddProduct";
 	}
 	
 	//前台商品頁面含page方法

@@ -16,4 +16,5 @@ public interface ProductService {
 	Page<Product> findByPage(Integer pageNumber);
 	List<Product> searchProductByName(String Key);
 	Page<Product> searchProductByNameWithPage(String key, Pageable pab);
+	List<Product> findAllByAccountId(Integer accountId);
 }

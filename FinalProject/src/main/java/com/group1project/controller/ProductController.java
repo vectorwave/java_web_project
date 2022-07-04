@@ -42,11 +42,6 @@ public class ProductController {
 		this.pService = pService;
 	}
 	
-	//TEST
-	private final Integer accountId = 1;
-	
-	
-	
 	
 	//查詢商品
 	//利用@GetMapping方法查詢商品,沒參數就會查到所有產品 ex: http://localhost:8080/jotravel/back/product
@@ -70,7 +65,7 @@ public class ProductController {
 	}
 	
 	
-	//新增商品
+	//後台新增商品
 	//@PostMapping方法,為新增商品,輸入json格式資料即可完成新增,利用@ResponseBody回傳json格式的資料
 	@PostMapping()
 	public String saveProduct(@ModelAttribute("newPd") Product product,
@@ -91,9 +86,6 @@ public class ProductController {
 		
 		pService.saveProduct(product);
 		
-//		Product newPd = new Product();
-//		model.addAttribute("newPd", newPd);
-		
 		HashMap<String, String> message = new HashMap<String, String>();
 		
 		message.put("okMsg", "insertOK");
@@ -101,6 +93,36 @@ public class ProductController {
 		
 		return "redirect:/back/allProduct";
 	}
+	
+	//後台新增商品
+	//@PostMapping方法,為新增商品,輸入json格式資料即可完成新增,利用@ResponseBody回傳json格式的資料
+	@PostMapping("front/addProduct")
+	public String frontAaveProduct(@ModelAttribute("frontPd") Product product,
+			@RequestParam("file") MultipartFile file,@RequestParam("accountId") Integer accountId,
+			Model model) {
+//		Account account = storeservice.findbyid(storeId);
+		Account accId = new Account();
+
+		accId.setAccountId(accountId);
+
+		
+		product.setAccount(accId);
+		try {
+			product.setProductPic(file.getBytes());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		pService.saveProduct(product);
+		
+		HashMap<String, String> message = new HashMap<String, String>();
+		
+		message.put("okMsg", "insertOK");
+		model.addAttribute("msg", message);
+		
+		return "redirect:front/productPage";
+	}
+	
 	
 //  以非rest風格方式刪除商品
 //	@RequestMapping(value="add", method = RequestMethod.POST )
