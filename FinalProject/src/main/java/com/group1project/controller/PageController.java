@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.group1project.model.bean.Account;
 import com.group1project.model.bean.Article;
 import com.group1project.model.bean.Guide;
 import com.group1project.model.bean.Product;
