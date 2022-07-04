@@ -72,9 +72,9 @@ public class GuideController {
 		Account guideAccount = new Account();
 		guideAccount.setAccountName(accountName);
 		
-
+		
 		//加密功能
-		String password = getStringHash(pwd, "SHA-512");	
+		String password = getStringHash(pwd, "SHA-512");
 		guideAccount.setPassword(password);
 		guideAccount.setStatus("1");
 		guideAccount.setTitle("商家");
@@ -196,27 +196,6 @@ public class GuideController {
 		                               // 要回傳的物件, header , httpstatus 回應
 		return new ResponseEntity<byte[]>(guidePic, headers, HttpStatus.OK);
 	}
-	
-	//密碼加密
-		private static String getStringHash(String message, String algorithm) {
-			final StringBuffer buffer = new StringBuffer();
-			try {
-				MessageDigest md = MessageDigest.getInstance(algorithm);
-				md.update(message.getBytes());
-				byte[] digest = md.digest();
 
-				for (int i = 0; i < digest.length; ++i) {
-					byte b = digest[i];
-					String s = Integer.toHexString(Byte.toUnsignedInt(b));
-					s = s.length() < 2 ? "0" + s : "" + s;
-					buffer.append(s);
-				}
-			} catch (NoSuchAlgorithmException e) {
-//				System.out.println("請檢查使用的演算法，演算法有誤");
-				return null;
-			}
-			return buffer.toString();
-		}
-	
 
 }
