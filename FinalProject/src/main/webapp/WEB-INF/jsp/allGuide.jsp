@@ -22,10 +22,10 @@
     <form action="/jotravel/guidemanagement/search" method="get" >
     <div class="btn-group" style="position: absolute; top:50px; right:70px">
         <div class="btn-group" role="group" aria-label="Basic radio toggle button group" style="">
-            <input id="btnradio1" autocomplete="off" name="con" class="btn-check" type="radio" value="id" checked="checked"/>
+            <input id="btnradio1" autocomplete="off" name="con" class="btn-check" type="radio" value="id"/>
             <label class="btn btn-outline-dark" for="btnradio1" id="infoBtn" style="border-radius: 5px 0px 0px 5px;">編號</label>
     
-            <input id="btnradio2" autocomplete="off" name="con" class="btn-check" type="radio" value="name"/>
+            <input id="btnradio2" autocomplete="off" name="con" class="btn-check" type="radio" value="name" checked="checked"/>
             <label class="btn btn-outline-dark" for="btnradio2" id="infoBtn" style="border-radius: 0px 5px 5px 0px;">名稱</label>
         </div>
         <input type="text"  placeholder="輸入搜尋..." name="key" style="height: 30px;border-radius: 5px;">

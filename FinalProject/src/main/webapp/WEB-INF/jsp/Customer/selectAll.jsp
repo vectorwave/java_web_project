@@ -84,7 +84,7 @@ td, input {
 		<!-- 插入上導覽列與左導覽列 -->
 		
 
-		<!-- 章節層級 -->
+		<!-- 章節層級 
 		<section class="is-title-bar">
 			<div
 				class="flex flex-col md:flex-row items-center justify-between space-y-6 md:space-y-0">
@@ -151,12 +151,12 @@ td, input {
 											<td style="text-align: center">${customerBean.modifiedAt}
 												<!-- 										<td style="text-align: center"><a --> <%-- 											href="${contextRoot}/message/editForm?id=${customerBean.id}">修改</a> --%>
 												<!-- 										<td style="text-align: center"><a --> <%-- 											href="${contextRoot}/message/delete?id=${customerBean.id}" class="delete">刪除</a> --%>
-											<td class="actions-cell">
+											<td style="text-align: center">
 												<div class="buttons right nowrap">
 													<!-- 修改 -->
 													<form method="get"
 														action="${contextRoot}/message/editForm${customerBean.id}">
-														<button data-target="sample-modal-2" type="submit">
+														<button data-target="sample-modal-2" type="submit">回覆
 															<span class="icon"><i class="mdi mdi-eye"></i></span>
 														</button>
 													</form>
@@ -167,7 +167,7 @@ td, input {
 												<form id="deleteForm" method="get"
 													action="${contextRoot}/message/delete${customerBean.id}">
 													<button class="delete" data-target="sample-modal"
-														type="button">
+														type="button">刪除
 														<span class="icon"><i class="mdi mdi-trash-can"></i></span>
 													</button>
 												</form>

@@ -217,10 +217,10 @@ public class PageController {
 	@GetMapping("/guidemanagement/info/{id}")
 	public ModelAndView guideDetails(ModelAndView mav, @PathVariable("id") int id) {
 		Guide guideInfo = gService.getGuideById(id);
-		Account guideAcc = acService.getAccountById(id);
+//		Account guideAcc = acService.getAccountById(id);
 		
 		mav.getModel().put("guideInfo", guideInfo);
-		mav.getModel().put("guideAcc", guideAcc);
+//		mav.getModel().put("guideAcc", guideAcc);
 		mav.setViewName("guideDetail");
 		return mav;
 	}
@@ -363,7 +363,7 @@ public class PageController {
 			return "front/JoTravelFront/blogSingle";
 		} 
 		
-		@GetMapping("/front/addBlogPage")
+		@GetMapping("front/addBlogPage")
 		public String addFrontBlogPage(Model model){
 			
 			Article article=new Article();

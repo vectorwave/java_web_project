@@ -43,7 +43,7 @@
 
                     <tr>
                       <td class="formLabel"><label class="GIFLabel">密碼： </label></td>
-                      <td class="formContent"><input type="password" name="pwd" class="inputBoxAdd" />
+                      <td class="formContent"><input type="password" name="pwd" class="inputBoxAdd" id="pwdid" />
                       </br><span class="check" id="pwdCheck"></span>
                       </td>
                     </tr>
@@ -51,7 +51,7 @@
                     <tr>
                       <td class="formLabel"> <label class="GIFLabel">商家名稱： </label></td>
                       <td class="formContent">
-                        <form:input path="profileName" class="inputBoxAdd" />
+                        <form:input path="profileName" class="inputBoxAdd" id="profilename" />
                       </br><span class="check" id="gNameCheck"></span>
                       </td>
                     </tr>
@@ -59,7 +59,7 @@
                     <tr>
                       <td class="formLabel"><label class="GIFLabel">姓名： </label></td>
                       <td class="formContent">
-                        <form:input path="guideName" class="inputBoxAdd" />
+                        <form:input path="guideName" class="inputBoxAdd" id="realname"/>
                       </br><span class="check" id="nameCheck"></span>
                       </td>
                     </tr>
@@ -67,14 +67,14 @@
                     <tr>
                       <td class="formLabel"> <label class="GIFLabel">個人簡述： </label></td>
                       <td class="formContent">
-                        <form:textarea path="guideDescription" class="textareaAdd" />
+                        <form:textarea path="guideDescription" class="textareaAdd" id="description"/>
                       </td>
                     </tr>
 
                     <tr>
                       <td class="formLabel"><label class="GIFLabel">生日： </label></td>
                       <td class="formContent">
-                        <form:input type="date" path="guideBirthday" class="inputBoxAdd" />
+                        <form:input type="date" path="guideBirthday" class="inputBoxAdd" id="birthday" />
                       </td>
                     </tr>
 
@@ -104,7 +104,7 @@
                     <tr>
                       <td class="formLabel"> <label class="GIFLabel">聯絡電話： </label></td>
                       <td class="formContent">
-                        <form:input path="guidePhone" class="inputBoxAdd" />
+                        <form:input path="guidePhone" class="inputBoxAdd" id="phone" />
                       </br><span class="check" id="phoneCheck"></span>
                       </td>
                     </tr>
@@ -112,7 +112,7 @@
                     <tr>
                       <td class="formLabel"><label class="GIFLabel">電子郵件： </label></td>
                       <td class="formContent">
-                        <form:input path="guideEmail" class="inputBoxAdd" />
+                        <form:input path="guideEmail" class="inputBoxAdd" id="mail" />
                       </br><span class="check" id="mailCheck"></span>
                       </td>
                     </tr>
@@ -120,7 +120,7 @@
                     <tr>
                       <td class="formLabel"><label class="GIFLabel">聯絡地址： </label></td>
                       <td class="formContent">
-                        <form:textarea path="guideAddress" class="textareaAdd" />
+                        <form:textarea path="guideAddress" class="textareaAdd" id="address" />
                       </br><span class="check" id="addressCheck"></span>
                       </td>
                     </tr>
@@ -128,7 +128,7 @@
                     <tr>
                       <td class="formLabel"><label class="GIFLabel">證照類型： </label></td>
                       <td class="formContent">
-                        <form:input path="licenceType" class="inputBoxAdd" />
+                        <form:input path="licenceType" class="inputBoxAdd" id="licence" />
                       </br><span class="check" id="licenceCheck"></span>
                       </td>
                     </tr>
@@ -136,7 +136,7 @@
                     <tr>
                       <td class="formLabel"> <label class="GIFLabel">證照號碼： </label></td>
                       <td class="formContent">
-                        <form:input path="licenceNo" class="inputBoxAdd" />
+                        <form:input path="licenceNo" class="inputBoxAdd" id="licenceNo" />
                       </br><span class="check" id="lnoCheck"></span>
                       </td>
                     </tr>
@@ -145,6 +145,7 @@
                       <td colspan="2"><div class="btn-container" style="margin-top:20px" align="center">
                        <button type="button" onclick="submitForm(form)"
                             class="btn btn-outline-success" id="submitBtn">送出</button>
+                            <button type="button" class="btn btn-outline-info" id="autokey">一鍵輸入</button>
                       </div></td>
                     </tr>
                   </form:form>
@@ -154,6 +155,25 @@
             </div>
 
               <script>
+     //一鍵輸入
+
+     $('#autokey').click(function(){
+	$('#idAcc').val("jerry666");
+	$('#pwdid').val("jerry666");
+    $('#profilename').val("海王SUP娛樂嚮導");
+    $('#realname').val("王大明");
+    $('#description').val("有十年帶團經驗，熟知全台各地景點，並且能夠幫大家拍出絕世美照");
+    $('#birthday').val("1995-01-23");
+    $('#btnradio1').prop("checked",true);
+    $('#phone').val("0988546738");
+    $('#mail').val("wangdaming@happysup.com");
+    $('#address').val("台北市大安區復興南路一段390號");
+    $('#licence').val("乙級立槳教練");
+    $('#licenceNo').val("TX0335398");
+			})
+
+
+
           //欄位驗證
 
           document.getElementById('idAcc').addEventListener('blur',checkAccount,false)

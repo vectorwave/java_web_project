@@ -55,7 +55,7 @@ public class CustomerSupportController {
 	@GetMapping("/ai")
 	public String ai() {
 
-		return "customer/ai";
+		return "Customer/ai";
 
 	}
 
@@ -63,7 +63,7 @@ public class CustomerSupportController {
 	@GetMapping("/message/sendMail")
 	public String mail() {
 		mail.SendMail();
-		return "customer/success";
+		return "Customer/success";
 	}
 
 
@@ -73,7 +73,7 @@ public class CustomerSupportController {
 		
 		CustomerBean lastMag = csService.findById(null);
 		mav.getModel().put("lastMag", lastMag);
-		mav.setViewName("customer/selectOne");
+		mav.setViewName("Customer/selectOne");
 		return mav;
 	}
 
@@ -86,7 +86,7 @@ public class CustomerSupportController {
 //		List<CustomerBean> allCus = csService.findAllCustomer();
 		mav.getModel().put("page", page);
 //		mav.getModel().put("allCus", allCus);
-		mav.setViewName("customer/selectAll");
+		mav.setViewName("Customer/selectAll");
 		return mav;
 
 	}
@@ -95,12 +95,13 @@ public class CustomerSupportController {
 	public ModelAndView findAllByprocessStatus(ModelAndView mav,
 			@RequestParam(name = "p", defaultValue = "1") Integer pageNumber) {
 
-		//Page<CustomerBean> page = csService.findByPage(pageNumber);
+		Page<CustomerBean> page = csService.findByPage(pageNumber);
 
 	    List<CustomerBean> allCus = csService.findAllByprocessStatus();
-		//mav.getModel().put("page", page);
+	 
+		
 		mav.getModel().put("allCus", allCus);
-		mav.setViewName("customer/selectAll");
+		mav.setViewName("Customer/selectAllByps");
 		return mav;
 
 	}
@@ -112,7 +113,7 @@ public class CustomerSupportController {
 
 		mav.getModel().put("allCus", allCus);
 
-		mav.setViewName("customer/serviceInfo");
+		mav.setViewName("Customer/serviceInfo");
 
 		return mav;
 
@@ -129,7 +130,7 @@ public class CustomerSupportController {
 		CustomerBean cs = new CustomerBean();
 
 		mav.getModel().put("CustomerBean", cs); // java bean 塞進 model
-		mav.setViewName("customer/form"); // ModelAndView 裡規定去哪個 jsp
+		mav.setViewName("Customer/form"); // ModelAndView 裡規定去哪個 jsp
 		return mav;
 	}
 
@@ -148,7 +149,7 @@ public class CustomerSupportController {
 		ModelAndView mav = new ModelAndView();
 		CustomerBean csResult = csService.findById(csb.getId());
 		mav.getModel().put("csResult", csResult);
-		mav.setViewName("customer/selectOne");
+		mav.setViewName("Customer/selectOne");
 		return mav;
 	}
 
@@ -163,7 +164,7 @@ public class CustomerSupportController {
 		List<CustomerBean> allCus = csService.findAllCustomer();
 		mav.getModel().put("allCus", allCus);
 
-		mav.setViewName("customer/editForm");
+		mav.setViewName("Customer/editForm");
 
 		return mav;
 	}
