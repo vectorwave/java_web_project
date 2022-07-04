@@ -74,17 +74,18 @@
 										alt="..." width="80px;"></td>
 									<td class="align-middle ">{{detail.product.productName}}</td>
 									<td class="align-middle">{{detail.product.productPrice}}</td>
-									<td class="align-middle">{{detail.amount}}</td>
-									<td class="align-middle">{{detail.date}}</td>
-									<td class="align-middle ">{{detail.totalDays}}</td>
+									<td class="align-middle"><input type="number" style="width:80px" min="1" v-model="detail.amount"/></td>
+									<td class="align-middle"><input type="date" v-model="detail.date"></td>
+									<td class="align-middle "><input type="number" style="width:80px" min="1" v-model="detail.totalDays"/></td>
 									<td class="align-middle">{{detail.product.productPrice*detail.amount}}</td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
+					<div class="mt-3 d-flex justify-content-end h3">合計:{{getTotalPrice()}}</div>
 					<div class="mt-3 d-flex justify-content-end">
-						<button type="button" class="btn btn-primary" data-toggle="tab"
-							data-target="#paypage" onclick="changeColor()">前往付款頁面</button>
+						<div><button type="button" class="btn btn-primary" data-toggle="tab"
+							data-target="#paypage" onclick="changeColor()">前往付款頁面</button></div>
 					</div>
 				</div>
 				<div id="paypage" class=" text-center border-0 tab-pane">
@@ -158,7 +159,7 @@
 		$('#alert2').addClass('alert-success');
 	}
 	//購物車cookie格式  商品編號,訂購數量,日期,天數;商品編號,訂購數量,日期
-	var testcart = '1,1,2023-09-15,3;2,1,2023-09-15,5';
+	var testcart = '1,1,2023-09-15,3';
 	if(!Cookies.get('cart') || Cookies.get('cart') == ''){
 		Cookies.set('cart',testcart);
 	}
@@ -185,9 +186,9 @@
 			  orderDetails:cookieToData(),
 		},
 		  methods:{
-			  getTotalPrice(index){
+			  getTotalPrice(){
 				  var total = 0;
-				  this.orders[index].orderDetails.forEach(function(detail){
+				  this.orderDetails.forEach(function(detail){
 					  total += detail.product.productPrice*detail.amount;
 				  });
 				  return total;
