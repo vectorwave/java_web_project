@@ -69,7 +69,7 @@
 									<li class="nav-item"><a class="nav-link" href="http://localhost:8081/jotravel/page/member/add">新增個人資料</a></li>
 									<li class="nav-item"><a class="nav-link" href="http://localhost:8081/jotravel/page/member/edit?id=${loginuser.accountId}">個人資料</a></li>
 <!-- 									<li class="nav-item"><a class="nav-link" href="blog-single.html">修改密碼</a></li> -->
-									<li class="nav-item"><a class="nav-link" href="blog-single.html">查看訂單</a></li>
+									<li class="nav-item"><a class="nav-link" href="http://localhost:8081/jotravel/front/allOrder">查看訂單</a></li>
 									<li class="nav-item"><a class="nav-link" href="http://localhost:8081/jotravel/page/login">登入</a></li>
 									<li class="nav-item"><a class="nav-link" href="http://localhost:8081/jotravel/page/loginout">登出</a></li>
 									<li class="nav-item"><a class="nav-link" href="http://localhost:8081/jotravel/login">管理員</a></li>
@@ -77,6 +77,9 @@
 									
 
 							</ul></li>
+							<li class="nav-item submenu dropdown">
+                                <a href="http://localhost:8081/jotravel/checkout" class="nav-link"  aria-haspopup="true" aria-expanded="false">🛒</a>
+                            </li> 
                         </ul>
                     </div> 
                 </nav>

@@ -30,10 +30,9 @@ public class OrderController {
 
 	@GetMapping("all")
 	public Object getAllOrder(HttpSession session) {
-		System.out.println(session.getAttribute("loginuser"));
-		Integer accountId = ((Account)session.getAttribute("loginuser")).getAccountId();
-		if (accountId == null)
-			accountId = 1;
+		Integer accountId = 1; //default accountId
+		if (session.getAttribute("loginuser")!=null) 
+			accountId = ((Account)session.getAttribute("loginuser")).getAccountId();
 		Page<Order> orderPage=orderService.findByAccountId(accountId);
 		return new Object() {public List<Order> orders = orderPage.getContent();
 		public Integer totalPages = orderPage.getTotalPages();};
@@ -68,9 +67,10 @@ public class OrderController {
 	
 	@GetMapping("download")
 	public List<Order> downloadOrder(HttpSession session){
-		Integer accountId= (Integer) session.getAttribute("accountId");
-		if(accountId == null)
-			accountId = 1;
+		Integer accountId = 1;
+		if(session.getAttribute("loginuser")!=null) {
+			accountId=((Account)session.getAttribute("loginuser")).getAccountId();
+		}
 		return orderService.findAllByAccountId(accountId);
 	}
 

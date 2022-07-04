@@ -8,15 +8,29 @@
 <head>
 <meta charset="UTF-8">
 <title>JOTRAVEL 訂單頁面</title>
-<link rel="stylesheet" href="${contextRoot}/css/bootstrap.min.css" />
-<link rel="stylesheet" href="${contextRoot}/css/all.min.css" />
+<link rel="stylesheet" href='<c:url value="/css/blog/bootstrap.css"/>'>
+<link rel="stylesheet"
+	href="<c:url value="/css/blog/vendors/linericon/style.css"/>">
+<link rel="stylesheet"
+	href="<c:url value="/css/blog/font-awesome.min.css"/>">
+<link rel="stylesheet"
+	href="<c:url value="/css/blog/vendors/owl-carousel/owl.carousel.min.css"/>">
+<link rel="stylesheet"
+	href="<c:url value="/css/blog/vendors/bootstrap-datepicker/bootstrap-datetimepicker.min.css"/>">
+<link rel="stylesheet"
+	href="<c:url value="/css/blog/vendors/nice-select/css/nice-select.css"/>">
+<link rel="stylesheet"
+	href="<c:url value="/css/blog/vendors/owl-carousel/owl.carousel.min.css"/>">
+<!-- main css -->
+<link rel="stylesheet" href="<c:url value="/css/blog/style.css"/>">
+<link rel="stylesheet" href="<c:url value="/css/blog/responsive.css"/>">
 <script src="${contextRoot}/js/jquery-3.6.0.min.js"></script>
 <script src="${contextRoot}/js/bootstrap.bundle.min.js"></script>
 <script src="${contextRoot}/js/js.cookie.min.js"></script>
 <script type="text/javascript" src="${contextRoot}/js/vue.min.js"></script>
 </head>
 <body>
-	<div class="container my-5" id="container">
+	<div class="container my-5 py-5" id="container">
 		<div class="h1 text-center">
 			<strong>JOTRAVEL 訂單頁面</strong>
 		</div>
