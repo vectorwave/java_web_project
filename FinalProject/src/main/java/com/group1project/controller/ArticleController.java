@@ -22,6 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.group1project.model.bean.Account;
 import com.group1project.model.bean.Article;
+import com.group1project.model.bean.Product;
 import com.group1project.model.service.ArticleService;
 
 //rest風格的CRUD 收到的頁面為http://localhost:8080/jotravel/back/product
@@ -114,6 +115,30 @@ public class ArticleController {
 		return "redirect:/article/all";
 		
 	}
+	
+	@PostMapping("JoGroupClick")
+    public String JoGroupClick(Model model, @RequestParam("articleId") Integer articleId) {
+		
+		Article arc =new Article();
+         
+		arc = aService.getArticleById(articleId);
+		Integer JogroupNum=arc.getArticleJogroup()+1;
+		arc.setArticleJogroup(JogroupNum);
+		System.out.println(JogroupNum);
+		Date nowDate = new Date();
+		arc.setArticleDate(nowDate);
+		System.out.println(nowDate);
+		aService.saveArticle(arc);
+		
+//		Article newArc = new Article();
+//		
+//		model.addAttribute("Article", newArc);
+		
+        String path="redirect:/front/blogPage/detail?id="+articleId;
+		return path;
+		
+	}
+	
 	@PostMapping("editFrontArticle")
     public String editFrontArticle(@ModelAttribute("article") Article arc, Model model,@RequestParam("file") MultipartFile file, @RequestParam("accountId") Integer accountId) {
 		Account accId = new Account();
@@ -143,6 +168,8 @@ public class ArticleController {
 		return "redirect:/front/blogIndex";
 		
 	}
+	
+	
 	@GetMapping("photo/{id}")
 	public ResponseEntity<byte[]> downloadImage(@PathVariable("id") Integer id){
 		Article photo1 = aService.getArticleById(id);
