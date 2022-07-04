@@ -181,7 +181,7 @@
 				<button id="one" type="button" class="btn btn-secondary">一鍵輸入</button>
 
 				<input type="button" onclick="submitForm(form)" value="新增"
-					class="btn btn-lg btn-success btn-block" id="send">
+					class="btn btn-outline-success" id="send">
 			</div>
 
 
