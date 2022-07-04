@@ -50,7 +50,7 @@ overflow-wrap: break-word;
 					<tr>
 						<td><c:out value="${account.accountId}" /><td hidden><c:out value="${account.accountId}" />
 						<td><c:out value="${account.accountName}" />
-						<td class="div_td_pad"><c:out value="${account.password}"/>
+						<td class="div_td_pad toolong"><c:out value="${account.password}"/>
 						<td><c:out value="${account.title}" />
 						<td><c:out value="${account.status}" />
 						<td><c:out value="${account.signupDate}" />
@@ -111,6 +111,11 @@ overflow-wrap: break-word;
 	     }
 	  });
 	 }
+	 
+	 $(".toolong").on("mouseenter", function() {
+ 	      if (!this.title) this.title = $(this).text();  
+	});
+
 </script>
 
 <jsp:include page="layout/footer.jsp" />

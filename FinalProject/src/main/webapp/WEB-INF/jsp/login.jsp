@@ -321,8 +321,8 @@ a:hover {
 	$('#one').click(function() {
 		let checkword = $('#checkCode').text();
 		console.log(checkword)
-		$('#inputAccount').val("root");
-		$('#inputPassword').val("root");
+		$('#inputAccount').val("admit");
+		$('#inputPassword').val("admit");
 		$('#inputCode').val(checkword);
 	})
 

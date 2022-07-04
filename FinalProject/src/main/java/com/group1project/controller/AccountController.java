@@ -108,23 +108,32 @@ public class AccountController {
 	
 	//加密
 	private static String getStringHash(String message, String algorithm) {
+		//
 		final StringBuffer buffer = new StringBuffer();
 		try {
+			//md是取道的加密算法
 			MessageDigest md = MessageDigest.getInstance(algorithm);
+			
+			//將字串轉成二進制
 			md.update(message.getBytes());
+			//加密後得到另一個二進制的digest
 			byte[] digest = md.digest();
 
+			//遍勵全部的digest
 			for (int i = 0; i < digest.length; ++i) {
 				byte b = digest[i];
+				//編碼後放進s
 				String s = Integer.toHexString(Byte.toUnsignedInt(b));
+				//長度小於二補0如果沒有就不補
 				s = s.length() < 2 ? "0" + s : "" + s;
+				//用buffer把多字串整成一個
 				buffer.append(s);
 			}
 		} catch (NoSuchAlgorithmException e) {
 //			System.out.println("請檢查使用的演算法，演算法有誤");
 			return null;
 		}
-		return buffer.toString();
+		return buffer.toString();//正列轉字串toString=編碼
 	}
 	
 	
