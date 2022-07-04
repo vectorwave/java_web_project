@@ -2,15 +2,50 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<jsp:include page="../layout/header.jsp" />
+<jsp:include page="../front/JoTravelFront/frontLayout/frontHeader.jsp" />
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="icon" href="image/favicon.png" type="image/png">
+<title>Royal Hotel</title>
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href='<c:url value="/css/blog/bootstrap.css"/>'>
+<link rel="stylesheet"
+	href="<c:url value="/css/blog/vendors/linericon/style.css"/>">
+<link rel="stylesheet"
+	href="<c:url value="/css/blog/font-awesome.min.css"/>">
+<link rel="stylesheet"
+	href="<c:url value="/css/blog/vendors/owl-carousel/owl.carousel.min.css"/>">
+<link rel="stylesheet"
+	href="<c:url value="/css/blog/vendors/bootstrap-datepicker/bootstrap-datetimepicker.min.css"/>">
+<link rel="stylesheet"
+	href="<c:url value="/css/blog/vendors/nice-select/css/nice-select.css"/>">
+<link rel="stylesheet"
+	href="<c:url value="/css/blog/vendors/owl-carousel/owl.carousel.min.css"/>">
+<!-- main css -->
+<link rel="stylesheet" href="<c:url value="/css/blog/style.css"/>">
+<link rel="stylesheet" href="<c:url value="/css/blog/responsive.css"/>">
+</head>
 
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
-<div class="container">
-	<p />
+<body>
 
+ <section class="breadcrumb_area">
+            <div class="overlay bg-parallax" data-stellar-ratio="0.8" data-stellar-vertical-offset="0" data-background=""></div>
+            <div class="container">
+                <div class="page-cover text-center">
+                    <h2 class="page-cover-tittle">Gallery</h2>
+                    <ol class="breadcrumb">
+                        <li><a href="${contextRoot}/">Home</a></li>
+                        <li class="active">Gallery</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
 	<div class="row justify-content-center">
 		<div class="col-9">
 			<div class="card" id="cusForm">
@@ -112,6 +147,7 @@
 
 	</div>
 </div>
+</body>
 <!-- 引入jquery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"
 	integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
@@ -144,7 +180,7 @@
 	});
 </script>
 
-
+/FinalProject/src/main/webapp/WEB-INF/jsp/front/JoTravelFront
 
 <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
-<jsp:include page="../layout/footer.jsp" />
+ <jsp:include page="../front/JoTravelFront/frontLayout/frontFooter.jsp" />

@@ -91,6 +91,20 @@ public class CustomerSupportController {
 
 	}
 
+	@GetMapping("/staff/message/selectAllByProcessStatus")
+	public ModelAndView findAllByprocessStatus(ModelAndView mav,
+			@RequestParam(name = "p", defaultValue = "1") Integer pageNumber) {
+
+		Page<CustomerBean> page = csService.findByPage(pageNumber);
+
+	    List<CustomerBean> allCus = csService.findAllByprocessStatus();
+		mav.getModel().put("page", page);
+		mav.getModel().put("allCus", allCus);
+		mav.setViewName("customer/selectAll");
+		return mav;
+
+	}
+	
 	// 模糊搜尋
 	@GetMapping("/message/findByServiceInfoLike")
 	public ModelAndView findByServiceInfoLike(ModelAndView mav, @RequestParam String findByServiceInfoLike) {
