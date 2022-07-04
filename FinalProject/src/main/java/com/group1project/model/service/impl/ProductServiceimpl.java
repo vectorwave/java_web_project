@@ -52,7 +52,7 @@ public class ProductServiceimpl implements ProductService {
 
 	@Override
 	public List<Product> getAllProduct() {
-		return pDao.findAll();
+		return pDao.findAllSaleProduct();
 	}
 	
 	//0713等待修改
