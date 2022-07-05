@@ -40,7 +40,8 @@ public class PageController {
 
 	private ProductCommentService pcService;
 
-
+@Autowired
+private ArticleService aService;
 		
 	
 //	########################前台商品頁面########################
@@ -216,92 +217,7 @@ public class PageController {
 //		mav.setViewName("viewArticles");
 //		return mav;
 //	}
-//
-//	//新增導遊
-//	@GetMapping("/guidemanagement/addguide")
-//	public ModelAndView insertGuide(ModelAndView mav) {
-//		
-//		Guide newGuide = new Guide();
-//		mav.getModel().put("addGuide", newGuide);
-//		mav.setViewName("addGuide");
-//		
-//		return mav;
-//	}
-//	
-//	//更新導遊
-//	@GetMapping("/guidemanagement/update/{id}")
-//	public ModelAndView updateGuideInfo(ModelAndView mav, @PathVariable("id") int id) {
-//		Guide guideUpdate = gService.getGuideById(id);
-//		Account guideAcc = acService.getAccountById(id);
-//		
-//		mav.getModel().put("guideUpdate", guideUpdate);
-//		mav.getModel().put("accUpdate", guideAcc);
-//		mav.setViewName("updateGuide");
-//		return mav;
-//	}
-//	
-//	//搜尋功能
-//	@GetMapping("/guidemanagement/search")
-//	@ResponseBody
-//	public ModelAndView searchAccountByName(ModelAndView mav,
-//			@RequestParam(value = "key", defaultValue = "", required = false) String key,String con, Model m) {
-//
-//		if(con.equals("name")) {
-//			List<Guide> searchGuide = gService.searchGuideByProfileName(key);
-//			
-//			if(searchGuide.isEmpty()) {
-//				mav.setViewName("noGuide");
-//				
-//				return mav;
-//			}
-//			
-//			mav.getModel().put("key", key);
-//			mav.getModel().put("searchGuide", searchGuide);
-//			mav.setViewName("allGuideSearch");
-//			return mav;
-//		};
-//		
-//		if(con.equals("id")) {
-//			
-//			boolean isNumeric =  key.matches("[+-]?\\d*(\\.\\d+)?");
-//			
-//			if(!isNumeric || key.equals("")) {
-//				mav.setViewName("noGuide");
-//				return mav;
-//			}
-//			
-//			Integer id = Integer.parseInt(key);
-//			Guide oneGuide = gService.getGuideById(id);
-//			
-//			if(oneGuide == null) {
-//
-//				mav.setViewName("noGuide");
-//				
-//				return mav;
-//				
-//			} else {
-//				
-//				Account guideAcc = acService.getAccountById(id);
-//				
-//				mav.getModel().put("key", key);
-//				mav.getModel().put("guideAcc", guideAcc);
-//				mav.getModel().put("guideInfo", oneGuide);
-//				mav.setViewName("guideDetail");
-//				
-//				return mav;
-//			}
-//			
-//		};
-//		
-//		return null;		
-//	}
-//	
-//	// ##### End ##### 商家導遊 Page Controller 
-
-
 	
-	
-
 	
 }
 
