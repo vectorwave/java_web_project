@@ -34,24 +34,37 @@ public class PageController {
 	@Autowired
 	private ProductService pService ;
 	
-	@Autowired
-	private ArticleService aService;
+	
 
 	@Autowired
 
 	private ProductCommentService pcService;
 
-	@Autowired
-	private GuideService gService;
-	
-	@Autowired
-	private AccountService acService;
 
-	
-	
+		
 	
 //	########################前台商品頁面########################
 	
+	//前台首頁網址
+	@GetMapping("/")
+	public String WelcomeAccount(Model m) {		
+		
+		List<Product> productList = pService.getAllProduct();
+		
+		m.addAttribute("productList", productList);
+		return "front/JoTravelFront/frontIndex";
+	}
+	
+	//前台新增商品頁面
+	@GetMapping("front/addProduct")
+	public String addProudct(Model m) {
+		
+		Product frontPd = new Product();
+
+		m.addAttribute("frontPd", frontPd);
+		
+		return "front/JoTravelFront/frontAddProduct";
+	}
 	
 	//前台商品頁面含page方法
 	@GetMapping("front/productPage")
@@ -81,7 +94,7 @@ public class PageController {
 	
 	@GetMapping("/back")
 	public String backIndexPage(){
-		return "backIndex";
+		return "index";
 	}
 	
 	@GetMapping("back/addProduct")
@@ -170,20 +183,7 @@ public class PageController {
 	
 	
 
-	@GetMapping("article/add")
-	public String addArticlePage(Model model) {
-		
-		Article article=new Article();
-		
-		
-		
-		model.addAttribute("article", article);
 	
-		
-		return "editArticle";
-	}
-	
-	// ##### Start ##### 商家導遊 Page Controller
 	
 
 	@GetMapping("searchProduct")
@@ -199,191 +199,109 @@ public class PageController {
 	
 	}
 
-	//所有商家頁面
-	@GetMapping("/guidemanagement")
-	public ModelAndView allGuidePage(ModelAndView mav, @RequestParam(name="p", defaultValue = "1") Integer pageNumber) {
-		
-		Page<Guide> page = gService.findByPage(pageNumber);
-		
-		Integer history = pageNumber;
-		
-		mav.getModel().put("page", page);
-		mav.setViewName("allGuide");
-		
-		return mav;
-	}
 	
-	//導遊詳細資訊
-	@GetMapping("/guidemanagement/info/{id}")
-	public ModelAndView guideDetails(ModelAndView mav, @PathVariable("id") int id) {
-		Guide guideInfo = gService.getGuideById(id);
+	
+
+//	@GetMapping("article/all")
+//	public ModelAndView viewAllArticles(ModelAndView mav, 
+//			@RequestParam(name="p", defaultValue = "1") Integer pageNumber,@RequestParam(value="key",defaultValue="" ,required = false) String key,Model m) {
+//		//Page<Article> page = aService.findByPage(pageNumber);
+//		
+//		Pageable pgb = PageRequest.of(pageNumber - 1, 5 ,Sort.Direction.DESC,"articleId");
+//
+//		Page<Article> page = aService.searchArticleByTitleWithPage(key, pgb);
+//
+//		mav.getModel().put("page", page);
+//		mav.getModel().put("key", key);
+//		mav.setViewName("viewArticles");
+//		return mav;
+//	}
+//
+//	//新增導遊
+//	@GetMapping("/guidemanagement/addguide")
+//	public ModelAndView insertGuide(ModelAndView mav) {
+//		
+//		Guide newGuide = new Guide();
+//		mav.getModel().put("addGuide", newGuide);
+//		mav.setViewName("addGuide");
+//		
+//		return mav;
+//	}
+//	
+//	//更新導遊
+//	@GetMapping("/guidemanagement/update/{id}")
+//	public ModelAndView updateGuideInfo(ModelAndView mav, @PathVariable("id") int id) {
+//		Guide guideUpdate = gService.getGuideById(id);
 //		Account guideAcc = acService.getAccountById(id);
-		
-		mav.getModel().put("guideInfo", guideInfo);
-//		mav.getModel().put("guideAcc", guideAcc);
-		mav.setViewName("guideDetail");
-		return mav;
-	}
-	
-	
-	//新增導遊
-	@GetMapping("/guidemanagement/addguide")
-	public ModelAndView insertGuide(ModelAndView mav) {
-		
-		Guide newGuide = new Guide();
-		mav.getModel().put("addGuide", newGuide);
-		mav.setViewName("addGuide");
-		
-		return mav;
-	}
-	
-	//更新導遊
-	@GetMapping("/guidemanagement/update/{id}")
-	public ModelAndView updateGuideInfo(ModelAndView mav, @PathVariable("id") int id) {
-		Guide guideUpdate = gService.getGuideById(id);
-		Account guideAcc = acService.getAccountById(id);
-		
-		mav.getModel().put("guideUpdate", guideUpdate);
-		mav.getModel().put("accUpdate", guideAcc);
-		mav.setViewName("updateGuide");
-		return mav;
-	}
-	
-	//搜尋功能
-	@GetMapping("/guidemanagement/search")
-	@ResponseBody
-	public ModelAndView searchAccountByName(ModelAndView mav,
-			@RequestParam(value = "key", defaultValue = "", required = false) String key,String con, Model m) {
-
-		if(con.equals("name")) {
-			List<Guide> searchGuide = gService.searchGuideByProfileName(key);
-			
-			if(searchGuide.isEmpty()) {
-				mav.setViewName("noGuide");
-				
-				return mav;
-			}
-			
-			mav.getModel().put("key", key);
-			mav.getModel().put("searchGuide", searchGuide);
-			mav.setViewName("allGuideSearch");
-			return mav;
-		};
-		
-		if(con.equals("id")) {
-			
-			boolean isNumeric =  key.matches("[+-]?\\d*(\\.\\d+)?");
-			
-			if(!isNumeric || key.equals("")) {
-				mav.setViewName("noGuide");
-				return mav;
-			}
-			
-			Integer id = Integer.parseInt(key);
-			Guide oneGuide = gService.getGuideById(id);
-			
-			if(oneGuide == null) {
-
-				mav.setViewName("noGuide");
-				
-				return mav;
-				
-			} else {
-				
-				Account guideAcc = acService.getAccountById(id);
-				
-				mav.getModel().put("key", key);
-				mav.getModel().put("guideAcc", guideAcc);
-				mav.getModel().put("guideInfo", oneGuide);
-				mav.setViewName("guideDetail");
-				
-				return mav;
-			}
-			
-		};
-		
-		return null;		
-	}
-	
-	// ##### End ##### 商家導遊 Page Controller 
-
-	
-	@GetMapping("article/all")
-	public ModelAndView viewAllArticles(ModelAndView mav, 
-			@RequestParam(name="p", defaultValue = "1") Integer pageNumber,@RequestParam(value="key",defaultValue="" ,required = false) String key,Model m) {
-		//Page<Article> page = aService.findByPage(pageNumber);
-		
-		Pageable pgb = PageRequest.of(pageNumber - 1, 5 ,Sort.Direction.DESC,"articleId");
-
-		Page<Article> page = aService.searchArticleByTitleWithPage(key, pgb);
-
-		mav.getModel().put("page", page);
-		mav.getModel().put("key", key);
-		mav.setViewName("viewArticles");
-		return mav;
-	}
-
-	
-	
-	@GetMapping("front666/")
-	public String frontPage(){
-		return "frontend";
-	}
-//	@GetMapping("blogIndex/")
-//	public String blogIndexPage(){
-//		return "blogIndex";
-//	} 
-	//前台商品頁面含page方法
-		@GetMapping("front/blogIndex")
-		public ModelAndView viewAllArticlePage(ModelAndView mav, 
-				@RequestParam(name="p", defaultValue="1") Integer pageNumber,@RequestParam(value="key",defaultValue="" ,required = false) String key,Model m) {
-//			Page<Article> page = aService.findByPage(pageNumber);
+//		
+//		mav.getModel().put("guideUpdate", guideUpdate);
+//		mav.getModel().put("accUpdate", guideAcc);
+//		mav.setViewName("updateGuide");
+//		return mav;
+//	}
+//	
+//	//搜尋功能
+//	@GetMapping("/guidemanagement/search")
+//	@ResponseBody
+//	public ModelAndView searchAccountByName(ModelAndView mav,
+//			@RequestParam(value = "key", defaultValue = "", required = false) String key,String con, Model m) {
+//
+//		if(con.equals("name")) {
+//			List<Guide> searchGuide = gService.searchGuideByProfileName(key);
 //			
-//			mav.getModel().put("page", page);
+//			if(searchGuide.isEmpty()) {
+//				mav.setViewName("noGuide");
+//				
+//				return mav;
+//			}
+//			
 //			mav.getModel().put("key", key);
-			Pageable pgb = PageRequest.of(pageNumber - 1, 5 ,Sort.Direction.DESC,"articleId");
+//			mav.getModel().put("searchGuide", searchGuide);
+//			mav.setViewName("allGuideSearch");
+//			return mav;
+//		};
+//		
+//		if(con.equals("id")) {
+//			
+//			boolean isNumeric =  key.matches("[+-]?\\d*(\\.\\d+)?");
+//			
+//			if(!isNumeric || key.equals("")) {
+//				mav.setViewName("noGuide");
+//				return mav;
+//			}
+//			
+//			Integer id = Integer.parseInt(key);
+//			Guide oneGuide = gService.getGuideById(id);
+//			
+//			if(oneGuide == null) {
+//
+//				mav.setViewName("noGuide");
+//				
+//				return mav;
+//				
+//			} else {
+//				
+//				Account guideAcc = acService.getAccountById(id);
+//				
+//				mav.getModel().put("key", key);
+//				mav.getModel().put("guideAcc", guideAcc);
+//				mav.getModel().put("guideInfo", oneGuide);
+//				mav.setViewName("guideDetail");
+//				
+//				return mav;
+//			}
+//			
+//		};
+//		
+//		return null;		
+//	}
+//	
+//	// ##### End ##### 商家導遊 Page Controller 
 
-			Page<Article> page = aService.searchArticleByTitleWithPage(key, pgb);
 
-			mav.getModel().put("page", page);
-			mav.getModel().put("key", key);
-			mav.setViewName("front/JoTravelFront/blogIndex");
-			return mav;
-		}
-		
-		@GetMapping("/front/blogPage/detail")
-		public String frontBlogPage(@RequestParam("id") Integer articleId,Model model){
-			
-			Article article= aService.getArticleById(articleId);
-//			List<ProductComment> pdComment =  pcService.getAllProductCommentByProductId(articleId);
-		
-			model.addAttribute("article", article);
-//			model.addAttribute("pdComment", pdComment);
-			
-			return "front/JoTravelFront/blogSingle";
-		} 
-		
-		@GetMapping("front/addBlogPage")
-		public String addFrontBlogPage(Model model){
-			
-			Article article=new Article();
-			
-			
-			
-			model.addAttribute("article", article);
-			
-			return "front/JoTravelFront/addBlog";
-		} 
-		
-	}
-		
-//		@GetMapping("front/blogSingle")
-//		public String blogSingle(){
-//			return "front/JoTravelFront/blogSingle";
-//		} 	
-//	@GetMapping("blogPage/")
-//	public String blogPage(){
-//		return "blogPage";
-//	} 
-//}
+	
+	
+
+	
+}
 

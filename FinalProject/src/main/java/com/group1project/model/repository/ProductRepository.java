@@ -18,4 +18,11 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 	
 	@Query(value="select * from product where SYSDATETIME() >= start_date AND SYSDATETIME() <= end_date AND product_status = '上架' order by product_Id", nativeQuery = true)
 	public Page<Product> findAllOnSaleProduct(Pageable pgb);
+	
+	@Query(value="select * from product where SYSDATETIME() >= start_date AND SYSDATETIME() <= end_date AND product_status = '上架' order by product_Id", nativeQuery = true)
+	public List<Product> findAllSaleProduct();
+	
+	@Query(value="select * from product where account_id = :accountId", nativeQuery = true)
+	public List<Product> findAllByAccountId(Integer accountId);
+	
 }

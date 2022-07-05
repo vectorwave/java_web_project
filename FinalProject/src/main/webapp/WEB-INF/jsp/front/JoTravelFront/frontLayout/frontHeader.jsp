@@ -26,7 +26,7 @@
                     <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                         <ul class="nav navbar-nav menu_nav ml-auto">
                             <li class="nav-item active"><a class="nav-link" href="${contextRoot}/">首頁</a></li> 
-                            <li class="nav-item"><a class="nav-link" href="about.html">關於我們</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#about_tag">關於我們</a></li>
                             <li class="nav-item"><a class="nav-link" href="gallery.html">藝廊</a></li>
                             <li class="nav-item submenu dropdown">
                                 <a href="" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">想趣旅遊</a>
@@ -45,9 +45,9 @@
                                 </ul>
                             </li> 
                             <li class="nav-item submenu dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">商家資訊</a>
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">導遊資訊</a>
                                 <ul class="dropdown-menu">
-                                    <li class="nav-item"><a class="nav-link" href="blog.html">導遊總覽</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="http://localhost:8081/jotravel/guides">導遊總覽</a></li>
                                     <li class="nav-item"><a class="nav-link" href="blog-single.html">旅遊排行</a></li>
                                 </ul>
                             </li> 

@@ -56,13 +56,22 @@ public class GuideServiceImpl implements GuideService {
 	}
 
 	
-	//page 物件
+	//page 物件 (後台)
 	@Override
 	public Page<Guide> findByPage(Integer pageNumber) {
 		Pageable pgb = PageRequest.of(pageNumber-1 ,5 , Sort.Direction.ASC,"accountId");
 		Page<Guide> page = gDao.findAll(pgb);
 		return page;
 	}
+	
+	//page 物件 (前台)
+	@Override
+	public Page<Guide> findByPage2(Integer pageNumber) {
+		Pageable pgb = PageRequest.of(pageNumber-1 ,6 , Sort.Direction.ASC,"accountId");
+		Page<Guide> page = gDao.findAll(pgb);
+		return page;
+	}
+
 
 	//搜尋功能
 	@Override
