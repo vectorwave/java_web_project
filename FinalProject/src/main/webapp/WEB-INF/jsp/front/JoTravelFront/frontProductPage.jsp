@@ -89,10 +89,10 @@
 									<a href="${contextRoot}/front/productPage/detail?id=${product.productId}" > 
 					               <img class="card-img-top" src="${contextRoot}/back/product/photo/${product.productId}" width="160px" height="300px" alt="Card image cap"> </a>
 					<!--  <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap"> -->
-					                <div class="card-body" style="height:260px">
-					                     <div class="text-nowrap bg-light border text-center" style="width: 19rem;">
-					                <a href="${contextRoot}/front/productPage/detail?id=${product.productId}" > <span>商品名稱: ${product.productName}</span></a><br/>
-					              		 </div><br/>
+					                <div class="card-body" style="height:210px">
+					                     
+					                <a href="${contextRoot}/front/productPage/detail?id=${product.productId}" > <span style="font-size:larger"> ${product.productName}</span></a><br/>
+					              		 <br/>
 					 
 					                  <p class="card-text" style="height:24px">${product.productSimpleDescription}</p>
 					                 <br/>
@@ -101,7 +101,7 @@
 					                  <div class="d-flex justify-content-between align-items-center">
 					                  
 					                    <div class="btn-group">
-					                      <button type="button" class="btn btn-sm btn-outline-secondary">🛒加入購物車</button>
+<!-- 					                      <button type="button" class="btn btn-sm btn-outline-secondary">🛒加入購物車</button> -->
 					                      <a href="${contextRoot}/front/productPage/detail?id=${product.productId}" >
 					                      <button type="button" class="btn btn-sm btn-outline-secondary">查看商品</button></a>
 					                    </div>
@@ -149,18 +149,16 @@
 						<aside class="single-sidebar-widget tag_cloud_widget">
 							<h4 class="widget_title">熱門標籤</h4>
 							<ul class="list_style">
-								<li><a href='http://localhost:8081/jotravel/front/blogIndex?key=台北'>台北</a></li>
-								<li><a href='http://localhost:8081/jotravel/front/blogIndex?key=台南'>台南</a></li>
-								<li><a href='http://localhost:8081/jotravel/front/blogIndex?key=高雄'>高雄</a></li>
-								<li><a href='http://localhost:8081/jotravel/front/blogIndex?key=澎湖'>澎湖</a></li>
-								<li><a href='http://localhost:8081/jotravel/front/blogIndex?key=綠島'>綠島</a></li>
-								<li><a href='http://localhost:8081/jotravel/front/blogIndex?key=一日遊'>一日遊</a></li>
-								<li><a href='http://localhost:8081/jotravel/front/blogIndex?key=三日遊'>三日遊</a></li>
-								<li><a href='http://localhost:8081/jotravel/front/blogIndex?key=立槳體驗'>立槳體驗</a></li>
-								<li><a href='http://localhost:8081/jotravel/front/blogIndex?key=水肺潛水'>水肺潛水</a></li>
-								<li><a href='http://localhost:8081/jotravel/front/blogIndex?key=自由潛水'>自由潛水</a></li>
-								<li><a href='http://localhost:8081/jotravel/front/blogIndex?key=澎湖花火節'>澎湖花火節</a></li>
-								<li><a href='http://localhost:8081/jotravel/front/blogIndex?key=台東熱氣球'>台東熱氣球</a></li>
+								
+								<li><a href='http://localhost:8081/jotravel/front/productPage?key=墾丁'>墾丁</a></li>
+								<li><a href='http://localhost:8081/jotravel/front/productPage?key=一'>一日遊</a></li>
+								<li><a href='http://localhost:8081/jotravel/front/productPage?key=北部'>北部</a></li>
+								<li><a href='http://localhost:8081/jotravel/front/productPage?key=南部'>南部</a></li>
+								<li><a href='http://localhost:8081/jotravel/front/productPage?key=中部'>中部</a></li>
+								<li><a href='http://localhost:8081/jotravel/front/productPage?key=東部'>東部</a></li>
+								<li><a href='http://localhost:8081/jotravel/front/productPage?key=外島'>外島</a></li>
+								
+								
 							</ul>
 						</aside>
 						<aside class="single-sidebar-widget tag_cloud_widget">

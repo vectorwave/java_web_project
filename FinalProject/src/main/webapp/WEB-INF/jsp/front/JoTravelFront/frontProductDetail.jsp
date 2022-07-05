@@ -90,21 +90,21 @@
             <div class="container-fluid">
 
 <!--  ==============左上連結Bar=================== -->
-                <div class="row">
-                    <div class="col-12">
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb mt-50" >
-                                <li class="breadcrumb-item"><a href="${contextRoot}/" style="color:gray">Home</a></li>
-                                <li class="breadcrumb-item"><a href="${contextRoot}/front/productPage/" style="color:gray">Product</a></li>
-                                <li class="breadcrumb-item active" aria-current="page" style="color:gray">${product.productName}</li>
-                            </ol>
-                        </nav>
-                    </div>
-                </div>
+<!--                 <div class="row"> -->
+<!--                     <div class="col-12"> -->
+<!--                         <nav aria-label="breadcrumb"> -->
+<!--                             <ol class="breadcrumb mt-50" > -->
+<%--                                 <li class="breadcrumb-item"><a href="${contextRoot}/" style="color:gray">Home</a></li> --%>
+<%--                                 <li class="breadcrumb-item"><a href="${contextRoot}/front/productPage/" style="color:gray">Product</a></li> --%>
+<%--                                 <li class="breadcrumb-item active" aria-current="page" style="color:gray">${product.productName}</li> --%>
+<!--                             </ol> -->
+<!--                         </nav> -->
+<!--                     </div> -->
+<!--                 </div> -->
 
 <!--  ============== 商品圖片跑馬燈 =================== -->
                 <div class="row">
-                    <div class="col-9 col-lg-7">
+                    <div class="col-9 col-lg-5">
                         <div class="single_product_thumb">
                             <div id="product_details_slider" class="carousel slide" data-ride="carousel">
                                 <ol class="carousel-indicators">
@@ -119,7 +119,7 @@
                                 </ol>
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
-                                        <a class="gallery_img" style="width:600px;height:600px" >
+                                        <a class="gallery_img"  >
 <!--                                             <img class="d-block w-100" src="img/product-img/pro-big-1.jpg" alt="First slide"> -->
                                         	<img class="d-block w-100" src="${contextRoot}/back/product/photo/${product.productId}"  height="600px" alt="First slide"> 
                                         </a>
@@ -144,7 +144,7 @@
                         </div>
                     </div>
                     
-                    <div class="col-12 col-lg-5">
+                    <div class="col-12 col-lg-7">
                         <div class="single_product_desc">
                             <!-- Product Meta Data -->
                             <div class="product-meta-data">
@@ -205,7 +205,7 @@
         </div>
     </section>    
         <!-- ===============Product Details Area End============ -->
-                    
+
         <!--================ start Product Comment Area  =================-->	
         
 <div id=div2 style="margin:10px;padding:15px">
