@@ -138,7 +138,7 @@
 						<span class="material-icons">book</span>訂單管理
 					</button>
 					<div class="dropdown-content">
-						<a href="/jotravel/back/allOrder">所有訂單</a> <a href="#">商家權限</a>
+						<a href="/jotravel/back/allOrder">所有訂單</a> <a href="${contextRoot}/back/stOrder">統計數據</a>
 						<a href="/jotravel/back/downloadOrder">下載訂單</a>
 					</div>
 				</div>

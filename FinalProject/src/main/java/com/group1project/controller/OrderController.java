@@ -84,5 +84,9 @@ public class OrderController {
 	public Object getAllOrderByPageNumber(@PathVariable("page") Integer pageNumber) {
 		return orderService.findAll(pageNumber);
 	}
+	@GetMapping("count/cf")
+	public Object getCountByStatus() {
+		return orderService.getCountByCF();
+	}
 
 }

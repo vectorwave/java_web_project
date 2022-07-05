@@ -20,5 +20,5 @@ public interface OrderService {
 	public String getECPayItem(Order order);
 	public Long countTotalAmount(Order order);
 	public Page<Order> findAllForAdmin();
-	public Integer[] getCountByStatus(String[] status);
+	public List<Integer> getCountByCF();
 }

@@ -159,7 +159,7 @@
 		$('#alert2').addClass('alert-success');
 	}
 	//購物車cookie格式  商品編號,訂購數量,日期,天數;商品編號,訂購數量,日期
-	var testcart = '1,1,2023-09-15,3';
+	var testcart = '1,1,2023-09-15,3;';
 	if(!Cookies.get('cart') || Cookies.get('cart') == ''){
 		Cookies.set('cart',testcart);
 	}
