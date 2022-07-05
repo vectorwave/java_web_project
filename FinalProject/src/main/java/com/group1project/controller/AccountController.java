@@ -209,7 +209,7 @@ public class AccountController {
 			
 			aService.saveAccount(account);
 
-			return "redirect:/back/login/findall";
+			return "redirect:/";
 		}
 		
 		// 商家新增帳號用 
