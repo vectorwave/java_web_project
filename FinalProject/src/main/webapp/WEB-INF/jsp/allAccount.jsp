@@ -9,20 +9,25 @@
 
 <style>
 .div_td_pad {
-max-width: 600px;
-overflow-wrap: break-word;
-/* width:200px; */
+/* max-width: 100px; */
+/* overflow-wrap: break-word; */
+/* overflow:hidden; */
 /* word-break:break-all; */
 /* text-overflow:ellipsis; */
 /* display:-webkit-box; */
 /* -wibkit-box-orient:vertical; */
 /* -webkit-line-clamp:2; */
-/* overflow:hidden; */
+
+max-width: 100px;
+overflow:hidden;
+white-space: nowrap;
+text-overflow: ellipsis;
+
 }
 </style>
 <h3 style="text-align: center">所有帳號</h3>
-<form action="/jotravel/login/findall" method="get" >
-<input type="text" name="key" placeholder="搜尋帳號" id="key"> <input type="submit" id="send" value="🔍" > <a href="http://localhost:8081/jotravel/login/findall"><input type="button" value="全部帳號" ></a>  
+<form action="/jotravel/back/login/findall" method="get" >
+<input type="text" name="key" placeholder="搜尋帳號" id="key"> <input type="submit" id="send" value="🔍" > <a href="http://localhost:8081/jotravel/back/login/findall"><input type="button" value="全部帳號" ></a>  
 </form>
 
   <input type="hidden" id=accountId name="accountId" value="${loginuser.accountId}" />
@@ -83,7 +88,7 @@ overflow-wrap: break-word;
 	  }).then((result) => {
 	    if (result.isConfirmed) {
 
-	   document.location.href='/jotravel/login/edit?id='+e;
+	   document.location.href='/jotravel/back/login/edit?id='+e;
 	    }else if (result.isDenied) {
 	       
 	       return false;
@@ -104,7 +109,7 @@ overflow-wrap: break-word;
 	  }).then((result) => {
 	    if (result.isConfirmed) {
 
-	   document.location.href='/jotravel/login/delete/'+e;
+	   document.location.href='/jotravel/back/login/delete/'+e;
 	    }else if (result.isDenied) {
 	     
 	       return false;

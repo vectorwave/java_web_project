@@ -51,7 +51,7 @@ public class AccountPageController {
 		return "index";
 	}
 
-	@GetMapping("/login/insert")
+	@GetMapping("back/login/insert")
 	public String insertAccountPage(Model model) {
 		Account account = new Account();
 
@@ -59,7 +59,7 @@ public class AccountPageController {
 		return "addAccount";
 	}
 	
-	@GetMapping("/login/findall")
+	@GetMapping("back/login/findall")
 	@ResponseBody
 	public ModelAndView searchAccountByName(ModelAndView mav,
 			@RequestParam(value = "key", defaultValue = "", required = false) String key, Model m) {

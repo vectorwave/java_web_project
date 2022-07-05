@@ -20,7 +20,7 @@ public class MemberPageController {
 	@Autowired
 	private MemberService mService;
 	
-	@GetMapping("/member/add")
+	@GetMapping("back/member/add")
 	public String addMemberPage(Model model) {
 		Member member = new Member();
 
@@ -36,7 +36,7 @@ public class MemberPageController {
 //		
 //		return "allMember";
 //	}
-	@GetMapping("/member/findall")
+	@GetMapping("back/member/findall")
 	@ResponseBody
 	public ModelAndView searchMemberByName(ModelAndView mav,
 			@RequestParam(value = "key", defaultValue = "", required = false) String key, Model m) {
