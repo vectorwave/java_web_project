@@ -42,10 +42,9 @@ public class PageController {
 
 
 @Autowired
-private AccountService acService;
+private ArticleService aService;
+		
 
-@Autowired
-private GuideService gService;
 	
 //	########################前台商品頁面########################
 	

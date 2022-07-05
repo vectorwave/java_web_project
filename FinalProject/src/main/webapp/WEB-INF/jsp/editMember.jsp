@@ -37,7 +37,7 @@
 	<br>     <input type="file" value="" class="form-control" name="file" accept="image/*" onchange="loadFile(event)"/><span id="mphotoPath"></span>
 	<br>
 	
-	<img id="output" src="${contextRoot}/member/photo/${newMember.account.accountId}" width="300" height="300"><br><br>
+	<img id="output" src="${contextRoot}/back/member/photo/${newMember.account.accountId}" width="300" height="300"><br><br>
 	<input type="button" onclick="submitForm(form)" value="修改" class="btn btn-outline-success" id="send"/>
 	</div>	
 </form:form>

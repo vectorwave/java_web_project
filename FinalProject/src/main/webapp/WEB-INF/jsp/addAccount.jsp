@@ -8,7 +8,7 @@
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <h1 style="text-align: center"> 新增帳號 </h1>
 
-<form:form method="post" action="${contextRoot}/login/member/insert" modelAttribute="account">
+<form:form method="post" action="${contextRoot}/back/login/insert" modelAttribute="account">
 
   <form:input path="accountId" type="hidden" />
   

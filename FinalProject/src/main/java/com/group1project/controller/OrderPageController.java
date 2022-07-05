@@ -17,6 +17,10 @@ public class OrderPageController {
 	public String downloadOrder() {
 		return "downloadOrder";
 	}
+	@GetMapping("back/stOrder")
+	public String stOrder() {
+		return "stOrder";
+	}
 	@GetMapping("front/allOrder")
 	public String frontAllOrder() {
 		return "front/JoTravelFront/allOrder";

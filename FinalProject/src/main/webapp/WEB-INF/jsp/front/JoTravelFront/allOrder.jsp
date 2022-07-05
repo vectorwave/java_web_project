@@ -17,7 +17,7 @@
 <link rel="icon" href="image/favicon.png" type="image/png">
 <title>Jotravel 訂單頁面</title>
 <!-- Bootstrap CSS -->
-<link rel="stylesheet" href='<c:url value="/css/blog/bootstrap.css"/>'>
+<link rel="stylesheet" href='<c:url value="/css/bootstrap.min.css"/>'>
 <link rel="stylesheet"
 	href="<c:url value="/css/blog/vendors/linericon/style.css"/>">
 <link rel="stylesheet"
@@ -53,7 +53,7 @@
 	<div class="justify-content-center">
 		<div class="h3 d-inline-block mt-2 d-flex row">
 			<div class="col-sm text-center">訂單編號</div>
-			<div class="col-sm text-center">金流</div>
+			<div class="col-sm text-center">付款方式</div>
 			<div class="col-sm text-center">狀態</div>
 			<div class="col-sm text-center">總價</div>
 			<div class="col-sm"></div>
@@ -115,20 +115,20 @@
 			</div>
 			<nav aria-label="Page navigation example">
 				<ul class="pagination justify-content-center">
-					<li :class="{'disabled':nowPage == 1}"><a class="page-link"
+					<li :class="{'disabled':nowPage == 1}" class="page-item"><a class="page-link"
 						type="button" aria-label="Previous" @click="changePage(nowPage-1)">
 							<span aria-hidden="true">&laquo;</span>
 					</a></li>
-					<li v-for="n in totalPages" :class="{'active':nowPage == n}"><a
+					<li v-for="n in totalPages" :class="{'active':nowPage == n}" class="page-item"><a
 						class="page-link" type="button" @click="changePage(n)">{{n}}</a></li>
-					<li :class="{'disabled':nowPage == totalPages}"><a
+					<li :class="{'disabled':nowPage == totalPages}" class="page-item"><a
 						class="page-link" type="button" aria-label="Next"> <span
 							aria-hidden="true" @click="changePage(nowPage+1)">&raquo;</span>
 					</a></li>
 				</ul>
 			</nav>
 		</div>
-<button type="button" class="btn btn-primary btn-sm" style="float:right" onclick="download()">下載訂單</button>
+<button type="button" class="btn btn-primary btn-sm " style="float:right" onclick="download()">下載訂單</button>
 	</div>
 </div>
 <script>

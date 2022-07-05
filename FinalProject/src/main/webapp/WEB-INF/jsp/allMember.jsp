@@ -7,8 +7,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <h3 style="text-align: center">所有會員資訊</h3>
-<form action="/jotravel/member/findall" method="get" >
-<input type="text" name="key" placeholder="搜尋" id="key"> <input type="submit" id="send" value="🔍" > <a href="http://localhost:8081/jotravel/member/findall"><input type="button" value="全部帳號" ></a>  
+<form action="/jotravel/back/member/findall" method="get" >
+<input type="text" name="key" placeholder="搜尋" id="key"> <input type="submit" id="send" value="🔍" > <a href="http://localhost:8081/jotravel/back/member/findall"><input type="button" value="全部帳號" ></a>  
 
 
 <%-- <form:form method="post" action="${contextRoot}/member/findall modelAttribute="member"> --%>
@@ -40,7 +40,7 @@
 						<td><c:out value="${member.email}" />
 						<td><c:out value="${member.address}" />
 						<td><c:out value="${member.gender}" />
-						<td><img src="${contextRoot}/member/photo/${member.account.accountId}" width="100px" height="100px">						
+						<td><img src="${contextRoot}/back/member/photo/${member.account.accountId}" width="100px" height="100px">						
 
 <!-- 						<td><a -->
 <%-- 							href='<c:out value="${contextRoot}"/>/member/edit?id=${member.account.accountId}'> --%>
@@ -56,6 +56,7 @@
 			</tbody>
 		</table>
 	</div>
+	</form>
 <%-- </form:form> --%>
  <script type="text/javascript">
  function upd(e){
@@ -71,7 +72,7 @@
 	  }).then((result) => {
 	    if (result.isConfirmed) {
 
-	   document.location.href='/jotravel/member/edit?id='+e;
+	   document.location.href='/jotravel/back/member/edit?id='+e;
 	    }else if (result.isDenied) {
 	       
 	       return false;
@@ -92,7 +93,7 @@
 	  }).then((result) => {
 	    if (result.isConfirmed) {
 
-	   document.location.href='/jotravel/member/delete/'+e;
+	   document.location.href='/jotravel/back/member/delete/'+e;
 	    }else if (result.isDenied) {
 	     
 	       return false;
