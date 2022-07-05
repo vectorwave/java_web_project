@@ -530,7 +530,7 @@
 <!-- 					Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 <!-- 					Copyright &copy; -->
 <!-- 					<script> -->
-// 						document.write(new Date().getFullYear());
+
 <!-- 					</script> -->
 <!-- 					All rights reserved | This template is made with <i -->
 <!-- 						class="fa fa-heart-o" aria-hidden="true"></i> by <a -->
@@ -648,32 +648,7 @@
 	</script>
 <!-- <script type="text/javascript"> -->
 
-// navigator.geolocation.getCurrentPosition(successCallback);  
-// function successCallback(position){  
-//     var lat1 = position.coords.latitude;  
-//     var long1 = position.coords.longitude;  
-//     console.log(lat1);
-//     console.log(long1);
-//     setCookie("lat1",lat1);
-//     setCookie("long1",long1);
-    
-// //     document.getElementById(
-// //           "result"
-// //         ).innerHTML = `<a href="geolat.jsp">666666</a>`;
-// // //         latlong?${lat1}+${long1}
-//    }
-   
-// function setCookie(name,value){
-// 	document.cookie = name + "=" +escape(value) +";path=/";
-// }
 
-// function getCookie(name){
-// 	var arr,reg = new RegExp("(^|)" + name + "=([^;]*)(;|$)");
-// 	if(arr = document.cookie.match(reg))
-// 		return unescape(arr[2]);
-// 	else
-// 		return null;
-// }
 
 <!-- </script> -->
 	<!-- Optional JavaScript -->

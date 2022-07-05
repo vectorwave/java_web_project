@@ -76,7 +76,20 @@ public class ArticlePageController {
 		mav.setViewName("viewArticles");
 		return mav;
 	}
-	
+	@GetMapping("JoGroup/all")
+	public ModelAndView viewJoGroup(ModelAndView mav, 
+			@RequestParam(name="p", defaultValue = "1") Integer pageNumber,Model m) {
+		//Page<Article> page = aService.findByPage(pageNumber);
+		
+		Pageable pgb = PageRequest.of(pageNumber - 1, 5 ,Sort.Direction.DESC,"articleJogroup");
+        String key="揪團";
+		Page<Article> page = aService.searchArticleByCategoryWithPage(key, pgb);
+
+		mav.getModel().put("page", page);
+		mav.getModel().put("key", key);
+		mav.setViewName("JoGroup");
+		return mav;
+	}
 //前台
 	@GetMapping("front666/")
 	public String frontPage(){

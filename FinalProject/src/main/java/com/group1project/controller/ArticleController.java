@@ -62,7 +62,12 @@ public class ArticleController {
 		aService.deleteArticle(articleId);
 		return "redirect:/article/all";
 	}
-	
+	@GetMapping("JoGroup/delete/{id}")
+	public String deleteJoGroupById2(@PathVariable("id") int articleId) {
+		
+		aService.deleteArticle(articleId);
+		return "redirect:/JoGroup/all";
+	}
 	@GetMapping("update/{id}")
 	public String updateProductById2(Model model,@PathVariable("id") int articleId) {
 		
@@ -83,7 +88,26 @@ public class ArticleController {
 		
 		return "updateArticle";
 	}
+	@GetMapping("JoGroupUpdate/{id}")
+	public String JoGroupupdate(Model model,@PathVariable("id") int articleId) {
+		
+
+
+		
+        Article article=new Article();
+		article = aService.getArticleById(articleId);
+//		Account accId = new Account();
+//
+//		accId.setAccountId(accountId);
+//
+//		
+//		article.setAccount(accId);
+		
+		model.addAttribute("article", article);
 	
+		
+		return "updateJoGroupArticle";
+	}
 
 //	private Integer accountId;
 	@PostMapping("editArticle")
@@ -113,6 +137,36 @@ public class ArticleController {
 		
 
 		return "redirect:/article/all";
+		
+	}
+	
+	@PostMapping("editJoGroupArticle")
+    public String editJoGroupArticle(@ModelAttribute("article") Article arc, Model model,@RequestParam("file") MultipartFile file, @RequestParam("accountId") Integer accountId) {
+		Account accId = new Account();
+
+		accId.setAccountId(accountId);
+
+		
+		arc.setAccount(accId);
+
+		try {
+			arc.setArticlePic(file.getBytes());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		Date nowDate = new Date();
+		arc.setArticleDate(nowDate);
+		System.out.println(nowDate);
+		aService.saveArticle(arc);
+		
+		
+		Article newArc = new Article();
+		
+		model.addAttribute("Article", newArc);
+		
+
+		return "redirect:/JoGroup/all";
 		
 	}
 	
