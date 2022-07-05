@@ -18,7 +18,7 @@
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                         <ul class="nav navbar-nav menu_nav ml-auto">
-                            <li class="nav-item active"><a class="nav-link" href="${contextRoot}/">首頁</a></li> 
+                            <li class="nav-item"><a class="nav-link" href="${contextRoot}/">首頁</a></li> 
                             <li class="nav-item"><a class="nav-link" href="#about_tag">關於我們</a></li>
                             <li class="nav-item"><a class="nav-link" href="gallery.html">藝廊</a></li>
                             <li class="nav-item submenu dropdown">
@@ -78,7 +78,7 @@
 
 							</ul></li>
 							<li class="nav-item submenu dropdown">
-                                <a href="http://localhost:8081/jotravel/checkout" class="nav-link"  aria-haspopup="true" aria-expanded="false">🛒</a>
+                                <a href="http://localhost:8081/jotravel/checkout" class="nav-link"  aria-haspopup="true" aria-expanded="false"><img src="<c:url value="/image/cart.png"/>" id="cartIcon"/></a>
                             </li> 
                         </ul>
                     </div> 
