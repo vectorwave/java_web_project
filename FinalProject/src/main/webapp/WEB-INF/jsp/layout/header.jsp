@@ -65,17 +65,17 @@
 		<!--   <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search"> -->
 
 
-							<c:if test="${sessionScope.loginuser.accountId == null}">
+			<c:if test="${sessionScope.loginuser.accountId == null}">
+		<a class="nav-link" href="http://localhost:8081/jotravel/login">
 			<button type="button" class="btn btn-secondary"
 				style="margin-right: 20px; position: relative;">登入</button>
+		</a>
 									
 									</c:if>
 			<c:if test="${sessionScope.loginuser.accountId != null}">
-		<a class="nav-link" href="http://localhost:8081/jotravel/loginout">
+		<a class="nav-link" href="http://localhost:8081/jotravel/back/loginout"> 
 			<button type="button" class="btn btn-secondary"
-				style="position: absolute; right: 90px; top: 11px;">登出</button>
-		</a> <a class="nav-link" href="http://localhost:8081/jotravel/login">
-		</a>
+				style="position: absolute; right: 90px; top: 11px;">登出</button></a>
 									</c:if>
 
 	</nav>
@@ -101,10 +101,10 @@
 						<span class="material-icons">people</span>會員管理
 					</button>
 					<div class="dropdown-content">
-						<a class="dropdown-item" href="${contextRoot}/member/add">新增會員資料</a>
-						<a class="dropdown-item" href="${contextRoot}/member/findall">所有會員資訊</a>
-						<a class="dropdown-item" href="${contextRoot}/login/insert">新增帳號</a>
-						<a class="dropdown-item" href="${contextRoot}/login/findall">所有帳號</a>
+						<a class="dropdown-item" href="${contextRoot}/back/member/add">新增會員資料</a>
+						<a class="dropdown-item" href="${contextRoot}/back/member/findall">所有會員資訊</a>
+						<a class="dropdown-item" href="${contextRoot}/back/login/insert">新增帳號</a>
+						<a class="dropdown-item" href="${contextRoot}/back/login/findall">所有帳號</a>
 						<a class="dropdown-item"
 							href="${contextRoot}/login.password.update">修改密碼</a> <a
 							class="dropdown-item" href="#">會員分級</a>
