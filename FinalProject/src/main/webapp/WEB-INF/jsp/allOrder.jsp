@@ -5,6 +5,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <script type="text/javascript" src="${contextRoot}/js/vue.min.js"></script>
+<script type="text/javascript" src="${contextRoot}/js/chart.min.js"></script>
+<div class="container">
 <div id="app" style="color: black">
 	<div class="row justify-content-center mt-4">
 		<div class="h3 d-inline-block mt-2 d-flex row">
@@ -71,7 +73,7 @@
 			</div>
 			<nav aria-label="Page navigation example">
 				<ul class="pagination justify-content-center">
-					<li class="{'disabled':nowPage == 1}"><a class="page-link" type="button"
+					<li :class="{'disabled':nowPage == 1}"><a class="page-link" type="button"
 						aria-label="Previous" @click="changePage(nowPage-1)"> <span aria-hidden="true">&laquo;</span>
 					</a></li>
 					<li v-for="n in totalPages" :class="{'active':nowPage == n}"><a
@@ -84,6 +86,7 @@
 		</div>
 
 	</div>
+</div>
 </div>
 <script>
 
@@ -136,7 +139,7 @@ var vm = new Vue({
   },
 });
 jQuery.ajax({
-	url:'${contextRoot}/order/all',
+	url:'${contextRoot}/order/all/admin',
   async :false, 
 	success:function(res){
 		if(res.orders.length == 0){
@@ -151,7 +154,7 @@ jQuery.ajax({
 });
 function changePage(page){
 	jQuery.ajax({
-		url:'${contextRoot}/order/all/'+page,
+		url:'${contextRoot}/order/all/'+page+'/admin',
 		async:false,
 		type:'GET',
 		success:res=>{
@@ -176,4 +179,5 @@ function del(id){
 
 
 </script>
+ 
 <jsp:include page="layout/footer.jsp" />

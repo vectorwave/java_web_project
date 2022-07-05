@@ -8,7 +8,7 @@
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <h1 style="text-align: center"> 新增帳號 </h1>
 
-<form:form method="post" action="${contextRoot}/login/member/insert" modelAttribute="account">
+<form:form method="post" action="${contextRoot}/back/login/insert" modelAttribute="account">
 
   <form:input path="accountId" type="hidden" />
   
@@ -19,6 +19,8 @@
   身分:<form:select path="title" class="form-select" required="required"><span id="mtitle"></span>
   <form:option value="會員">會員</form:option>
   <form:option value="商家" >商家</form:option>
+  <form:option value="管理員" >管理員</form:option>
+  
   </form:select>
  <form:input type="hidden" path="status" class="form-control" value="1"/><br/>
  <button id="one" type="button" class="btn btn-secondary"

@@ -51,10 +51,10 @@
 		</button>
 
 		<!--   <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search"> -->
-		<a class="nav-link" href="http://localhost:8081/jotravel/loginout">
-			<button type="button" class="btn btn-secondary"
-				style="margin-right: 20px;">登出</button>
-		</a>
+<!-- 		<a class="nav-link" href="http://localhost:8081/jotravel/loginout"> -->
+<!-- 			<button type="button" class="btn btn-secondary" -->
+<!-- 				style="margin-right: 20px;">登出</button> -->
+<!-- 		</a> -->
 
 	</nav>
 
@@ -129,7 +129,7 @@ a:hover {
 				
 			</div>
 			<div class="modal-body">
-				<form class="form-login" method="post" action="logingo"
+				<form class="form-login" method="post" action="back/logingo"
 					onsubmit="return validateCode()">
 					<img class="mb-4 rounded mx-auto d-block" src="assets/img/logo.png"
 						alt="" width="310" height="250"> <label for="inputAccount"
@@ -321,8 +321,8 @@ a:hover {
 	$('#one').click(function() {
 		let checkword = $('#checkCode').text();
 		console.log(checkword)
-		$('#inputAccount').val("root");
-		$('#inputPassword').val("root");
+		$('#inputAccount').val("admit");
+		$('#inputPassword').val("admit");
 		$('#inputCode').val(checkword);
 	})
 

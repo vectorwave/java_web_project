@@ -1,5 +1,6 @@
 package com.group1project.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -119,6 +121,30 @@ public class ArticlePageController {
 			return "front/JoTravelFront/addBlog";
 		} 
 		
+//		@PostMapping("front/JoGroupClick")
+//	    public String JoGroupClick(Model model, @RequestParam("articleId") Integer articleId) {
+//			
+//			Article arc =new Article();
+//	         
+//			arc = aService.getArticleById(articleId);
+//			Integer JogroupNum=arc.getArticleJogroup()+1;
+//			arc.setArticleJogroup(JogroupNum);
+//			
+//			Date nowDate = new Date();
+//			arc.setArticleDate(nowDate);
+//			System.out.println(nowDate);
+//			aService.saveArticle(arc);
+//			
+//			
+//			Article newArc = new Article();
+//			
+//			model.addAttribute("Article", newArc);
+//			
+//
+//			return "front/JoTravelFront/blogIndex";
+//			
+//		}
+//		
 	}
 		
 

@@ -34,7 +34,7 @@ public class MemberController {
 	private MemberService mService;
 
 	// 新增
-	@PostMapping("/member/add")
+	@PostMapping("back/member/add")
 	public String addMember(@ModelAttribute("member") Member member, @RequestParam("file") MultipartFile file,
 			@RequestParam("accountId") Integer accountId, Model model) {
 
@@ -54,17 +54,17 @@ public class MemberController {
 		Member result = mService.getMemberByAccountId(accountId);
 		if (result == null) {
 			mService.saveMember(member);
-			return "redirect:/member/findall";
+			return "redirect:/back/member/findall";
 		} else {
-			return "redirect:/member/findall";
+			return "allMember";
 		}
 	}
 
 	// 刪除
-	@RequestMapping(value = "/member/delete/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "back/member/delete/{id}", method = RequestMethod.GET)
 	public String deleteMemberById(@PathVariable("id") Integer memberId) {
 		mService.deleteMember(memberId);
-		return "redirect:/member/findall";
+		return "redirect:/back/member/findall";
 	}
 
 //	//搜尋全部
@@ -76,7 +76,7 @@ public class MemberController {
 //		return "member";
 //	}
 //	
-	@GetMapping("/member/findById/{memberid}")
+	@GetMapping("back/member/findById/{memberid}")
 	public Member findById(@PathVariable Integer accountId) {
 		return mService.getMemberById(accountId);
 	}
@@ -89,7 +89,7 @@ public class MemberController {
 //		return "allMember";
 //	}
 	// 修改
-	@GetMapping("/member/edit")
+	@GetMapping("back/member/edit")
 	public String editMember(@RequestParam("id") Integer accountId, Model model) {
 		Member newMember = mService.getMemberByAccountId(accountId);
 
@@ -99,7 +99,7 @@ public class MemberController {
 	}
 
 	// 模糊搜尋
-	@GetMapping("searchMember")
+	@GetMapping("back/searchMember")
 	@ResponseBody
 	public List<Member> searchMember(@RequestParam("key") String key, Model m) {
 
@@ -111,7 +111,7 @@ public class MemberController {
 
 	}
 
-	@PostMapping("/member/edit")
+	@PostMapping("back/member/edit")
 	public String postEditMember(@ModelAttribute(name = "newMember") Member newMember,
 			@RequestParam("file") MultipartFile file, @RequestParam("accountId") Integer accountId) {
 		Account accId = new Account();
@@ -126,7 +126,7 @@ public class MemberController {
 		}
 		mService.saveMember(newMember);
 
-		return "redirect:/member/findall";
+		return "redirect:/back/member/findall";
 
 	}
 
@@ -144,7 +144,7 @@ public class MemberController {
 //	  
 //	  return "addMember";
 //	 }
-	@GetMapping("/member/photo/{accountId}")
+	@GetMapping("back/member/photo/{accountId}")
 	public ResponseEntity<byte[]> downloadImage(@PathVariable("accountId") Integer accountId) {
 		Member photo1 = mService.getMemberByAccountId(accountId);
 
@@ -157,7 +157,7 @@ public class MemberController {
 	}
 
 	// 取到ID候用Json傳出
-	@GetMapping("/member/searchAccountId/{accountId}")
+	@GetMapping("back/member/searchAccountId/{accountId}")
 	@ResponseBody
 	public Map<String, Object> searchMemberId(@PathVariable("accountId") Integer accountId) {
 		Member result = mService.getMemberByAccountId(accountId);

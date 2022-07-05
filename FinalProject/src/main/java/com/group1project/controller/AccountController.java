@@ -35,7 +35,7 @@ public class AccountController {
 	}
 
 	// 查詢單筆帳號資料
-	@GetMapping("/login/{accountid}")
+	@GetMapping("back/login/{accountid}")
 	@ResponseBody
 	public Account getAccountById(@PathVariable("accountid") Integer accountId) {
 		return aService.getAccountById(accountId);
@@ -51,7 +51,7 @@ public class AccountController {
 //	}
 
 	// 會員帳號新增  
-	@PostMapping("/login/member/insert")
+	@PostMapping("back/login/insert")
 	public String inserAccount(@ModelAttribute("account") Account account, Model model) {
 		Date nowdate = new Date();
 		account.setSignupDate(nowdate);
@@ -62,11 +62,11 @@ public class AccountController {
 		
 		aService.saveAccount(account);
 
-		return "redirect:/login/findall";
+		return "redirect:/back/login/findall";
 	}
 	
 	// 商家新增帳號用 
-	@PostMapping("/login/guide/insert")
+	@PostMapping("back/login/guide/insert")
 	public String inserGuideAccount(@ModelAttribute("account") Account account, Model model) {
 		Date nowdate = new Date();
 		account.setSignupDate(nowdate);
@@ -77,14 +77,14 @@ public class AccountController {
 	}
 
 	// 刪除帳號
-	@RequestMapping(value = "/login/delete/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "back/login/delete/{id}", method = RequestMethod.GET)
 	public String deleteAccount(@PathVariable("id") Integer accountId) {
 		aService.deleteAccount(accountId);
-		return "redirect:/login/findall";
+		return "redirect:/back/login/findall";
 	}
 
 	// 修改
-	@GetMapping("/login/edit")
+	@GetMapping("back/login/edit")
 	public String editAccount(@RequestParam("id") Integer accountId, Model model) {
 		Account newAccount = aService.getAccountById(accountId);
 
@@ -93,7 +93,7 @@ public class AccountController {
 		return "editAccount";// 回到頁面
 	}
 	//修改
-	@PostMapping("/login/edit")
+	@PostMapping("back/login/edit")
     public String postEditAccount(@ModelAttribute(name="newAccount") Account newAccount) {
 		
 		//加密功能
@@ -102,35 +102,44 @@ public class AccountController {
 		
 		aService.saveAccount(newAccount);
 		
-		return "redirect:/login/findall";
+		return "redirect:/back/login/findall";
 		
 	}
 	
 	//加密
 	private static String getStringHash(String message, String algorithm) {
+		//
 		final StringBuffer buffer = new StringBuffer();
 		try {
+			//md是取道的加密算法
 			MessageDigest md = MessageDigest.getInstance(algorithm);
+			
+			//將字串轉成二進制
 			md.update(message.getBytes());
+			//加密後得到另一個二進制的digest
 			byte[] digest = md.digest();
 
+			//遍勵全部的digest
 			for (int i = 0; i < digest.length; ++i) {
 				byte b = digest[i];
+				//編碼後放進s
 				String s = Integer.toHexString(Byte.toUnsignedInt(b));
+				//長度小於二補0如果沒有就不補
 				s = s.length() < 2 ? "0" + s : "" + s;
+				//用buffer把多字串整成一個
 				buffer.append(s);
 			}
 		} catch (NoSuchAlgorithmException e) {
 //			System.out.println("請檢查使用的演算法，演算法有誤");
 			return null;
 		}
-		return buffer.toString();
+		return buffer.toString();//正列轉字串toString=編碼
 	}
 	
 	
 	
 	//登入
-	@RequestMapping(path = "logingo", method=RequestMethod.POST)
+	@RequestMapping(path = "back/logingo", method=RequestMethod.POST)
 	public String loginCheck(@RequestParam("inputAccount") String inputAccount, @RequestParam("inputPassword") String inputPassword, Model model) {
 		
 		//加密功能
@@ -141,10 +150,10 @@ public class AccountController {
 				
 		if(queryMember == null) {	
 			model.addAttribute("loginErrorMsg", "登入失敗,帳號不存在");
-			return "login";
+			return "redirect:/login";
 		} else if(!queryMember.getPassword().equals(password)){
 			model.addAttribute("loginErrorMsg", "登入失敗,密碼錯誤");
-			return "login";
+			return "redirect:/login";
 		} else if(queryMember.getAccountName().equals("")) {
 			model.addAttribute("loginuser", queryMember);
 			return "redirect:/index";
@@ -152,6 +161,11 @@ public class AccountController {
 			model.addAttribute("loginuser", queryMember);
 			return "redirect:/index";
 		}
+	}
+	@GetMapping("back/loginout")
+	public String login(SessionStatus status) {
+		status.setComplete();
+		return "redirect:/login";
 	}
 	
 //	@RequestMapping(path = "/login.password.update", method = RequestMethod.POST)
@@ -167,7 +181,7 @@ public class AccountController {
 	
 	
 	//模糊搜尋
-	@GetMapping("searchAccount")
+	@GetMapping("back/searchAccount")
 	@ResponseBody
 	public List<Account> searchAccount(@RequestParam("key") String key,Model m) {
 	
@@ -179,11 +193,7 @@ public class AccountController {
 	
 	}
 	
-	@GetMapping("loginout")
-	public String login(SessionStatus status) {
-		status.setComplete();
-		return "login";
-	}
+	
 	
 	//前台page---------------------------------------------------------------
 

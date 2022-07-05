@@ -11,10 +11,17 @@
                     <!-- Brand and toggle get grouped for better mobile display -->
               <img src="<c:url value="/images/blog/Logo.png"/>" alt=""></a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
+                  
+					<c:if test="${sessionScope.loginuser.accountId != null}">
+					<h3>&nbsp;&nbsp;&nbsp;Hello!${loginuser.accountName}</h3>
+					</c:if>
+			
+                    
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                         <ul class="nav navbar-nav menu_nav ml-auto">
@@ -62,20 +69,30 @@
                             </li> 
                             
                             <li class="nav-item submenu dropdown">
-                            	<a href="#"class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">會員</a>
+                            	<a href=""class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">會員</a>
 
 							
 								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="http://localhost:8081/jotravel/page/member/add">新增個人資料</a></li>
-									<li class="nav-item"><a class="nav-link" href="http://localhost:8081/jotravel/page/member/edit?id=${loginuser.accountId}">個人資料</a></li>
+									
+									<c:if test="${sessionScope.loginuser.accountId == null}">
+									<li class="nav-item"><a class="nav-link" href="http://localhost:8081/jotravel/page/login">登入</a></li>
+									</c:if>
+									
+									<c:if test="${sessionScope.loginuser.accountId != null}">
+									<li class="nav-item"><a class="nav-link"href="http://localhost:8081/jotravel/page/loginout">登出</a></li>
+									
+								<li class="nav-item"><a class="nav-link" href="http://localhost:8081/jotravel/page/member/add">新增個人資料</a></li>
+									<li class="nav-item"><a class="nav-link" href="http://localhost:8081/jotravel/page/member/edit?id=${loginuser.accountId}">會員資料</a></li>
 <!-- 									<li class="nav-item"><a class="nav-link" href="blog-single.html">修改密碼</a></li> -->
 									<li class="nav-item"><a class="nav-link" href="http://localhost:8081/jotravel/front/allOrder">查看訂單</a></li>
-									<li class="nav-item"><a class="nav-link" href="http://localhost:8081/jotravel/page/login">登入</a></li>
-									<li class="nav-item"><a class="nav-link" href="http://localhost:8081/jotravel/page/loginout">登出</a></li>
+												</c:if>
 									<li class="nav-item"><a class="nav-link" href="http://localhost:8081/jotravel/login">管理員</a></li>
-							
+							</ul></li>
 									
 							</ul></li>
+
+
+
 							<li class="nav-item submenu dropdown">
                                 <a href="http://localhost:8081/jotravel/checkout" class="nav-link"  aria-haspopup="true" aria-expanded="false"><img src="<c:url value="/image/cart.png"/>" id="cartIcon"/></a>
                             </li> 

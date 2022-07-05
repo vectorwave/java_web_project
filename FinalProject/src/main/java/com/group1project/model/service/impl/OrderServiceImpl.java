@@ -1,5 +1,6 @@
 package com.group1project.model.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,6 +23,7 @@ public class OrderServiceImpl implements OrderService{
 	@Autowired OrderRepository orderRepository;
 	@Autowired OrderDetailRepository detailRepository;
 	private static final Integer pensPerPage = 4;
+	private static final String[] statusType = {"WebATM","ATM","Credit","CVS","BARCODE","ApplePay"};
 	@Override
 	public List<Order> findByAccountId(Integer accountId, Integer page) {
 		PageRequest request = PageRequest.of(page-1, pensPerPage,Sort.by("orderId").descending());
@@ -35,7 +37,7 @@ public class OrderServiceImpl implements OrderService{
 
 	@Override
 	public List<Order> findAll(Integer page) {
-		Pageable pageable = PageRequest.of(0, pensPerPage);
+		Pageable pageable = PageRequest.of(page-1, pensPerPage);
 		return orderRepository.findAll(pageable).getContent();
 	}
 
@@ -95,6 +97,21 @@ public class OrderServiceImpl implements OrderService{
 			totalAmount += detail.getAmount()*detail.getProduct().getProductPrice();
 		}
 		return totalAmount;
+	}
+
+	@Override
+	public Page<Order> findAllForAdmin() {
+		Pageable pageable = PageRequest.of(0, pensPerPage);
+		return orderRepository.findAll(pageable);
+	}
+
+	@Override
+	public List<Integer> getCountByCF() {
+		List<Integer> cfCount = new ArrayList<Integer>();
+		for(String cf : statusType) {
+			cfCount.add(orderRepository.countByCashFlow(cf));
+		}
+		return cfCount;
 	}
 
 	

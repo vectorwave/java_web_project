@@ -9,7 +9,7 @@
 <h1 style="text-align: center"> 新增會員資料 </h1>
 <h3>你好, ${loginuser.accountName}</h3>
 
-<form:form method="post" enctype="multipart/form-data" action="${contextRoot}/member/add" modelAttribute="member">
+<form:form method="post" enctype="multipart/form-data" action="${contextRoot}/back/member/add" modelAttribute="member">
 
 
   <form:input path="memberId" type="hidden" />
@@ -136,7 +136,7 @@
 	  console.log(form)
 	  $.ajax({
 		  type: "get",
-		  url: "/jotravel/member/searchAccountId/" + aid,
+		  url: "/jotravel/back/member/searchAccountId/" + aid,
 		  success: function(response){
 			  console.log(response.result)
 			  if(response.result == "true"){
