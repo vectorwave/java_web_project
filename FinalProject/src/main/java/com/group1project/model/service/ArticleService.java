@@ -19,6 +19,6 @@ public interface ArticleService {
 	void deleteArticle(int articleId);
 	Page<Article> findByPage(Integer pageNumber);
 	Page<Article> searchArticleByTitleWithPage(String key, Pageable pab);
-
+	Page<Article> searchArticleByCategoryWithPage(String key , Pageable pab);
 //	int[] countArticleCatagory();
 }

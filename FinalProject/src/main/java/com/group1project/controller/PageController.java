@@ -37,12 +37,14 @@ public class PageController {
 	
 
 	@Autowired
-
 	private ProductCommentService pcService;
+
+
 
 @Autowired
 private ArticleService aService;
 		
+
 	
 //	########################前台商品頁面########################
 	
@@ -203,20 +205,7 @@ private ArticleService aService;
 	
 	
 
-//	@GetMapping("article/all")
-//	public ModelAndView viewAllArticles(ModelAndView mav, 
-//			@RequestParam(name="p", defaultValue = "1") Integer pageNumber,@RequestParam(value="key",defaultValue="" ,required = false) String key,Model m) {
-//		//Page<Article> page = aService.findByPage(pageNumber);
-//		
-//		Pageable pgb = PageRequest.of(pageNumber - 1, 5 ,Sort.Direction.DESC,"articleId");
-//
-//		Page<Article> page = aService.searchArticleByTitleWithPage(key, pgb);
-//
-//		mav.getModel().put("page", page);
-//		mav.getModel().put("key", key);
-//		mav.setViewName("viewArticles");
-//		return mav;
-//	}
+	
 	
 	
 }

@@ -19,6 +19,7 @@
 
 <!-- <input type="text" name="accountId" value="1" style="visibility:hidden"/> -->
  <form:hidden path="picId"  value="${article.articleId}"/>
+ <form:hidden  path="articleJogroup" value="${value.articleJogroup}"/>
 
   <div class="form-group">
     文章標題
@@ -31,6 +32,8 @@
       <option  value="分享">分享</option>
       <option  value="廣告">廣告</option>
       <option  value="閒聊">閒聊</option>
+      <option  value="揪團">揪團</option>
+      
     </select>
     <form:hidden id="commentType" path="articleCategory" value="${article.articleCategory}"/>
   </div>

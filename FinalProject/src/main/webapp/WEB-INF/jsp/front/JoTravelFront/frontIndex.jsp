@@ -362,7 +362,31 @@
         <jsp:include page="frontLayout/frontFooter.jsp" />               
 		<!--================ End footer Area  =================-->
         
+        <script type="text/javascript">
         
+        window.onload=navigator.geolocation.getCurrentPosition(successCallback);  
+        function successCallback(position){  
+            var lat1 = position.coords.latitude;  
+            var long1 = position.coords.longitude;  
+            console.log(lat1);
+            console.log(long1);
+            setCookie("lat1",lat1);
+            setCookie("long1",long1);
+           }
+           
+        function setCookie(name,value){
+        	document.cookie = name + "=" +escape(value) +";path=/";
+        }
+
+        function getCookie(name){
+        	var arr,reg = new RegExp("(^|)" + name + "=([^;]*)(;|$)");
+        	if(arr = document.cookie.match(reg))
+        		return unescape(arr[2]);
+        	else
+        		return null;
+        }
+        
+        </script>
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="<c:url value="/js/blog/jquery-3.2.1.min.js"/>"></script>

@@ -67,7 +67,9 @@ public  class ArticleServiceimpl implements ArticleService {
 	public Page<Article> searchArticleByTitleWithPage(String key , Pageable pab) {
 		   return aDao.findAllByArticleTitleLike("%" + key + "%", pab);
 	}
-	
+	public Page<Article> searchArticleByCategoryWithPage(String key , Pageable pab) {
+		   return aDao.findAllByArticleCategoryLike("%" + key + "%", pab);
+	}
 //	@Override
 //	public int[] countArticleCatagory() {
 //		
