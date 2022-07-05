@@ -328,7 +328,7 @@
 				Cookies.set('cart','');
 			}
 			var productId = ${product.productId};
-			Cookies.set('cart',Cookies.get('cart')+productId+','+$('#qty').val()+','+$('#date').val()+','+$('totalDays').val()+';');
+			Cookies.set('cart',Cookies.get('cart')+productId+','+$('#qty').val()+','+$('#date').val()+','+$('#totalDays').val()+';');
 			console.log(Cookies.get('cart'));
 		}
 		
