@@ -73,5 +73,16 @@ public class OrderController {
 		}
 		return orderService.findAllByAccountId(accountId);
 	}
+	@GetMapping("all/admin")
+	public Object getAllOrder() {
+		Page<Order> orderPage=orderService.findAllForAdmin();
+		return new Object() {public List<Order> orders = orderPage.getContent();
+		public Integer totalPages = orderPage.getTotalPages();};
+	}
+
+	@GetMapping("all/{page}/admin")
+	public Object getAllOrderByPageNumber(@PathVariable("page") Integer pageNumber) {
+		return orderService.findAll(pageNumber);
+	}
 
 }

@@ -19,4 +19,6 @@ public interface OrderService {
 	public void deleteOrderDetail(Integer orderId,Integer productId);
 	public String getECPayItem(Order order);
 	public Long countTotalAmount(Order order);
+	public Page<Order> findAllForAdmin();
+	public Integer[] getCountByStatus(String[] status);
 }

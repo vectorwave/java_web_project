@@ -35,7 +35,7 @@ public class OrderServiceImpl implements OrderService{
 
 	@Override
 	public List<Order> findAll(Integer page) {
-		Pageable pageable = PageRequest.of(0, pensPerPage);
+		Pageable pageable = PageRequest.of(page-1, pensPerPage);
 		return orderRepository.findAll(pageable).getContent();
 	}
 
@@ -95,6 +95,19 @@ public class OrderServiceImpl implements OrderService{
 			totalAmount += detail.getAmount()*detail.getProduct().getProductPrice();
 		}
 		return totalAmount;
+	}
+
+	@Override
+	public Page<Order> findAllForAdmin() {
+		Pageable pageable = PageRequest.of(0, pensPerPage);
+		return orderRepository.findAll(pageable);
+	}
+
+	@Override
+	public Integer[] getCountByStatus(String[] status) {
+		Integer[] counts=new Integer[status.length];
+		
+		return null;
 	}
 
 	

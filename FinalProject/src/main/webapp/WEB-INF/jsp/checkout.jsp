@@ -124,7 +124,7 @@
 					</div>
 					<div class="form-row">
 						<label for="cashFlow">付款方式</label> <select name="" id="cashFlow"
-							class="form-control">
+							class="form-control" v-model="cashFlow">
 							<option value="WebATM">WebATM</option>
 							<option value="ATM">自動櫃員機</option>
 							<option value="Credit">信用卡及銀聯卡</option>
@@ -164,7 +164,7 @@
 		Cookies.set('cart',testcart);
 	}
 	function cookieToData(){
-		let arr1 = Cookies.get('cart').split(';');
+		let arr1 = Cookies.get('cart').slice(0,-1).split(';');
 		let details = [];
 		arr1.forEach(arr=>{
 			let arr2 = arr.split(',');
@@ -182,7 +182,7 @@
 		  el:'#container',
 		  data:{
 			  status:'處理中',
-			  cashFlow:'credic',
+			  cashFlow:'Credit',
 			  orderDetails:cookieToData(),
 		},
 		  methods:{

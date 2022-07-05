@@ -6,6 +6,8 @@ import java.util.Optional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.jpa.repository.QueryHints;
 
 import com.group1project.model.bean.Order;
 
@@ -16,5 +18,6 @@ public interface OrderRepository extends JpaRepository<Order, Integer> {
 	public Page<Order> findByCashFlow(String cashFlow,Pageable pageable);
 	public List<Order> findByStatus(String status);
 	public Page<Order> findByStatus(String status,Pageable pageable);
-	
+//	@QueryHints(count)
+//	public Integer countByStatus(String status);
 }
