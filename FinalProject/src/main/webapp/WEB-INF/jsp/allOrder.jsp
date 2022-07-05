@@ -87,9 +87,6 @@
 
 	</div>
 </div>
-<canvas id="example" width="200" height="100"></canvas>
-
-
 </div>
 <script>
 
@@ -182,23 +179,5 @@ function del(id){
 
 
 </script>
-  <script>
-  	var ctx = $( "#example" ),
-  		example = new Chart(ctx, {
-  			type: "pie", // 圖表類型
-  			data: {
-  				labels: [ "東部", "南部", "北部" ], // 標題
-  				datasets: [{
-  					label: "# of Votes", // 標籤
-  					data: [ 12, 19, 3 ], // 資料
-  					backgroundColor: [ // 背景色
-  					"#FF0000",
-  					"#00FF00",
-  					"#0000FF",
-  					],
-  					borderWidth: 1 // 外框寬度
-  				}]
-  			}
-  		});
-  </script>
+ 
 <jsp:include page="layout/footer.jsp" />
