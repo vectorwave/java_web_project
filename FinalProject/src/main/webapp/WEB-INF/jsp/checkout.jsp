@@ -29,8 +29,8 @@
 <script src="${contextRoot}/js/js.cookie.min.js"></script>
 <script type="text/javascript" src="${contextRoot}/js/vue.min.js"></script>
 </head>
-<body>
-	<div class="container my-5 py-5" id="container">
+<body style="background-image:url('${contextRoot}/images/blog/shoppingcar.jpg');background-position: center;background-size: cover">
+	<div class="container " id="container">
 		<div class="h1 text-center">
 			<strong>JOTRAVEL 訂單頁面</strong>
 		</div>
@@ -48,13 +48,13 @@
 					role="alert">3.完成交易</div>
 			</div>
 		</div>
-		<div class="row justify-content-center mt-4">
+		<div class="row justify-content-center ">
 			<div class="col-md-10 tab-content">
 				<div id="cartpage" class="accordion tab-pane fade show active">
 					<div>
 						<table class="table table-sm">
 							<thead>
-								<tr>
+								<tr style="font-size:23px">
 									<th width="20"></th>
 									<th width="60"></th>
 									<th>商品名稱</th>
@@ -84,12 +84,12 @@
 					</div>
 					<div class="mt-3 d-flex justify-content-end h3">合計:{{getTotalPrice()}}</div>
 					<div class="mt-3 d-flex justify-content-end">
-						<div><button type="button" class="btn btn-primary" data-toggle="tab"
+						<div><button type="button" class="btn btn-primary btn-sm" data-toggle="tab"
 							data-target="#paypage" onclick="changeColor()">前往付款頁面</button></div>
 					</div>
 				</div>
 				<div id="paypage" class=" text-center border-0 tab-pane">
-					<div class="form-row text-left mt-3">
+					<div class="form-row text-left ">
 						<div class="form-group col-md-6">
 							<label for="name">姓名</label> <input type="text"
 								class="form-control " id="name" placeholder="姓名" required>
@@ -142,6 +142,7 @@
 			</div>
 		</div>
 	</div>
+	<br/>
 	<script>
 	function autoInput(){
 		$('#section').val('台灣')
