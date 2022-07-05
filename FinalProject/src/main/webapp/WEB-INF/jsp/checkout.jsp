@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
-<jsp:include page="front/JoTravelFront/frontLayout/frontHeader.jsp" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,6 +29,9 @@
 <script type="text/javascript" src="${contextRoot}/js/vue.min.js"></script>
 </head>
 <body style="background-image:url('${contextRoot}/images/blog/shoppingcar.jpg');background-position: center;background-size: cover">
+	
+	<jsp:include page="front/JoTravelFront/frontLayout/frontHeader.jsp" />
+	<h1> <br><br> </h1>
 	<div class="container " id="container">
 		<div class="h1 text-center">
 			<strong>JOTRAVEL 訂單頁面</strong>
