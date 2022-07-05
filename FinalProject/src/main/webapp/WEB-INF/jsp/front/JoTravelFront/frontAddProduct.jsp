@@ -4,11 +4,11 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
-
 <!doctype html>
 <html lang="en">
       <head>
-
+		<script src="<c:url value="/js/jquery-3.2.1.min.js"/>"></script>
+		
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -34,7 +34,7 @@
 <h1> <br><br> </h1>
 
 <div class="container">
-<form:form  class="form-floating" method="post" enctype="multipart/form-data" action="${contextRoot}/front/addProduct" modelAttribute="frontPd" >
+<form:form  class="form-floating" method="post" enctype="multipart/form-data" action="${contextRoot}/back/product/frontAddProduct" modelAttribute="frontPd" >
 
   <form:input path="productId" type="hidden" />
   
@@ -76,6 +76,20 @@
   </div>
 <%--   <div> ${msg.okMsg} --%>
 <!--   </div> -->
+ <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+ 		<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script> 
+        <script src="<c:url value="/js/blog/popper.js"/>"></script>
+        <script src="<c:url value="/js/blog/bootstrap.min.js"/>"></script>
+        <script src="<c:url value="/css/blog/vendors/owl-carousel/owl.carousel.min.js"/>"></script>
+        <script src="<c:url value="/js/blog/jquery.ajaxchimp.min.js"/>"></script>
+        <script src="<c:url value="/js/blog/mail-script.js"/>"></script>
+        <script src="<c:url value="/css/blog//vendors/bootstrap-datepicker/bootstrap-datetimepicker.min.js"/>"></script>
+        <script src="<c:url value="/css/blog//vendors/nice-select/js/jquery.nice-select.js"/>"></script>
+        <script src="<c:url value="/js/blog/mail-script.js"/>"></script>
+        <script src="<c:url value="/js/blog/stellar.js"/>"></script>
+        <script src="<c:url value="/css/blog//vendors/lightbox/simpleLightbox.min.js"/>"></script>
+        <script src="<c:url value="/js/blog/custom.js"/>"></script>
+ 
   
  <script>
   var loadFile = function(event) {
@@ -124,19 +138,6 @@
         
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
- 		<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script> 
-        <script src="<c:url value="/js/blog/jquery-3.2.1.min.js"/>"></script>
-        <script src="<c:url value="/js/blog/popper.js"/>"></script>
-        <script src="<c:url value="/js/blog/bootstrap.min.js"/>"></script>
-        <script src="<c:url value="/css/blog/vendors/owl-carousel/owl.carousel.min.js"/>"></script>
-        <script src="<c:url value="/js/blog/jquery.ajaxchimp.min.js"/>"></script>
-        <script src="<c:url value="/js/blog/mail-script.js"/>"></script>
-        <script src="<c:url value="/css/blog//vendors/bootstrap-datepicker/bootstrap-datetimepicker.min.js"/>"></script>
-        <script src="<c:url value="/css/blog//vendors/nice-select/js/jquery.nice-select.js"/>"></script>
-        <script src="<c:url value="/js/blog/mail-script.js"/>"></script>
-        <script src="<c:url value="/js/blog/stellar.js"/>"></script>
-        <script src="<c:url value="/css/blog//vendors/lightbox/simpleLightbox.min.js"/>"></script>
-        <script src="<c:url value="/js/blog/custom.js"/>"></script>
+        
     </body>
 </html>

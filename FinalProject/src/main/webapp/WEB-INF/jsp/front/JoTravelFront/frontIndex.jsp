@@ -108,6 +108,7 @@
         <!--================Banner Area =================-->
        
         <section class="accomodation_area section_gap" style="padding:20px">
+        
             <div class="container">
                 <div class="section_title text-center" style="height:50px">
                     <h2 class="title_color">熱門旅遊行程</h2>
@@ -134,7 +135,7 @@
         
         <!--================Breadcrumb Area =================-->
         <section class="facilities_area section_gap">
-            <div class="overlay bg-parallax" data-stellar-ratio="0.8" data-stellar-vertical-offset="0" data-background="">  
+            <div class="bg-parallax" data-stellar-ratio="0.8" data-stellar-vertical-offset="0" data-background="">  
             </div>
             <div class="container">
                 <div class="section_title text-center" style="height:40px">
