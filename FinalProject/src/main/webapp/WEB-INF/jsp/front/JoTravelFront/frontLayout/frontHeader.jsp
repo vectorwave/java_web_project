@@ -75,7 +75,6 @@
 									<li class="nav-item"><a class="nav-link" href="http://localhost:8081/jotravel/login">管理員</a></li>
 							
 									
-
 							</ul></li>
 							<li class="nav-item submenu dropdown">
                                 <a href="http://localhost:8081/jotravel/checkout" class="nav-link"  aria-haspopup="true" aria-expanded="false"><img src="<c:url value="/image/cart.png"/>" id="cartIcon"/></a>

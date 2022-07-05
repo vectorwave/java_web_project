@@ -64,11 +64,6 @@
                         <div class="about_content" style="display:table-cell;vertical-align:middle;">
                             <h2 class="title title_color">${guideInfo.profileName}<br>${guideInfo.guideName}</h2>
                             <h4>證照種類： ${guideInfo.licenceType}</h4>
-                            <h6>性別： ${guideInfo.guideGender}</h6>
-                            <h6>連絡電話： ${guideInfo.guidePhone}</h6>
-                            <h6>Email： ${guideInfo.guideEmail}</h6>
-                            <div class="descriptionCotainer">
-                            <p style="font-size: larger;">${guideInfo.guideDescription}</p></div>
                         </div>
                     </div>
                 </div>
@@ -87,7 +82,11 @@
                 <div style="background-color:rgb(255, 123, 0);margin-top: 20px;width:150px;border-radius:35px;text-align: center;">
                 <h3 style="color: rgb(255, 255, 255);">所有商品</h3>
                 </div>
-                <div align="right"> TEST </div>
+                <div align="right"> 
+                    <a href="#" class="genric-btn primary large">上架行程</a>
+                    <a href="#" class="genric-btn primary large">Extra Large</a>    
+                
+                </div>
                 <br/>
 
 			<div class="row imageGallery1" id="gallery">
