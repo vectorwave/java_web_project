@@ -33,11 +33,8 @@ public class PageController {
 	
 	@Autowired
 	private ProductService pService ;
-	
-	
 
 	@Autowired
-
 	private ProductCommentService pcService;
 
 
@@ -69,10 +66,13 @@ public class PageController {
 	//前台商品頁面含page方法
 	@GetMapping("front/productPage")
 	public ModelAndView viewAllProducts(ModelAndView mav, 
-			@RequestParam(name="p", defaultValue="1") Integer pageNumber) {
-		Page<Product> page = pService.findByPage(pageNumber);
-		
+			@RequestParam(name="p", defaultValue="1") Integer pageNumber,
+			@RequestParam(value="key",defaultValue="" ,required = false) String key) {
+//		Page<Product> page = pService.findByPage(pageNumber);
+		Pageable pgb = PageRequest.of(pageNumber - 1, 6 ,Sort.Direction.DESC,"productId");
+		Page<Product> page = pService.searchProductByNameWithPage(key, pgb);
 		mav.getModel().put("page", page);
+		mav.getModel().put("key", key);
 		mav.setViewName("front/JoTravelFront/frontProductPage");
 		return mav;
 		
@@ -88,6 +88,7 @@ public class PageController {
 		
 		return "front/JoTravelFront/frontProductDetail";
 	} 
+	
 	
 	
 //	########################後台商品頁面########################
@@ -193,8 +194,7 @@ public class PageController {
 		 Pageable pgb = PageRequest.of(pageNumber - 1, 3 ,Sort.Direction.DESC,"productId");
 		 
 		 m.addAttribute("page", pgb);
-		 
-		 
+	 
 		 return pService.searchProductByNameWithPage(key, pgb);
 	
 	}

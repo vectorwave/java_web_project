@@ -32,38 +32,7 @@
         
         <jsp:include page="frontLayout/frontHeader.jsp" />
         
-<!--         <header class="header_area"> -->
-<!--             <div class="container"> -->
-<!--                 <nav class="navbar navbar-expand-lg navbar-light"> -->
-<!--                     Brand and toggle get grouped for better mobile display -->
-<%--                     <a class="navbar-brand logo_h" href="index.html"><img src="<c:url value="/images/blog/Logo.png"/>" alt=""></a> --%>
-<%-- <%--                     <a class="navbar-brand logo_h" href="index.html"><img src="<c:url value="/image/Logo.png"> alt=""></a> --%> --%>
-<!--                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> -->
-<!--                         <span class="icon-bar"></span> -->
-<!--                         <span class="icon-bar"></span> -->
-<!--                         <span class="icon-bar"></span> -->
-<!--                     </button> -->
-<!--                     Collect the nav links, forms, and other content for toggling -->
-<!--                     <div class="collapse navbar-collapse offset" id="navbarSupportedContent"> -->
-<!--                         <ul class="nav navbar-nav menu_nav ml-auto"> -->
-<!--                             <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>  -->
-<!--                             <li class="nav-item"><a class="nav-link" href="about.html">About us</a></li> -->
-<!--                             <li class="nav-item"><a class="nav-link" href="accomodation.html">Accomodation</a></li> -->
-<!--                             <li class="nav-item active"><a class="nav-link" href="gallery.html">Gallery</a></li> -->
-<!--                             <li class="nav-item submenu dropdown"> -->
-<!--                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Blog</a> -->
-<!--                                 <ul class="dropdown-menu"> -->
-<!--                                     <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li> -->
-<!--                                     <li class="nav-item"><a class="nav-link" href="blog-single.html">Blog Details</a></li> -->
-<!--                                 </ul> -->
-<!--                             </li>  -->
-<!--                             <li class="nav-item"><a class="nav-link" href="elements.html">Elemests</a></li> -->
-<!--                             <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li> -->
-<!--                         </ul> -->
-<!--                     </div>  -->
-<!--                 </nav> -->
-<!--             </div> -->
-<!--         </header> -->
+
         <!--================Header Area =================-->
         
         <!--================Breadcrumb Area =================-->
@@ -71,10 +40,10 @@
             <div class="overlay bg-parallax" data-stellar-ratio="0.8" data-stellar-vertical-offset="0" data-background=""></div>
             <div class="container">
                 <div class="page-cover text-center">
-                    <h2 class="page-cover-tittle">Gallery</h2>
+                    <h2 class="page-cover-tittle">JoTravel 商品頁面</h2>
                     <ol class="breadcrumb">
                         <li><a href="${contextRoot}/">Home</a></li>
-                        <li class="active">Gallery</li>
+                        <li class="active">Products</li>
                     </ol>
                 </div>
             </div>
@@ -89,14 +58,21 @@
 <!--                     <p>Who are in extremely love with eco friendly system.</p> -->
 <!--                 </div> -->
 			 <div class="section_title text-center">
-			     <h1 class="jumbotron-heading">JoTravel 商品頁面</h1>
-			     <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</p>
+			     <h1 class="jumbotron-heading">來趟旅遊　為回憶點綴</h1>
+			     <!-- <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</p> -->
 			     <p><a href="#" class="btn btn-primary my-2">最夯熱門旅遊</a>
 			     <a href="#" class="btn btn-secondary my-2">旅遊許願池</a>
 			     </p>
 			 </div>
-               
+       <!--================Breadcrumb Area =================-->
+       
+<div class="row">
+<div class="col-lg-9">
 
+               
+<form action="/jotravel/front/productPage" method="get" >
+<input type="text" name="key" placeholder="搜尋商品名稱" id="key"><input type="submit" id="send" value="🔍" ></a>  
+</form>
 			<div class="row imageGallery1" id="gallery">
                 
                 
@@ -126,7 +102,8 @@
 					                  
 					                    <div class="btn-group">
 					                      <button type="button" class="btn btn-sm btn-outline-secondary">🛒加入購物車</button>
-					                      <button type="button" class="btn btn-sm btn-outline-secondary">立即購買</button>
+					                      <a href="${contextRoot}/front/productPage/detail?id=${product.productId}" >
+					                      <button type="button" class="btn btn-sm btn-outline-secondary">查看商品</button></a>
 					                    </div>
 					                    <small class="text-muted">揪團只到:<br/><fmt:formatDate pattern="MM 月 dd 日 " value="${product.endDate}"/></small>
 					          
@@ -137,17 +114,111 @@
 							</c:forEach>
 
                        </div>
-                      </div>
+                     
+ 
+ 	<div class="row justify-content-center">
+ 	<div class="col-9" style="text-align: center;">
+	<c:forEach var="pageNumber" begin="1" end="${page.totalPages}">
+  	<c:choose> 
+  	<c:when test="${pageNumber!= page.number+1}"  > 
+  	<a href="${contextRoot}/front/productPage?p=${pageNumber}&key=${key}"><c:out value="${pageNumber}"/></a>
+ 	</c:when>
+ 	<c:otherwise>
+ 	<c:out value="${pageNumber}"/>
+ 	</c:otherwise>
+ 	</c:choose>
+ 	
+ 	 <c:if test="${pageNumber != page.totalPages}">
+   |
+   </c:if>
+ 	</c:forEach>
+ 
+ </div>
+</div>
+   </div>
+<!--  -----右側欄位----- -->
+ 	<div class="col-lg-3">
+ <!--  -----右側欄位----- -->	
 
-                <!-- </div>
-            </div>
-        </div> -->
+<div class="blog_right_sidebar">
+<!-- 						<aside class="single_sidebar_widget search_widget"> -->
+
+<!-- 							<div class="br"></div> -->
+<!-- 						</aside> -->
+
+						<aside class="single-sidebar-widget tag_cloud_widget">
+							<h4 class="widget_title">熱門標籤</h4>
+							<ul class="list_style">
+								<li><a href='http://localhost:8081/jotravel/front/blogIndex?key=台北'>台北</a></li>
+								<li><a href='http://localhost:8081/jotravel/front/blogIndex?key=台南'>台南</a></li>
+								<li><a href='http://localhost:8081/jotravel/front/blogIndex?key=高雄'>高雄</a></li>
+								<li><a href='http://localhost:8081/jotravel/front/blogIndex?key=澎湖'>澎湖</a></li>
+								<li><a href='http://localhost:8081/jotravel/front/blogIndex?key=綠島'>綠島</a></li>
+								<li><a href='http://localhost:8081/jotravel/front/blogIndex?key=一日遊'>一日遊</a></li>
+								<li><a href='http://localhost:8081/jotravel/front/blogIndex?key=三日遊'>三日遊</a></li>
+								<li><a href='http://localhost:8081/jotravel/front/blogIndex?key=立槳體驗'>立槳體驗</a></li>
+								<li><a href='http://localhost:8081/jotravel/front/blogIndex?key=水肺潛水'>水肺潛水</a></li>
+								<li><a href='http://localhost:8081/jotravel/front/blogIndex?key=自由潛水'>自由潛水</a></li>
+								<li><a href='http://localhost:8081/jotravel/front/blogIndex?key=澎湖花火節'>澎湖花火節</a></li>
+								<li><a href='http://localhost:8081/jotravel/front/blogIndex?key=台東熱氣球'>台東熱氣球</a></li>
+							</ul>
+						</aside>
+						<aside class="single-sidebar-widget tag_cloud_widget">
+							<h4 class="widget_title">猜你喜歡</h4>
+							<ul class="list_style">
+								
+								<li><p id="krisrock"></p></li>
+								<li><p id="krisrock1"></p></li>
+								<li><p id="krisrock2"></p></li>
+								
+<!-- 								<li><a href="#">Fashion</a></li> -->
+<!-- 								<li><a href="#">Food</a></li> -->
+<!-- 								<li><a href="#">Technology</a></li> -->
+<!-- 								<li><a href="#">Lifestyle</a></li> -->
+<!-- 								<li><a href="#">Art</a></li> -->
+<!-- 								<li><a href="#">Adventure</a></li> -->
+<!-- 								<li><a href="#">Food</a></li> -->
+<!-- 								<li><a href="#">Lifestyle</a></li> -->
+<!-- 								<li><a href="#">Adventure</a></li> -->
+							</ul>
+						</aside>
+					</div>
+
+
+
+
+
+
+
+
+
+
+
+<!--  -----右側欄位----- -->
+ 	</div>
+ <!--  -----右側欄位----- -->
+<!--  -- -->
+ 
+ </div>
+ </div>
+ 
+ 
     </section>    
       <jsp:include page="frontLayout/frontFooter.jsp" />               
 
 <!--================ End footer Area  =================-->
-        
-        
+ 
+		<!--   ===購物車按鈕===   -->
+ 		<script type="text/javascript" src="${contextRoot}/js/js.cookie.min.js"> </script>
+ 		<script type="text/javascript">
+ 		function addToCart(productId,amount,date,total_days){
+ 			let cart = cookies.set("cart");
+ 			cart += ${product.productId} + ',' + amount + ',' + date + ',' + total_days+';' ;
+ 			cookies.set("cart",cart);
+ 		}
+ 		
+ 		</script>
+ 	
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="<c:url value="/js/blog/jquery-3.2.1.min.js"/>"></script>

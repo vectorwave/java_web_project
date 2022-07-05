@@ -74,8 +74,8 @@
                 <div class="page-cover text-center">
                     <h2 class="page-cover-tittle">Product Detail</h2>
                     <ol class="breadcrumb">
-                        <li><a href="index.html">Home</a></li>
-                        <li class="active">Gallery</li>
+                        <li><a href="${contextRoot}/front/productPage/">Product</a></li>
+                        <li class="active">Product Detail</li>
                     </ol>
                 </div>
             </div>
@@ -93,11 +93,10 @@
                 <div class="row">
                     <div class="col-12">
                         <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb mt-50">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item"><a href="#">Furniture</a></li>
-                                <li class="breadcrumb-item"><a href="#">Chairs</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">${product.productName}</li>
+                            <ol class="breadcrumb mt-50" >
+                                <li class="breadcrumb-item"><a href="${contextRoot}/" style="color:gray">Home</a></li>
+                                <li class="breadcrumb-item"><a href="${contextRoot}/front/productPage/" style="color:gray">Product</a></li>
+                                <li class="breadcrumb-item active" aria-current="page" style="color:gray">${product.productName}</li>
                             </ol>
                         </nav>
                     </div>
@@ -105,13 +104,13 @@
 
 <!--  ============== 商品圖片跑馬燈 =================== -->
                 <div class="row">
-                    <div class="col-12 col-lg-7">
+                    <div class="col-9 col-lg-7">
                         <div class="single_product_thumb">
                             <div id="product_details_slider" class="carousel slide" data-ride="carousel">
                                 <ol class="carousel-indicators">
-                                    <li class="active" data-target="#product_details_slider" data-slide-to="0" style="background-image: url(img/product-img/pro-big-1.jpg);">
+                                    <li class="active" data-target="#product_details_slider" data-slide-to="0" style="background-image: url(image/666.jpg);">
                                     </li>
-                                    <li data-target="#product_details_slider" data-slide-to="1" style="background-image: url(img/product-img/pro-big-2.jpg);">
+                                    <li data-target="#product_details_slider" data-slide-to="1" style="background-image: url(image/15.jpg);">
                                     </li>
                                     <li data-target="#product_details_slider" data-slide-to="2" style="background-image: url(img/product-img/pro-big-3.jpg);">
                                     </li>
@@ -120,16 +119,16 @@
                                 </ol>
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
-                                        <a class="gallery_img" href="img/product-img/pro-big-1.jpg">
+                                        <a class="gallery_img" style="width:600px;height:600px" >
 <!--                                             <img class="d-block w-100" src="img/product-img/pro-big-1.jpg" alt="First slide"> -->
                                         	<img class="d-block w-100" src="${contextRoot}/back/product/photo/${product.productId}"  height="600px" alt="First slide"> 
                                         </a>
                                     </div>
-<!--                                     <div class="carousel-item"> -->
-<!--                                         <a class="gallery_img" href="img/product-img/pro-big-2.jpg"> -->
-<!--                                             <img class="d-block w-100" src="img/product-img/pro-big-2.jpg" alt="Second slide"> -->
-<!--                                         </a> -->
-<!--                                     </div> -->
+                                    <div class="carousel-item">
+                                        <a class="gallery_img" href="">
+                                            <img class="d-block w-100" src="${contextRoot}/image/15.jpg" alt="Second slide">
+                                        </a>
+                                    </div>
 <!--                                     <div class="carousel-item"> -->
 <!--                                         <a class="gallery_img" href="img/product-img/pro-big-3.jpg"> -->
 <!--                                             <img class="d-block w-100" src="img/product-img/pro-big-3.jpg" alt="Third slide"> -->
@@ -151,8 +150,8 @@
                             <div class="product-meta-data">
                                 <div class="line"></div>
                                 
-                                <a href="product-details.html">
-                                    <h6>${product.productName}</h6>
+                                <a href="#" >
+                                    <h3>${product.productName}</h3>
                                 </a>
                                 <!-- Ratings & Review 星星 -->
                                 <div class="ratings-review mb-15 d-flex align-items-center justify-content-between">
@@ -163,6 +162,7 @@
                                         <i class="fa fa-star" aria-hidden="true"></i>
                                         <i class="fa fa-star" aria-hidden="true">5</i>
                                     </div>
+                                    <br/>
 								<!-- 商品名稱 -->
 <!--                                     <div class="review"> -->
 <!--                                         <a href="#">Write A Review</a> -->
@@ -170,11 +170,13 @@
                                
                                 </div>
                                 <!-- 商品特點簡述 -->
+                                <br/>
                                 <p class="avaibility"><i class="fa fa-circle"></i>${product.productSimpleDescription}</p>
                             </div>
 	
 							<!--=====商品敘述====== -->
                             <div class="short_overview my-5">
+                                <p>行程內容:</p>
                                 <p>${product.productDescription}</p>
 <!--                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid quae eveniet culpa officia quidem mollitia impedit iste asperiores nisi reprehenderit consequatur, autem, nostrum pariatur enim?</p> -->
                             </div>
@@ -194,6 +196,7 @@
                                 <button type="submit" name="addtocart" value="5" class="btn btn-primary">加入購物車</button>
                                 
                             </form>
+                            <br/><br/>
                             <button name="addcomment" id="addcomment" onclick="upd('${product.productId}')" class="btn btn-primary" >評論商品</button>
                         </div>
                     </div>

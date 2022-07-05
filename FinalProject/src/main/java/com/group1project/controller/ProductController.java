@@ -94,9 +94,9 @@ public class ProductController {
 		return "redirect:/back/allProduct";
 	}
 	
-	//後台新增商品
+	//前台新增商品
 	//@PostMapping方法,為新增商品,輸入json格式資料即可完成新增,利用@ResponseBody回傳json格式的資料
-	@PostMapping("front/addProduct")
+	@PostMapping("frontAddProduct")
 	public String frontAaveProduct(@ModelAttribute("frontPd") Product product,
 			@RequestParam("file") MultipartFile file,@RequestParam("accountId") Integer accountId,
 			Model model) {
@@ -120,7 +120,7 @@ public class ProductController {
 		message.put("okMsg", "insertOK");
 		model.addAttribute("msg", message);
 		
-		return "redirect:front/productPage";
+		return "redirect:/front/productPage";
 	}
 	
 	
