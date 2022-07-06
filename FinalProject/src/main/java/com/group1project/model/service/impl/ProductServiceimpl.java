@@ -58,7 +58,7 @@ public class ProductServiceimpl implements ProductService {
 	//0713等待修改
 	@Override
 	public Page<Product> findByPage(Integer pageNumber) {
-		   Pageable pgb = PageRequest.of(pageNumber - 1, 6 );
+		   Pageable pgb = PageRequest.of(pageNumber - 1, 6,Sort.Direction.DESC,"product_id");
 //		   startDate productId ,Sort.Direction.DESC,"startDate"
 //		   Page<Product> page = pDao.findAll(pgb);
 		   Page<Product> page2 = pDao.findAllOnSaleProduct(pgb);

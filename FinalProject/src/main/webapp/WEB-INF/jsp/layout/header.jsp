@@ -150,6 +150,7 @@
 					<div class="dropdown-content">
 						<a href="${contextRoot}/article/add">新增文章</a> <a
 							href="${contextRoot}/article/all">文章管理</a>
+							<a href="${contextRoot}/JoGroup/all">揪團管理</a>
 					</div>
 				</div>
 

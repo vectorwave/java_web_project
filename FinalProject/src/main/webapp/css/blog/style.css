@@ -490,6 +490,14 @@ button:focus {
   background: rgba(34, 34, 34, 0.9);
 }
 
+#cartIcon {
+  height: 40px;
+}
+
+#cartIcon:hover {
+  transform: scale(1.1);
+}
+
 /*---------------------------------------------------- */
 /*----------------------------------------------------*/
 /*============= Start banner_area css =============*/
@@ -674,6 +682,12 @@ button:focus {
 
 .breadcrumb_area .bg-parallax {
   background: url("../image/666.jpg") no-repeat scroll center 0/cover;
+  opacity: 0.50;
+  z-index: -1;
+}
+
+.breadcrumb_area .gd-parallax {
+  background: url("../image/guideBanner.jpg") no-repeat scroll center 0/cover;
   opacity: 0.50;
   z-index: -1;
 }

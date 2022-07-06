@@ -108,6 +108,7 @@
         <!--================Banner Area =================-->
        
         <section class="accomodation_area section_gap" style="padding:20px">
+        
             <div class="container">
                 <div class="section_title text-center" style="height:50px">
                     <h2 class="title_color">熱門旅遊行程</h2>
@@ -134,7 +135,7 @@
         
         <!--================Breadcrumb Area =================-->
         <section class="facilities_area section_gap">
-            <div class="overlay bg-parallax" data-stellar-ratio="0.8" data-stellar-vertical-offset="0" data-background="">  
+            <div class="bg-parallax" data-stellar-ratio="0.8" data-stellar-vertical-offset="0" data-background="">  
             </div>
             <div class="container">
                 <div class="section_title text-center" style="height:40px">
@@ -362,7 +363,31 @@
         <jsp:include page="frontLayout/frontFooter.jsp" />               
 		<!--================ End footer Area  =================-->
         
+        <script type="text/javascript">
         
+        window.onload=navigator.geolocation.getCurrentPosition(successCallback);  
+        function successCallback(position){  
+            var lat1 = position.coords.latitude;  
+            var long1 = position.coords.longitude;  
+            console.log(lat1);
+            console.log(long1);
+            setCookie("lat1",lat1);
+            setCookie("long1",long1);
+           }
+           
+        function setCookie(name,value){
+        	document.cookie = name + "=" +escape(value) +";path=/";
+        }
+
+        function getCookie(name){
+        	var arr,reg = new RegExp("(^|)" + name + "=([^;]*)(;|$)");
+        	if(arr = document.cookie.match(reg))
+        		return unescape(arr[2]);
+        	else
+        		return null;
+        }
+        
+        </script>
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="<c:url value="/js/blog/jquery-3.2.1.min.js"/>"></script>

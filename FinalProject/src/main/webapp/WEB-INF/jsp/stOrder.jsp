@@ -1,14 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<jsp:include page="layout/header.jsp" />
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
-<script type="text/javascript" src="${contextRoot}/js/vue.min.js"></script>
-<script type="text/javascript" src="${contextRoot}/js/chart.min.js"></script>
-<div class="w-25 h-25 py-2">
-<div class="text-center">各金流訂單數量</div>
-<canvas id="example"></canvas>
+<link href="${contextRoot}/css/bootstrap.min.css" rel="stylesheet">
+<jsp:include page="layout/header.jsp" />
+<meta name="author" content="http://www.softwhy.com/" />
+<title>JoTravel 訂單數據</title>
+<div class="container">
+<div class="justify-content-center" style="font-size:50px">
+	<h1 class="text-center">各金流訂單數量</h1>
+	<canvas id="cashFlow" width="800" height="450"></canvas>
+</div>	
+
 </div>
 
 <script>
@@ -25,7 +30,7 @@
 			console.log(err);
 		}
 	});
-  	var ctx = $( "#example" ),
+  	var ctx = $( "#cashFlow" ),
   		example = new Chart(ctx, {
   			type: "pie", // 圖表類型
   			data: {

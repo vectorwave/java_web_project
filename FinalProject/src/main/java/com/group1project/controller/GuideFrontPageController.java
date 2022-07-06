@@ -1,5 +1,7 @@
 package com.group1project.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -8,15 +10,20 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.group1project.model.bean.Account;
 import com.group1project.model.bean.Guide;
 import com.group1project.model.bean.Product;
 import com.group1project.model.service.GuideService;
+import com.group1project.model.service.ProductService;
 
 @Controller
 public class GuideFrontPageController {
 
 	@Autowired
 	private GuideService gService;
+	
+	@Autowired
+	private ProductService pService;
 	
 //	//所有商家頁面
 //	@GetMapping("/testGuidePage")
@@ -43,13 +50,34 @@ public class GuideFrontPageController {
 	public ModelAndView guideDetail(ModelAndView mav, @PathVariable(name="id") Integer id) {
 		
 		Guide guide = gService.getGuideById(id);
+		List<Product> productList = pService.findAllByAccountId(id);
 		
 		mav.getModel().put("guideInfo", guide);
+		mav.getModel().put("productList", productList);
 		
 		mav.setViewName("front/JoTravelFront/frontGuideDetailPage");
 		return mav;
 		
 	}
+	
+	//會員中心 商家頁面
+	@GetMapping("/guide/myprofile/{id}")
+	public ModelAndView viewGuideProfile(ModelAndView mav,@PathVariable Integer id) {
+		
+		Guide guide = gService.getGuideById(id);
+		List<Product> productList = pService.findAllByAccountId(id);
+		
+		mav.getModel().put("guideInfo", guide);
+		mav.getModel().put("productList", productList);
+		
+		mav.setViewName("front/JoTravelFront/frontGuideProfilePage");
+		return mav;
+		
+	}
+	
+	
+	
+	
 	
 	
 }
