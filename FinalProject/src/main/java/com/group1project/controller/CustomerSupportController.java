@@ -200,9 +200,9 @@ public class CustomerSupportController {
 	}
 
 	@GetMapping("/message/delete{id}")
-	public ModelAndView deletePage(ModelAndView mav,@PathVariable Integer id) {
+	public ModelAndView deletePage(ModelAndView mav,@PathVariable Integer id,@ModelAttribute("customerBean2") CustomerBean csb) {
 		csService.deleteById(id);
-
+		
 		mav.setViewName("redirect:/staff/message/selectAll");
 
 		return mav;
