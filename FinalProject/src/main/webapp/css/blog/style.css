@@ -492,6 +492,7 @@ button:focus {
 
 #cartIcon {
   height: 40px;
+  margin-right: 10px;
 }
 
 #cartIcon:hover {
@@ -3620,6 +3621,94 @@ h1, h2, h3, h4, h5, h6 {
 .footer-bottom .footer-social a:hover {
   color: #f3c300;
 }
+
+/* --- frontGuideProfilePage.jsp CSS -STRAT---  */
+
+.thContent * {
+  padding:5px 15px 5px 15px;
+  text-align: center;
+}
+
+.tdContent * {
+  padding:5px 15px 5px 15px;
+  text-align: center;
+}
+
+.tdContent:hover {
+  background-color:  rgb(245, 245, 245) ;
+}
+
+#formFieldset {
+  background-color: white;
+  border-radius: 30px;
+  width: 800px;
+}
+
+#guideLegend {
+  padding-top: 20px;
+}
+
+.formLabel {
+  background-color: rgb(255, 175, 84);
+  border: 5px solid white;
+  padding:10px;
+}
+
+.formContent {
+  background-color: rgb(255, 246, 193);
+  border: 5px solid white;
+  padding:10px;
+}
+
+.btn-container {
+  margin-bottom: 30px;
+
+}
+
+.inputBox1 {
+margin-top: 5px;
+margin-bottom: 5px;
+width: 300px;
+background-color: transparent;
+border: none;
+}
+
+.textarea1 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+width: 300px;
+height: 80px;
+background-color: transparent;
+resize:none;
+border: none;
+}
+
+.inputBoxAdd{
+  margin-top: 5px;
+  margin-bottom: 5px;
+width: 300px;
+border: none;
+border-radius: 3px;
+}
+
+.textareaAdd{
+  margin-top: 5px;
+  margin-bottom: 5px;
+width: 300px;
+height: 80px;
+resize:none;
+border: none;
+border-radius: 3px;
+}
+
+.GIFLabel {
+  margin-top: 5px;
+  margin-bottom: 5p
+}
+
+/* --- frontGuideProfilePage.jsp CSS -END---  */
+
+
 
 /*---------------------------------------------------- */
 
