@@ -79,12 +79,12 @@ td, input {
 </head>
 <body>
 
-	
 
-		<!-- 插入上導覽列與左導覽列 -->
-		
 
-		<!-- 章節層級 
+	<!-- 插入上導覽列與左導覽列 -->
+
+
+	<!-- 章節層級 
 		<section class="is-title-bar">
 			<div
 				class="flex flex-col md:flex-row items-center justify-between space-y-6 md:space-y-0">
@@ -97,84 +97,133 @@ td, input {
 		</section>
 
 		<!-- 核心內容標題 -->
-		<div class="content-container">
-    
-<fieldset style="height:450px;width:600px">
+	<div class="content-container">
 
-<legend>商家管理 </legend>
+		<fieldset style="height: 450px; width: 600px">
 
-<div class="tableContainer" >
+			<legend style="position: relative; top: 30px; right: 130px">客服管理</legend>
 
-		<!-- 原核心內容的 section 開始 -->
+			<div class="tableContainer">
+
+				<!-- 原核心內容的 section 開始 -->
+
+				<form action="${contextRoot}/message/findByServiceInfoLike"
+					style="position: relative; top: 1px; right: 130px; width: 600px">
+					特定問題查詢:<input id="inputSearch" class="input" type="text"
+						name="findByServiceInfoLike"> <input
+						type="submit" value="送出">
+				</form>
+
+				<table
+					style="position: relative; top: 1px; right: 130px; width: 10px">
+					<tr class="thContent">
+						<th>Id</th>
+						<th>ServiceInfo</th>
+						<th>Description</th>
+						<th>Name</th>
+						<th>Phone</th>
+						<th>Email</th>
+						<!--<th>PreferedContactTime</th>-->
+						<th>ProcessStatus</th>
+						<th>Remark</th>
+						<th>CreatedAt</th>
+						<th>ModifiedAt</th>
+						<th>Update</th>
+						<th>Delete</th>
+					</tr>
+
+					<c:forEach items="${page.content}" var="customerBean">
+						<tr class="tdContent">
+							<td style="">${customerBean.id}</td>
+							<td style="">${customerBean.serviceInfo}</td>
+							<td style="">${customerBean.description}</td>
+							<td style="">${customerBean.name}</td>
+							<td style="">${customerBean.phone}</td>
+							<td style="">${customerBean.email}</td>
+							<!--  <td style="">${customerBean.preferedContactTime}</td>-->
+							<td style="">${customerBean.processStatus}</td>
+							<td style="">${customerBean.remark}</td>
+							<td style="">${customerBean.createdAt}</td>
+							<td style="">${customerBean.modifiedAt}</td>
+
+
+							<td>
+								<div class="btn-container">
+									<form method="get"
+										action="${contextRoot}/message/editForm${customerBean.id}">
+										<button class="btn btn-outline-primary edit" type="submit">修改</button>
+									</form>
+								</div>
+
+							</td>
+
+							<td>
+								<div class="btn-container">
+								<form method="get" action="${contextRoot}/message/delete${customerBean.id}">
+									<button type="submit" 
+										class="btn btn-outline-danger delete">刪除</button>
+</form>
+								</div>
+							</td>
+						</tr>
+					</c:forEach>
+
+					<%-- 					</form> --%>
+				</table>
+			</div>
+		</fieldset>
+		<div id="container" style="width: 550px; height: 100px; margin: 10px"></div>
+						<script type="text/javascript">
+	
+		$(".delete").click(function(){
+			Swal.fire({
+				  title: '確定要刪除嗎?',
+				  text: "刪除後無法再回復!",
+				  icon: 'warning',
+				  showCancelButton: true,
+				  confirmButtonColor: '#3085d6',
+				  cancelButtonColor: '#d33',
+				  confirmButtonText: '是的, 我要刪除!'
+				}).then((result) => {
+				  if (result.isConfirmed) {
+				    Swal.fire(
+				      '已刪除!',
+				      '資料已刪除',
+				      '刪除成功'
+				    )
+				setTimeout(deleteForm,1000)
+				  }
+				})
+				
+		})
 		
-								<form action="${contextRoot}/message/findByServiceInfoLike">
-									特定問題查詢:<input id="inputSearch" class="input" type="text"
-										name="findByServiceInfoLike"> <input type="submit"
-										value="送出">
-								</form>
+		function deleteForm(){
+			
+			
+			$("#deleteForm").submit();
+		}
+						
+						<script>
+            function deleteGuide() {
+              Swal.fire({
+                title: '確認刪除？',
+                showDenyButton: true,
+                confirmButtonText: '確認',
+                denyButtonText: '取消',
+              }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                  // 		    Swal.fire('Saved!', '', 'success')
+                  Swal.fire('已成功刪除！', '', 'success')
 
-								<table style="position: relative;top: 30px;right: 80px;width:10px">
-									<tr class="thContent">
-										<th >Id</th>
-										<th>ServiceInfo</th>
-										<th>Description</th>
-										<th>Name</th>
-										<th>Phone</th>
-										<th>Email</th>
-										<th>PreferedContactTime</th>
-										<th>ProcessStatus</th>
-										<th>Remark</th>
-										<th>CreatedAt</th>
-										<th>ModifiedAt</th>
-										<th>Update</th>
-										<th>Delete</th>
-									</tr>
-								
-									<c:forEach items="${page.content}" var="customerBean">
-										<tr class="tdContent">
-											<td style="">${customerBean.id}</td>
-											<td style="">${customerBean.serviceInfo}</td>
-											<td style="">${customerBean.description}</td>
-											<td style="">${customerBean.name}</td>
-											<td style="">${customerBean.phone}</td>
-											<td style="">${customerBean.email}</td>
-											<td style="">${customerBean.preferedContactTime}</td>
-											<td style="">${customerBean.processStatus}</td>
-											<td style="">${customerBean.remark}</td>
-											<td style="">${customerBean.createdAt}</td>
-											<td style="">${customerBean.modifiedAt}</td>
-					
-												
-											<td style="">
-												<div class="buttons right nowrap">
-													<!-- 修改 -->
-													<form method="get"
-														action="${contextRoot}/message/editForm${customerBean.id}">
-														<button class="btn btn-outline-dark" data-target="sample-modal-2" type="submit">回覆
-															<span class="icon"><i class="mdi mdi-eye"></i></span>
-														</button>
-													</form>
-												</div>
-											</td>
-											<td style="border-radius: 0px 20px 20px 0px;width:130px">
-												<!-- onclick="return confirm('確認刪除')" --> <!-- 刪除 -->
-												<form id="deleteForm" method="get"
-													action="${contextRoot}/message/delete${customerBean.id}">
-													<button class="btn btn-outline-dark" data-target="sample-modal"
-														type="button">刪除
-														<span class="icon"><i class="mdi mdi-trash-can"></i></span>
-													</button>
-												</form>
-											</td>
-										</tr>
-									</c:forEach>
+                } else if (result.isDenied) {
 
-									<%-- 					</form> --%>
-								</table>
-							</div>
-				</fieldset>
-		<div id="container"
-			style="width: 550px; height: 100px; margin: 10px"></div>
+                  return false;
+                }
+              })
+            }
+          </script>
+
 		<script>
 $(document).ready(function() {  
    var chart = {
@@ -233,29 +282,34 @@ $(document).ready(function() {
 });
 </script>
 		<!-- 原核心內容的 section 結束 -->
-		<div class="row justify-content-center" style="text-align:center; margin-top: 10px;">
+		<div class="row justify-content-center"
+			style="text-align: center; margin-top: 10px;">
 			<div class="col-7">
-		
+
 				<c:forEach var="pageNumber" begin="1" end="${page.totalPages}">
 					<c:choose>
 						<c:when test="${page.number != pageNumber -1}">
-		
-							<a href="${contextRoot}/staff/message/selectAll?p=${pageNumber}"><button type="button" class="btn btn-outline-secondary"><c:out value="${pageNumber}"/>  </button></a>
-		
+
+							<a href="${contextRoot}/staff/message/selectAll?p=${pageNumber}"><button
+									type="button" class="btn btn-outline-secondary">
+									<c:out value="${pageNumber}" />
+								</button></a>
+
 						</c:when>
 						<c:otherwise>
-		
-						<a class="btn btn-secondary disabled" role="button" aria-disabled="true"> ${pageNumber} </a>
-		
-						<c:set var="pgn" value="${page.number +1}" scope="session"/>
+
+							<a class="btn btn-secondary disabled" role="button"
+								aria-disabled="true"> ${pageNumber} </a>
+
+							<c:set var="pgn" value="${page.number +1}" scope="session" />
 						</c:otherwise>
 					</c:choose>
 				</c:forEach>
 			</div>
 		</div>
-		
+
 		<!-- 插入頁腳 -->
-		
+
 
 		<div id="sample-modal" class="modal">
 			<div class="modal-background --jb-modal-close"></div>
@@ -303,61 +357,6 @@ $(document).ready(function() {
 
 
 
-	<script>
-		!function(f, b, e, v, n, t, s) {
-			if (f.fbq)
-				return;
-			n = f.fbq = function() {
-				n.callMethod ? n.callMethod.apply(n, arguments) : n.queue
-						.push(arguments)
-			};
-			if (!f._fbq)
-				f._fbq = n;
-			n.push = n;
-			n.loaded = !0;
-			n.version = '2.0';
-			n.queue = [];
-			t = b.createElement(e);
-			t.async = !0;
-			t.src = v;
-			s = b.getElementsByTagName(e)[0];
-			s.parentNode.insertBefore(t, s)
-		}(window, document, 'script',
-				'https://connect.facebook.net/en_US/fbevents.js');
-		fbq('init', '658339141622648');
-		fbq('track', 'PageView');
-	</script>
-
-	<script type="text/javascript">
-	
-		$(".delete").click(function(){
-			Swal.fire({
-				  title: '確定要刪除嗎?',
-				  text: "刪除後無法再回復!",
-				  icon: 'warning',
-				  showCancelButton: true,
-				  confirmButtonColor: '#3085d6',
-				  cancelButtonColor: '#d33',
-				  confirmButtonText: '是的, 我要刪除!'
-				}).then((result) => {
-				  if (result.isConfirmed) {
-				    Swal.fire(
-				      '已刪除!',
-				      '資料已刪除',
-				      '刪除成功'
-				    )
-				setTimeout(deleteForm,1000)
-				  }
-				})
-				
-		})
-		
-		function deleteForm(){
-			
-			
-			$("#deleteForm").submit();
-		}
-	</script>
 
 	<noscript>
 		<img height="1" width="1" style="display: none"
@@ -366,7 +365,7 @@ $(document).ready(function() {
 
 
 	<!-- Icons below are for demo only. Feel free to use any icon pack. Docs: https://bulma.io/documentation/elements/icon/ -->
-<jsp:include page="../layout/footer.jsp" />
+	<jsp:include page="../layout/footer.jsp" />
 
 </body>
 </html>
