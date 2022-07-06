@@ -45,48 +45,33 @@
 <br/>
 
 <div class="container">
-<form:form  class="form-floating" method="post" enctype="multipart/form-data" action="${contextRoot}/back/product/frontAddProduct" modelAttribute="frontPd" >
-
-  <form:input path="productId" type="hidden" />
-  
-  <div class="form-group">
-  商家編號：<input name="accountId" id="accountId" class="form-control" type="text" value="${loginuser.accountId}" readonly="readonly"><br/>
-  產品名稱：<form:input type="text" id="productName" path="productName" class="form-control" required="required" placeholder="商品名稱" /><br/>
-  產品價格：<form:input type="text" id="productPrice" path="productPrice" class="form-control" value="1000" required="required"/><br/>
-  上架時間：<form:input type="date" id="startDate" path="startDate" class="form-control" required="required" readonly="readonly" /><br/>
-  下架時間：<form:input type="date" id="endDate" path="endDate" class="form-control"  required="required" readonly="readonly"/><br/>
-  產品圖片：<img id="output" width="300" height="300"/><br/><br/>
-  
-  <input type="file" class="form-control" name="file" accept="image/*" onchange="loadFile(event)"/><br/>
-  
-  區域分類:<form:select path="productArea" id="productArea" class="form-select" required="required">
-  <form:option value="北部">北部</form:option>
-  <form:option value="東部">東部</form:option>
-  <form:option value="南部">南部</form:option>
-  <form:option value="西部">西部</form:option>
-  <form:option value="外島">外島</form:option>
-</form:select>
-  <br/>
-  
-  商品簡述(50字內):<form:input type="text" id="productSimpleDescription" path="productSimpleDescription" class="form-control" maxlength="50" required="required"/><br/>
 
 
-  商品詳述(300字內):<form:input type="textarea" id="productDescription" path="productDescription" class="form-control" maxlength="300" required="required"/><br/>
-  
-  
-  上架狀態:<form:select path="status" class="form-select" required="required">
-  <form:option value="上架" >上架</form:option>
-  <form:option value="下架">下架</form:option>
-</form:select>
-  
-  </div>
-  
-  <input onclick="submitForm(form)" type="button" class="btn btn-primary" value="新增商品">
-  <input type="button" id="one" value="一鍵新增" />  
-  </form:form>
-  </div>
-<%--   <div> ${msg.okMsg} --%>
-<!--   </div> -->
+<table class="table" border="1"  id="table1">
+<tr style="background-color:#fac473">
+<th>評論編號<th>商品名稱<th>會員名稱<th>評論內容<th>分數(滿分5分)<th>更新時間
+<div id="newTable">
+<c:forEach var="value" items="${searchPdC}">
+<tr> 
+<td> <c:out value="${value.prouctCommentId}"/></td>
+<td> <c:out value="${value.product.productName}"/></td>
+<td> <c:out value="${value.account.accountName}"/></td>
+<td> <c:out value="${value.productComment}"/></td>     	
+<td> <c:out value="${value.commentScore}"/></td>     	
+<td> <fmt:formatDate pattern="yyyy 年 MM 月 dd 日 a hh:mm:ss " value="${value.updatedTime}"/></td> 
+<%-- <td><button class="delt" onclick="upd('${value.prouctCommentId}')" >📝</button></td>  --%>
+<%-- <td><button class="delt" onclick="del('${value.prouctCommentId}')" >✂</button></td>  --%>
+<%-- <td><a href="product/editProduct?id=${value.productId}"><button class="delt" onclick="return del()">📝</button></a></td>  --%>
+<%-- <td><a href="product/delete/${value.productId}"><button class="delt" onclick="return del()">✂</button></a></td>  --%>
+</tr>
+</c:forEach>
+</div>
+
+
+</table>
+
+
+</div>
 
 
 
@@ -106,44 +91,59 @@
  
   
  <script>
-  var loadFile = function(event) {
-    var output = document.getElementById('output');
-    output.src = URL.createObjectURL(event.target.files[0]);
-    output.onload = function() {
-      URL.revokeObjectURL(output.src) // free memory
-    }
-  };
-  
-  function submitForm(form){
-	  Swal.fire({
-		  title: '確認新增商品?',
-		  showDenyButton: true,
-		  confirmButtonText: '儲存',
-		  denyButtonText: '繼續修改',
-		}).then((result) => {
-		  /* Read more about isConfirmed, isDenied below */
-		  if (result.isConfirmed) {
-// 		    Swal.fire('Saved!', '', 'success')
-		    form.submit(form);
-		    
-		  } else if (result.isDenied) {
-		    
-		    return false;
-		  }
-		})
-  }
-  
-  $('#one').click(function(){
-	  $('#productName').val("火辣辣墾丁重砲海陸三日遊");
-	  $('#productPrice').val("6800");
-	  $('#startDate').val("2022-07-01");
-	  $('#endDate').val("2022-07-25");
-	  $('#productArea').val("南部");
-	  $('#productSimpleDescription').val("水上活動三選二,暢遊墾丁大街,包含兩天住宿,海鮮餐廳吃到飽!");
-	  $('#productDescription').val("第一日:08:00台北火車站東三門集合,搭乘遊覽車直達墾丁,中餐為精選海陸合菜,下午自由行程,晚上暢遊墾丁大街,精選串燒酒吧,<br/>第二日:火辣辣比基尼衝浪,享受墾丁陽光<br/>第三日:早上遊玩恆春古蹟,中午啟程回家!");
+ function del(e) {
+	  if (confirm("確認要執行嗎?") == true) {
+	   return true
+	  } else {
+	   window.event.returnValue = false; 
+	  }
+	 };
 
-	 })
-  
+	 button.forEach(delt => {
+	  delt.addEventListener('click', del);
+	  });
+	 
+	 function upd(e){
+		 Swal.fire({
+			  title: '確認修改嗎?',
+			//   text: "You won't be able to revert this!",
+			  icon: 'question',
+			  showCancelButton: true,
+			  confirmButtonColor: '#3085d6',
+			  cancelButtonColor: '#d33',
+			  confirmButtonText: 'Yes!',
+			  
+			}).then((result) => {
+			  if (result.isConfirmed) {
+				  
+				document.location.href='http://localhost:8081/jotravel/back/productcomment/editProductComment?id='+e;
+			  }else if (result.isDenied) {
+				    
+				    return false;
+				  }
+			});
+	 }
+	 
+	 function del(e){
+		 Swal.fire({
+			  title: '確認刪除嗎?',
+			//   text: "You won't be able to revert this!",
+			  icon: 'question',
+			  showCancelButton: true,
+			  confirmButtonColor: '#3085d6',
+			  cancelButtonColor: '#d33',
+			  confirmButtonText: 'Yes!',
+			  
+			}).then((result) => {
+			  if (result.isConfirmed) {
+
+				document.location.href='http://localhost:8081/jotravel/back/productcomment/delete/'+e;
+			  }else if (result.isDenied) {
+				  
+				    return false;
+				  }
+			});
+	 }
 </script> 
  
 <jsp:include page="frontLayout/frontFooter.jsp" />               

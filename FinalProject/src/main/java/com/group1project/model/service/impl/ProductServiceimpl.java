@@ -83,6 +83,12 @@ public class ProductServiceimpl implements ProductService {
 	public List<Product> findAllByAccountId(Integer accountId) {
 		return pDao.findAllByAccountId(accountId);
 	}
+
+
+	@Override
+	public List<Product> findAllProductByProducArea(String tag) {
+		return pDao.findAllProductByProductArea(tag);
+	}
 	
 	
 

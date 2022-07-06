@@ -15,7 +15,7 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="icon" href="image/favicon.png" type="image/png">
-<title>Jotravel 訂單頁面</title>
+<title>我的訂單</title>
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href='<c:url value="/css/bootstrap.min.css"/>'>
 <link rel="stylesheet"
@@ -68,12 +68,10 @@
 						<div class="col-sm text-center">{{order.status}}</div>
 						<div class="col-sm text-center">{{getTotalPrice(index)}}</div>
 						<div class="col-sm">
-							<button class="btn btn-primary btn-sm" type="button"
+							<button class="genric-btn info circle" type="button"
 								data-toggle="collapse" :data-target="'#collapse-'+index">
 								顯示訂單細節</button>
-							<button type="button" @click="delOrder(index);delModal()"
-								class="btn btn-danger btn-xs" data-toggle="modal"
-								data-target="#purchaseModal">🗑️</button>
+							
 						</div>
 					</div>
 				</div>
@@ -94,10 +92,7 @@
 						</thead>
 						<tbody v-for="(detail,cindex) in order.orderDetails">
 							<tr>
-								<td class="align-middle"><button type="button"
-										@click="delDetail(index,cindex);delModal()"
-										class="btn btn-danger btn-sm" data-toggle="modal"
-										data-target="#purchaseModal">🗑️</button>
+								<td class="align-middle">
 								<td class="align-middle"><img
 									:src="'${contextRoot}/back/product/photo/'+detail.product.productId"
 									alt="..." width="80px;"></td>

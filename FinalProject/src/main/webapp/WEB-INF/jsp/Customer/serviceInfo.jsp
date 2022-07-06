@@ -27,79 +27,126 @@ td {
 		}
 	}
 </script>
-<div class="container">
+<div class="content-container" >
+    
+<fieldset style="height:450px;width:300px;">
+
+<legend style="position: relative;top: 30px;right: 130px">客服管理-處理中</legend>
+
+<div class="tableContainer" >
 	
-	<div class="col-9">
-				<div class="card">
-					<div class="card-header">客服表單</div>
-					<div class="card-body">
-						<h1>查詢全部資料</h1>
-				<table border="1">
-					<tr style="background-color: #a8fefa">
-						<th>Id
-						<th>ServiceInfo
-						<th>Description
-						<th>Name
-						<th>Phone
-						<th>Email
-						<th>PreferedContactTime
-						<th>ProcessStatus
-						<th>Remark
-						<th>CreatedAt
-						<th>ModifiedAt
-						<th>Update
-						<th>Delete
-					</tr>
-					<%-- 					<form method="GET" action="HwUpdate"> --%>
-					<c:forEach items="${allCus}" var="customerBean">
-						<tr>
-							<td><input type="text" name="id" value="${customerBean.id}"
-								disabled> <input type="hidden" name="id"
-								value="${customerBean.id}"> <br>
-							<td><input type="text" name="serviceInfo"
-								value="${customerBean.serviceInfo}" disabled><br> <input
-								type="hidden" name="serviceInfo"
-								value="${customerBean.serviceInfo}">
-							<td><input type="text" name="description"
-								value="${customerBean.description}" disabled><br> <input
-								type="hidden" name="description"
-								value="${customerBean.description}">
-							<td><input type="text" name="name"
-								value="${customerBean.name}" disabled><br> <input
-								type="hidden" name="name" value="${customerBean.name}">
-							<td><input type="text" name="phone"
-								value="${customerBean.phone}" disabled><br> <input
-								type="hidden" name="phone" value="${customerBean.phone}">
-							<td><input type="text" name="email"
-								value="${customerBean.email}" disabled><br> <input
-								type="hidden" name="email" value="${customerBean.email}">
-							<td><input type="text" name="preferedContactTime"
-								value="${customerBean.preferedContactTime}" disabled><br>
-								<input type="hidden" name="preferedContactTime"
-								value="${customerBean.preferedContactTime}">
-							<td><input type="text" name="processStatus"
-								value="${customerBean.processStatus}" disabled><br>
-								<input type="hidden" name="processStatus"
-								value="${customerBean.processStatus}">
-							<td><input type="text" name="remark"
-								value="${customerBean.remark}" disabled><br> <input
-								type="hidden" name="remark" value="${customerBean.remark}">
-							<td><input type="text" name="createdAt"
-								value="${customerBean.createdAt}" disabled><br> <input
-								type="hidden" name="createdAt" value="${customerBean.createdAt}">
-							<td><input type="text" name="modifiedAt"
-								value="${customerBean.modifiedAt}" disabled><br> <input
-								type="hidden" name="modifiedAt"
-								value="${customerBean.modifiedAt}">
-							<td><button type="button" class="delt" onclick="upd('${customerBean.id}')" >📝</button></td> 
-						<td><button type="button" class="delt" onclick="del('${customerBean.id}')" >🗑️</button></td>
-						</tr>
+
+				<table style="position: relative;top: 30px;right: 150px;width:10px">
+									<tr class="thContent">
+										<th >Id</th>
+										<th>ServiceInfo</th>
+										<th>Description</th>
+										<th>Name</th>
+										<th>Phone</th>
+										<th>Email</th>
+									<!--  	<th>PreferedContactTime</th>-->
+										<th>ProcessStatus</th>
+										<th>Remark</th>
+										<th>CreatedAt</th>
+										<th>ModifiedAt</th>
+										<th>Update</th>
+										<th>Delete</th>
+									</tr>
+						<c:forEach items="${allCus}" var="customerBean">
+						<tr class="tdContent">
+											<td style="">${customerBean.id}</td>
+											<td style="">${customerBean.serviceInfo}</td>
+											<td style="">${customerBean.description}</td>
+											<td style="">${customerBean.name}</td>
+											<td style="">${customerBean.phone}</td>
+											<td style="">${customerBean.email}</td>
+											<!-- <td style="">${customerBean.preferedContactTime}</td>-->
+											<td style="">${customerBean.processStatus}</td>
+											<td style="">${customerBean.remark}</td>
+											<td style="">${customerBean.createdAt}</td>
+											<td style="">${customerBean.modifiedAt}</td>
+					
+												
+											<td style="">
+												<div class="buttons right nowrap">
+													<!-- 修改 -->
+													<form method="get"
+														action="${contextRoot}/message/editForm${customerBean.id}">
+														<button class="btn btn-outline-dark" data-target="sample-modal-2" type="submit">回覆
+															<span class="icon"><i class="mdi mdi-eye"></i></span>
+														</button>
+													</form>
+												</div>
+											</td>
+											<td style="">
+												<div class="buttons right nowrap">
+												<form id="deleteForm" method="get"
+													action="${contextRoot}/message/delete${customerBean.id}">
+													<button class="btn btn-outline-dark" data-target="sample-modal"
+														type="button">刪除
+														<span class="icon"><i class="mdi mdi-trash-can"></i></span>
+													</button>
+												</form>
+												</div>
+											</td>
+										</tr>
 					</c:forEach>
 					<%-- 					</form> --%>
 				</table>
+		
+		</div>
+				</fieldset>
+</div>
+<div class="row justify-content-center" style="text-align:center; margin-top: 10px;">
+			<div class="col-7">
+		
+				<c:forEach var="pageNumber" begin="1" end="${page.totalPages}">
+					<c:choose>
+						<c:when test="${page.number != pageNumber -1}">
+		
+							<a href="${contextRoot}/staff/message/selectAll?p=${pageNumber}"><button type="button" class="btn btn-outline-secondary"><c:out value="${pageNumber}"/>  </button></a>
+		
+						</c:when>
+						<c:otherwise>
+		
+						<a class="btn btn-secondary disabled" role="button" aria-disabled="true"> ${pageNumber} </a>
+		
+						<c:set var="pgn" value="${page.number +1}" scope="session"/>
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>
 			</div>
 		</div>
-	</div>
-</div>
-
+<script type="text/javascript">
+	
+		$(".delete").click(function(){
+			Swal.fire({
+				  title: '確定要刪除嗎?',
+				  text: "刪除後無法再回復!",
+				  icon: 'warning',
+				  showCancelButton: true,
+				  confirmButtonColor: '#3085d6',
+				  cancelButtonColor: '#d33',
+				  confirmButtonText: '是的, 我要刪除!'
+				}).then((result) => {
+				  if (result.isConfirmed) {
+				    Swal.fire(
+				      '已刪除!',
+				      '資料已刪除',
+				      '刪除成功'
+				    )
+				setTimeout(deleteForm,1000)
+				  }
+				})
+				
+		})
+		
+		function deleteForm(){
+			
+			
+			$("#deleteForm").submit();
+		}
+	</script>
+	
+	
 <jsp:include page="../layout/footer.jsp" />

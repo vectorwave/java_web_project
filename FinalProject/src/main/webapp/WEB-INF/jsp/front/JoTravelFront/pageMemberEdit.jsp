@@ -33,6 +33,9 @@
 <!-- main css -->
 <link rel="stylesheet" href="<c:url value="/css/blog/style.css"/>">
 <link rel="stylesheet" href="<c:url value="/css/blog/responsive.css"/>">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+	rel="stylesheet">
 </head>
 <style>
 .justify-content{
@@ -50,6 +53,27 @@ margin:auto;
 .float{
 Float: right
 }
+
+.justify-content {
+	/* justify-content: center; */
+	align-items: center;
+}
+.right{
+ float:right;
+  padding-right:250px;
+}
+
+.border{
+border-radius: 999em; 
+width:600px;
+}
+
+.padding{
+padding-left:400px;
+}
+
+
+
 </style>
 <body>
 	<!--================Header Area =================-->
@@ -63,10 +87,10 @@ Float: right
 			data-stellar-vertical-offset="0" data-background=""></div>
 		<div class="container">
 			<div class="page-cover text-center">
-				<h2 class="page-cover-tittle">Gallery</h2>
+				<h2 class="page-cover-tittle">會員</h2>
 				<ol class="breadcrumb">
 					<li><a href="index.html">Home</a></li>
-					<li class="active">Gallery</li>
+					<li class="active">Account</li>
 				</ol>
 			</div>
 		</div>
@@ -77,13 +101,16 @@ Float: right
 
 
 <form:form method="post" enctype="multipart/form-data" modelAttribute="newMember">
-
-	<h1 style="text-align: center"> 會員資訊 </h1>
-	<div style="width: 300px;margin: auto;text-align: center;">
+	<h1 style="text-align: center" class="mb-30 title_color"> 會員資訊 </h1>
+<div class="right">
+	<img src="${contextRoot}/page/member/photo/${newMember.account.accountId}" id="output" width="400" height="400">
+	</div>
+	<div class="padding">
+	<div style="width: 300px;">
 <%-- <form:form method="post" modelAttribute="newMember" > --%>
-	<br><form:hidden value="" id="memberId" path="memberId"/>
+	<form:hidden value="" id="memberId" path="memberId"/>
 		<input type="hidden" value="${newMember.account.accountId}" id="accountId" name="accountId" />
-	<br>姓名:<form:input type="text" value="" path="memberName" id="memberName" class="form-control" placeholder="姓名"/><span id="mmemberName"></span>
+	姓名:<form:input type="text" value="" path="memberName" id="memberName" class="form-control" placeholder="姓名"/><span id="mmemberName"></span>
 	<br>生日:<form:input type="date" value="" path="birthDate" id="birthDate" class="form-control" placeholder="生日"/><span id="mbirthDate"></span>
 	<br>電話:<form:input type="text" value="" path="phone" id="phone" class="form-control" placeholder="電話" /><span id="mphone"></span>
 	<br>email:<form:input type="text" value="" path="email" id="email" class="form-control" placeholder="email"/><span id="memail"></span>
@@ -103,12 +130,12 @@ Float: right
           </div><span id="mgender"></span><br>
 		<br><input type="file" value="" class="form-control" class="float" name="file" accept="image/*" onchange="loadFile(event)"/><span id="mphotoPath"></span>
 	<br>
-	
-	<img src="${contextRoot}/page/member/photo/${newMember.account.accountId}" id="output" width="300" height="300"><br><br>
-	<input type="button" onclick="submitForm(form)" value="修改" class="btn btn-outline-success" id="send"/>
 	</div>	
+	<div class="padding" style="padding-left:100px">
+	<input type="button" onclick="submitForm(form)" value="修改" class="genric-btn info-border circle" width="60px" id="send"/>
+	</div>
+</div>
 </form:form>
-
 
 
 

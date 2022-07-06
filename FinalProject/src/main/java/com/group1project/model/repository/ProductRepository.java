@@ -12,7 +12,9 @@ import com.group1project.model.bean.Product;
 
 public interface ProductRepository extends JpaRepository<Product, Integer> {
 	public List<Product> findAllByProductNameLike(String key);
-
+	
+	public List<Product> findAllProductByProductArea(String tag);
+	
 	 
 	public Page<Product> findAllByProductNameLike(String key,Pageable pab);
 	
@@ -25,4 +27,7 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 	@Query(value="select * from product where account_id = :accountId", nativeQuery = true)
 	public List<Product> findAllByAccountId(Integer accountId);
 	
+//	@Query(value="select product_id,avg(commentScore) from product_comment group by product_id  order by avg(commentScore) desc", nativeQuery = true)
+//	public List<Product> findByCommentScore();
+
 }
