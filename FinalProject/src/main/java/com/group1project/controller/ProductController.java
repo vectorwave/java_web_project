@@ -120,7 +120,7 @@ public class ProductController {
 		message.put("okMsg", "insertOK");
 		model.addAttribute("msg", message);
 		
-		return "redirect:/front/productPage";
+		return "redirect:/front/ownProductList?id="+ accountId;
 	}
 	
 	
@@ -145,6 +145,16 @@ public class ProductController {
 	public String deleteProductById2(@PathVariable("id") int product_id) {
 		pService.deleteProduct(product_id);
 		return "redirect:/back/allProduct";
+	}
+	
+	@RequestMapping(value="frontDelete/{id}" , method = RequestMethod.GET)
+	public String frontDeleteProductById(@PathVariable("id") int product_id) {
+		
+		Product pp1 = pService.getProductById(product_id);
+		Integer aId= pp1.getAccount().getAccountId();
+		pService.deleteProduct(product_id);
+		
+		return "redirect:/front/ownProductList?id="+aId;
 	}
 	
 	
@@ -184,6 +194,37 @@ public class ProductController {
 		return "redirect:/back/allProduct";
 		
 	}
+	
+	
+
+
+
+	@PostMapping("editFrontProduct")
+    public String frontpostEditMessage(@ModelAttribute(name="newPd") Product newPd ,
+    		@RequestParam("file") MultipartFile file, Model model) {
+		
+		Date nowDate = new Date();
+		newPd.setUpdatedTime(nowDate);
+		
+		Product originalPd = pService.getProductById(newPd.getProductId());
+		newPd.setProductPic(originalPd.getProductPic()); 
+		
+		try {
+			
+			if(!(file.getSize() == 0)) {				
+				newPd.setProductPic(file.getBytes());
+				
+			}
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		pService.saveProduct(newPd);
+		
+		return "redirect:/front/ownProductList?id="+ newPd.getAccount().getAccountId() ;
+		
+	}
+	
 	
 	@GetMapping("photo/{id}")
 	public ResponseEntity<byte[]> downloadImage(@PathVariable("id") Integer id){

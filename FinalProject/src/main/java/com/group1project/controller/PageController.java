@@ -67,16 +67,38 @@ private ArticleService aService;
 		return "front/JoTravelFront/frontAddProduct";
 	}
 	
+	//前台商家查看商品頁面
+	@GetMapping("front/ownProductList")
+	public String frontAllProudcts(@RequestParam("id") Integer accountId,Model m) {
+		
+		List<Product> productList = pService.findAllByAccountId(accountId);
+		
+		m.addAttribute("productList", productList);
+		
+		return "front/JoTravelFront/frontOwnProductList";
+	}
+	
 	//前台商品頁面含page方法
 	@GetMapping("front/productPage")
 	public ModelAndView viewAllProducts(ModelAndView mav, 
 			@RequestParam(name="p", defaultValue="1") Integer pageNumber,
-			@RequestParam(value="key",defaultValue="" ,required = false) String key) {
+			@RequestParam(value="key",defaultValue="" ,required = false) String key,
+			@RequestParam(value="tag",defaultValue="" ,required = false) String tag
+			) {
 //		Page<Product> page = pService.findByPage(pageNumber);
+		if(tag.isEmpty()) {
 		Pageable pgb = PageRequest.of(pageNumber - 1, 6 ,Sort.Direction.DESC,"productId");
 		Page<Product> page = pService.searchProductByNameWithPage(key, pgb);
+		
 		mav.getModel().put("page", page);
 		mav.getModel().put("key", key);
+		mav.getModel().put("num", 1);
+		
+		}else{
+		List<Product> tagProduct = pService.findAllProductByProducArea(tag);		
+		mav.getModel().put("tagProduct", tagProduct);
+		}
+			
 		mav.setViewName("front/JoTravelFront/frontProductPage");
 		return mav;
 		
@@ -93,6 +115,16 @@ private ArticleService aService;
 		return "front/JoTravelFront/frontProductDetail";
 	} 
 	
+	
+	@GetMapping("/front/frontEditProduct")
+	public String fronteditProducte(@RequestParam("id") int product_id, Model model) {
+		Product newPd = pService.getProductById(product_id);
+
+		model.addAttribute("newPd", newPd);
+		model.addAttribute("photo", product_id);
+//		model.addAttribute("nowDate", nowDate);
+		return "front/JoTravelFront/frontEditProduct";//回到頁面
+	}
 	
 	
 //	########################後台商品頁面########################
@@ -163,6 +195,24 @@ private ArticleService aService;
 		model.addAttribute("searchPdC", searchPdC);
 		
 		return "searchProductComment";
+		
+	}
+	
+	@GetMapping("front/ProductComment/search")
+	public String frontFindAllPrdouctComment(@RequestParam(value="id", defaultValue="" ,required = false) Integer prdouctId ,Model model) {
+		
+		
+		List<ProductComment> searchPdC =  pcService.getAllProductCommentByProductId(prdouctId);
+		
+		for(ProductComment one:searchPdC) {
+		System.out.println(one.getProuctCommentId());
+		System.out.println(one.getAccount());
+		System.out.println(one.getProductComment());
+
+		}
+		model.addAttribute("searchPdC", searchPdC);
+		
+		return "front/JoTravelFront/frontSearchProductComment";
 		
 	}
 	
