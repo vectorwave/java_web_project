@@ -116,7 +116,7 @@
                 </div>
                 
                 <div class="row mb_30">
-				<c:forEach items="${productList}" var="product" begin="2" end="5" step="1">
+				<c:forEach items="${productList}" var="product" begin="0" end="3" step="1">
                     <div class="col-lg-3 col-sm-6">
                         <div class="accomodation_item text-center">
                             <div class="hotel_img">
