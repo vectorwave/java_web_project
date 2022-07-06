@@ -33,6 +33,11 @@
 <!-- main css -->
 <link rel="stylesheet" href="<c:url value="/css/blog/style.css"/>">
 <link rel="stylesheet" href="<c:url value="/css/blog/responsive.css"/>">
+
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+
 </head>
 <style>
 .justify-content {
@@ -137,17 +142,17 @@ padding-left:400px;
 			data-stellar-vertical-offset="0" data-background=""></div>
 		<div class="container">
 			<div class="page-cover text-center">
-				<h2 class="page-cover-tittle">Gallery</h2>
+				<h2 class="page-cover-tittle">會員</h2>
 				<ol class="breadcrumb">
 					<li><a href="index.html">Home</a></li>
-					<li class="active">Gallery</li>
+					<li class="active">Account</li>
 				</ol>
 			</div>
 		</div>
 	</section>
 	<!--================Breadcrumb Area =================-->
 	<!--   context  -->
-
+<div>
 	<div class="whole-wrap">
 	<h1 style="text-align: center" class="mb-30 title_color">新增個人資料</h1>
 		<form:form method="post" enctype="multipart/form-data"
@@ -182,17 +187,17 @@ padding-left:400px;
 				<label class="GIFLabel">性別： </label><br>
 
 				<div class="btn-group justify-content">
-<%-- 					<form:radiobutton path="gender" value="男性" class="btn-check" --%>
-<%-- 						name="btnradio" id="btnradio1" autocomplete="off" /> --%>
+					<form:radiobutton path="gender" value="男性" class="btn-check"
+ 						name="btnradio" id="btnradio1" autocomplete="off" /> 
 					<label class="btn btn-outline-primary" name="btnradio" for="btnradio1"
 						style="border-radius: 5px 0px 0px 5px;">男性</label>
 
-<%-- 					<form:radiobutton path="gender" value="女性" class="btn-check" --%>
-<%-- 						name="btnradio" id="btnradio2" autocomplete="off" /> --%>
+					<form:radiobutton path="gender" value="女性" class="btn-check"
+						name="btnradio" id="btnradio2" autocomplete="off" />
 					<label class="btn btn-outline-primary" name="btnradio" for="btnradio2">女性</label>
 
-<%-- 					<form:radiobutton path="gender" value="保密" class="btn-check" --%>
-<%-- 						name="btnradio" id="btnradio3" autocomplete="off" /> --%>
+					<form:radiobutton path="gender" value="保密" class="btn-check"
+						name="btnradio" id="btnradio3" autocomplete="off" />
 					<label class="btn btn-outline-primary" name="btnradio" for="btnradio3">保密</label>
 				</div>
 			
@@ -216,7 +221,7 @@ padding-left:400px;
 		</form:form>
 		<br>
 	</div>
-
+</div>
 
 
 
