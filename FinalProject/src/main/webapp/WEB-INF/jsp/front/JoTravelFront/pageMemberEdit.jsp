@@ -104,7 +104,7 @@ Float: right
 		<br><input type="file" value="" class="form-control" class="float" name="file" accept="image/*" onchange="loadFile(event)"/><span id="mphotoPath"></span>
 	<br>
 	
-	<img src="${contextRoot}/member/photo/${newMember.account.accountId}" id="output" width="300" height="300"><br><br>
+	<img src="${contextRoot}/page/member/photo/${newMember.account.accountId}" id="output" width="300" height="300"><br><br>
 	<input type="button" onclick="submitForm(form)" value="修改" class="btn btn-outline-success" id="send"/>
 	</div>	
 </form:form>

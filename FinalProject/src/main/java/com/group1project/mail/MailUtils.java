@@ -27,10 +27,17 @@
 //		 MimeMessage mimeMessage = mailSender.createMimeMessage();
 //		 try {
 //			 MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true);
-//		     helper.setFrom("karen40729@yahoo.com.tw");
-//		     helper.setTo(to);
-//		     helper.setSubject(subject);
-//		     helper.setText(htmlcontent,true);
+////		     helper.setFrom("karen40729@yahoo.com.tw");
+////		     helper.setTo(to);
+////		     helper.setSubject(subject);
+////		     helper.setText(htmlcontent,true);
+//			 helper.setTo("mymail@mail.co.uk");
+//	            helper.setReplyTo("someone@localhost");
+//	            helper.setFrom("someone@localhost");
+//	            helper.setSubject("Lorem ipsum");
+//	            helper.setText("Lorem ipsum dolor sit amet [...]");
+//		     
+//		     
 //
 //			     mailSender.send(mimeMessage);
 //		     

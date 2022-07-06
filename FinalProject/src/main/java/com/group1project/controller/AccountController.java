@@ -209,7 +209,7 @@ public class AccountController {
 			
 			aService.saveAccount(account);
 
-			return "/";
+			return "redirect:/";
 		}
 		
 		// 商家新增帳號用 
