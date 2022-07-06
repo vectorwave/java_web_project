@@ -58,7 +58,7 @@
                                     <li class="nav-item"><a class="nav-link" href="http://localhost:8081/jotravel/front/addBlogPage">新增遊記</a></li>
                                 </ul>
                             </li> 
-                            <li class="nav-item"><a class="nav-link" href="elements.html">揪團</a></li>
+                            <li class="nav-item"><a class="nav-link" href="http://localhost:8081/jotravel/front/JoGroupFront/all">揪團</a></li>
                            <li class="nav-item submenu dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">客服中心</a>
                                 <ul class="dropdown-menu">

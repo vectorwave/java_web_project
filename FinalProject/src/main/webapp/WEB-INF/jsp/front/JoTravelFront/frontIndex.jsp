@@ -115,7 +115,7 @@
                 </div>
                 
                 <div class="row mb_30">
-				<c:forEach items="${productList}" var="product" begin="2" end="5" step="1">
+				<c:forEach items="${productList}" var="product" begin="0" end="3" step="1">
                     <div class="col-lg-3 col-sm-6">
                         <div class="accomodation_item text-center">
                             <div class="hotel_img">
@@ -134,7 +134,7 @@
         
         <!--================Breadcrumb Area =================-->
         <section class="facilities_area section_gap">
-            <div class="overlay bg-parallax" data-stellar-ratio="0.8" data-stellar-vertical-offset="0" data-background="">  
+            <div class="bg-parallax" data-stellar-ratio="0.8" data-stellar-vertical-offset="0" data-background="">  
             </div>
             <div class="container">
                 <div class="section_title text-center" style="height:40px">
