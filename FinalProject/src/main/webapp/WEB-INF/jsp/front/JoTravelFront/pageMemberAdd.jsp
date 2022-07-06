@@ -39,14 +39,33 @@
 	/* justify-content: center; */
 	align-items: center;
 }
+.right{
+ float:right;
+  padding-right:250px;
+}
+
+.border{
+border-radius: 999em; 
+width:600px;
+}
+
+/* body{ */
+/* background-color:#FFFAF2; */
+/* } */
 
 .context {
 	background-color: #fff;
 	border-redius: 8px;
-	width: 800px;
+	width: 1000px;
 	margin: auto;
 	/* Float: right */
 }
+
+.padding{
+padding-left:400px;
+}
+
+
 </style>
 <body>
 	<!--================Header Area =================-->
@@ -93,9 +112,9 @@
 	<!-- 								<li class="nav-item"><a class="nav-link" -->
 	<%-- 									href="http://localhost:8081/jotravel/page/member/edit?id=${loginuser.accountId}">修改個人資料</a></li> --%>
 	<!-- <!-- 								<li class="nav-item"><a class="nav-link" -->
-	-->
+
 	<!-- <!-- 									href="blog-single.html">刪除帳號</a></li> -->
-	-->
+	
 	<!-- 								<li class="nav-item"><a class="nav-link" -->
 	<!-- 									href="blog-single.html">查看訂單</a></li> -->
 	<!-- 								<li class="nav-item"><a class="nav-link" -->
@@ -128,18 +147,25 @@
 	</section>
 	<!--================Breadcrumb Area =================-->
 	<!--   context  -->
-	<h1 style="text-align: center">新增個人資料</h1>
-	<div class="context">
+
+	<div class="whole-wrap">
+	<h1 style="text-align: center" class="mb-30 title_color">新增個人資料</h1>
 		<form:form method="post" enctype="multipart/form-data"
 			action="${contextRoot}/page/member/add" modelAttribute="member">
+
+				<div class="right">
+					<img id="output" width="400" height="400" /><br /> <br /> <br />
+				</div>
 
 
 			<form:input path="memberId" type="hidden" />
 			<input type="hidden" id="accountId" name="accountId"
 				value="${loginuser.accountId}" />
 
+<div class="padding">
+
 			<div class="form-group"
-				style="width: 300px; margin: auto; text-align: center;">
+				style="width: 300px; text-align: center;">
 				姓名：
 				<form:input type="text" path="memberName" class="form-control"
 					id="memberName" />
@@ -156,36 +182,39 @@
 				<label class="GIFLabel">性別： </label><br>
 
 				<div class="btn-group justify-content">
-					<form:radiobutton path="gender" value="男性" class="btn-check"
-						name="btnradio" id="btnradio1" autocomplete="off" />
-					<label class="btn btn-outline-primary" for="btnradio1"
+<%-- 					<form:radiobutton path="gender" value="男性" class="btn-check" --%>
+<%-- 						name="btnradio" id="btnradio1" autocomplete="off" /> --%>
+					<label class="btn btn-outline-primary" name="btnradio" for="btnradio1"
 						style="border-radius: 5px 0px 0px 5px;">男性</label>
 
-					<form:radiobutton path="gender" value="女性" class="btn-check"
-						name="btnradio" id="btnradio2" autocomplete="off" />
-					<label class="btn btn-outline-primary" for="btnradio2">女性</label>
+<%-- 					<form:radiobutton path="gender" value="女性" class="btn-check" --%>
+<%-- 						name="btnradio" id="btnradio2" autocomplete="off" /> --%>
+					<label class="btn btn-outline-primary" name="btnradio" for="btnradio2">女性</label>
 
-					<form:radiobutton path="gender" value="保密" class="btn-check"
-						name="btnradio" id="btnradio3" autocomplete="off" />
-					<label class="btn btn-outline-primary" for="btnradio3">保密</label>
+<%-- 					<form:radiobutton path="gender" value="保密" class="btn-check" --%>
+<%-- 						name="btnradio" id="btnradio3" autocomplete="off" /> --%>
+					<label class="btn btn-outline-primary" name="btnradio" for="btnradio3">保密</label>
 				</div>
-				</br>
+			
 				<br>電話：
 				<form:input type="text" path="phone" class="form-control" id="phone" />
 				<br /> <span id="mphone"></span> 會員圖片：<input type="file"
 					class="form-control" name="file" accept="image/*"
-					onchange="loadFile(event)" /><br /> <img id="output" width="300"
-					height="300" /><br /> <br /> <br />
+					onchange="loadFile(event)" />
+					
 
 				<!--   <input type="button" id="one"  value="一鍵輸入"> -->
-				<button id="one" type="button" class="btn btn-secondary">一鍵輸入</button>
+			</div>
+			<div class="padding">
+				<button id="one"  type="button" class="btn btn-secondary">一鍵輸入</button>
 
 				<input type="button" onclick="submitForm(form)" value="新增"
-					class="btn btn-outline-success" id="send">
+					class="genric-btn info-border circle" id="send">
+					</div>
 			</div>
 
-
 		</form:form>
+		<br>
 	</div>
 
 

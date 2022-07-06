@@ -50,6 +50,27 @@ margin:auto;
 .float{
 Float: right
 }
+
+.justify-content {
+	/* justify-content: center; */
+	align-items: center;
+}
+.right{
+ float:right;
+  padding-right:250px;
+}
+
+.border{
+border-radius: 999em; 
+width:600px;
+}
+
+.padding{
+padding-left:400px;
+}
+
+
+
 </style>
 <body>
 	<!--================Header Area =================-->
@@ -77,13 +98,16 @@ Float: right
 
 
 <form:form method="post" enctype="multipart/form-data" modelAttribute="newMember">
-
-	<h1 style="text-align: center"> 會員資訊 </h1>
-	<div style="width: 300px;margin: auto;text-align: center;">
+	<h1 style="text-align: center" class="mb-30 title_color"> 會員資訊 </h1>
+<div class="right">
+	<img src="${contextRoot}/page/member/photo/${newMember.account.accountId}" id="output" width="400" height="400">
+	</div>
+	<div class="padding">
+	<div style="width: 300px;">
 <%-- <form:form method="post" modelAttribute="newMember" > --%>
-	<br><form:hidden value="" id="memberId" path="memberId"/>
+	<form:hidden value="" id="memberId" path="memberId"/>
 		<input type="hidden" value="${newMember.account.accountId}" id="accountId" name="accountId" />
-	<br>姓名:<form:input type="text" value="" path="memberName" id="memberName" class="form-control" placeholder="姓名"/><span id="mmemberName"></span>
+	姓名:<form:input type="text" value="" path="memberName" id="memberName" class="form-control" placeholder="姓名"/><span id="mmemberName"></span>
 	<br>生日:<form:input type="date" value="" path="birthDate" id="birthDate" class="form-control" placeholder="生日"/><span id="mbirthDate"></span>
 	<br>電話:<form:input type="text" value="" path="phone" id="phone" class="form-control" placeholder="電話" /><span id="mphone"></span>
 	<br>email:<form:input type="text" value="" path="email" id="email" class="form-control" placeholder="email"/><span id="memail"></span>
@@ -92,23 +116,23 @@ Float: right
 	<br><label class="GIFLabel">性別： </label>
 
         <br><div class="btn-group justify-content" role="group" aria-label="Basic radio toggle button group">
-            <br><form:radiobutton path="gender" value="男性" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off"/>
+<%--             <br><form:radiobutton path="gender" value="男性" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off"/> --%>
            <label class="btn btn-outline-primary" for="btnradio1" style="border-radius: 5px 0px 0px 5px;">男性</label>
     
-           <form:radiobutton path="gender" value="女性" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off"/>
+<%--            <form:radiobutton path="gender" value="女性" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off"/> --%>
             <label class="btn btn-outline-primary" for="btnradio2">女性</label>
 
-            <form:radiobutton path="gender" value="保密" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off"/>
+<%--             <form:radiobutton path="gender" value="保密" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off"/> --%>
             <label class="btn btn-outline-primary" for="btnradio3">保密</label>
           </div><span id="mgender"></span><br>
 		<br><input type="file" value="" class="form-control" class="float" name="file" accept="image/*" onchange="loadFile(event)"/><span id="mphotoPath"></span>
 	<br>
-	
-	<img src="${contextRoot}/page/member/photo/${newMember.account.accountId}" id="output" width="300" height="300"><br><br>
-	<input type="button" onclick="submitForm(form)" value="修改" class="btn btn-outline-success" id="send"/>
 	</div>	
+	<div class="padding" style="padding-left:100px">
+	<input type="button" onclick="submitForm(form)" value="修改" class="genric-btn info-border circle" width="60px" id="send"/>
+	</div>
+</div>
 </form:form>
-
 
 
 
