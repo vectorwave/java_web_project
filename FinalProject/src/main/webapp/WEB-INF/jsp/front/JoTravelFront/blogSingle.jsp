@@ -14,7 +14,7 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="icon" href="image/favicon.png" type="image/png">
-<title>Royal Hotel</title>
+<title>${article.articleTitle}</title>
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href='<c:url value="/css/blog/bootstrap.css"/>'>
 <link rel="stylesheet"
@@ -141,15 +141,20 @@
                                 <p class="excert">${article.articleText}</p>
                                 <c:if test="${article.articleCategory=='揪團'}">
 <!--                                 <button type="button" class="genric-btn success circle" id="JoButton">我要揪團</button> -->
+<!--                                  <div id="ClickSetCookie"> -->
+                                 <input type="text" id="btnSetCookie" value=${ article.articleId } style="visibility:hidden">
+<!--                                  <input type="text" id="btnSetCookie2"> -->
+                                 
                                 <form method="post" action="${contextRoot}/back/article/JoGroupClick"><br>
                                 
-                                                                <input type="submit" value="我要揪團" class="genric-btn info circle"/>
+                                                                <div id="ClickSetCookie" onclick="votedSetCk()"><input type="submit" value="我要揪團" class="genric-btn info circle" id="submitbtnnnn" style="font-size:18px" /></div>
                                 
                                 <input id="articleId" name="articleId" value="${article.articleId}" style="visibility:hidden"/>
                                 
                                 </form>
                                 <br>
                                 <p style="color: rgb(239, 67, 10);font-size: 18px;font-weight:bold;">已有  ${article.articleJogroup}  人揪團中，快來手刀加入吧!!!</p>
+                                
                                 </c:if>
 <!--                                 <p> -->
 <!--                                     Boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the camp price. However, who has the willpower to actually sit through a self-imposed MCSE training. who has the willpower to actually sit through a self-imposed -->
@@ -157,18 +162,12 @@
 <!--                                 <p> -->
 <!--                                     Boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the camp price. However, who has the willpower to actually sit through a self-imposed MCSE training. who has the willpower to actually sit through a self-imposed -->
 <!--                                 </p> -->
-<script >
-function ChangeDisabled(value){
-　if(value=='1'){
-　document.getElementById('TetstText').disabled=false;　// 變更欄位為可用
-　}else{
-　document.getElementById('TetstText').disabled=true;　// 變更欄位為禁用
-　}
-}
-</script>
-<input type="text" id="TetstText">
-<input type="button" value='變更欄位為可用' onclick="ChangeDisabled(1)">
-<input type="button" value='變更欄位為禁用' onclick="ChangeDisabled(2)">
+<!-- <script > -->
+
+<!-- </script> -->
+<!-- <input type="text" id="TetstText"> -->
+<!-- <input type="button" value='變更欄位為可用' onclick="ChangeDisabled(1)"> -->
+<!-- <input type="button" value='變更欄位為禁用' onclick="ChangeDisabled(2)"> -->
                             </div>
                             <div class="col-lg-12">
 <!--                                 <div class="quotes"> -->
@@ -574,7 +573,49 @@ function ChangeDisabled(value){
 <!--             </div> -->
 <!--         </footer> -->
 	<!--================ End footer Area  =================-->
+<script type="text/javascript">
 
+window.onload=function(){
+	
+		var ckisExist="votedCk"+$('#btnSetCookie').val()
+		var ckext=getCookie(ckisExist);
+		if (ckext!=null){
+			console.log("ck6666");
+			document.getElementById('submitbtnnnn').disabled=true;
+		
+		}else{
+			console.log("ck================================")
+			
+		}
+
+		
+}
+
+function votedSetCk() { 
+ 	var createCk=$('#btnSetCookie').val();
+
+ 	console.log(createCk);
+ 	setCookie("votedCk"+createCk,createCk);
+
+
+} 
+
+
+function getCookie(name){
+  	var arr,reg = new RegExp("(^|)" + name + "=([^;]*)(;|$)");
+  	if(arr = document.cookie.match(reg))
+  		return unescape(arr[2]);
+  	else
+  		return null;
+  }
+  
+  function setCookie(name,value){
+  	document.cookie = name + "=" +escape(value) +";path=/";
+  }
+
+
+</script>
+<!-- <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script> -->
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	<script src="<c:url value="/js/blog/jquery-3.2.1.min.js"/>"></script>
