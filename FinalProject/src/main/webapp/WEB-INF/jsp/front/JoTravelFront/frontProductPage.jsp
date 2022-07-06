@@ -33,7 +33,18 @@
         <jsp:include page="frontLayout/frontHeader.jsp" />
         
         <!--================Header Area =================-->
-        
+        <section class="breadcrumb_area">
+            <div class="overlay bg-parallax" data-stellar-ratio="0.8" data-stellar-vertical-offset="0" data-background=""></div>
+            <div class="container">
+                <div class="page-cover text-center">
+                    <h2 class="page-cover-tittle">Product</h2>
+                    <ol class="breadcrumb">
+                        <li><a href="${contextRoot}/">Home</a></li>
+                        <li class="active">Product</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
         
         <!--================Breadcrumb Area =================-->
         <section class="gallery_area section_gap" style="padding:10px 0px 10px 0px">
@@ -66,14 +77,13 @@
                         <!-- <img src="<c:url value="images/01.jpeg"/>" alt=""> -->
                             <!-- <div class="hover"> -->
                             	<!-- <a class="light" href="<c:url value="images/01.jpeg"/>"><i class="fa fa-expand"></i></a> -->
-                         
                     
-					            <c:forEach items="${page.content}" var="product">
+			   
+			            <c:forEach items="${page.content}" var="product">                 
 					            <div class="col-md-4">
 					              <div class="card mb-4 box-shadow">
 									<a href="${contextRoot}/front/productPage/detail?id=${product.productId}" > 
 					               <img class="card-img-top" src="${contextRoot}/back/product/photo/${product.productId}" width="160px" height="300px" alt="Card image cap"> </a>
-					<!--  <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap"> -->
 					                <div class="card-body" style="height:210px">
 					                     
 					                <a href="${contextRoot}/front/productPage/detail?id=${product.productId}" > <span style="font-size:larger"> ${product.productName}</span></a><br/>
@@ -137,11 +147,11 @@
 								
 								<li><a href='http://localhost:8081/jotravel/front/productPage?key=墾丁'>墾丁</a></li>
 								<li><a href='http://localhost:8081/jotravel/front/productPage?key=一'>一日遊</a></li>
-								<li><a href='http://localhost:8081/jotravel/front/productPage?key=北部'>北部</a></li>
-								<li><a href='http://localhost:8081/jotravel/front/productPage?key=南部'>南部</a></li>
-								<li><a href='http://localhost:8081/jotravel/front/productPage?key=中部'>中部</a></li>
-								<li><a href='http://localhost:8081/jotravel/front/productPage?key=東部'>東部</a></li>
-								<li><a href='http://localhost:8081/jotravel/front/productPage?key=外島'>外島</a></li>
+								<li><a href='http://localhost:8081/jotravel/front/productPage?tag=北部'>北部</a></li>
+								<li><a href='http://localhost:8081/jotravel/front/productPage?tag=南部'>南部</a></li>
+								<li><a href='http://localhost:8081/jotravel/front/productPage?tag=中部'>中部</a></li>
+								<li><a href='http://localhost:8081/jotravel/front/productPage?tag=東部'>東部</a></li>
+								<li><a href='http://localhost:8081/jotravel/front/productPage?tag=外島'>外島</a></li>
 								
 								
 							</ul>

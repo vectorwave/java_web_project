@@ -8,6 +8,7 @@
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <!doctype html>
 <html lang="en">
+
 <head>
 <!-- Required meta tags -->
 <meta charset="utf-8">
@@ -39,6 +40,7 @@
 <body style="font-size: larger">
 	<!--================Header Area =================-->
 	<jsp:include page="frontLayout/frontHeader.jsp" />
+
 
 	<!--         <header class="header_area"> -->
 	<!--             <div class="container"> -->
