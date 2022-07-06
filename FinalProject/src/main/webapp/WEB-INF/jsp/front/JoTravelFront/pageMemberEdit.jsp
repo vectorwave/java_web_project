@@ -33,6 +33,9 @@
 <!-- main css -->
 <link rel="stylesheet" href="<c:url value="/css/blog/style.css"/>">
 <link rel="stylesheet" href="<c:url value="/css/blog/responsive.css"/>">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+	rel="stylesheet">
 </head>
 <style>
 .justify-content{
@@ -84,10 +87,10 @@ padding-left:400px;
 			data-stellar-vertical-offset="0" data-background=""></div>
 		<div class="container">
 			<div class="page-cover text-center">
-				<h2 class="page-cover-tittle">Gallery</h2>
+				<h2 class="page-cover-tittle">會員</h2>
 				<ol class="breadcrumb">
 					<li><a href="index.html">Home</a></li>
-					<li class="active">Gallery</li>
+					<li class="active">Account</li>
 				</ol>
 			</div>
 		</div>
@@ -116,13 +119,13 @@ padding-left:400px;
 	<br><label class="GIFLabel">性別： </label>
 
         <br><div class="btn-group justify-content" role="group" aria-label="Basic radio toggle button group">
-<%--             <br><form:radiobutton path="gender" value="男性" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off"/> --%>
+            <br><form:radiobutton path="gender" value="男性" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off"/>
            <label class="btn btn-outline-primary" for="btnradio1" style="border-radius: 5px 0px 0px 5px;">男性</label>
     
-<%--            <form:radiobutton path="gender" value="女性" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off"/> --%>
+           <form:radiobutton path="gender" value="女性" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off"/>
             <label class="btn btn-outline-primary" for="btnradio2">女性</label>
 
-<%--             <form:radiobutton path="gender" value="保密" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off"/> --%>
+            <form:radiobutton path="gender" value="保密" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off"/>
             <label class="btn btn-outline-primary" for="btnradio3">保密</label>
           </div><span id="mgender"></span><br>
 		<br><input type="file" value="" class="form-control" class="float" name="file" accept="image/*" onchange="loadFile(event)"/><span id="mphotoPath"></span>
