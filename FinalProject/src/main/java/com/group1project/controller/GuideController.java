@@ -6,10 +6,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.MapsId;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -110,6 +107,7 @@ public class GuideController {
 	@PostMapping("edit")
 	public String updateGuideInfo(@ModelAttribute("guideUpdate") Guide guide, Model m,@RequestParam("profilePic") MultipartFile profilePic) {
 		
+		
 		Guide originalGuide = gService.getGuideById(guide.getAccountId());
 		guide.setGuidePhoto(originalGuide.getGuidePhoto());
 		
@@ -126,6 +124,67 @@ public class GuideController {
 		m.addAttribute("guideInfo",updated);
 		
 		return "guideDetail";
+	}
+	
+	//############## 前台修改導遊資料 #################
+	
+	@PostMapping("front/edit")
+	public String updateGuideInfoFront(@ModelAttribute("editGuideInfo") Guide guide, Model m,@RequestParam("profilePic") MultipartFile profilePic,@RequestParam(name="accountId") Integer accountId) {
+	
+		
+		if(gService.getGuideById(accountId)==null) {
+		Account account = aService.getAccountById(accountId);
+
+		Guide insertGuide = new Guide();
+		insertGuide.setAccount(account);
+		insertGuide.setGuideAddress(guide.getGuideAddress());
+		insertGuide.setGuideBirthday(guide.getGuideBirthday());
+		insertGuide.setGuideDescription(guide.getGuideDescription());
+		insertGuide.setGuideEmail(guide.getGuideEmail());
+		insertGuide.setGuideGender(guide.getGuideGender());
+		insertGuide.setGuideName(guide.getGuideName());
+		insertGuide.setGuidePhone(guide.getGuidePhone());
+		insertGuide.setLicenceType(guide.getLicenceType());
+		insertGuide.setLicenceNo(guide.getLicenceNo());
+		insertGuide.setProfileName(guide.getProfileName());
+		
+		try {
+			
+			if(!(profilePic.getSize() == 0)) {
+				insertGuide.setGuidePhoto(profilePic.getBytes());}
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		Guide updated = gService.saveGuide(insertGuide);
+	
+		
+		m.addAttribute("guideInfo",updated);
+		
+		} else {
+			
+			Guide originalGuide = gService.getGuideById(guide.getAccountId());
+			guide.setGuidePhoto(originalGuide.getGuidePhoto());
+			
+			
+			try {
+				
+				if(!(profilePic.getSize() == 0)) {
+				guide.setGuidePhoto(profilePic.getBytes());}	
+
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
+			
+			Guide updated = gService.saveGuide(guide);
+			
+			m.addAttribute("guideInfo",updated);
+				
+		}
+		
+		return "redirect:/guide/myprofile/"+accountId;
 	}
 	
 	//修改帳號狀態
