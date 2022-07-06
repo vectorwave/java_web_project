@@ -58,6 +58,16 @@ public class ProductCommentServiceimpl implements ProductCommentService {
 		return pcDao.findAllByProductProductId(productId);
 	}
 	
+	@Override
+	public List<Double> findByCommentScore() {
+		
+		return pcDao.findByCommentScore();
+	}
+	@Override
+	public List<Integer> sortProductId() {
+		return pcDao.sortProductId();
+	}
+	
 	
 	
 	

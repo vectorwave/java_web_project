@@ -19,7 +19,7 @@
   <form:input path="productId" type="hidden" />
   
   <div class="form-group">
-  商家編號：<input name="accountId" id="accountId" class="form-control" type="text" value="${loginuser.accountId}" readonly="readonly"><br/>
+  商家編號：<input name="accountId" id="accountId" class="form-control" type="text" value="${loginuser.accountId}" ><br/>
   產品名稱：<form:input type="text" id="productName" path="productName" class="form-control" required="required" placeholder="商品名稱" /><br/>
   產品價格：<form:input type="text" id="productPrice" path="productPrice" class="form-control" value="1000" required="required"/><br/>
   上架時間：<form:input type="date" id="startDate" path="startDate" class="form-control" required="required" readonly="readonly" /><br/>

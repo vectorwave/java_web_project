@@ -25,12 +25,12 @@
                             <li class="nav-item"><a class="nav-link" href="#about_tag">關於我們</a></li>
                             <li class="nav-item"><a class="nav-link" href="gallery.html">藝廊</a></li>
                             <li class="nav-item submenu dropdown">
-                                <a href="" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">想趣旅遊</a>
+                                <a href="${contextRoot}/front/productPage/" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">想趣旅遊</a>
                                 <ul class="dropdown-menu">
-                                    <li class="nav-item"><a class="nav-link" href="http://localhost:8081/jotravel/front/productPage/">所有旅遊</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="southTravel.html">南部出團</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="eastTravel.html">東部出團</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="islandTravel.html">外島出團</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="${contextRoot}/front/productPage/">所有旅遊</a></li>
+<!--                                     <li class="nav-item"><a class="nav-link" href="southTravel.html">南部出團</a></li> -->
+<!--                                     <li class="nav-item"><a class="nav-link" href="eastTravel.html">東部出團</a></li> -->
+<!--                                     <li class="nav-item"><a class="nav-link" href="islandTravel.html">外島出團</a></li> -->
                                 </ul>
                             </li> 
                             <li class="nav-item submenu dropdown">
