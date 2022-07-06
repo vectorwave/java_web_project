@@ -10,22 +10,6 @@
 
 
 
-
-
-
-
-<script async
-	src="https://www.googletagmanager.com/gtag/js?id=UA-130795909-1"></script>
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'UA-130795909-1');
-  </script>
-<script src="http://cdn.staticfile.org/jquery/2.1.4/jquery.min.js"></script>
-
-
 <div class="content-container" style="text-align: center">
 
 	<div align="center">
@@ -34,9 +18,12 @@
 
 			<legend id="guideLegend">客服單詳細資訊</legend>
 
+</fieldset>
 			<div id="GIFormContainer1">
 
-
+</div>
+</div>
+</div>
 				<div align="center">
 					<table>
 
@@ -51,7 +38,7 @@
 
 											<tr>
 												<td class="formLabel"><label class="GIFLabel">Id</label></td>
-												<td class="formContent">${customerBean.id}<form:input
+												<td class="formContent"><form:input
 														readonly="true" class="inputBox1" path="id"
 														value="${customerBean.id}" />
 											</tr>
@@ -114,16 +101,15 @@
 												<td class="formLabel"><label class="GIFLabel">ModifiedAt</label></td>
 												<td class="formContent">${customerBean.modifiedAt}</td>
 											</tr>
-											<tr>
-												<td><form method="get" action="${contextRoot}/message/editForm?id=${customerBean.id}">
-														<button class="edit" type="button">確認修改</button>
-													</form></td>
-											</tr>
+
 											<tr>
 												<td>
-													<div class="edit" style="text-align: auto">
-														<a href="${contextRoot}/message/editForm?id=${customerBean.id}"><button
-																>修改</button></a>
+													<div class="btn-container">
+														<form method="get"
+															action="${contextRoot}/message/editForm?id=${customerBean.id}">
+															<button class="btn btn-outline-primary edit"
+																type="button">確認修改</button>
+														</form>
 														<button type="button" onclick="deleteGuide()"
 															class="btn btn-outline-danger">刪除</button>
 														<button type="button" class="btn btn-outline-secondary"
@@ -137,24 +123,7 @@
 
 									</form:form>
 								</c:when>
-								<c:otherwise>
-									<tbody>
-										<tr class="tdContent">
-
-											<td>${customerBean.id}
-											<td>${customerBean.serviceInfo}
-											<td>${customerBean.description}
-											<td>${customerBean.name}
-											<td>${customerBean.phone}
-											<td>${customerBean.email}
-											<td>${customerBean.preferedContactTime}
-											<td>${customerBean.processStatus}
-											<td>${customerBean.remark}
-											<td>${customerBean.createdAt}
-											<td>${customerBean.modifiedAt}</td>
-										</tr>
-									</tbody>
-								</c:otherwise>
+								
 							</c:choose>
 
 							<script type="text/javascript">
@@ -189,9 +158,27 @@
 			$("#editForm").submit();
 		}
 	</script>
+							<script>
+            function deleteGuide() {
+              Swal.fire({
+                title: '確認刪除？',
+                showDenyButton: true,
+                confirmButtonText: '確認',
+                denyButtonText: '取消',
+              }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                  // 		    Swal.fire('Saved!', '', 'success')
+                  Swal.fire('已成功刪除！', '', 'success').then(() => { location = '${contextRoot}/message/delete${customerBean.id}' });
+
+                } else if (result.isDenied) {
+
+                  return false;
+                }
+              })
+            }
+          </script>
 						</c:forEach>
-						<td><input type="button" onClick="javascript:history.back()"
-							value="回上頁"></td>
 
 
 					</table>
@@ -199,4 +186,3 @@
 
 
 				<jsp:include page="../layout/footer.jsp" />
-				</body>

@@ -21,33 +21,19 @@ public class CustomerBean {
 	@Column(name="serviceInfo")
 	private String serviceInfo;
 	
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("CustomerBean [id=");
-		builder.append(id);
-		builder.append(", serviceInfo=");
-		builder.append(serviceInfo);
-		builder.append(", description=");
-		builder.append(description);
-		builder.append(", name=");
-		builder.append(name);
-		builder.append(", phone=");
-		builder.append(phone);
-		builder.append(", email=");
-		builder.append(email);
-		builder.append(", preferedContactTime=");
-		builder.append(preferedContactTime);
-		builder.append(", processStatus=");
-		builder.append(processStatus);
-		builder.append(", remark=");
-		builder.append(remark);
-		builder.append(", createdAt=");
-		builder.append(createdAt);
-		builder.append(", modifiedAt=");
-		builder.append(modifiedAt);
-		builder.append("]");
-		return builder.toString();
+	public CustomerBean(String serviceInfo, String description, String name, String phone,String email,
+			String preferedContactTime, String processStatus, String remark, String createdAt, String modifiedAt) {
+		super();
+		this.serviceInfo = serviceInfo;
+		this.description = description;
+		this.name = name;
+		this.phone = phone;
+		this.email = email;
+		this.preferedContactTime = preferedContactTime;
+		this.processStatus = processStatus;
+		this.remark = remark;
+		this.createdAt = createdAt;
+		this.modifiedAt = modifiedAt;
 	}
 
 	@Column(name="description")
