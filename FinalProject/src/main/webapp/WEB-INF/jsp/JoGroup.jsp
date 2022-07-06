@@ -202,7 +202,7 @@ function upd(e){
  <c:choose>
 
    <c:when test="${value.articleJogroup>10}">
-   <tr style="background-color:#F8EA5E">
+   <tr style="background-color:#2D6E7F">
      
   
                             
@@ -214,7 +214,7 @@ function upd(e){
 
 <td ><c:out value="${value.articleJogroup}" /></td>
 
-<td style="color:#EE3768 ;font-weight: bold; font-family:; font-size: 20px;">揪團成功</td>
+<td style="color:#F6C987 ;font-weight: bold; font-family:; font-size: 20px;">揪團成功</td>
 
 <td><c:out value="${value.articleText}" /></td>
 
