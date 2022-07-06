@@ -182,6 +182,13 @@
 		});
 		return details;
 	}
+	function dataToCookie(){
+		let cookie = "";
+		vm.orderDetails.forEach(detail=>{
+			cookie += detail.product.productId+','+detail.amount+','+detail.date+','+detail.totalDays+';';
+		});
+		return cookie;
+	}
 	//建立vue vm
 	var vm = new Vue({
 		  el:'#container',
@@ -207,15 +214,15 @@
 		  },
 		});
 	//將訂單送往綠界金流
+	let flag = true;
 	function sent(){
-		Cookies.remove('cart');
 		jQuery.ajax({
 			url:'${contextRoot}/ECPay/go',
 			method:'POST',
 		  	contentType:'application/json; charset=utf-8',
 		  	data:JSON.stringify(vm.$data),
 			success:function(res){
-				Cookies.set('cart','');
+				flag = false;
 				$('#container').html(res);
 			},
 			error:function(err){
@@ -239,6 +246,14 @@
 		});
 		return product;
 	};
+	
+	$(window).on('beforeunload',function(){
+		if(flag){
+			Cookies.set('cart',dataToCookie());
+		}else{
+			Cookies.set('cart','');
+		}
+	});
 	</script>
 </body>
 </html>

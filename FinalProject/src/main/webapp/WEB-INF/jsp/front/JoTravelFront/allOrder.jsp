@@ -68,11 +68,11 @@
 						<div class="col-sm text-center">{{order.status}}</div>
 						<div class="col-sm text-center">{{getTotalPrice(index)}}</div>
 						<div class="col-sm">
-							<button class="btn btn-primary btn-sm" type="button"
+							<button class="genric-btn info circle" type="button"
 								data-toggle="collapse" :data-target="'#collapse-'+index">
 								顯示訂單細節</button>
 							<button type="button" @click="delOrder(index);delModal()"
-								class="btn btn-danger btn-xs" data-toggle="modal"
+								class="genric-btn danger circle px-3" data-toggle="modal"
 								data-target="#purchaseModal">🗑️</button>
 						</div>
 					</div>
@@ -96,7 +96,7 @@
 							<tr>
 								<td class="align-middle"><button type="button"
 										@click="delDetail(index,cindex);delModal()"
-										class="btn btn-danger btn-sm" data-toggle="modal"
+										class="genric-btn danger circle px-3" data-toggle="modal"
 										data-target="#purchaseModal">🗑️</button>
 								<td class="align-middle"><img
 									:src="'${contextRoot}/back/product/photo/'+detail.product.productId"
