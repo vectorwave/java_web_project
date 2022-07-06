@@ -12,7 +12,12 @@ public interface ProductCommentRepository extends JpaRepository<ProductComment, 
 	public List<ProductComment> findAllByProductProductNameLike(String key);
 	public List<ProductComment> findAllByProductProductId(Integer productId);
 
-	@Query(value = "  select [prouct_comment_id] from product_comment where product_id = :product_id",nativeQuery = true)
+	@Query(value = "select [prouct_comment_id] from product_comment where product_id = :product_id",nativeQuery = true)
 	public List<Integer> findByProduct_productId( @Param("product_id") Integer productId);
-
+	
+	@Query(value="select avg(commentScore) from product_comment group by product_id  order by avg(commentScore) desc",nativeQuery = true)
+	public List<Double> findByCommentScore();
+	
+	@Query(value="select product_id from product_comment group by product_id order by avg(commentScore) desc",nativeQuery = true)
+	public List<Integer> sortProductId();
 }

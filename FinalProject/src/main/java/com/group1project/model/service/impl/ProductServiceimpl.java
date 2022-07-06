@@ -90,6 +90,9 @@ public class ProductServiceimpl implements ProductService {
 		return pDao.findAllProductByProductArea(tag);
 	}
 	
-	
+	@Override
+	public Optional<Product> findById(Integer id){
+		return pDao.findById(id);
+	}
 
 }

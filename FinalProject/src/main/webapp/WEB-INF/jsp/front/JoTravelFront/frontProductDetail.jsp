@@ -84,8 +84,8 @@
 			<div class="page-cover text-center">
 				<h2 class="page-cover-tittle">Product Detail</h2>
 				<ol class="breadcrumb">
-					<li><a href="index.html">Home</a></li>
-					<li class="active">Gallery</li>
+					<li><a href="${contextRoot}/front/productPage">Product</a></li>
+					<li class="active">Detail</li>
 				</ol>
 			</div>
 		</div>

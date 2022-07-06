@@ -1,6 +1,8 @@
 package com.group1project.controller;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -98,7 +101,19 @@ private ArticleService aService;
 		List<Product> tagProduct = pService.findAllProductByProducArea(tag);		
 		mav.getModel().put("tagProduct", tagProduct);
 		}
-			
+		
+		List<Double> scoreList = pcService.findByCommentScore();
+		List<Integer> productIds = pcService.sortProductId();
+		List<Product> productList = new ArrayList<Product>();
+		for(Integer one : productIds) {
+			Product productStar = pService.findById(one).get();
+			productList.add(productStar);
+		}
+		
+		mav.getModel().put("scoreList", scoreList);
+		mav.getModel().put("productList", productList);
+		
+		
 		mav.setViewName("front/JoTravelFront/frontProductPage");
 		return mav;
 		
@@ -215,6 +230,21 @@ private ArticleService aService;
 		return "front/JoTravelFront/frontSearchProductComment";
 		
 	}
+	
+	
+//	@GetMapping("sortProductComment")
+//	public String sortProductComment(Model m) {
+//		
+//		List<ProductComment> scoreList = pService.findByCommentScore();
+//		List<ProductComment> productList = pService.sortProductId();
+//		
+//		m.addAttribute("scoreList", scoreList);
+//		m.addAttribute("productList", productList);
+//		
+//		return ;
+//		
+//	
+//	}
 	
 	
 //	@GetMapping("searchProduct")

@@ -1,6 +1,7 @@
 package com.group1project.model.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -18,4 +19,5 @@ public interface ProductService {
 	Page<Product> searchProductByNameWithPage(String key, Pageable pab);
 	List<Product> findAllByAccountId(Integer accountId);
 	List<Product> findAllProductByProducArea(String tag);
+	Optional<Product> findById(Integer id);
 }
