@@ -111,10 +111,11 @@
                             <div class="col-lg-3  col-md-3">
                                 <div class="blog_info text-right">
                                 <div class="post_tag" style="font-size:20px">
-										<strong style="color:rgb(56, 154, 171);background-color:rgb(249, 239, 220);border-radius: 10px;font-weight:bold;"><c:out value="${article.articleCategory}" /></strong>
+                                    <div align="center">
+										<p style="color:#fddb64;background-color:#8e83bc;border-radius: 10px;font-weight:bold;height:25px;width: 50px;"><c:out value="${article.articleCategory}" /></p>
 <!-- 											<a href="#">Food,</a> <a href="#">Technology,</a> <a href="#">Politics,</a> -->
 <!-- 											<a href="#">Lifestyle</a> -->
-										</div>
+										</div></div>
 <!--                                     <div class="post_tag"> -->
 <!--                                         <a href="#">Food,</a> -->
 <!--                                         <a href="#">Technology,</a> -->

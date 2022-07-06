@@ -90,6 +90,21 @@ public class ArticlePageController {
 		mav.setViewName("JoGroup");
 		return mav;
 	}
+	
+	@GetMapping("front/JoGroupFront/all")
+	public ModelAndView viewJoGroupFront(ModelAndView mav, 
+			@RequestParam(name="p", defaultValue = "1") Integer pageNumber,Model m) {
+		//Page<Article> page = aService.findByPage(pageNumber);
+		
+		Pageable pgb = PageRequest.of(pageNumber - 1, 5 ,Sort.Direction.DESC,"articleJogroup");
+        String key="揪團";
+		Page<Article> page = aService.searchArticleByCategoryWithPage(key, pgb);
+
+		mav.getModel().put("page", page);
+		mav.getModel().put("key", key);
+		mav.setViewName("front/JoTravelFront/JoGroupBlogIndex");
+		return mav;
+	}
 //前台
 	@GetMapping("front666/")
 	public String frontPage(){

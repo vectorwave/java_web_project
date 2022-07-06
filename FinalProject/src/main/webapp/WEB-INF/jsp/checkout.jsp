@@ -20,6 +20,8 @@
 	href="<c:url value="/css/blog/vendors/nice-select/css/nice-select.css"/>">
 <link rel="stylesheet"
 	href="<c:url value="/css/blog/vendors/owl-carousel/owl.carousel.min.css"/>">
+<link rel="stylesheet"
+	href="<c:url value="/css/blog/font-awesome.min.css"/>">
 <!-- main css -->
 <link rel="stylesheet" href="<c:url value="/css/blog/style.css"/>">
 <link rel="stylesheet" href="<c:url value="/css/blog/responsive.css"/>">
@@ -28,7 +30,7 @@
 <script src="${contextRoot}/js/js.cookie.min.js"></script>
 <script type="text/javascript" src="${contextRoot}/js/vue.min.js"></script>
 </head>
-<body style="background-image:url('${contextRoot}/images/blog/shoppingcar.jpg');background-position: center;background-size: cover">
+<body style="background-color:#FFF8D7">
 	
 	<jsp:include page="front/JoTravelFront/frontLayout/frontHeader.jsp" />
 	<h1> <br><br> </h1>
@@ -39,15 +41,15 @@
 		<div class="row mt-3">
 			<div class="col-12 col-md">
 				<div id="alert1"
-					class="alert alert-success alert-rounded text-center" role="alert">1.檢查購物車資料</div>
+					class="alert alert-success alert-rounded text-center" role="alert"><h2>1.檢查購物車資料</h2></div>
 			</div>
 			<div class="col-12 col-md">
 				<div id="alert2" class="alert alert-light alert-rounded text-center"
-					role="alert">2.填寫付款資料</div>
+					role="alert"><h2>2.填寫付款資料</h2></div>
 			</div>
 			<div class="col-12 col-md">
 				<div id="alert3" class="alert alert-light alert-rounded text-center"
-					role="alert">3.完成交易</div>
+					role="alert"><h2>3.完成交易</h2></div>
 			</div>
 		</div>
 		<div class="row justify-content-center ">
@@ -69,8 +71,8 @@
 							</thead>
 							<tbody v-for="(detail,index) in orderDetails">
 								<tr>
-									<td class="align-middle"><button type="button" @click="delDetail(index)"
-											class="btn btn-danger btn-sm" data-toggle="modal">🗑️</button>
+									<td class="align-middle mr-2"><button type="button" @click="delDetail(index)"
+											class="genric-btn danger circle px-3" data-toggle="modal">🗑️</button>
 									<td class="align-middle"><img
 										:src="'${contextRoot}/back/product/photo/'+detail.product.productId"
 										alt="..." width="80px;"></td>
@@ -180,6 +182,13 @@
 		});
 		return details;
 	}
+	function dataToCookie(){
+		let cookie = "";
+		vm.orderDetails.forEach(detail=>{
+			cookie += detail.product.productId+','+detail.amount+','+detail.date+','+detail.totalDays+';';
+		});
+		return cookie;
+	}
 	//建立vue vm
 	var vm = new Vue({
 		  el:'#container',
@@ -205,15 +214,15 @@
 		  },
 		});
 	//將訂單送往綠界金流
+	let flag = true;
 	function sent(){
-		Cookies.remove('cart');
 		jQuery.ajax({
 			url:'${contextRoot}/ECPay/go',
 			method:'POST',
 		  	contentType:'application/json; charset=utf-8',
 		  	data:JSON.stringify(vm.$data),
 			success:function(res){
-				Cookies.set('cart','');
+				flag = false;
 				$('#container').html(res);
 			},
 			error:function(err){
@@ -237,6 +246,14 @@
 		});
 		return product;
 	};
+	
+	$(window).on('beforeunload',function(){
+		if(flag){
+			Cookies.set('cart',dataToCookie());
+		}else{
+			Cookies.set('cart','');
+		}
+	});
 	</script>
 </body>
 </html>

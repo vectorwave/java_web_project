@@ -159,11 +159,34 @@
 
 									<div class="blog_info text-right">
 										<div class="post_tag" style="font-size:20px">
+										<c:choose>
+										<c:when test="${value.articleJogroup>10}">
+											<div style="height:20px" align="center">
+										<p align="center"  style="color:#2D6E7F;background-color:#F6C987;border-radius: 5px;font-weight:bold;height:25px;width: 50px;"><c:out value="${value.articleCategory}" /></p>
+							            </div><br>
+							            <p style="color:#F6C987 ;font-weight: bold; font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size: 20px;">✔揪團成功</p>
+                                       
+                                        <p style="color: rgb(239, 67, 10);font-size: 18px;font-weight:bold;">已有  ${value.articleJogroup}  人揪團中，快來手刀加入吧!!!</p>										
+										
+										
+										
+										</c:when>
+										
+										<c:otherwise>
 											<div align="center">
-										<p style="color:#fddb64;background-color:#8e83bc;border-radius: 5px;font-weight:bold;height:25px;width: 50px;"><c:out value="${value.articleCategory}" /></p>
+										<p  align="center" style="color:#ffcb4f;background-color:#295ea4;border-radius: 5px;font-weight:bold;height:25px;width: 50px;"><c:out value="${value.articleCategory}" /></p>
+							            </div><br>
+							            <p style="color:#295ea4 ;font-weight: bold;font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif ;  font-size: 18px;">🈳揪團尚未成功，同志仍須努力</p>
+                                       
+                                        <p style="color: rgb(239, 67, 10);font-size: 18px;font-weight:bold;">已有  ${value.articleJogroup}  人揪團中，快來手刀加入吧!!!</p>										
+										
+										
+										</c:otherwise>
+										</c:choose>
+<%-- 										<strong style="color:rgb(149, 179, 184);background-color:rgb(249, 239, 220);border-radius: 10px;font-weight:bold;"><c:out value="${value.articleCategory}" /></strong> --%>
 <!-- 											<a href="#">Food,</a> <a href="#">Technology,</a> <a href="#">Politics,</a> -->
 <!-- 											<a href="#">Lifestyle</a> -->
-										</div></div>
+										</div>
 										<ul class="blog_meta list_style">
 											<li><c:out value="${value.account.accountName}" /><nobr>   </nobr><i class="lnr lnr-user"></i></li>
 											<li><fmt:formatDate pattern="yyyy/MM/dd HH:mm " value="${value.articleDate}" /><i
