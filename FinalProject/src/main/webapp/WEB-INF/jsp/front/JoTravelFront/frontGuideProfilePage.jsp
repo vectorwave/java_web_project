@@ -43,7 +43,7 @@
             <div class="overlay gd-parallax" data-stellar-ratio="0.8" data-stellar-vertical-offset="0" data-background=""></div>
             <div class="container">
                 <div class="page-cover text-center">
-                    <h2 class="page-cover-tittle">導遊管理主頁</h2>
+                    <h2 class="page-cover-tittle">${guideInfo.profileName} - 管理頁面</h2>
                     <ol class="breadcrumb">
                         <li><a href="#">會員中心</a></li>
                         <li class="active">導遊主頁</li>
@@ -58,10 +58,10 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 d_flex align-items-center">
-                        <img class="img-fluid" src="${contextRoot}/guide_info/photo/${guideInfo.accountId}" alt="img">
+                        <img class="img-fluid" src="${contextRoot}/guide_info/photo/${guideInfo.accountId}" alt="img" style="height:100px">
                     </div>
                     <div class="col-md-6" style="display:table">
-                        <div class="about_content" style="display:table-cell;vertical-align:middle;">
+                        <div class="about_content" style="display:table-cell;vertical-align:middle;text-align: left;">
                             <h2 class="title title_color">${guideInfo.profileName}<br>${guideInfo.guideName}</h2>
                             <h4>證照種類： ${guideInfo.licenceType}</h4>
                         </div>
@@ -85,17 +85,47 @@
                 <div align="right"> 
                     <a href="#" class="genric-btn primary large">上架行程</a>
                     <a href="#" class="genric-btn primary large">Extra Large</a>    
-                
                 </div>
                 <br/>
 
 			<div class="row imageGallery1" id="gallery">
                          
-                    
+                <div>
+
+
+
+                    <table class="" style="width:1200px;">
+                        <tr style="background-color:#fac473;text-align: center;">
+                        <th>編號<th>圖片<th>商品名稱<th>商品價格<th>上架時間<th>下架時間<th>更新時間<th>分區<th>上架狀態<th>修改<th>刪除</tr> 
+                        
+                        <div id="newTable">
+                        <c:forEach var="value" items="${productList}">
+                        <tr>
+                        <td> <c:out value="${value.productId}"/></td>
+                        <td> <img src="${contextRoot}/back/product/photo/${value.productId}" width="50px" height="50px"> </td>      	  
+                        <td> <c:out value="${value.productName}"/></td>
+                        <td> <c:out value="${value.productPrice}"/></td>     	     		
+                        <td> <fmt:formatDate pattern="yyyy 年 MM 月 dd 日 " value="${value.startDate}" />   	     		
+                        <td> <fmt:formatDate pattern="yyyy 年 MM 月 dd 日 " value="${value.endDate}" /></td>      	     		   		
+                        <td> <fmt:formatDate pattern="yyyy 年 MM 月 dd 日 a hh:mm:ss " value="${value.updatedTime}"/></td> 
+                        
+                        <td> <c:out value="${value.productArea}"/></td> 
+                        <td> <c:out value="${value.status}"/></td> 
+                        <td><button class="delt" onclick="upd('${value.productId}')" >📝</button></td> 
+                        <td><button class="delt" onclick="del('${value.productId}')" >✂</button></td> 
+                        </tr>
+                        </c:forEach>
+                        </div>
+                        </table>
+
+
+                </div>    
+
+
                
-                      </div>
+                             </div>
+                        </div>
                     </div>
-            </div>
                 </div>
             </div>
         </div>

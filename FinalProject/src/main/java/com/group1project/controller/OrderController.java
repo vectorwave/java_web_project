@@ -66,12 +66,9 @@ public class OrderController {
 	}
 	
 	@GetMapping("download")
-	public List<Order> downloadOrder(HttpSession session){
-		Integer accountId = 1;
-		if(session.getAttribute("loginuser")!=null) {
-			accountId=((Account)session.getAttribute("loginuser")).getAccountId();
-		}
-		return orderService.findAllByAccountId(accountId);
+	public List<Order> downloadOrder(){
+		
+		return orderService.findAll();
 	}
 	@GetMapping("all/admin")
 	public Object getAllOrder() {

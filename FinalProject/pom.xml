@@ -103,6 +103,18 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-mail</artifactId>
 		</dependency>
+		
+<!-- 		    <parent> -->
+<!--         <groupId>org.springframework.boot</groupId> -->
+<!--         <artifactId>spring-boot-starter-parent</artifactId> -->
+<!--         <version>1.2.6.RELEASE</version> -->
+<!--     </parent> -->
+
+<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>1.2.6.RELEASE</version>
+        </dependency>
 
 
 		<dependency>

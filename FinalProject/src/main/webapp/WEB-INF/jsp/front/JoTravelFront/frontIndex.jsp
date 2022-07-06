@@ -108,6 +108,7 @@
         <!--================Banner Area =================-->
        
         <section class="accomodation_area section_gap" style="padding:20px">
+        
             <div class="container">
                 <div class="section_title text-center" style="height:50px">
                     <h2 class="title_color">熱門旅遊行程</h2>

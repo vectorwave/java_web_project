@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -169,6 +170,21 @@ public class CustomerSupportController {
 		return mav;
 	}
 
+//	@PostMapping("/message/editForm")
+//	public  editFormPage(@ModelAttribute(name="") ModelAndView mav) {
+//
+//		
+//
+//		mav.getModel().put("customerBean2", new CustomerBean());// 將空物件放進model
+//
+//		List<CustomerBean> allCus = csService.findAllCustomer();
+//		mav.getModel().put("allCus", allCus);
+//
+//		mav.setViewName("Customer/editForm1");
+//
+//		return mav;
+//	}
+	
 	// 確認修改
 	@GetMapping("/message/edit")
 	public ModelAndView editPage(ModelAndView mav, Integer id, @ModelAttribute("customerBean2") CustomerBean csb) {

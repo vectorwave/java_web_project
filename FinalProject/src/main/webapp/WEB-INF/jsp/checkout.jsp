@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
-<jsp:include page="front/JoTravelFront/frontLayout/frontHeader.jsp" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,6 +20,8 @@
 	href="<c:url value="/css/blog/vendors/nice-select/css/nice-select.css"/>">
 <link rel="stylesheet"
 	href="<c:url value="/css/blog/vendors/owl-carousel/owl.carousel.min.css"/>">
+<link rel="stylesheet"
+	href="<c:url value="/css/blog/font-awesome.min.css"/>">
 <!-- main css -->
 <link rel="stylesheet" href="<c:url value="/css/blog/style.css"/>">
 <link rel="stylesheet" href="<c:url value="/css/blog/responsive.css"/>">
@@ -29,32 +30,35 @@
 <script src="${contextRoot}/js/js.cookie.min.js"></script>
 <script type="text/javascript" src="${contextRoot}/js/vue.min.js"></script>
 </head>
-<body>
-	<div class="container my-5 py-5" id="container">
+<body style="background-color:#FFF8D7">
+	
+	<jsp:include page="front/JoTravelFront/frontLayout/frontHeader.jsp" />
+	<h1> <br><br> </h1>
+	<div class="container " id="container">
 		<div class="h1 text-center">
 			<strong>JOTRAVEL 訂單頁面</strong>
 		</div>
 		<div class="row mt-3">
 			<div class="col-12 col-md">
 				<div id="alert1"
-					class="alert alert-success alert-rounded text-center" role="alert">1.檢查購物車資料</div>
+					class="alert alert-success alert-rounded text-center" role="alert"><h2>1.檢查購物車資料</h2></div>
 			</div>
 			<div class="col-12 col-md">
 				<div id="alert2" class="alert alert-light alert-rounded text-center"
-					role="alert">2.填寫付款資料</div>
+					role="alert"><h2>2.填寫付款資料</h2></div>
 			</div>
 			<div class="col-12 col-md">
 				<div id="alert3" class="alert alert-light alert-rounded text-center"
-					role="alert">3.完成交易</div>
+					role="alert"><h2>3.完成交易</h2></div>
 			</div>
 		</div>
-		<div class="row justify-content-center mt-4">
+		<div class="row justify-content-center ">
 			<div class="col-md-10 tab-content">
 				<div id="cartpage" class="accordion tab-pane fade show active">
 					<div>
 						<table class="table table-sm">
 							<thead>
-								<tr>
+								<tr style="font-size:23px">
 									<th width="20"></th>
 									<th width="60"></th>
 									<th>商品名稱</th>
@@ -67,8 +71,8 @@
 							</thead>
 							<tbody v-for="(detail,index) in orderDetails">
 								<tr>
-									<td class="align-middle"><button type="button" @click="delDetail(index)"
-											class="btn btn-danger btn-sm" data-toggle="modal">🗑️</button>
+									<td class="align-middle mr-2"><button type="button" @click="delDetail(index)"
+											class="genric-btn danger circle px-3" data-toggle="modal">🗑️</button>
 									<td class="align-middle"><img
 										:src="'${contextRoot}/back/product/photo/'+detail.product.productId"
 										alt="..." width="80px;"></td>
@@ -84,12 +88,12 @@
 					</div>
 					<div class="mt-3 d-flex justify-content-end h3">合計:{{getTotalPrice()}}</div>
 					<div class="mt-3 d-flex justify-content-end">
-						<div><button type="button" class="btn btn-primary" data-toggle="tab"
+						<div><button type="button" class="btn btn-primary btn-sm" data-toggle="tab"
 							data-target="#paypage" onclick="changeColor()">前往付款頁面</button></div>
 					</div>
 				</div>
 				<div id="paypage" class=" text-center border-0 tab-pane">
-					<div class="form-row text-left mt-3">
+					<div class="form-row text-left ">
 						<div class="form-group col-md-6">
 							<label for="name">姓名</label> <input type="text"
 								class="form-control " id="name" placeholder="姓名" required>
@@ -142,6 +146,7 @@
 			</div>
 		</div>
 	</div>
+	<br/>
 	<script>
 	function autoInput(){
 		$('#section').val('台灣')
