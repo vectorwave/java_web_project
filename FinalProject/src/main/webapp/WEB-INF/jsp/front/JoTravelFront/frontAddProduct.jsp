@@ -13,7 +13,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="icon" href="image/favicon.png" type="image/png">
-        <title>Insert Product</title>
+        <title>導遊商品管理 - JoTravel</title>
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href='<c:url value="/css/blog/bootstrap.css"/>'>
         <link rel="stylesheet" href="<c:url value="/css/blog/vendors/linericon/style.css"/>">
@@ -35,58 +35,159 @@
             <div class="overlay bg-parallax" data-stellar-ratio="0.8" data-stellar-vertical-offset="0" data-background=""></div>
             <div class="container">
                 <div class="page-cover text-center">
-                    <h2 class="page-cover-tittle">Insert Product</h2>
+                    <h2 class="page-cover-tittle">導遊商品管理</h2>
                     <ol class="breadcrumb">
-                        <li><a href="${contextRoot}/front/addProduct">Insert Product</a></li>
+                        <li><a href="${contextRoot}/front/addProduct">上架行程</a></li>
                     </ol>
                 </div>
             </div>
         </section>
 <br/>
 
-<div class="container">
-<form:form  class="form-floating" method="post" enctype="multipart/form-data" action="${contextRoot}/back/product/frontAddProduct" modelAttribute="frontPd" >
+<section class="about_history_area section_gap">
+    <div class="container" style="margin-bottom:50px;margin-top:50px;">
+      <div class="row" align="center">
 
-  <form:input path="productId" type="hidden" />
-  
-  <div class="form-group">
-  商家編號：<input name="accountId" id="accountId" class="form-control" type="text" value="${loginuser.accountId}" readonly="readonly"><br/>
-  產品名稱：<form:input type="text" id="productName" path="productName" class="form-control" required="required" placeholder="商品名稱" /><br/>
-  產品價格：<form:input type="text" id="productPrice" path="productPrice" class="form-control" value="1000" required="required"/><br/>
-  上架時間：<form:input type="date" id="startDate" path="startDate" class="form-control" required="required" readonly="readonly" /><br/>
-  下架時間：<form:input type="date" id="endDate" path="endDate" class="form-control"  required="required" readonly="readonly"/><br/>
-  產品圖片：<img id="output" width="300" height="300"/><br/><br/>
-  
-  <input type="file" class="form-control" name="file" accept="image/*" onchange="loadFile(event)"/><br/>
-  
-  區域分類:<form:select path="productArea" id="productArea" class="form-select" required="required">
-  <form:option value="北部">北部</form:option>
-  <form:option value="東部">東部</form:option>
-  <form:option value="南部">南部</form:option>
-  <form:option value="西部">西部</form:option>
-  <form:option value="外島">外島</form:option>
-</form:select>
-  <br/>
-  
-  商品簡述(50字內):<form:input type="text" id="productSimpleDescription" path="productSimpleDescription" class="form-control" maxlength="50" required="required"/><br/>
+        <div class="content-container">
+
+          <div style="margin-left:200px;">
+
+            <fieldset id="formFieldset" style="background-color:rgb(247, 247, 247);">
+              <div id="guideLegend" style="font-size:40px;font-weight:600;color:rgb(83, 83, 83); margin-top: 20px;margin-bottom: 20px;">
+                上架行程</div>
+
+              <div id="GIFormContainer1">
+
+                <div align="center">
+                  <table style="border-radius:  10px;">
+
+                    <form:form class="form-floating" method="post" enctype="multipart/form-data"
+                      action="${contextRoot}/back/product/frontAddProduct" modelAttribute="frontPd">
+                      <form:input path="productId" type="hidden" />
 
 
-  商品詳述(300字內):<form:input type="textarea" id="productDescription" path="productDescription" class="form-control" maxlength="300" required="required"/><br/>
-  
-  
-  上架狀態:<form:select path="status" class="form-select" required="required">
-  <form:option value="上架" >上架</form:option>
-  <form:option value="下架">下架</form:option>
-</form:select>
-  
-  </div>
-  
-  <input onclick="submitForm(form)" type="button" class="btn btn-primary" value="新增商品">
-  <input type="button" id="one" value="一鍵新增" />  
-  </form:form>
-  </div>
-<%--   <div> ${msg.okMsg} --%>
-<!--   </div> -->
+
+
+                      <tr>
+                        <td class="formLabel"><label class="GIFLabel">商家編號： </label></td>
+                        <td class="formContent"><input name="accountId" id="accountId" class="form-control" type="text"
+                            value="${loginuser.accountId}" readonly="readonly">
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td class="formLabel"><label class="GIFLabel">產品圖片：</label></td>
+                        <td class="formContent">
+                          <img id="output" width="300" height="300" /><br /><br />
+                          <input type="file" class="form-control" name="file" accept="image/*"
+                            onchange="loadFile(event)" />
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td class="formLabel"><label class="GIFLabel">產品名稱：</label></td>
+                        <td class="formContent">
+                          <form:input type="text" id="productName" path="productName" class="form-control"
+                            required="required" placeholder="商品名稱" />
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td class="formLabel"><label class="GIFLabel">產品價格：</label></td>
+                        <td class="formContent">
+                          <form:input type="text" id="productPrice" path="productPrice" class="form-control"
+                            value="1000" required="required" />
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td class="formLabel"><label class="GIFLabel"> 上架時間：</label></td>
+                        <td class="formContent">
+                          <form:input type="date" id="startDate" path="startDate" class="form-control"
+                            required="required" readonly="readonly" />
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td class="formLabel"><label class="GIFLabel">下架時間：</label></td>
+                        <td class="formContent">
+                          <form:input type="date" id="endDate" path="endDate" class="form-control" required="required"
+                            readonly="readonly" />
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td class="formLabel"><label class="GIFLabel">區域分類:</label></td>
+                        <td class="formContent">
+                          <form:select path="productArea" id="productArea" class="form-select" required="required">
+                            <form:option value="北部">北部</form:option>
+                            <form:option value="東部">東部</form:option>
+                            <form:option value="南部">南部</form:option>
+                            <form:option value="西部">西部</form:option>
+                            <form:option value="外島">外島</form:option>
+                          </form:select>
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td class="formLabel"><label class="GIFLabel">商品簡述(50字內):</label></td>
+                        <td class="formContent">
+                          <form:input type="text" id="productSimpleDescription" path="productSimpleDescription"
+                            class="form-control" maxlength="50" required="required" />
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td class="formLabel"><label class="GIFLabel">商品詳述(300字內):</label></td>
+                        <td class="formContent">
+                          <form:input type="textarea" id="productDescription" path="productDescription"
+                            class="form-control" maxlength="300" required="required" />
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td class="formLabel"><label class="GIFLabel">上架狀態:</label></td>
+                        <td class="formContent">
+                          <form:select path="status" class="form-select" required="required">
+                            <form:option value="上架">上架</form:option>
+                            <form:option value="下架">下架</form:option>
+                          </form:select>
+                        </td>
+                      </tr>
+
+
+
+
+
+                      <tr>
+
+                        <td colspan="2">
+
+
+                          <div class="btn-container" style="margin-top:20px" align="center">
+
+                            <input onclick="submitForm(form)" type="button" class="genric-btn primary circle"
+                              value="新增商品">
+                            <button type="button" class="genric-btn warning circle" onclick="history.go(-1)">取消</button>
+                            <input type="button" id="one" class="genric-btn info circle" value="一鍵新增" />
+                          </div>
+                        </td>
+
+                      </tr>
+                    </form:form>
+                  </table>
+                </div>
+
+
+              </div>
+
+            </fieldset>
+          </div>
+        </div>
+
+
+      </div>
+  </section>
 
 
 

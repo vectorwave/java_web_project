@@ -22,7 +22,8 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="icon" href="image/favicon.png" type="image/png">
-<title>註冊帳號 - JoTravel</title>
+
+<title>註冊帳號</title>
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href='<c:url value="/css/blog/bootstrap.css"/>'>
 <link rel="stylesheet"
@@ -146,7 +147,7 @@ label {
 			<form:input type="hidden" path="status" class="form-control"
 			value="1" />
 
-			<input type="button" class="genric-btn primary circle" onclick="submitForm(form)" id="send" value="新增" />
+			<input type="button" class="genric-btn primary circle" onclick="submitForm(form)" id="send" value="註冊" />
 
 			<input type="button" class="genric-btn warning circle"  id="one" value="一鍵輸入" />
 

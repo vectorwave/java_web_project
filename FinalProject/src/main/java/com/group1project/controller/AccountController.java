@@ -357,7 +357,7 @@ public class AccountController {
 			
 		}
 		
-		//修改
+		//修改密碼
 		@PostMapping("page/login/edit")
 	    public String pagepostEditAccount(@ModelAttribute(name="newAccount") Account newAccount) {
 			

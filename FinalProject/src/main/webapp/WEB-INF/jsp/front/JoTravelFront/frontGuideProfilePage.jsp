@@ -109,37 +109,51 @@
 
 			<div style="padding:25px 8px 25px 8px;background-color: white; border-radius: 30px;">
                          
+                    <c:choose>
+                        <c:when test="${empty productList}">
+
+                        <h1>您還沒有任何行程唷！</h1>
+                        <h4>這裡空空如也...</h4>
+                         </br>
+                        <a href="${contextRoot}/front/addProduct" class="genric-btn primary circle large" style="font-size:15px;">立即上架</a>
+
+                        </c:when>
+                        <c:otherwise>
+
+                            <table>
+                                <tr class="thContent" style="white-space:nowrap">
+                                <th>編號<th>圖片<th>商品名稱<th>商品價格<th>上架時間<th>下架時間<th>更新時間<th>分區<th>狀態<th> <th colspan="2"> <a href="${contextRoot}/front/addProduct" class="genric-btn primary circle medium">上架行程</a>  </tr> 
+                                
+                                <div>
+                                <c:forEach var="value" items="${productList}">
+                                <tr class="tdContent">
+                                <td style="border-radius: 20px 0px 0px 20px"> <c:out value="${value.productId}"/></td>
+                                <td> <img src="${contextRoot}/back/product/photo/${value.productId}" width="100px"> </td>      	  
+                                <td> <c:out value="${value.productName}"/></td>
+                                <td> <c:out value="${value.productPrice}"/></td>     	     		
+                                <td> <fmt:formatDate pattern="yyyy/MM/dd" value="${value.startDate}" />   	     		
+                                <td> <fmt:formatDate pattern="yyyy/MM/dd" value="${value.endDate}" /></td>      	     		   		
+                                <td> <fmt:formatDate pattern="yyyy/MM/dd a hh:mm:ss " value="${value.updatedTime}"/></td> 
+                                
+                                <td> <c:out value="${value.productArea}"/></td> 
+                                <td> <c:out value="${value.status}"/></td> 
+                                <td style="white-space:nowrap"><a href="${contextRoot}/front/ProductComment/search?id=${value.productId}" class="genric-btn success-border small" style="border-radius: 10px;">查看評論</a></td>
+                                
+                                <td style="white-space:nowrap"><button class="genric-btn info-border small" onclick="upd('${value.productId}')" style="border-radius: 10px;">修改</button></td> 
+        
+                                <td style="border-radius: 0px 20px 20px 0px;white-space:nowrap;"><button class="genric-btn danger-border small" onclick="del('${value.productId}')" style="border-radius: 10px;">刪除</button></td>  
+                                
+        <%--                          <td style="white-space:nowrap"><a href="${contextRoot}/front/frontEditProduct?id=${value.productId}" class="genric-btn info-border small" style="border-radius: 10px;">修改</a></td>  --%>
+        <%--                         <td style="border-radius: 0px 20px 20px 0px;white-space:nowrap;"><a href="${contextRoot}/back/product/frontDelete/${value.productId}" class="genric-btn danger-border small" style="border-radius: 10px;">刪除</a></td> --%>
+                                
+                                </tr>
+                                </c:forEach>
+                                </div>
+                                </table>
 
 
-
-                    <table>
-                        <tr class="thContent" style="white-space:nowrap">
-                        <th>編號<th>圖片<th>商品名稱<th>商品價格<th>上架時間<th>下架時間<th>更新時間<th>分區<th>狀態<th> <th colspan="2"> <a href="${contextRoot}/front/addProduct" class="genric-btn primary circle medium">上架行程</a>  </tr> 
-                        
-                        <div>
-                        <c:forEach var="value" items="${productList}">
-                        <tr class="tdContent">
-                        <td style="border-radius: 20px 0px 0px 20px"> <c:out value="${value.productId}"/></td>
-                        <td> <img src="${contextRoot}/back/product/photo/${value.productId}" width="100px"> </td>      	  
-                        <td> <c:out value="${value.productName}"/></td>
-                        <td> <c:out value="${value.productPrice}"/></td>     	     		
-                        <td> <fmt:formatDate pattern="yyyy/MM/dd" value="${value.startDate}" />   	     		
-                        <td> <fmt:formatDate pattern="yyyy/MM/dd" value="${value.endDate}" /></td>      	     		   		
-                        <td> <fmt:formatDate pattern="yyyy/MM/dd a hh:mm:ss " value="${value.updatedTime}"/></td> 
-                        
-                        <td> <c:out value="${value.productArea}"/></td> 
-                        <td> <c:out value="${value.status}"/></td> 
-                        <td style="white-space:nowrap"><a href="${contextRoot}/front/ProductComment/search?id=${value.productId}" class="genric-btn success-border small" style="border-radius: 10px;">查看評論</a></td>
-                        <td style="white-space:nowrap"><button class="delt" onclick="upd('${value.productId}')" >📝</button></td> 
-                        <td style="border-radius: 0px 20px 20px 0px;white-space:nowrap;"><button class="delt" onclick="del('${value.productId}')" >✂</button></td> 
-                        
-<%--                          <td style="white-space:nowrap"><a href="${contextRoot}/front/frontEditProduct?id=${value.productId}" class="genric-btn info-border small" style="border-radius: 10px;">修改</a></td>  --%>
-<%--                         <td style="border-radius: 0px 20px 20px 0px;white-space:nowrap;"><a href="${contextRoot}/back/product/frontDelete/${value.productId}" class="genric-btn danger-border small" style="border-radius: 10px;">刪除</a></td> --%>
-                        
-                        </tr>
-                        </c:forEach>
-                        </div>
-                        </table>
+                        </c:otherwise>
+                    </c:choose>
 
                 
                 </div>    

@@ -32,9 +32,7 @@
 <script type="text/javascript"
 	src="${contextRoot}/js/sweetalert2.all.min.js"></script>
 <link href="${contextRoot}/css/sweetalert2.min.css" rel="stylesheet">
-
-
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
 
         <style>
 
@@ -52,16 +50,17 @@
             <div class="overlay gd-parallax" data-stellar-ratio="0.8" data-stellar-vertical-offset="0" data-background=""></div>
             <div class="container">
                 <div class="page-cover text-center">
-                    <h2 class="page-cover-tittle">主頁管理</h2>
-                    <ol class="breadcrumb">
+                    <h2 class="page-cover-tittle">個人資料管理</h2>
+                    <!-- <ol class="breadcrumb">
                         <li><a href="#">會員中心</a></li>
                         <li class="active">個人資料管理</li>
-                    </ol>
+                    </ol> -->
                 </div>
             </div>
         </section>
         <!--================Breadcrumb Area =================-->
         
+
         <!--================ About Guide Area  =================-->
         <section class="about_history_area section_gap">
             <div class="container" style="margin-bottom:50px;margin-top:50px;">
@@ -71,8 +70,8 @@
 
         <div align="center">
 
-          <fieldset id="formFieldset">
-            <legend id="guideLegend">修改導遊資料</legend>
+          <fieldset id="formFieldset" style="background-color:rgb(247, 247, 247);">
+            <legend id="guideLegend" style="font-size:40px;font-weight:600;color:rgb(83, 83, 83);">修改導遊資料</legend>
 
             <div id="GIFormContainer1">
 
@@ -87,14 +86,14 @@
                             <c:when test="${empty editGuideInfo.guidePhoto}">
 
                                 <td class="formContent" colspan="2" align="center"><div class="guide_pic"
-                                    width="250" id="output"> </div>
+                                    width="250" id="output" style="border-radius:30px"> </div>
                                </td>
 
                             </c:when>
 
                             <c:otherwise>
                      
-                                <td class="formContent" colspan="2" align="center"><img class="guide_pic"
+                                <td class="formContent" colspan="2" align="center" style="border-radius:30px"><img class="guide_pic"
                                     src="${contextRoot}/guide_info/photo/${editGuideInfo.accountId}" width="250" id="output" />
                                 </td>
 
@@ -102,7 +101,7 @@
                         </c:choose>
                     </tr>
 
-                    <form:input path="accountId" id="accountId" name="accountId" />
+                    <form:input path="accountId" id="accountId" name="accountId" hidden="hidden"/>
 
                     <tr>
                       <td class="formLabel"><label class="GIFLabel">個人圖片： </label></td>
@@ -198,8 +197,8 @@
                     <tr>
                       <td colspan="2">
                         <div class="btn-container" style="margin-top:20px" align="center"> <button type="button" onclick="editGuide(form)"
-                            class="btn btn-outline-success">修改</button>
-                          <button type="button" class="btn btn-outline-secondary" onclick="history.go(-1)">取消</button>
+                            class="genric-btn primary circle">修改</button>
+                          <button type="button" class="genric-btn warning circle" onclick="history.go(-1)">取消</button>
                         </div>
                       </td>
                     </tr>

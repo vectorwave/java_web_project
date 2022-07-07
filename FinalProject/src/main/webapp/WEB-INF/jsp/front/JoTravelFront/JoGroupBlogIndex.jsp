@@ -34,7 +34,9 @@
 <link rel="stylesheet" href="<c:url value="/css/blog/responsive.css"/>">
 
 <style>
-
+html {
+                scroll-behavior: smooth;
+            }
 </style>
 </head>
 <body>
@@ -91,14 +93,14 @@
 					JoTravel論壇
 				</h2><br>
 				<h3>記錄美好生活</h3>
-				<a href="#" class="btn white_btn button_hover">View More</a>
+				<a href="#go" class="btn white_btn button_hover">View More</a>
 			</div>
 		</div>
 	</section>
 	<!--================Banner Area =================-->
 
 	<!--================Blog Categorie Area =================-->
-	<section class="blog_categorie_area">
+	<section class="blog_categorie_area" id="go">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-4">
