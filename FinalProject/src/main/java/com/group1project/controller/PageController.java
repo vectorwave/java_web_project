@@ -39,11 +39,12 @@ public class PageController {
 
 	@Autowired
 	private ProductCommentService pcService;
+	
+	@Autowired
+	private AccountService aService;
 
-
-
-@Autowired
-private ArticleService aService;
+//	@Autowired
+//	private ArticleService aService;
 		
 
 	
@@ -64,7 +65,7 @@ private ArticleService aService;
 	public String addProudct(Model m) {
 		
 		Product frontPd = new Product();
-
+		
 		m.addAttribute("frontPd", frontPd);
 		
 		return "front/JoTravelFront/frontAddProduct";
@@ -153,7 +154,8 @@ private ArticleService aService;
 	public String addProduct(Model model){
 
 		Product newPd = new Product();
-
+		List<Account> alist = aService.getAllAccount();
+		model.addAttribute("alist", alist);
 		model.addAttribute("newPd", newPd);
 
 		return "addProduct";
