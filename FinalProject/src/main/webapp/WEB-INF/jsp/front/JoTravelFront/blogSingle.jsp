@@ -14,7 +14,7 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="icon" href="image/favicon.png" type="image/png">
-<title>Royal Hotel</title>
+<title>${article.articleTitle}</title>
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href='<c:url value="/css/blog/bootstrap.css"/>'>
 <link rel="stylesheet"
@@ -86,11 +86,11 @@
             <div class="overlay bg-parallax" data-stellar-ratio="0.8" data-stellar-vertical-offset="0" data-background=""></div>
             <div class="container">
                 <div class="page-cover text-center">
-                    <h2 class="page-cover-tittle f_48">Blog Details page</h2>
+                    <h2 class="page-cover-tittle f_48">${article.articleTitle}</h2>
                     <ol class="breadcrumb">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="blog.html">Blog</a></li>
-                        <li class="active">Blog Details</li>
+                        <li><a href="http://localhost:8081/jotravel/">首頁</a></li>
+                        <li><a href="http://localhost:8081/jotravel/front/blogIndex">遊記分享</a></li>
+                        <li class="active">${article.articleTitle}</li>
                     </ol>
                 </div>
             </div>
@@ -141,15 +141,20 @@
                                 <p class="excert">${article.articleText}</p>
                                 <c:if test="${article.articleCategory=='揪團'}">
 <!--                                 <button type="button" class="genric-btn success circle" id="JoButton">我要揪團</button> -->
+<!--                                  <div id="ClickSetCookie"> -->
+                                 <input type="text" id="btnSetCookie" value=${ article.articleId } style="visibility:hidden">
+<!--                                  <input type="text" id="btnSetCookie2"> -->
+                                 
                                 <form method="post" action="${contextRoot}/back/article/JoGroupClick"><br>
                                 
-                                                                <input type="submit" value="我要揪團" class="genric-btn info circle"/>
+                                                                <div id="ClickSetCookie" onclick="votedSetCk()"><input type="submit" value="我要揪團" class="genric-btn info circle" id="submitbtnnnn" style="font-size:18px" /></div>
                                 
                                 <input id="articleId" name="articleId" value="${article.articleId}" style="visibility:hidden"/>
                                 
                                 </form>
                                 <br>
                                 <p style="color: rgb(239, 67, 10);font-size: 18px;font-weight:bold;">已有  ${article.articleJogroup}  人揪團中，快來手刀加入吧!!!</p>
+                                
                                 </c:if>
 <!--                                 <p> -->
 <!--                                     Boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the camp price. However, who has the willpower to actually sit through a self-imposed MCSE training. who has the willpower to actually sit through a self-imposed -->
@@ -157,18 +162,12 @@
 <!--                                 <p> -->
 <!--                                     Boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the camp price. However, who has the willpower to actually sit through a self-imposed MCSE training. who has the willpower to actually sit through a self-imposed -->
 <!--                                 </p> -->
-<script >
-function ChangeDisabled(value){
-　if(value=='1'){
-　document.getElementById('TetstText').disabled=false;　// 變更欄位為可用
-　}else{
-　document.getElementById('TetstText').disabled=true;　// 變更欄位為禁用
-　}
-}
-</script>
-<input type="text" id="TetstText">
-<input type="button" value='變更欄位為可用' onclick="ChangeDisabled(1)">
-<input type="button" value='變更欄位為禁用' onclick="ChangeDisabled(2)">
+<!-- <script > -->
+
+<!-- </script> -->
+<!-- <input type="text" id="TetstText"> -->
+<!-- <input type="button" value='變更欄位為可用' onclick="ChangeDisabled(1)"> -->
+<!-- <input type="button" value='變更欄位為禁用' onclick="ChangeDisabled(2)"> -->
                             </div>
                             <div class="col-lg-12">
 <!--                                 <div class="quotes"> -->
@@ -319,26 +318,26 @@ function ChangeDisabled(value){
 <!--                                 </div> -->
 <!--                             </div>	                                             				 -->
 <!--                         </div> -->
-                        <div class="comment-form">
-                            <h4>Leave a Reply</h4>
-                            <form>
-                                <div class="form-group form-inline">
-                                  <div class="form-group col-lg-6 col-md-6 name">
-                                    <input type="text" class="form-control" id="name" placeholder="Enter Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Name'">
-                                  </div>
-                                  <div class="form-group col-lg-6 col-md-6 email">
-                                    <input type="email" class="form-control" id="email" placeholder="Enter email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'">
-                                  </div>										
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="subject" placeholder="Subject" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Subject'">
-                                </div>
-                                <div class="form-group">
-                                    <textarea class="form-control mb-10" rows="5" name="message" placeholder="Messege" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Messege'" required=""></textarea>
-                                </div>
-                                <a href="#" class="primary-btn button_hover">Post Comment</a>	
-                            </form>
-                        </div>
+<!--                         <div class="comment-form"> -->
+<!--                             <h4>Leave a Reply</h4> -->
+<!--                             <form> -->
+<!--                                 <div class="form-group form-inline"> -->
+<!--                                   <div class="form-group col-lg-6 col-md-6 name"> -->
+<!--                                     <input type="text" class="form-control" id="name" placeholder="Enter Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Name'"> -->
+<!--                                   </div> -->
+<!--                                   <div class="form-group col-lg-6 col-md-6 email"> -->
+<!--                                     <input type="email" class="form-control" id="email" placeholder="Enter email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'"> -->
+<!--                                   </div>										 -->
+<!--                                 </div> -->
+<!--                                 <div class="form-group"> -->
+<!--                                     <input type="text" class="form-control" id="subject" placeholder="Subject" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Subject'"> -->
+<!--                                 </div> -->
+<!--                                 <div class="form-group"> -->
+<!--                                     <textarea class="form-control mb-10" rows="5" name="message" placeholder="Messege" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Messege'" required=""></textarea> -->
+<!--                                 </div> -->
+<!--                                 <a href="#" class="primary-btn button_hover">Post Comment</a>	 -->
+<!--                             </form> -->
+<!--                         </div> -->
                     </div>
                     <div class="col-lg-4">
                         <div class="blog_right_sidebar">
@@ -470,111 +469,165 @@ function ChangeDisabled(value){
 <!--                                 <div class="br"></div>							 -->
 <!--                             </aside> -->
                             <aside class="single-sidebar-widget tag_cloud_widget">
-                                <h4 class="widget_title">Tag Clouds</h4>
-                                <ul class="list_style">
-                                    <li><a href="#">Technology</a></li>
-                                    <li><a href="#">Fashion</a></li>
-                                    <li><a href="#">Architecture</a></li>
-                                    <li><a href="#">Fashion</a></li>
-                                    <li><a href="#">Food</a></li>
-                                    <li><a href="#">Technology</a></li>
-                                    <li><a href="#">Lifestyle</a></li>
-                                    <li><a href="#">Art</a></li>
-                                    <li><a href="#">Adventure</a></li>
-                                    <li><a href="#">Food</a></li>
-                                    <li><a href="#">Lifestyle</a></li>
-                                    <li><a href="#">Adventure</a></li>
-                                </ul>
-                            </aside>
+							<h4 class="widget_title">猜你喜歡</h4>
+							<ul class="list_style">
+								
+								<li><p id="krisrock"></p></li>
+								<li><p id="krisrock1"></p></li>
+								<li><p id="krisrock2"></p></li>
+								
+<!-- 								<li><a href="#">Fashion</a></li> -->
+<!-- 								<li><a href="#">Food</a></li> -->
+<!-- 								<li><a href="#">Technology</a></li> -->
+<!-- 								<li><a href="#">Lifestyle</a></li> -->
+<!-- 								<li><a href="#">Art</a></li> -->
+<!-- 								<li><a href="#">Adventure</a></li> -->
+<!-- 								<li><a href="#">Food</a></li> -->
+<!-- 								<li><a href="#">Lifestyle</a></li> -->
+<!-- 								<li><a href="#">Adventure</a></li> -->
+							</ul>
+						</aside>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+            <div style="visibility:hidden">
+  <div id="floating-panel">
+      <input id="latlng" type="text" value="40.714224,-73.961452" />
+      <input id="submit" type="button" value="Reverse Geocode" />
+    </div>
+
+    <div id="result"></div>
+
+    <div  id="map"></div></div>
+        
+        
         <!--================Blog Area =================-->
         
         <!--================ start footer Area  =================-->
         	         <jsp:include page="frontLayout/frontFooter.jsp" />
         	
-<!--         <footer class="footer-area section_gap"> -->
-<!--             <div class="container"> -->
-<!--                 <div class="row"> -->
-<!--                     <div class="col-lg-3  col-md-6 col-sm-6"> -->
-<!--                         <div class="single-footer-widget"> -->
-<!--                             <h6 class="footer_title">About Agency</h6> -->
-<!--                             <p>The world has become so fast paced that people don’t want to stand by reading a page of information, they would much rather look at a presentation and understand the message. It has come to a point </p> -->
-<!--                         </div> -->
-<!--                     </div> -->
-<!--                     <div class="col-lg-3 col-md-6 col-sm-6"> -->
-<!--                         <div class="single-footer-widget"> -->
-<!--                             <h6 class="footer_title">Navigation Links</h6> -->
-<!--                             <div class="row"> -->
-<!--                                 <div class="col-4"> -->
-<!--                                     <ul class="list_style"> -->
-<!--                                         <li><a href="#">Home</a></li> -->
-<!--                                         <li><a href="#">Feature</a></li> -->
-<!--                                         <li><a href="#">Services</a></li> -->
-<!--                                         <li><a href="#">Portfolio</a></li> -->
-<!--                                     </ul> -->
-<!--                                 </div> -->
-<!--                                 <div class="col-4"> -->
-<!--                                     <ul class="list_style"> -->
-<!--                                         <li><a href="#">Team</a></li> -->
-<!--                                         <li><a href="#">Pricing</a></li> -->
-<!--                                         <li><a href="#">Blog</a></li> -->
-<!--                                         <li><a href="#">Contact</a></li> -->
-<!--                                     </ul> -->
-<!--                                 </div>										 -->
-<!--                             </div>							 -->
-<!--                         </div> -->
-<!--                     </div>							 -->
-<!--                     <div class="col-lg-3 col-md-6 col-sm-6"> -->
-<!--                         <div class="single-footer-widget"> -->
-<!--                             <h6 class="footer_title">Newsletter</h6> -->
-<!--                             <p>For business professionals caught between high OEM price and mediocre print and graphic output, </p>		 -->
-<!--                             <div id="mc_embed_signup"> -->
-<!--                                 <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get" class="subscribe_form relative"> -->
-<!--                                     <div class="input-group d-flex flex-row"> -->
-<!--                                         <input name="EMAIL" placeholder="Email Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Address '" required="" type="email"> -->
-<!--                                         <button class="btn sub-btn"><span class="lnr lnr-location"></span></button>		 -->
-<!--                                     </div>									 -->
-<!--                                     <div class="mt-10 info"></div> -->
-<!--                                 </form> -->
-<!--                             </div> -->
-<!--                         </div> -->
-<!--                     </div> -->
-<!--                     <div class="col-lg-3 col-md-6 col-sm-6"> -->
-<!--                         <div class="single-footer-widget instafeed"> -->
-<!--                             <h6 class="footer_title">InstaFeed</h6> -->
-<!--                             <ul class="list_style instafeed d-flex flex-wrap"> -->
-<!--                                 <li><img src="image/instagram/Image-01.jpg" alt=""></li> -->
-<!--                                 <li><img src="image/instagram/Image-02.jpg" alt=""></li> -->
-<!--                                 <li><img src="image/instagram/Image-03.jpg" alt=""></li> -->
-<!--                                 <li><img src="image/instagram/Image-04.jpg" alt=""></li> -->
-<!--                                 <li><img src="image/instagram/Image-05.jpg" alt=""></li> -->
-<!--                                 <li><img src="image/instagram/Image-06.jpg" alt=""></li> -->
-<!--                                 <li><img src="image/instagram/Image-07.jpg" alt=""></li> -->
-<!--                                 <li><img src="image/instagram/Image-08.jpg" alt=""></li> -->
-<!--                             </ul> -->
-<!--                         </div> -->
-<!--                     </div>						 -->
-<!--                 </div> -->
-<!--                 <div class="border_line"></div> -->
-<!--                 <div class="row footer-bottom d-flex justify-content-between align-items-center"> -->
-<!--                     <p class="col-lg-8 col-sm-12 footer-text m-0">Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-<!-- Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a> -->
-<!-- <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p> -->
-<!--                     <div class="col-lg-4 col-sm-12 footer-social"> -->
-<!--                         <a href="#"><i class="fa fa-facebook"></i></a> -->
-<!--                         <a href="#"><i class="fa fa-twitter"></i></a> -->
-<!--                         <a href="#"><i class="fa fa-dribbble"></i></a> -->
-<!--                         <a href="#"><i class="fa fa-behance"></i></a> -->
-<!--                     </div> -->
-<!--                 </div> -->
-<!--             </div> -->
-<!--         </footer> -->
-	<!--================ End footer Area  =================-->
 
+	<!--================ End footer Area  =================-->
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmEBK0G5eNsuBCbrJzIYY88lee1rT_S_o&callback=initMap&v=weekly&channel=2" async></script>
+	
+<script type="text/javascript">
+
+
+window.onload=function(){
+	
+		var ckisExist="votedCk"+$('#btnSetCookie').val()
+		var ckext=getCookie(ckisExist);
+		if (ckext!=null){
+			console.log("ck6666");
+			document.getElementById('submitbtnnnn').disabled=true;
+		
+		}else{
+			console.log("ck================================")
+			
+		}
+
+		
+}
+
+function votedSetCk() { 
+ 	var createCk=$('#btnSetCookie').val();
+
+ 	console.log(createCk);
+ 	setCookie("votedCk"+createCk,createCk);
+
+
+} 
+var lat2 = getCookie("lat1");
+console.log(lat2);
+var long2 = getCookie("long1");
+console.log(long2);
+function initMap() {
+  const map = new google.maps.Map(document.getElementById("map"), {
+    zoom: 8,
+    center: { lat: 40.714224, lng: -73.961452 },
+  });
+  const geocoder = new google.maps.Geocoder();
+  const infowindow = new google.maps.InfoWindow();
+
+  geocodeLatLng(geocoder, map, infowindow);
+
+  document.getElementById("submit").addEventListener("click", () => {
+    geocodeLatLng(geocoder, map, infowindow);
+  });
+}
+
+function geocodeLatLng(geocoder, map, infowindow) {
+  const input = document.getElementById("latlng").value;
+  const latlngStr = input.split(",", 2);
+  const latlng = {
+		  
+		  lat:parseFloat(lat2),
+		  lng:parseFloat(long2)
+//    lat: parseFloat(latlngStr[0]),
+//    lng: parseFloat(latlngStr[1]),
+////    lat:40.714224,
+///   lng:-73.961452   
+
+  };
+
+  geocoder
+    .geocode({ location: latlng })
+    .then((response) => {
+      if (response.results[0]) {
+        map.setZoom(11);
+
+        const marker = new google.maps.Marker({
+          position: latlng,
+          map: map,
+        });
+
+        infowindow.setContent(response.results[0].formatted_address);
+        var kris=response.results[0].formatted_address;
+        console.log(kris);
+        setCookie("address",kris);
+        var address1 = getCookie("address");
+        var address2=address1.substring(5,8)
+        console.log(address1);
+        console.log(address2);
+        var jkf1=address2.indexOf("台北");
+
+        if(jkf1!=-1){
+        	var el1 = document.getElementById("krisrock1");
+        	el1.innerHTML = "<p><a href='http://localhost:8081/jotravel/front/blogIndex?key=台北'/>台北<p>";
+        	var el2 = document.getElementById("krisrock");
+        	el2.innerHTML = "<p><a href='http://localhost:8081/jotravel/front/blogIndex?key=龍洞'/>龍洞<p>";
+        	var el3 = document.getElementById("krisrock2");
+        	el3.innerHTML = "<p><a href='http://localhost:8081/jotravel/front/blogIndex?key=白沙灣'/>白沙灣<p>";
+        }
+//         document.getElementById(
+//           "result"
+//         ).innerHTML = `<h1 style="text-align:center;" >${response.results[0].formatted_address}</h1>`;
+        
+        infowindow.open(map, marker);
+      } else {
+        window.alert("No results found");
+      }
+    })
+    .catch((e) => window.alert("Geocoder failed due to: " + e));
+}
+
+
+function getCookie(name){
+  	var arr,reg = new RegExp("(^|)" + name + "=([^;]*)(;|$)");
+  	if(arr = document.cookie.match(reg))
+  		return unescape(arr[2]);
+  	else
+  		return null;
+  }
+  
+  function setCookie(name,value){
+  	document.cookie = name + "=" +escape(value) +";path=/";
+  }
+
+
+</script>
+<!-- <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script> -->
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	<script src="<c:url value="/js/blog/jquery-3.2.1.min.js"/>"></script>

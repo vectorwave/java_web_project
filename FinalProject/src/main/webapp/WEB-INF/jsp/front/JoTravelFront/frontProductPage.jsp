@@ -78,8 +78,14 @@
                             <!-- <div class="hover"> -->
                             	<!-- <a class="light" href="<c:url value="images/01.jpeg"/>"><i class="fa fa-expand"></i></a> -->
                     
-			   
-			            <c:forEach items="${page.content}" var="product">                 
+			   			<c:if test="${tagProduct eq null}">
+			   			<c:set var="tagProduct" value="${page.content}"></c:set>
+			   			</c:if>
+			   			
+			   			
+			   			
+<%-- 			            <c:forEach items="${page.content}" var="product">                  --%>
+			            <c:forEach items="${tagProduct}" var="product">                 
 					            <div class="col-md-4">
 					              <div class="card mb-4 box-shadow">
 									<a href="${contextRoot}/front/productPage/detail?id=${product.productId}" > 

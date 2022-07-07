@@ -114,6 +114,16 @@ public class OrderServiceImpl implements OrderService{
 		return cfCount;
 	}
 
+	@Override
+	public Integer[] getCountByAmount(Integer year) {
+		List<Object[]> cpm= detailRepository.countAmountByMonth(year);
+		Integer[] count = {0,0,0,0,0,0,0,0,0,0,0,0};
+		for(Object[] thisMonth:cpm) {
+			count[(Integer)thisMonth[1]-1] =(Integer)thisMonth[0]; 
+		}
+		return count;
+	}
+
 	
 
 

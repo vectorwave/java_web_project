@@ -14,7 +14,7 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="icon" href="image/favicon.png" type="image/png">
-<title>Royal Hotel</title>
+<title>JoTravel論壇</title>
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href='<c:url value="/css/blog/bootstrap.css"/>'>
 <link rel="stylesheet"
@@ -34,7 +34,9 @@
 <link rel="stylesheet" href="<c:url value="/css/blog/responsive.css"/>">
 
 <style>
-
+html {
+                scroll-behavior: smooth;
+            }
 </style>
 </head>
 <body>
@@ -91,17 +93,17 @@
 					JoTravel論壇
 				</h2><br>
 				<h3>記錄美好生活</h3>
-				<a href="#" class="btn white_btn button_hover">View More</a>
+				<a href="#go" class="btn white_btn button_hover">View More</a>
 			</div>
 		</div>
 	</section>
 	<!--================Banner Area =================-->
 
 	<!--================Blog Categorie Area =================-->
-	<section class="blog_categorie_area">
+	<section class="blog_categorie_area" id="go">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-4">
+				<div class="col-lg-4" >
 					<div class="categories_post">
 						<img
 							src="<c:url value="/images/blog/blog/cat-post/Taipei.jpg"/>"
@@ -254,6 +256,7 @@
 							<form action="/jotravel/front/blogIndex" method="get" >
 <input  type="text" name="key" placeholder="搜尋文章名稱" id="key" ><input type="submit" id="send" value="🔍" class="searchicon"><a href="http://localhost:8081/jotravel/front/blogIndex"><input type="button" value="全部文章" ></a>  
 </form>
+
 <!-- 								<input type="text" class="form-control" -->
 <!-- 									placeholder="Search Posts"> <span -->
 <!-- 									class="input-group-btn"> -->

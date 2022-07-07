@@ -14,7 +14,7 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="icon" href="image/favicon.png" type="image/png">
-<title>Royal Hotel</title>
+<title>一起來揪團</title>
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href='<c:url value="/css/blog/bootstrap.css"/>'>
 <link rel="stylesheet"
@@ -34,7 +34,9 @@
 <link rel="stylesheet" href="<c:url value="/css/blog/responsive.css"/>">
 
 <style>
-
+html {
+                scroll-behavior: smooth;
+            }
 </style>
 </head>
 <body>
@@ -91,14 +93,14 @@
 					JoTravel論壇
 				</h2><br>
 				<h3>記錄美好生活</h3>
-				<a href="#" class="btn white_btn button_hover">View More</a>
+				<a href="#go" class="btn white_btn button_hover">View More</a>
 			</div>
 		</div>
 	</section>
 	<!--================Banner Area =================-->
 
 	<!--================Blog Categorie Area =================-->
-	<section class="blog_categorie_area">
+	<section class="blog_categorie_area" id="go">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-4">
@@ -228,7 +230,7 @@
 										</c:when>
 										<c:otherwise>
 											<li class="page-item"><a class="page-link"
-												href="${contextRoot}/front/blogIndex?p=${page.number}"
+												href="${contextRoot}/front/JoGroupFront/all?p=${page.number}"
 												aria-label="Previous"> <span aria-hidden="true">
 														<span class="lnr lnr-chevron-left"></span>
 												</span>
@@ -239,7 +241,7 @@
 
 
 									<li class="page-item"><a class="page-link"
-										href="${contextRoot}/front/blogIndex?p=${p}"><c:out
+										href="${contextRoot}/front/JoGroupFront/all?p=${p}"><c:out
 												value="${p}" /></a></li>
 								</c:forEach>
 			
@@ -249,7 +251,7 @@
 										</c:when>
 										<c:otherwise>
 											<li class="page-item"><a class="page-link"
-												href="${contextRoot}/front/blogIndex?p=${page.number+2}"
+												href="http://localhost:8081/jotravel/front/JoGroupFront/all?p=${page.number+2}"
 												aria-label="Next"> <span aria-hidden="true"> <span
 														class="lnr lnr-chevron-right"></span>
 												</span>

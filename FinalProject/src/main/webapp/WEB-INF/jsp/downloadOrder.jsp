@@ -20,13 +20,13 @@
 	</div>
 </div>
 <div class="d-flex justify-content-center">
-	<main class="px-3">
+<img src="${contextRoot}/assets/img/little-monkey.gif" style="position:absolute;top:10px;left:10px;">
+	<main class="px-3 py-5">
 		<h1>下載訂單</h1>
 		<p class="lead">點擊下面的按鈕來下載你的訂單</p>
 		<p class="lead">
 			<button type="button" class="btn btn-primary btn-xs" onclick="download()">點我下載</button>
 		</p>
-		<img src="${contextRoot}/assets/img/little-monkey.gif" style="position:absolute;top:15px;left:10px;">
 	</main>
 </div>
 <script type="text/javascript">

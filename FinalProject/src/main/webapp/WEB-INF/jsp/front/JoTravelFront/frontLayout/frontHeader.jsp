@@ -100,9 +100,8 @@
                                  <c:if test="${sessionScope.loginuser.accountId != null && sessionScope.loginuser.title == '商家' }">
                                   <li class="nav-item"><a class="nav-link"href="http://localhost:8081/jotravel/page/loginout">登出</a></li>
                                                     
-                                  <li class="nav-item"><a class="nav-link" href="http://localhost:8081/jotravel/guide/myprofile/${loginuser.accountId}">商家測試</a></li>
+                                  <li class="nav-item"><a class="nav-link" href="http://localhost:8081/jotravel/guide/myprofile/${loginuser.accountId}">商家管理</a></li>
                                                     
-                                 <li class="nav-item"><a class="nav-link" href="#">測試</a></li>
                                                                 </c:if>
 								
                                 <li class="nav-item"><a class="nav-link" href="http://localhost:8081/jotravel/login">管理員</a></li>

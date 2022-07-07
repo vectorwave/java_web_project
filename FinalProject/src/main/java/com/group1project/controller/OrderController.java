@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.group1project.model.bean.Account;
 import com.group1project.model.bean.Order;
+import com.group1project.model.repository.OrderDetailRepository;
 import com.group1project.model.repository.OrderRepository;
 import com.group1project.model.service.OrderService;
 
@@ -27,6 +28,7 @@ public class OrderController {
 	@Autowired
 	OrderService orderService;
 	@Autowired OrderRepository orderRepository;
+	@Autowired OrderDetailRepository detailRepository;
 
 	@GetMapping("all")
 	public Object getAllOrder(HttpSession session) {
@@ -85,5 +87,8 @@ public class OrderController {
 	public Object getCountByStatus() {
 		return orderService.getCountByCF();
 	}
-
+	@GetMapping("count/apm/{year}")
+	public Object getCountByAmount(@PathVariable("year") Integer year) {
+		return detailRepository.countAmountByMonth(year);
+	}
 }

@@ -14,7 +14,7 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="icon" href="image/favicon.png" type="image/png">
-<title>Royal Hotel</title>
+<title>新增遊記</title>
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href='<c:url value="/css/blog/bootstrap.css"/>'>
 <link rel="stylesheet"
@@ -88,9 +88,9 @@
                 <div class="page-cover text-center">
                     <h2 class="page-cover-tittle f_48">新增遊記</h2>
                     <ol class="breadcrumb">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="blog.html">Blog</a></li>
-                        <li class="active">Blog Details</li>
+                        <li><a href="http://localhost:8081/jotravel/">首頁</a></li>
+                        <li><a href="http://localhost:8081/jotravel/front/blogIndex">遊記論壇</a></li>
+                        <li class="active">新增文章</li>
                     </ol>
                 </div>
             </div>
@@ -142,7 +142,7 @@
 
   <div >
     <!-- 文章標題 -->
-    <form:input type="text" path="articleTitle"   placeholder="遊記標題" onfocus="this.placeholder = ''" onblur="this.placeholder = '遊記標題'" class="single-input"/>
+    <form:input type="text" path="articleTitle" id="arcTitle"  placeholder="遊記標題" onfocus="this.placeholder = ''" onblur="this.placeholder = '遊記標題'" class="single-input"/>
   </div>
 <!--   <div class="icon"><i >👉</i></div> -->
 		<div class="input-group-icon mt-10">
@@ -166,7 +166,7 @@
   <div >
  
     <!-- <form:label path="articleText" >遊記內文</form:label> -->
-    <form:textarea path="articleText" class="single-textarea" placeholder="遊記內文" onfocus="this.placeholder = ''" onblur="this.placeholder = '遊記內文'"></form:textarea>
+    <form:textarea path="articleText" id="arcText" class="single-textarea" placeholder="遊記內文" onfocus="this.placeholder = ''" onblur="this.placeholder = '遊記內文'"></form:textarea>
   </div><br>
   <img id="output" width="200px" height="200px"  style="background-color:white"/>
   <br><br>
@@ -174,7 +174,10 @@
    <label>遊記圖片：</label><div>
    <input type="file"  name="file" accept="image/*" onchange="loadFile(event)"  /></div>
   <div class="button-group-area mt-10">
- <input  type="submit" value="Submit" class="genric-btn info-border circle"/></div>
+ <input  type="submit" value="Submit" class="genric-btn info-border circle"/>
+ <input  type="button" value="一鍵輸入" class="genric-btn danger-border circle" id="OneKey"/>
+ <input  type="button" value="揪團範本" class="genric-btn danger-border circle" id="OneKey1"/></div>
+
 </form:form>
 
 </form:form>
@@ -262,22 +265,24 @@
 <!--                                 <div class="br"></div>							 -->
 <!--                             </aside> -->
                             <aside class="single-sidebar-widget tag_cloud_widget">
-                                <h4 class="widget_title">Tag Clouds</h4>
-                                <ul class="list_style">
-                                    <li><a href="#">Technology</a></li>
-                                    <li><a href="#">Fashion</a></li>
-                                    <li><a href="#">Architecture</a></li>
-                                    <li><a href="#">Fashion</a></li>
-                                    <li><a href="#">Food</a></li>
-                                    <li><a href="#">Technology</a></li>
-                                    <li><a href="#">Lifestyle</a></li>
-                                    <li><a href="#">Art</a></li>
-                                    <li><a href="#">Adventure</a></li>
-                                    <li><a href="#">Food</a></li>
-                                    <li><a href="#">Lifestyle</a></li>
-                                    <li><a href="#">Adventure</a></li>
-                                </ul>
-                            </aside>
+							<h4 class="widget_title">猜你喜歡</h4>
+							<ul class="list_style">
+								
+								<li><p id="krisrock"></p></li>
+								<li><p id="krisrock1"></p></li>
+								<li><p id="krisrock2"></p></li>
+								
+<!-- 								<li><a href="#">Fashion</a></li> -->
+<!-- 								<li><a href="#">Food</a></li> -->
+<!-- 								<li><a href="#">Technology</a></li> -->
+<!-- 								<li><a href="#">Lifestyle</a></li> -->
+<!-- 								<li><a href="#">Art</a></li> -->
+<!-- 								<li><a href="#">Adventure</a></li> -->
+<!-- 								<li><a href="#">Food</a></li> -->
+<!-- 								<li><a href="#">Lifestyle</a></li> -->
+<!-- 								<li><a href="#">Adventure</a></li> -->
+							</ul>
+						</aside>
                         </div>
                     </div>
                 </div>
@@ -285,7 +290,15 @@
 				</div></div>
 			<!-- End Align Area -->
       
-      
+      <div style="visibility:hidden">
+  <div id="floating-panel">
+      <input id="latlng" type="text" value="40.714224,-73.961452" />
+      <input id="submit" type="button" value="Reverse Geocode" />
+    </div>
+
+    <div id="result"></div>
+
+    <div style="visibility:hidden" id="map"></div></div>
       
       
       
@@ -335,7 +348,107 @@
         	         <jsp:include page="frontLayout/frontFooter.jsp" />
 
 	<!--================ End footer Area  =================-->
-<script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmEBK0G5eNsuBCbrJzIYY88lee1rT_S_o&callback=initMap&v=weekly&channel=2" async></script>
+
+
+
+
+<script type="text/javascript">
+
+
+document.cookie = 'cookie3=value3';
+
+var lat2 = getCookie("lat1");
+console.log(lat2);
+var long2 = getCookie("long1");
+console.log(long2);
+function initMap() {
+  const map = new google.maps.Map(document.getElementById("map"), {
+    zoom: 8,
+    center: { lat: 40.714224, lng: -73.961452 },
+  });
+  const geocoder = new google.maps.Geocoder();
+  const infowindow = new google.maps.InfoWindow();
+
+  geocodeLatLng(geocoder, map, infowindow);
+
+  document.getElementById("submit").addEventListener("click", () => {
+    geocodeLatLng(geocoder, map, infowindow);
+  });
+}
+
+function geocodeLatLng(geocoder, map, infowindow) {
+  const input = document.getElementById("latlng").value;
+  const latlngStr = input.split(",", 2);
+  const latlng = {
+		  
+		  lat:parseFloat(lat2),
+		  lng:parseFloat(long2)
+//    lat: parseFloat(latlngStr[0]),
+//    lng: parseFloat(latlngStr[1]),
+////    lat:40.714224,
+///   lng:-73.961452   
+
+  };
+
+  geocoder
+    .geocode({ location: latlng })
+    .then((response) => {
+      if (response.results[0]) {
+        map.setZoom(11);
+
+        const marker = new google.maps.Marker({
+          position: latlng,
+          map: map,
+        });
+
+        infowindow.setContent(response.results[0].formatted_address);
+        var kris=response.results[0].formatted_address;
+        console.log(kris);
+        setCookie("address",kris);
+        var address1 = getCookie("address");
+        var address2=address1.substring(5,8)
+        console.log(address1);
+        console.log(address2);
+        var jkf1=address2.indexOf("台北");
+
+        if(jkf1!=-1){
+        	var el1 = document.getElementById("krisrock1");
+        	el1.innerHTML = "<p><a href='http://localhost:8081/jotravel/front/blogIndex?key=台北'/>台北<p>";
+        	var el2 = document.getElementById("krisrock");
+        	el2.innerHTML = "<p><a href='http://localhost:8081/jotravel/front/blogIndex?key=龍洞'/>龍洞<p>";
+        	var el3 = document.getElementById("krisrock2");
+        	el3.innerHTML = "<p><a href='http://localhost:8081/jotravel/front/blogIndex?key=白沙灣'/>白沙灣<p>";
+        }
+//         document.getElementById(
+//           "result"
+//         ).innerHTML = `<h1 style="text-align:center;" >${response.results[0].formatted_address}</h1>`;
+        
+        infowindow.open(map, marker);
+      } else {
+        window.alert("No results found");
+      }
+    })
+    .catch((e) => window.alert("Geocoder failed due to: " + e));
+}
+function getCookie(name){
+	var arr,reg = new RegExp("(^|)" + name + "=([^;]*)(;|$)");
+	if(arr = document.cookie.match(reg))
+		return unescape(arr[2]);
+	else
+		return null;
+}
+
+function setCookie(name,value){
+	document.cookie = name + "=" +escape(value) +";path=/";
+}
+
+
+
+
+
+
+
 $(function(){
 	
 	$('#exampleFormControlSelect1').change(function(){
@@ -356,6 +469,22 @@ $(function(){
 	
 });
 
+
+$('#OneKey').click(function(){
+	  $('#arcTitle').val("龍洞-玩水的首選!!!");
+	  $('#arcText').val("在龍洞灣海洋公園浮潛，有專業的國際認證標準ADS最高級教練指導，潛進水裡近距離與豐富的魚群同游，尋找海星和海膽，是很棒的體驗，有機會再來玩玩！在這裡特別推薦帶我們的自由潛水教練。左教練賽高!!!!!!");
+	  
+	 })
+
+
+	 
+	 $('#OneKey1').click(function(){
+	  $('#arcTitle').val("外雙溪SUP-立槳之旅集氣");
+	  $('#arcText').val("外雙溪位於台北市區，乘著SUP順流而下，沿途會看見壯觀的芝山岩，接著經過雙溪河濱公園以及新佳公園，非常希望這次可以成團，讓立槳左教練帶我們出去玩");
+	  
+	 })
+	 
+	 
 var loadFile = function(event) {
   var output = document.getElementById('output');
   output.src = URL.createObjectURL(event.target.files[0]);

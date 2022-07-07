@@ -22,6 +22,7 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="icon" href="image/favicon.png" type="image/png">
+
 <title>註冊帳號</title>
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href='<c:url value="/css/blog/bootstrap.css"/>'>
@@ -40,8 +41,51 @@
 <!-- main css -->
 <link rel="stylesheet" href="<c:url value="/css/blog/style.css"/>">
 <link rel="stylesheet" href="<c:url value="/css/blog/responsive.css"/>">
+
+<style>
+#containerBox {
+	margin-top: 80px;
+	padding:80px;
+}
+
+#inputContainer {
+	padding:30px;
+	width:500px;
+	background-color: rgb(255,255,255,0.7);
+	border-radius: 50px;
+}
+
+#btnContainer {
+	font-size: 20px;
+margin-top: 50px;
+}
+
+#formContent {
+	padding-top:30px;
+	padding-bottom: 30px;
+}
+
+
+label {
+	float:left;
+	font-size: 20px;
+	font-weight: 600;
+}
+
+#myVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%; 
+  min-height: 100%;
+  z-index:0;
+}
+
+</style>
+
 </head>
 <body class="backgroundCSS">
+
 	<!--================Header Area =================-->
 		 <jsp:include page="frontLayout/frontHeader.jsp" />
 	
@@ -56,11 +100,14 @@
 	<!--             </div> -->
 	<!--         </section> -->
 	<!--================Header Area =================-->
-	<br>
-	<br>
-	<br>
-	<div class="class="modal-body"">
-		<h1 style="text-align: center">新增帳號</h1>
+
+
+
+<div id="containerBox" align="center">
+
+	<div id="inputContainer">
+
+		<h1 style="text-align: center">註冊帳號</h1>
 
 		<form:form method="post"
 			action="${contextRoot}/page/login/member/insert"
@@ -69,29 +116,48 @@
 			<form:input path="accountId" type="hidden" />
 
 			<div class="form-group"
-				style="width: 300px; margin: auto; text-align: center;">
-				帳號：
-				<form:input type="text" path="accountName" class="form-control"
-					id="inputAccount" />
-				<br /> <span id="maccountName"></span> 密碼：
-				<form:input type="text" path="password" class="form-control"
-					id="inputPassword" />
-				<br /> <span id="mpassword"></span> 身分:
-				<form:select path="title" class="form-select" required="required">
+				style="width: 300px; margin: auto; text-align: center;" id="formContent">
+
+				<tr class="trCtrl">
+				<td><label>帳號：</label></td>
+				<td><form:input type="text" path="accountName" class="form-control"
+					id="inputAccount" /></td>
+				</tr> </br>
+
+				<tr class="trCtrl">
+					<td><span id="maccountName"></span><label> 密碼：</label></td>
+					<td><form:input type="password" path="password" class="form-control"
+					id="inputPassword" /></td>
+				</tr> </br> 
+
+				<tr class="trCtrl">
+				<td><span id="mpassword"></span><label> 身分:</label></td>
+				<td><form:select path="title" class="form-select" required="required">
 					<span id="mtitle"></span>
 					<form:option value="會員">會員</form:option>
 					<form:option value="商家">商家</form:option>
-				</form:select>
-				<br /> <br /> <br /> <br />
-				<form:input type="hidden" path="status" class="form-control"
-					value="1" />
-				<br /> <input type="button" onclick="submitForm(form)" id="send"
-					value="新增" class="btn btn-lg btn-success btn-block">
+				</form:select></td> </br> 
+			</tr>
 
-				<button id="one" type="button" class="btn btn-secondary">一鍵輸入</button>
 			</div>
+		</table>
+
+		<div id="btnContainer" style="text-align: center;">
+
+			<form:input type="hidden" path="status" class="form-control"
+			value="1" />
+
+			<input type="button" class="genric-btn primary circle" onclick="submitForm(form)" id="send" value="新增" />
+
+			<input type="button" class="genric-btn warning circle"  id="one" value="一鍵輸入" />
+
+		</div>
+
 		</form:form>
 	</div>
+
+</div>
+
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	<script src="<c:url value="/js/blog/jquery-3.2.1.min.js"/>"></script>

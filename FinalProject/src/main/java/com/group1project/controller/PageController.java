@@ -43,8 +43,8 @@ public class PageController {
 	@Autowired
 	private AccountService aService;
 
-//	@Autowired
-//	private ArticleService aService;
+	@Autowired
+	private ArticleService arcService;
 		
 
 	
@@ -55,8 +55,10 @@ public class PageController {
 	public String WelcomeAccount(Model m) {		
 		
 		List<Product> productList = pService.getAllProduct();
-		
+		List<Article> articleList=arcService.getAllArticle();
 		m.addAttribute("productList", productList);
+		m.addAttribute("articleList", articleList);
+
 		return "front/JoTravelFront/frontIndex";
 	}
 	
@@ -96,7 +98,7 @@ public class PageController {
 		
 		mav.getModel().put("page", page);
 		mav.getModel().put("key", key);
-		mav.getModel().put("num", 1);
+		mav.getModel().put("tagProduct", null);
 		
 		}else{
 		List<Product> tagProduct = pService.findAllProductByProducArea(tag);		

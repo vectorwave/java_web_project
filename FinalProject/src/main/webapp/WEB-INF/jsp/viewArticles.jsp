@@ -14,72 +14,72 @@
   <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 
 <script>
-document.cookie = 'cookie3=value3';
+// document.cookie = 'cookie3=value3';
 
-var lat2 = getCookie("lat1");
-console.log(lat2);
-var long2 = getCookie("long1");
-console.log(long2);
-  function initMap() {
-    const map = new google.maps.Map(document.getElementById("map"), {
-      zoom: 8,
-      center: { lat: 40.714224, lng: -73.961452 },
-    });
-    const geocoder = new google.maps.Geocoder();
-    const infowindow = new google.maps.InfoWindow();
+// var lat2 = getCookie("lat1");
+// console.log(lat2);
+// var long2 = getCookie("long1");
+// console.log(long2);
+//   function initMap() {
+//     const map = new google.maps.Map(document.getElementById("map"), {
+//       zoom: 8,
+//       center: { lat: 40.714224, lng: -73.961452 },
+//     });
+//     const geocoder = new google.maps.Geocoder();
+//     const infowindow = new google.maps.InfoWindow();
 
-    geocodeLatLng(geocoder, map, infowindow);
+//     geocodeLatLng(geocoder, map, infowindow);
 
-    document.getElementById("submit").addEventListener("click", () => {
-      geocodeLatLng(geocoder, map, infowindow);
-    });
-  }
+//     document.getElementById("submit").addEventListener("click", () => {
+//       geocodeLatLng(geocoder, map, infowindow);
+//     });
+//   }
 
-  function geocodeLatLng(geocoder, map, infowindow) {
-    const input = document.getElementById("latlng").value;
-    const latlngStr = input.split(",", 2);
-    const latlng = {
+//   function geocodeLatLng(geocoder, map, infowindow) {
+//     const input = document.getElementById("latlng").value;
+//     const latlngStr = input.split(",", 2);
+//     const latlng = {
   		  
-  		  lat:parseFloat(lat2),
-  		  lng:parseFloat(long2)
-//      lat: parseFloat(latlngStr[0]),
-  //    lng: parseFloat(latlngStr[1]),
-////      lat:40.714224,
-  ///   lng:-73.961452   
+//   		  lat:parseFloat(lat2),
+//   		  lng:parseFloat(long2)
+// //      lat: parseFloat(latlngStr[0]),
+//   //    lng: parseFloat(latlngStr[1]),
+// ////      lat:40.714224,
+//   ///   lng:-73.961452   
 
-    };
+//     };
 
-    geocoder
-      .geocode({ location: latlng })
-      .then((response) => {
-        if (response.results[0]) {
-          map.setZoom(11);
+//     geocoder
+//       .geocode({ location: latlng })
+//       .then((response) => {
+//         if (response.results[0]) {
+//           map.setZoom(11);
 
-          const marker = new google.maps.Marker({
-            position: latlng,
-            map: map,
-          });
+//           const marker = new google.maps.Marker({
+//             position: latlng,
+//             map: map,
+//           });
 
-          infowindow.setContent(response.results[0].formatted_address);
-          var kris=response.results[0].formatted_address;
-          console.log(kris);
-          setCookie("address",kris);
-          var address1 = getCookie("address");
-          var address2=address1.substring(5,8)
-          console.log(address1);
-          console.log(address2);
+//           infowindow.setContent(response.results[0].formatted_address);
+//           var kris=response.results[0].formatted_address;
+//           console.log(kris);
+//           setCookie("address",kris);
+//           var address1 = getCookie("address");
+//           var address2=address1.substring(5,8)
+//           console.log(address1);
+//           console.log(address2);
 
-//           document.getElementById(
-//             "result"
-//           ).innerHTML = `<h1 style="text-align:center;" >${response.results[0].formatted_address}</h1>`;
+// //           document.getElementById(
+// //             "result"
+// //           ).innerHTML = `<h1 style="text-align:center;" >${response.results[0].formatted_address}</h1>`;
           
-          infowindow.open(map, marker);
-        } else {
-          window.alert("No results found");
-        }
-      })
-      .catch((e) => window.alert("Geocoder failed due to: " + e));
-  }
+//           infowindow.open(map, marker);
+//         } else {
+//           window.alert("No results found");
+//         }
+//       })
+//       .catch((e) => window.alert("Geocoder failed due to: " + e));
+//   }
   function getCookie(name){
   	var arr,reg = new RegExp("(^|)" + name + "=([^;]*)(;|$)");
   	if(arr = document.cookie.match(reg))
@@ -147,28 +147,58 @@ function upd(e){
 
 
  </script>
- <div style="visibility:hidden">
-  <div id="floating-panel">
-      <input id="latlng" type="text" value="40.714224,-73.961452" />
-      <input id="submit" type="button" value="Reverse Geocode" />
-    </div>
+ <style>
+ 
+   
 
-    <div id="result"></div>
+  .para{  
+  text-decoration:none;
+    width: 140px;   
+     word-break: break-all;   
+      text-overflow: ellipsis;   
+        display: -webkit-box;  
+    -webkit-box-orient: vertical;  
+    -webkit-line-clamp: 1;  
+   overflow: hidden;
+   padding:40px 10px 0px 0px; 
+text-align:center;
+   }   
+ .para1{  
+   
+    width: 120px;   
+     word-break: break-all;   
+      text-overflow: ellipsis;   
+        display: -webkit-box;  
+    -webkit-box-orient: vertical;  
+    -webkit-line-clamp: 1;  
+   overflow: hidden;
+   padding:40px 10px 0px 0px; 
+text-align:center;
+   }   
+ 
+ </style>
+<!--  <div style="visibility:hidden"> -->
+<!--   <div id="floating-panel"> -->
+<!--       <input id="latlng" type="text" value="40.714224,-73.961452" /> -->
+<!--       <input id="submit" type="button" value="Reverse Geocode" /> -->
+<!--     </div> -->
 
-    <div style="visibility:hidden" id="map"></div></div>
-<!--     <div id="map"></div> -->
+<!--     <div id="result"></div> -->
 
-    <br /><br />
+<!--     <div style="visibility:hidden" id="map"></div></div> -->
+<!-- <!--     <div id="map"></div> -->
 
-    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
-    <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmEBK0G5eNsuBCbrJzIYY88lee1rT_S_o&callback=initMap&v=weekly&channel=2"
-      async
-    ></script>
-<div id="result"></div>
+<!--     <br /><br /> -->
 
-    <div style="visibility:hidden" id="map"></div>
-<div id="kkk">
+<!--     Async script executes immediately and must be after any DOM elements used in callback. -->
+<!--     <script -->
+<!--       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmEBK0G5eNsuBCbrJzIYY88lee1rT_S_o&callback=initMap&v=weekly&channel=2" -->
+<!--       async -->
+<!--     ></script> -->
+<!-- <div id="result"></div> -->
+
+<!--     <div style="visibility:hidden" id="map"></div> -->
+<!-- <div id="kkk"> -->
 <br>
 
 <form action="/jotravel/article/all" method="get" >
@@ -181,17 +211,17 @@ function upd(e){
   
     <table style="text-align:center">
 <tr>
-			   <th width='80'>帖子編號</th>
-			   <th width='80'>帖子標題</th>
-			   <th width='80'>帖子分類</th>
+			   <th width='120'>帖子編號</th>
+			   <th width='120'>帖子標題</th>
+			   <th width='120'>帖子分類</th>
 			   <th width='156'>帖子內容</th>
 
-			   <th width='80'>會員ID</th>			   
+			   <th width='120'>會員ID</th>			   
 <!-- 			   <th width='80'>照片ID</th> -->
 
 
-			   <th width='80'>照片</th>
-			   <th width='156' >更新時間</th>
+			   <th width='120'>照片</th>
+			   <th width='180' >更新時間</th>
 			  
 			   <th  width='160'colspan="2">更新📝/刪除🗑️
 			</tr>
@@ -199,11 +229,11 @@ function upd(e){
 <tr>
 <td><c:out value="${value.articleId}" /></td>
 
-<td><c:out value="${value.articleTitle}" /></td>
+<td class="para1"  ><a style="text-decoration: none;" href="http://localhost:8081/jotravel/front/blogPage/detail?id=${value.articleId}"><c:out value="${value.articleTitle}" /></a></td>
 
 <td><c:out value="${value.articleCategory}" /></td>
 
-<td><c:out value="${value.articleText}" /></td>
+<td class="para"><c:out value="${value.articleText}" /></td>
 
 
 <td><c:out value="${value.account.accountId}" /></td>
@@ -222,10 +252,10 @@ function upd(e){
 
       
    
-  
+  <br><br>
 <div style="text-align: center;">
 <c:forEach begin="1" end="${page.totalPages}" var="p">
-<a href="${contextRoot}/article/all?p=${p}"><c:out value="${p}"/></a>
+<a href="${contextRoot}/article/all?p=${p}"><button type="button" class="btn btn-outline-secondary"><c:out value="${p}"/></button></a>
 </c:forEach>
 
   
