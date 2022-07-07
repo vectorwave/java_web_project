@@ -171,6 +171,9 @@
 		$('#container').html('<img class="mb-4 rounded mx-auto d-block" src="${contextRoot}/assets/img/noCart.png" alt="" width="600" height="500">');
 	}
 	function cookieToData(){
+		if(!Cookies.get('cart') || Cookies.get('cart')==''){
+			return [];
+		}
 		let arr1 = Cookies.get('cart').slice(0,-1).split(';');
 		let details = [];
 		arr1.forEach(arr=>{
@@ -250,7 +253,7 @@
 	};
 	
 	$(window).on('beforeunload',function(){
-		if(flag && !vm.$data.orderDetails){
+		if(flag && vm.$data.orderDetails.length!=0){
 			Cookies.set('cart',dataToCookie(),{ expires: 365 });
 		}else{
 			Cookies.set('cart','',{ expires: 365 });
