@@ -164,7 +164,10 @@
 		$('#alert2').addClass('alert-success');
 	}
 	//購物車cookie格式  商品編號,訂購數量,日期,天數;商品編號,訂購數量,日期
-	if(!Cookies.get('cart') || Cookies.get('cart') == ''){
+	if(!Cookies.get('cart')){
+		Cookies.set('cart','',{ expires: 365 });		
+	}
+	if(Cookies.get('cart') == ''){
 		$('#container').html('<img class="mb-4 rounded mx-auto d-block" src="${contextRoot}/assets/img/noCart.png" alt="" width="600" height="500">');
 	}
 	function cookieToData(){
@@ -247,10 +250,10 @@
 	};
 	
 	$(window).on('beforeunload',function(){
-		if(flag){
-			Cookies.set('cart',dataToCookie());
+		if(flag && vm.$data.orderDetails){
+			Cookies.set('cart',dataToCookie(),{ expires: 365 });
 		}else{
-			Cookies.set('cart','');
+			Cookies.set('cart','',{ expires: 365 });
 		}
 	});
 	</script>
