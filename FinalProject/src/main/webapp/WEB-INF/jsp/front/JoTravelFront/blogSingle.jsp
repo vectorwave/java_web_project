@@ -14,7 +14,7 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="icon" href="image/favicon.png" type="image/png">
-<title>Royal Hotel</title>
+<title>${article.articleTitle}</title>
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href='<c:url value="/css/blog/bootstrap.css"/>'>
 <link rel="stylesheet"
@@ -141,15 +141,20 @@
                                 <p class="excert">${article.articleText}</p>
                                 <c:if test="${article.articleCategory=='揪團'}">
 <!--                                 <button type="button" class="genric-btn success circle" id="JoButton">我要揪團</button> -->
+<!--                                  <div id="ClickSetCookie"> -->
+                                 <input type="text" id="btnSetCookie" value=${ article.articleId } style="visibility:hidden">
+<!--                                  <input type="text" id="btnSetCookie2"> -->
+                                 
                                 <form method="post" action="${contextRoot}/back/article/JoGroupClick"><br>
                                 
-                                                                <input type="submit" value="我要揪團" class="genric-btn info circle"/>
+                                                                <div id="ClickSetCookie" onclick="votedSetCk()"><input type="submit" value="我要揪團" class="genric-btn info circle" id="submitbtnnnn" style="font-size:18px" /></div>
                                 
                                 <input id="articleId" name="articleId" value="${article.articleId}" style="visibility:hidden"/>
                                 
                                 </form>
                                 <br>
                                 <p style="color: rgb(239, 67, 10);font-size: 18px;font-weight:bold;">已有  ${article.articleJogroup}  人揪團中，快來手刀加入吧!!!</p>
+                                
                                 </c:if>
 <!--                                 <p> -->
 <!--                                     Boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the camp price. However, who has the willpower to actually sit through a self-imposed MCSE training. who has the willpower to actually sit through a self-imposed -->
@@ -157,18 +162,12 @@
 <!--                                 <p> -->
 <!--                                     Boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the camp price. However, who has the willpower to actually sit through a self-imposed MCSE training. who has the willpower to actually sit through a self-imposed -->
 <!--                                 </p> -->
-<script >
-function ChangeDisabled(value){
-　if(value=='1'){
-　document.getElementById('TetstText').disabled=false;　// 變更欄位為可用
-　}else{
-　document.getElementById('TetstText').disabled=true;　// 變更欄位為禁用
-　}
-}
-</script>
-<input type="text" id="TetstText">
-<input type="button" value='變更欄位為可用' onclick="ChangeDisabled(1)">
-<input type="button" value='變更欄位為禁用' onclick="ChangeDisabled(2)">
+<!-- <script > -->
+
+<!-- </script> -->
+<!-- <input type="text" id="TetstText"> -->
+<!-- <input type="button" value='變更欄位為可用' onclick="ChangeDisabled(1)"> -->
+<!-- <input type="button" value='變更欄位為禁用' onclick="ChangeDisabled(2)"> -->
                             </div>
                             <div class="col-lg-12">
 <!--                                 <div class="quotes"> -->
@@ -319,26 +318,26 @@ function ChangeDisabled(value){
 <!--                                 </div> -->
 <!--                             </div>	                                             				 -->
 <!--                         </div> -->
-                        <div class="comment-form">
-                            <h4>Leave a Reply</h4>
-                            <form>
-                                <div class="form-group form-inline">
-                                  <div class="form-group col-lg-6 col-md-6 name">
-                                    <input type="text" class="form-control" id="name" placeholder="Enter Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Name'">
-                                  </div>
-                                  <div class="form-group col-lg-6 col-md-6 email">
-                                    <input type="email" class="form-control" id="email" placeholder="Enter email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'">
-                                  </div>										
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="subject" placeholder="Subject" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Subject'">
-                                </div>
-                                <div class="form-group">
-                                    <textarea class="form-control mb-10" rows="5" name="message" placeholder="Messege" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Messege'" required=""></textarea>
-                                </div>
-                                <a href="#" class="primary-btn button_hover">Post Comment</a>	
-                            </form>
-                        </div>
+<!--                         <div class="comment-form"> -->
+<!--                             <h4>Leave a Reply</h4> -->
+<!--                             <form> -->
+<!--                                 <div class="form-group form-inline"> -->
+<!--                                   <div class="form-group col-lg-6 col-md-6 name"> -->
+<!--                                     <input type="text" class="form-control" id="name" placeholder="Enter Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Name'"> -->
+<!--                                   </div> -->
+<!--                                   <div class="form-group col-lg-6 col-md-6 email"> -->
+<!--                                     <input type="email" class="form-control" id="email" placeholder="Enter email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'"> -->
+<!--                                   </div>										 -->
+<!--                                 </div> -->
+<!--                                 <div class="form-group"> -->
+<!--                                     <input type="text" class="form-control" id="subject" placeholder="Subject" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Subject'"> -->
+<!--                                 </div> -->
+<!--                                 <div class="form-group"> -->
+<!--                                     <textarea class="form-control mb-10" rows="5" name="message" placeholder="Messege" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Messege'" required=""></textarea> -->
+<!--                                 </div> -->
+<!--                                 <a href="#" class="primary-btn button_hover">Post Comment</a>	 -->
+<!--                             </form> -->
+<!--                         </div> -->
                     </div>
                     <div class="col-lg-4">
                         <div class="blog_right_sidebar">
@@ -470,27 +469,39 @@ function ChangeDisabled(value){
 <!--                                 <div class="br"></div>							 -->
 <!--                             </aside> -->
                             <aside class="single-sidebar-widget tag_cloud_widget">
-                                <h4 class="widget_title">Tag Clouds</h4>
-                                <ul class="list_style">
-                                    <li><a href="#">Technology</a></li>
-                                    <li><a href="#">Fashion</a></li>
-                                    <li><a href="#">Architecture</a></li>
-                                    <li><a href="#">Fashion</a></li>
-                                    <li><a href="#">Food</a></li>
-                                    <li><a href="#">Technology</a></li>
-                                    <li><a href="#">Lifestyle</a></li>
-                                    <li><a href="#">Art</a></li>
-                                    <li><a href="#">Adventure</a></li>
-                                    <li><a href="#">Food</a></li>
-                                    <li><a href="#">Lifestyle</a></li>
-                                    <li><a href="#">Adventure</a></li>
-                                </ul>
-                            </aside>
+							<h4 class="widget_title">猜你喜歡</h4>
+							<ul class="list_style">
+								
+								<li><p id="krisrock"></p></li>
+								<li><p id="krisrock1"></p></li>
+								<li><p id="krisrock2"></p></li>
+								
+<!-- 								<li><a href="#">Fashion</a></li> -->
+<!-- 								<li><a href="#">Food</a></li> -->
+<!-- 								<li><a href="#">Technology</a></li> -->
+<!-- 								<li><a href="#">Lifestyle</a></li> -->
+<!-- 								<li><a href="#">Art</a></li> -->
+<!-- 								<li><a href="#">Adventure</a></li> -->
+<!-- 								<li><a href="#">Food</a></li> -->
+<!-- 								<li><a href="#">Lifestyle</a></li> -->
+<!-- 								<li><a href="#">Adventure</a></li> -->
+							</ul>
+						</aside>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+            <div style="visibility:hidden">
+  <div id="floating-panel">
+      <input id="latlng" type="text" value="40.714224,-73.961452" />
+      <input id="submit" type="button" value="Reverse Geocode" />
+    </div>
+
+    <div id="result"></div>
+
+    <div  id="map"></div></div>
+        
+        
         <!--================Blog Area =================-->
         
         <!--================ start footer Area  =================-->
@@ -574,7 +585,125 @@ function ChangeDisabled(value){
 <!--             </div> -->
 <!--         </footer> -->
 	<!--================ End footer Area  =================-->
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmEBK0G5eNsuBCbrJzIYY88lee1rT_S_o&callback=initMap&v=weekly&channel=2" async></script>
+	
+<script type="text/javascript">
 
+
+window.onload=function(){
+	
+		var ckisExist="votedCk"+$('#btnSetCookie').val()
+		var ckext=getCookie(ckisExist);
+		if (ckext!=null){
+			console.log("ck6666");
+			document.getElementById('submitbtnnnn').disabled=true;
+		
+		}else{
+			console.log("ck================================")
+			
+		}
+
+		
+}
+
+function votedSetCk() { 
+ 	var createCk=$('#btnSetCookie').val();
+
+ 	console.log(createCk);
+ 	setCookie("votedCk"+createCk,createCk);
+
+
+} 
+var lat2 = getCookie("lat1");
+console.log(lat2);
+var long2 = getCookie("long1");
+console.log(long2);
+function initMap() {
+  const map = new google.maps.Map(document.getElementById("map"), {
+    zoom: 8,
+    center: { lat: 40.714224, lng: -73.961452 },
+  });
+  const geocoder = new google.maps.Geocoder();
+  const infowindow = new google.maps.InfoWindow();
+
+  geocodeLatLng(geocoder, map, infowindow);
+
+  document.getElementById("submit").addEventListener("click", () => {
+    geocodeLatLng(geocoder, map, infowindow);
+  });
+}
+
+function geocodeLatLng(geocoder, map, infowindow) {
+  const input = document.getElementById("latlng").value;
+  const latlngStr = input.split(",", 2);
+  const latlng = {
+		  
+		  lat:parseFloat(lat2),
+		  lng:parseFloat(long2)
+//    lat: parseFloat(latlngStr[0]),
+//    lng: parseFloat(latlngStr[1]),
+////    lat:40.714224,
+///   lng:-73.961452   
+
+  };
+
+  geocoder
+    .geocode({ location: latlng })
+    .then((response) => {
+      if (response.results[0]) {
+        map.setZoom(11);
+
+        const marker = new google.maps.Marker({
+          position: latlng,
+          map: map,
+        });
+
+        infowindow.setContent(response.results[0].formatted_address);
+        var kris=response.results[0].formatted_address;
+        console.log(kris);
+        setCookie("address",kris);
+        var address1 = getCookie("address");
+        var address2=address1.substring(5,8)
+        console.log(address1);
+        console.log(address2);
+        var jkf1=address2.indexOf("台北");
+
+        if(jkf1!=-1){
+        	var el1 = document.getElementById("krisrock1");
+        	el1.innerHTML = "<p><a href='http://localhost:8081/jotravel/front/blogIndex?key=台北'/>台北<p>";
+        	var el2 = document.getElementById("krisrock");
+        	el2.innerHTML = "<p><a href='http://localhost:8081/jotravel/front/blogIndex?key=龍洞'/>龍洞<p>";
+        	var el3 = document.getElementById("krisrock2");
+        	el3.innerHTML = "<p><a href='http://localhost:8081/jotravel/front/blogIndex?key=白沙灣'/>白沙灣<p>";
+        }
+//         document.getElementById(
+//           "result"
+//         ).innerHTML = `<h1 style="text-align:center;" >${response.results[0].formatted_address}</h1>`;
+        
+        infowindow.open(map, marker);
+      } else {
+        window.alert("No results found");
+      }
+    })
+    .catch((e) => window.alert("Geocoder failed due to: " + e));
+}
+
+
+function getCookie(name){
+  	var arr,reg = new RegExp("(^|)" + name + "=([^;]*)(;|$)");
+  	if(arr = document.cookie.match(reg))
+  		return unescape(arr[2]);
+  	else
+  		return null;
+  }
+  
+  function setCookie(name,value){
+  	document.cookie = name + "=" +escape(value) +";path=/";
+  }
+
+
+</script>
+<!-- <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script> -->
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	<script src="<c:url value="/js/blog/jquery-3.2.1.min.js"/>"></script>

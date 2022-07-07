@@ -14,7 +14,7 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="icon" href="image/favicon.png" type="image/png">
-<title>Royal Hotel</title>
+<title>JoTravel論壇</title>
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href='<c:url value="/css/blog/bootstrap.css"/>'>
 <link rel="stylesheet"
@@ -254,6 +254,7 @@
 							<form action="/jotravel/front/blogIndex" method="get" >
 <input  type="text" name="key" placeholder="搜尋文章名稱" id="key" ><input type="submit" id="send" value="🔍" class="searchicon"><a href="http://localhost:8081/jotravel/front/blogIndex"><input type="button" value="全部文章" ></a>  
 </form>
+
 <!-- 								<input type="text" class="form-control" -->
 <!-- 									placeholder="Search Posts"> <span -->
 <!-- 									class="input-group-btn"> -->

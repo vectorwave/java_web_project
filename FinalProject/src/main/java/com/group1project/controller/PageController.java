@@ -55,8 +55,10 @@ public class PageController {
 	public String WelcomeAccount(Model m) {		
 		
 		List<Product> productList = pService.getAllProduct();
-		
+		List<Article> articleList=aService.getAllArticle();
 		m.addAttribute("productList", productList);
+		m.addAttribute("articleList", articleList);
+
 		return "front/JoTravelFront/frontIndex";
 	}
 	
