@@ -8,9 +8,9 @@
 <jsp:include page="layout/header.jsp" />
 <meta name="author" content="http://www.softwhy.com/" />
 <title>JoTravel 後臺管理系統</title>
-
-<div class="container">
+<!-- <div class="container" >
 <div class="justify-content-center" style="font-size:50px">
+
 	<h1>JoTravel 後臺管理系統</h1>
 	<table>
 		<th>訂單數量</th>
@@ -23,8 +23,8 @@
 	
 </div>	
 
-</div>
-	<script>
+</div> -->
+	<!-- <script>
 
 	
 	new Chart(document.getElementById("pie-chart"), {
@@ -47,5 +47,8 @@
       }
     }
 });
+</script> -->
+<script>
+$(document.body).css({'background-image':'url("${contextRoot}/assets/img/little_island.jpg")','background-size':'cover'});
 </script>
 	<jsp:include page="layout/footer.jsp" />

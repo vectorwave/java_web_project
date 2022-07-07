@@ -52,20 +52,20 @@ public class AccountServiceimpl implements AccountService {
 
 	}
 
-//	@Override
-//	public Account getAccountByName(String account) {
-//		String hql = "FROM Account a WHERE a.account=:inputAccount";
-//		TypedQuery<Account> query = entityManager.createQuery(hql, Account.class);
-//		query.setParameter("inputAccount", account);
-//		
-//		Account acc = null;
-//		try {
-//			acc = query.getSingleResult();
-//		}catch(NoResultException e) {
-//			return null;
-//		}
-//		return acc;
-//	}
+	@Override
+	public Account getAccountByName(String accountName) {
+		String hql = "from Account where account_name = :inputAccount";
+		TypedQuery<Account> query = entityManager.createQuery(hql, Account.class);
+		query.setParameter("inputAccount", accountName);
+		
+		Account acc = null;
+		try {
+			acc = query.getSingleResult();
+		}catch(NoResultException e) {
+			return null;
+		}
+		return acc;
+	}
 
 	@Override
 	public Account findByAccPwd(String accountName, String Password) {
@@ -92,13 +92,15 @@ public class AccountServiceimpl implements AccountService {
 		}
 		return user;
 	}
+
+	
 	
 
 
 
-
+//
 //	@Override
-//	public Account updateById2(Integer accountId, String password) {
+//	public Account setPassword(Integer accountId, String password) {
 //		Account account = entityManager.find(Account.class, accountId);
 //		if (account != null) {
 //			account.setPassword(password);
