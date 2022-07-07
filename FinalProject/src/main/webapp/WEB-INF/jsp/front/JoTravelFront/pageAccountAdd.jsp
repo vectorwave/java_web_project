@@ -147,7 +147,7 @@ label {
 			<form:input type="hidden" path="status" class="form-control"
 			value="1" />
 
-			<input type="button" class="genric-btn primary circle" onclick="submitForm(form)" id="send" value="新增" />
+			<input type="button" class="genric-btn primary circle" onclick="submitForm(form)" id="send" value="註冊" />
 
 			<input type="button" class="genric-btn warning circle"  id="one" value="一鍵輸入" />
 

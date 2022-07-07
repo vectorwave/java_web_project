@@ -13,7 +13,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="icon" href="image/favicon.png" type="image/png">
-        <title>Insert Product</title>
+        <title>查看商品評論 - JoTravel</title>
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href='<c:url value="/css/blog/bootstrap.css"/>'>
         <link rel="stylesheet" href="<c:url value="/css/blog/vendors/linericon/style.css"/>">
@@ -25,51 +25,79 @@
         <!-- main css -->
         <link rel="stylesheet" href="<c:url value="/css/blog/style.css"/>">
         <link rel="stylesheet" href="<c:url value="/css/blog/responsive.css"/>">
+
+        <style>
+          
+          .thContent * {
+  padding:5px 15px 5px 15px;
+  text-align: center;
+}
+
+.tdContent * {
+  padding:5px 15px 5px 15px;
+  text-align: center;
+}
+
+          
+          </style>
+
+
+
     </head>
-    <body>
+    <body style="background-color:aliceblue">
         <!--================Header Area =================-->
 
         <jsp:include page="frontLayout/frontHeader.jsp" />
 
 <section class="breadcrumb_area">
             <div class="overlay bg-parallax" data-stellar-ratio="0.8" data-stellar-vertical-offset="0" data-background=""></div>
+
+
             <div class="container">
+
+
                 <div class="page-cover text-center">
-                    <h2 class="page-cover-tittle">Insert Product</h2>
+                    <h2 class="page-cover-tittle">商品評論</h2>
                     <ol class="breadcrumb">
-                        <li><a href="${contextRoot}/front/addProduct">Insert Product</a></li>
+                        <li><a href="${contextRoot}/front/addProduct">查看商品評論</a></li>
                     </ol>
                 </div>
             </div>
         </section>
 <br/>
 
-<div class="container">
+<div class="container" align="center" style="margin-bottom: 80px;">
+
+  <h1 align="left" style="margin-left:60px;">所有評論</h2>
+
+  <div style="padding:25px 8px 25px 8px;background-color: white; border-radius: 30px;">
 
 
-<table class="table" border="1"  id="table1">
-<tr style="background-color:#fac473">
-<th>評論編號<th>商品名稱<th>會員名稱<th>評論內容<th>分數(滿分5分)<th>更新時間
-<div id="newTable">
-<c:forEach var="value" items="${searchPdC}">
-<tr> 
-<td> <c:out value="${value.prouctCommentId}"/></td>
-<td> <c:out value="${value.product.productName}"/></td>
-<td> <c:out value="${value.account.accountName}"/></td>
-<td> <c:out value="${value.productComment}"/></td>     	
-<td> <c:out value="${value.commentScore}"/></td>     	
-<td> <fmt:formatDate pattern="yyyy 年 MM 月 dd 日 a hh:mm:ss " value="${value.updatedTime}"/></td> 
-<%-- <td><button class="delt" onclick="upd('${value.prouctCommentId}')" >📝</button></td>  --%>
-<%-- <td><button class="delt" onclick="del('${value.prouctCommentId}')" >✂</button></td>  --%>
-<%-- <td><a href="product/editProduct?id=${value.productId}"><button class="delt" onclick="return del()">📝</button></a></td>  --%>
-<%-- <td><a href="product/delete/${value.productId}"><button class="delt" onclick="return del()">✂</button></a></td>  --%>
-</tr>
-</c:forEach>
+<table>
+                                <tr class="thContent" style="white-space:nowrap">
+                                  <th>評論編號<th>商品名稱<th>會員名稱<th>評論內容<th>分數(滿分5分)<th>更新時間
+                                    </tr>
+                                
+                                <div>
+                                <c:forEach var="value" items="${searchPdC}">
+                                <tr class="tdContent">
+                                <td style="border-radius: 20px 0px 0px 20px"> <c:out value="${value.prouctCommentId}"/></td>
+                                <td> <c:out value="${value.product.productName}"/></td>
+                                <td> <c:out value="${value.account.accountName}"/></td>
+                                <td> <c:out value="${value.productComment}"/></td>     	
+                                <td> <c:out value="${value.commentScore}"/></td>     	
+                                <td><fmt:formatDate pattern="yyyy 年 MM 月 dd 日 a hh:mm:ss " value="${value.updatedTime}"/></td> 
+                                </tr>
+                                </c:forEach>
+                                </div>
+                                </table>
+
+                                
+
 </div>
 
-
-</table>
-
+<div style="margin-top:20px;;">
+                                <button type="button" class="genric-btn success circle" onclick="history.go(-1)">回上頁</button></div>
 
 </div>
 
