@@ -12,6 +12,7 @@
 <div class="justify-content-center" style="font-size:50px">
 	<h1 class="text-center">各金流訂單數量</h1>
 	<canvas id="cashFlow" width="800" height="450"></canvas>
+	
 </div>	
 
 </div>
@@ -20,6 +21,7 @@
 </script>
   <script>
   let orderData = null;
+  let apmData = null;
   jQuery.ajax({
 		url: '${contextRoot}/order/count/cf',
 		async: false,
@@ -30,13 +32,14 @@
 			console.log(err);
 		}
 	});
+  
   	var ctx = $( "#cashFlow" ),
   		example = new Chart(ctx, {
   			type: "pie", // 圖表類型
   			data: {
   				labels: [ "WebATM", "自動櫃員機" , "信用卡", "超商代碼","超商條碼","Apple 手機支付"], // 標題
   				datasets: [{
-  					label: "# of Votes", // 標籤
+  					label: "", // 標籤
   					data: orderData, // 資料
   					backgroundColor: [ // 背景色
   					"#FF0000",
@@ -50,5 +53,6 @@
   				}]
   			}
   		});
+  	
   </script>
 <jsp:include page="layout/footer.jsp" />
