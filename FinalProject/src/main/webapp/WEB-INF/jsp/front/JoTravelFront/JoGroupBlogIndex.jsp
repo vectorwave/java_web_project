@@ -228,7 +228,7 @@
 										</c:when>
 										<c:otherwise>
 											<li class="page-item"><a class="page-link"
-												href="${contextRoot}/front/blogIndex?p=${page.number}"
+												href="${contextRoot}/front/JoGroupFront/all?p=${page.number}"
 												aria-label="Previous"> <span aria-hidden="true">
 														<span class="lnr lnr-chevron-left"></span>
 												</span>
@@ -239,7 +239,7 @@
 
 
 									<li class="page-item"><a class="page-link"
-										href="${contextRoot}/front/blogIndex?p=${p}"><c:out
+										href="${contextRoot}/front/JoGroupFront/all?p=${p}"><c:out
 												value="${p}" /></a></li>
 								</c:forEach>
 			
@@ -249,7 +249,7 @@
 										</c:when>
 										<c:otherwise>
 											<li class="page-item"><a class="page-link"
-												href="${contextRoot}/front/blogIndex?p=${page.number+2}"
+												href="http://localhost:8081/jotravel/front/JoGroupFront/all?p=${page.number+2}"
 												aria-label="Next"> <span aria-hidden="true"> <span
 														class="lnr lnr-chevron-right"></span>
 												</span>
