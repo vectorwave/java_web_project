@@ -316,10 +316,10 @@
 
 		function addToCart(){
 			if(!Cookies.get('cart')){
-				Cookies.set('cart','');
+				Cookies.set('cart','',{ expires: 365 });
 			}
 			var productId = ${product.productId};
-			Cookies.set('cart',Cookies.get('cart')+productId+','+$('#qty').val()+','+$('#date').val()+','+$('#totalDays').val()+';');
+			Cookies.set('cart',Cookies.get('cart')+productId+','+$('#qty').val()+','+$('#date').val()+','+$('#totalDays').val()+';',{ expires: 365 });
 			new Swal('已加到購物車!!!');
 		}
 		

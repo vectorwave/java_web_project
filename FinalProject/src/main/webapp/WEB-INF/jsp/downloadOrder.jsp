@@ -9,7 +9,7 @@
 <script src="${contextRoot}/js/FileSaver.js"></script>
 
 <div class="d-flex justify-content-center">
-	<div class="d-flex justify-content-center" style="visibility: hidden"><!-- 這不叫蠢，這叫農民工的智慧 -->
+	<div class="d-flex justify-content-center" style="visibility: hidden">
 		<main class="px-3">
 			<h1>下載訂單</h1>
 			<p class="lead">點擊下面的按鈕來下載你的訂單</p>
@@ -20,7 +20,8 @@
 	</div>
 </div>
 <div class="d-flex justify-content-center">
-	<main class="px-3">
+<img src="${contextRoot}/assets/img/little-monkey.gif" style="position:absolute;top:10px;left:10px;">
+	<main class="px-3 py-5">
 		<h1>下載訂單</h1>
 		<p class="lead">點擊下面的按鈕來下載你的訂單</p>
 		<p class="lead">

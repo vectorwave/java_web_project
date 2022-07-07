@@ -209,58 +209,26 @@
                     <h2 class="title_color">論壇最新文章</h2>
                     <p>看看大家都參與了什麼有趣的活動，跟上最新熱門潮流！ </p>
                 </div>
+                
+                
                 <div class="row mb_30">
-                    <div class="col-lg-4 col-md-6">
-                        <div class="single-recent-blog-post">
-                            <div class="thumb">
-                                <img class="img-fluid" src="image/blog/blog-1.jpg" alt="post">
+				<c:forEach items="${articleList}" var="article" begin="0" end="3" step="1">
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="accomodation_item text-center">
+                            <div class="hotel_img">
+                               <a href="${contextRoot}/front/blogPage/detail?id=${article.articleId}" > 
+					               <img class="card-img-top" src="${contextRoot}/back/article/photo/${article.articleId}" width="160px" height="300px" alt="Card image cap"> </a>
+<%--                                 <a href="${contextRoot}/front/blogPage/detail?id=${article.articleId}" class="btn theme_btn button_hover"></a> --%>
                             </div>
-                            <div class="details">
-                                <div class="tags">
-                                    <a href="#" class="button_hover tag_btn">Travel</a>
-                                    <a href="#" class="button_hover tag_btn">Life Style</a>
-                                </div>
-                                <a href="#"><h4 class="sec_h4">Low Cost Advertising</h4></a>
-                                <p>Acres of Diamonds… you’ve read the famous story, or at least had it related to you. A farmer.</p>
-                                <h6 class="date title_color">31st January,2018</h6>
-                            </div>	
+                            <h4 class="sec_h4">${article.articleCategory}</h4>
+                            <a href="${contextRoot}/front/blogPage/detail?id=${article.articleId}"><h5>${article.articleTitle}</h5></a>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="single-recent-blog-post">
-                            <div class="thumb">
-                                <img class="img-fluid" src="image/blog/blog-2.jpg" alt="post">
-                            </div>
-                            <div class="details">
-                                <div class="tags">
-                                    <a href="#" class="button_hover tag_btn">Travel</a>
-                                    <a href="#" class="button_hover tag_btn">Life Style</a>
-                                </div>
-                                <a href="#"><h4 class="sec_h4">Creative Outdoor Ads</h4></a>
-                                <p>Self-doubt and fear interfere with our ability to achieve or set goals. Self-doubt and fear are</p>
-                                <h6 class="date title_color">31st January,2018</h6>
-                            </div>	
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="single-recent-blog-post">
-                            <div class="thumb">
-                                <img class="img-fluid" src="image/blog/blog-3.jpg" alt="post">
-                            </div>
-                            <div class="details">
-                                <div class="tags">
-                                    <a href="#" class="button_hover tag_btn">Travel</a>
-                                    <a href="#" class="button_hover tag_btn">Life Style</a>
-                                </div>
-                                <a href="#"><h4 class="sec_h4">It S Classified How To Utilize Free</h4></a>
-                                <p>Why do you want to motivate yourself? Actually, just answering that question fully can </p>
-                                <h6 class="date title_color">31st January,2018</h6>
-                            </div>	
-                        </div>
-                    </div>
-                </div>
+                </c:forEach> 
+            	 </div>  
             </div>
-        </section>
+        </section> 
+                
 
 		<!--================ end guide Area  =================-->
 				<section class="testimonial_area section_gap">

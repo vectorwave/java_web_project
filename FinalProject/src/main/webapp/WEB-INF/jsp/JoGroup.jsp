@@ -147,6 +147,34 @@ function upd(e){
 
 
  </script>
+ <style>
+ 
+  .para{  
+  
+    width: 140px;   
+     word-break: break-all;   
+      text-overflow: ellipsis;   
+        display: -webkit-box;  
+    -webkit-box-orient: vertical;  
+    -webkit-line-clamp: 1;  
+   overflow: hidden;
+   padding:40px 10px 0px 0px; 
+text-align:center;
+   }   
+ .para1{  
+  
+    width: 120px;   
+     word-break: break-all;   
+      text-overflow: ellipsis;   
+        display: -webkit-box;  
+    -webkit-box-orient: vertical;  
+    -webkit-line-clamp: 1;  
+   overflow: hidden;
+   padding:40px 10px 0px 0px; 
+text-align:center;
+   }   
+ 
+ </style>
  <div style="visibility:hidden">
   <div id="floating-panel">
       <input id="latlng" type="text" value="40.714224,-73.961452" />
@@ -182,7 +210,7 @@ function upd(e){
     <table style="text-align:center ;">
 <tr>
 			   <th width='80'>帖子編號</th>
-			   <th width='80'>帖子標題</th>
+			   <th width='120'>帖子標題</th>
 			   <th width='80'>帖子分類</th>
 			   <th width='80'>揪團值</th>
 			   <th width='100'>揪團狀態</th>		   
@@ -208,7 +236,7 @@ function upd(e){
                             
 <td style="border-radius:  20px 0px 0px 20px;"><c:out value="${value.articleId}" /></td>
 
-<td><c:out value="${value.articleTitle}" /></td>
+<td class="para1"><c:out value="${value.articleTitle}" /></td>
 
 <td><c:out value="${value.articleCategory}" /></td>
 
@@ -216,7 +244,7 @@ function upd(e){
 
 <td style="color:#F6C987 ;font-weight: bold; font-family:; font-size: 20px;">揪團成功</td>
 
-<td><c:out value="${value.articleText}" /></td>
+<td class="para" style="text-align:center"><div id="coolAlign" style="text-align:center"><c:out value="${value.articleText}" /></div></td>
 
 
 <td><c:out value="${value.account.accountId}" /></td>
@@ -237,7 +265,7 @@ function upd(e){
     <tr>
    <td><c:out value="${value.articleId}" /></td>
 
-<td><c:out value="${value.articleTitle}" /></td>
+<td class="para1"><c:out value="${value.articleTitle}" /></td>
 
 <td><c:out value="${value.articleCategory}" /></td>
 
@@ -246,7 +274,7 @@ function upd(e){
 <td >揪團尚未成功，同志仍須努力</td>
 
 
-<td><c:out value="${value.articleText}" /></td>
+<td class="para"><c:out value="${value.articleText}" /></td>
 
 
 <td><c:out value="${value.account.accountId}" /></td>
@@ -271,7 +299,7 @@ function upd(e){
   
 <div style="text-align: center;">
 <c:forEach begin="1" end="${page.totalPages}" var="p">
-<a href="${contextRoot}/JoGroup/all?p=${p}"><c:out value="${p}"/></a>
+<a href="${contextRoot}/JoGroup/all?p=${p}"><button type="button" class="btn btn-outline-secondary"><c:out value="${p}"/></button></a>
 </c:forEach>
 
   

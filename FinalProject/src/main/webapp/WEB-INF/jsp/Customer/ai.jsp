@@ -39,7 +39,17 @@
 <link rel="stylesheet" href="<c:url value="/css/blog/style.css"/>">
 <link rel="stylesheet" href="<c:url value="/css/blog/responsive.css"/>">
 </head>
+<style>
 
+#ty{background:#ffffff;padding:1px;display:inline;font-size: 30px;color:#ff0000; font-weight: bolder  ;line-height:50px;border: black solid;border-radius: 10px;}
+#tyu{background:#ffffff;padding:1px;display:inline;font-size: 10px;color:#ff0000; font-weight: bolder  ;line-height:50px;border: black solid;border-radius: 10px;}
+#ty:first-child {
+  text-shadow: 0px 0px 5px #fff; 
+}
+
+#ty:last-child{ text-shadow: 0px 0px 5px #fff,0px 0px 5px #fff,0px 0px 5px #fff,0px 0px 5px #fff;}
+
+</style>
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <body>
 
@@ -67,14 +77,14 @@
 	<!-- End Banner Area -->
 
   <div>
-   <div style="position: relative;left: 30%;">請輸入問題：</div>
-   <input style="position: relative;left: 30%;" id="say" name="say" type="text" value="" size="80" onkeydown="keyin(event)" /> <!-- 按 enter 時呼叫 keyin() 回答 --> 
+   <div style="position: relative;left: 30%;font-size: large;color: #090909;">請輸入問題：</div>
+   <input style="position: relative;left: 30%;border: #090909 solid;" id="say" name="say" type="text" value="" size="80" onkeydown="keyin(event)" /> <!-- 按 enter 時呼叫 keyin() 回答 --> 
    <input type="submit" value="送出" onclick="say()" id="clear"/> <!-- 當送出按鈕按下，就呼叫 say() 函數回答 --> 
   </div>
   <BR/>
-  <div id="dialogBox" style="width:50%; height:80%; overflow:auto; border:ridge 1px #888888;position: relative;left: 30%;">
+  <div id="dialogBox" style="width:800px; height:500px; overflow:auto; border:#090909 5px solid;position: relative;left: 30%;">
 
->> Hi 有甚麼我可以幫你/妳? 請告訴我你/妳的問題(產品問題&優惠活動&商品運送付款方式&商品退貨&會員相關) <BR /> 
+<div><img src='image/16.jpg'/><p id='ty' style="font-size: 20px;"> Hi!請告訴我你/妳的問題(景點推薦&旅程問題&金流問題&其他問題)</p></div> 
   <span id="msg"></span>
   </div>
   
@@ -130,12 +140,12 @@ var qaList = [
 { Q:"電腦", A:"你說的電腦是指我嗎?"}, 
 { Q:"難過", A:"別想它了|別難過|別想那麼多了|事情總是會解決的"},
 { Q:"高興", A:"不錯ㄚ|太棒了|這樣很好ㄚ"},
-{ Q: "產品問題", A: "甚麼類型的產品呢?我們有鞋類、服飾類、健身器材、保健食品" },
-{ Q: "鞋類", A: "這是我們鞋類商品的連結<p><a href='http://localhost:8333/Nice_eCommerce/FrontPageSearchBySubCategory?name=%E4%BC%91%E9%96%92%E9%9E%8B'>http://localhost:8333/Nice_eCommerce/FrontPageSearchBySubCategory?name=%E4%BC%91%E9%96%92%E9%9E%8B</a>"},
-{ Q: "健身用品", A: "這是我們健身用品的連結<p><a href='http://localhost:8333/Nice_eCommerce/FrontPageSearchBySubCategory?name=%E5%81%A5%E8%BA%AB%E9%85%8D%E4%BB%B6'>http://localhost:8333/Nice_eCommerce/FrontPageSearchBySubCategory?name=%E5%81%A5%E8%BA%AB%E9%85%8D%E4%BB%B6</a>"},
-{ Q: "補充營養品", A: "這是我們保健食品商品的連結<p><a href='http://localhost:8333/Nice_eCommerce/FrontPageSearchBySubCategory?name=%E4%B9%B3%E6%B8%85%E8%9B%8B%E7%99%BD'>http://localhost:8333/Nice_eCommerce/FrontPageSearchBySubCategory?name=%E4%B9%B3%E6%B8%85%E8%9B%8B%E7%99%BD</a>"},
+{ Q: "景點|出去玩", A: "想去北部、中部、南部、東部呢?" },
+{ Q: "北部", A: "這是北部旅遊連結<p id='tyu'><a href='http://localhost:8333/Nice_eCommerce/FrontPageSearchBySubCategory?name=%E4%BC%91%E9%96%92%E9%9E%8B'>http://localhost:8333/Nice_eCommerce/FrontPageSearchBySubCategory?name=%E4%BC%91%E9%96%92%E9%9E%8B</a>"},
+{ Q: "中部", A: "這是中部旅遊連結<p id='tyu'><a href='http://localhost:8333/Nice_eCommerce/FrontPageSearchBySubCategory?name=%E4%BC%91%E9%96%92%E9%9E%8B'>http://localhost:8333/Nice_eCommerce/FrontPageSearchBySubCategory?name=%E4%BC%91%E9%96%92%E9%9E%8B</a>"},
+{ Q: "東部", A: "這是東部旅遊連結<p id='tyu'><a href='http://localhost:8333/Nice_eCommerce/FrontPageSearchBySubCategory?name=%E4%BC%91%E9%96%92%E9%9E%8B'>http://localhost:8333/Nice_eCommerce/FrontPageSearchBySubCategory?name=%E4%BC%91%E9%96%92%E9%9E%8B</a>"},
 
-{ Q: "優惠活動", A: "商品滿額優惠&周年慶&母親節活動"},
+{ Q: "墾丁", A: "商品滿額優惠&周年慶&母親節活動"},
 { Q: "商品滿額優惠", A: "所有商品只要滿2000就送200優惠卷"},
 { Q: "周年慶", A: "滿10000現折1000"},
 { Q: "母親節活動", A: "服飾類商品85折"},
@@ -189,7 +199,7 @@ var qaList = [
 	} 
 	
     function say() { // 當送出鍵按下時，會呼叫這個函數進行回答動作
-      append(document.getElementById("say").value); // 先將使用者輸入的問句放到「對話區」顯示。
+      append("<br><div><p id='ty' style='color:#0800ff'>"+document.getElementById("say").value+"</p></div>"); // 先將使用者輸入的問句放到「對話區」顯示。
       answer(); // 然後回答使用者的問題。
     }
     
@@ -206,7 +216,7 @@ var qaList = [
 
     function answer() { // 回答問題
       setTimeout(function () { // 停頓 1 到 3 秒再回答問題 (因為若回答太快就不像人了，人打字需要時間)
-        append("<div><img src='image/instagram.png'/>"+getAnswer());
+        append("<div><img src='image/16.jpg'><p id='ty'>"+getAnswer()+"</p></div>");
       }, 1000+random(1000));
     }
     
