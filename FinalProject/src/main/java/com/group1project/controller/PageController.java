@@ -43,8 +43,8 @@ public class PageController {
 	@Autowired
 	private AccountService aService;
 
-//	@Autowired
-//	private ArticleService aService;
+	@Autowired
+	private ArticleService arcService;
 		
 
 	
@@ -55,7 +55,7 @@ public class PageController {
 	public String WelcomeAccount(Model m) {		
 		
 		List<Product> productList = pService.getAllProduct();
-		List<Article> articleList=aService.getAllArticle();
+		List<Article> articleList=arcService.getAllArticle();
 		m.addAttribute("productList", productList);
 		m.addAttribute("articleList", articleList);
 

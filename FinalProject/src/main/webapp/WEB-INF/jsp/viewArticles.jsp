@@ -177,28 +177,28 @@ text-align:center;
    }   
  
  </style>
- <div style="visibility:hidden">
-  <div id="floating-panel">
-      <input id="latlng" type="text" value="40.714224,-73.961452" />
-      <input id="submit" type="button" value="Reverse Geocode" />
-    </div>
+<!--  <div style="visibility:hidden"> -->
+<!--   <div id="floating-panel"> -->
+<!--       <input id="latlng" type="text" value="40.714224,-73.961452" /> -->
+<!--       <input id="submit" type="button" value="Reverse Geocode" /> -->
+<!--     </div> -->
 
-    <div id="result"></div>
+<!--     <div id="result"></div> -->
 
-    <div style="visibility:hidden" id="map"></div></div>
-<!--     <div id="map"></div> -->
+<!--     <div style="visibility:hidden" id="map"></div></div> -->
+<!-- <!--     <div id="map"></div> -->
 
-    <br /><br />
+<!--     <br /><br /> -->
 
-    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
-    <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmEBK0G5eNsuBCbrJzIYY88lee1rT_S_o&callback=initMap&v=weekly&channel=2"
-      async
-    ></script>
-<div id="result"></div>
+<!--     Async script executes immediately and must be after any DOM elements used in callback. -->
+<!--     <script -->
+<!--       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmEBK0G5eNsuBCbrJzIYY88lee1rT_S_o&callback=initMap&v=weekly&channel=2" -->
+<!--       async -->
+<!--     ></script> -->
+<!-- <div id="result"></div> -->
 
-    <div style="visibility:hidden" id="map"></div>
-<div id="kkk">
+<!--     <div style="visibility:hidden" id="map"></div> -->
+<!-- <div id="kkk"> -->
 <br>
 
 <form action="/jotravel/article/all" method="get" >
