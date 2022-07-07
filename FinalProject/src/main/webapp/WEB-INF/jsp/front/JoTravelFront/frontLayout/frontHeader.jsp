@@ -81,6 +81,8 @@
 									<c:if test="${sessionScope.loginuser.accountId == null}">
 									<li class="nav-item"><a class="nav-link" href="http://localhost:8081/jotravel/page/login">登入</a></li>
                                     <li class="nav-item"><a class="nav-link" href="http://localhost:8081/jotravel/page/login/member/insert">註冊</a></li>
+<!-- 									<li class="nav-item"><a class="nav-link" href="http://localhost:8081/jotravel/page/login/password/update">修改密碼</a></li> -->
+									
 									</c:if>
 									
 									<c:if test="${sessionScope.loginuser.accountId != null && sessionScope.loginuser.title == '會員' }">
@@ -89,7 +91,7 @@
 								<li class="nav-item"><a class="nav-link" href="http://localhost:8081/jotravel/page/member/add">新增個人資料</a></li>
 									
                                 <li class="nav-item"><a class="nav-link" href="http://localhost:8081/jotravel/page/member/edit?id=${loginuser.accountId}">會員資料</a></li>
-<!-- 									<li class="nav-item"><a class="nav-link" href="blog-single.html">修改密碼</a></li> -->
+									<li class="nav-item"><a class="nav-link" href="http://localhost:8081/jotravel/page/login/password/update">修改密碼</a></li>
 									
                                 <li class="nav-item"><a class="nav-link" href="http://localhost:8081/jotravel/front/allOrder">查看訂單</a></li>
 												</c:if>
