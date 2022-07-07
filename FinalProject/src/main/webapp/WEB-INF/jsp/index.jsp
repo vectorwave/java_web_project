@@ -48,7 +48,38 @@
     }
 });
 </script> -->
+<div style="margin-top:600px">
+<h1 class="text-center mt-5">每月旅遊人次</h1>
+<canvas id="AccountPerMonth" width="150" height="50" class="mb-5"></canvas></div>
 <script>
-$(document.body).css({'background-image':'url("${contextRoot}/assets/img/little_island.jpg")','background-size':'cover'});
+$(document.body).css({'background-image':'url("${contextRoot}/assets/img/little_island.jpg")','background-size':'cover','opacity':1.4});
+jQuery.ajax({
+	url: '${contextRoot}/order/count/apm/2022',
+	async: false,
+	success: function(res) {
+		let amount = [0,0,0,0,0,0,0,0,0,0,0,0];
+		res.forEach(function(x){
+			amount[x[1]-1] = x[0];
+		});
+		apmData = amount;
+	},
+	error: function(err) {
+		console.log(err);
+	}
+});
+var apm = $( "#AccountPerMonth" ),
+example = new Chart(apm, {
+	type: "bar", // 圖表類型
+	data: {
+		labels: [ "1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月",], // 標題
+		datasets: [{
+			label: "累計人次", // 標籤
+			data: apmData, // 資料
+			borderWidth: 1, // 外框寬度
+			backgroundColor:'#C6A300',
+			
+		}]
+	}
+});
 </script>
 	<jsp:include page="layout/footer.jsp" />

@@ -98,7 +98,7 @@ public class PageController {
 		
 		mav.getModel().put("page", page);
 		mav.getModel().put("key", key);
-		mav.getModel().put("num", 1);
+		mav.getModel().put("tagProduct", null);
 		
 		}else{
 		List<Product> tagProduct = pService.findAllProductByProducArea(tag);		

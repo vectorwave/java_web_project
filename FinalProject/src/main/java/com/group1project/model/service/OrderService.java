@@ -21,4 +21,5 @@ public interface OrderService {
 	public Long countTotalAmount(Order order);
 	public Page<Order> findAllForAdmin();
 	public List<Integer> getCountByCF();
+	public Integer[] getCountByAmount(Integer year);
 }
