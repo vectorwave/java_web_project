@@ -36,6 +36,7 @@
 <link rel="stylesheet" href="<c:url value="/css/blog/responsive.css"/>">
 <link rel="stylesheet" href="<c:url value="/css/core-style"/>">
 <script type="text/javascript" src="${contextRoot}/js/js.cookie.min.js"> </script>
+<script type="text/javascript" src="${contextRoot}/js/sweetalert2.all.min.js"> </script>
 </head>
 <body style="font-size: larger">
 	<!--================Header Area =================-->
@@ -319,7 +320,7 @@
 			}
 			var productId = ${product.productId};
 			Cookies.set('cart',Cookies.get('cart')+productId+','+$('#qty').val()+','+$('#date').val()+','+$('#totalDays').val()+';');
-			console.log(Cookies.get('cart'));
+			new Swal('已加到購物車!!!');
 		}
 		
         </script>
