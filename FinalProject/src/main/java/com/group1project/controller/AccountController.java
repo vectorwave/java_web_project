@@ -3,7 +3,9 @@ package com.group1project.controller;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Date;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,9 +22,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
+import com.group1project.mail.MailUtils;
 import com.group1project.model.bean.Account;
-import com.group1project.model.bean.Product;
+import com.group1project.model.bean.Member;
 import com.group1project.model.service.AccountService;
+import com.group1project.model.service.MemberService;
+
 @Controller
 @SessionAttributes(names = {"loginuser"})
 public class AccountController {
@@ -33,6 +39,11 @@ public class AccountController {
 		super();
 		this.aService = aService;
 	}
+	@Autowired
+	private MailUtils mailUtils;
+	
+	@Autowired
+	private MemberService mService;
 
 	// 查詢單筆帳號資料
 	@GetMapping("back/login/{accountid}")
@@ -168,16 +179,9 @@ public class AccountController {
 		return "redirect:/login";
 	}
 	
-//	@RequestMapping(path = "/login.password.update", method = RequestMethod.POST)
-//	@ResponseBody
-//	public Account AccountUpdate(@RequestParam("updateNo") Integer accountId,
-//			@RequestParam("updatePwd") String password) {
-//		
-//	
-//		Account member = aService.updateById2(accountId, password);
-//
-//		return member;
-//	}
+	
+	
+	
 	
 	
 	//模糊搜尋
@@ -202,7 +206,10 @@ public class AccountController {
 		public String pageinserAccount(@ModelAttribute("account") Account account, Model model) {
 			Date nowdate = new Date();
 			account.setSignupDate(nowdate);
-			
+//			Account oaccount = aService.getAccountById(account.getAccountId());
+//			if(oaccount!=null) {
+//				return "redirect:/";
+//			}
 			//加密功能
 			String password = getStringHash(account.getPassword(), "SHA-512");
 			account.setPassword(password);
@@ -269,7 +276,7 @@ public class AccountController {
 			return "redirect:/";
 		}
 		
-		// 修改
+//		 //修改
 //		@GetMapping("page/login/edit")
 //		public String pageeditAccount(@RequestParam("id") Integer accountId, Model model) {
 //			Account newAccount = aService.getAccountById(accountId);
@@ -278,7 +285,7 @@ public class AccountController {
 //			model.addAttribute("newAccount", newAccount);
 //			return "editAccount";// 回到頁面
 //		}
-		//修改
+//		//修改
 //		@PostMapping("page/login/edit")
 //	    public String pagepostEditAccount(@ModelAttribute(name="newAccount") Account newAccount) {
 //			
@@ -288,9 +295,81 @@ public class AccountController {
 //			
 //			aService.saveAccount(newAccount);
 //			
-//			return "redirect:/login/findall";
+//			return "redirect:/";
 //			
 //		}
+		
+		@GetMapping("page/login/updatepwd")
+		public String updatepwd() {
+			return "/front/JoTravelFront/pageNewPassword";
+		}
+		
+		@GetMapping(path = "/sendEmail/{accountName}", produces = "text/plain;charset=utf-8")
+		@ResponseBody
+		public Map<String,String> AccountsendMail(@PathVariable("accountName") String accountName) {
+			int r=0;
+			String ran = "";
+			
+			for(int i =0; i<6; i++) {
+				r = (int)(Math.random()*10);
+				ran=ran+r;
+			}
+			System.out.println(ran);
+			
+			Map<String,String> mailresult = new LinkedHashMap<String, String>();
+			System.out.println(accountName+" WWWW");
+			Account account = aService.getAccountByName(accountName);
+			if (account==null) {
+				mailresult.put("msg", "沒有此帳號");
+				return mailresult;
+			}
+			
+			Member member = mService.getMemberByAccountId(account.getAccountId());
+			int accountMaillen = member.getEmail().length();
+			if(accountMaillen==0) {
+				mailresult.put("msg", "沒有email");
+				return mailresult;
+			}
+			String msg = sendEmail(account.getAccountName(), member.getEmail(), ran);
+			
+			mailresult.put("ran", ran);
+			mailresult.put("msg", msg);
+			
+			return mailresult;
+		}
+		
+		
+		public String sendEmail(String memberName ,String memberMail, String ran){
+			
+			
+			String subject = "JoTravel修改密碼";
+			
+			String htmlcontent = "<h3>" + memberName + " 會員你好</h3></br>" +
+					"您修改的驗證碼如下:<br>" +ran; 
+			
+			boolean b = mailUtils.sendMail(memberMail,subject,htmlcontent);
+			
+			if(b) {
+				return "已寄送相關資料至會員E-Mail";
+			}else {
+				return "發生錯誤，請尋求管理員幫助";
+			}
+			
+		}
+		
+		//修改
+		@PostMapping("page/login/edit")
+	    public String pagepostEditAccount(@ModelAttribute(name="newAccount") Account newAccount) {
+			
+			//加密功能
+			String password = getStringHash(newAccount.getPassword(), "SHA-512");
+			newAccount.setPassword(password);
+			
+			aService.saveAccount(newAccount);
+			
+			return "redirect:/";
+			
+		}
 		
 		
 		

@@ -142,6 +142,9 @@ a:hover {
 						<label> <input onclick="successCallback(position)"
 							type="checkbox" value="remember-me"> Remember me
 						</label>
+				<a href="http://localhost:8081/jotravel/page/login/updatepwd" class="nav-link dropdown-toggle">忘記密碼</a>
+
+						
 					</div>
 					<div class="v_code">
 						<div class="code_show">

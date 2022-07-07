@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.group1project.model.bean.Account;
 import com.group1project.model.bean.Guide;
 import com.group1project.model.bean.Product;
+import com.group1project.model.service.AccountService;
 import com.group1project.model.service.GuideService;
 import com.group1project.model.service.ProductService;
 
@@ -24,6 +24,9 @@ public class GuideFrontPageController {
 	
 	@Autowired
 	private ProductService pService;
+	
+	@Autowired
+	private AccountService aService;
 	
 //	//所有商家頁面
 //	@GetMapping("/testGuidePage")
@@ -73,6 +76,29 @@ public class GuideFrontPageController {
 		mav.setViewName("front/JoTravelFront/frontGuideProfilePage");
 		return mav;
 		
+	}
+	
+	//導遊個人資料管理
+	@GetMapping("/guide/myprofile/edit/{id}")
+	public ModelAndView editGuideProfile(ModelAndView mav,@PathVariable Integer id) {
+		
+		Guide editGuideInfo = gService.getGuideById(id);
+		
+		
+		if(!(editGuideInfo == null)) {	
+			
+		mav.getModelMap().put("editGuideInfo", editGuideInfo);
+		
+		
+		} else if(editGuideInfo == null) {
+			Guide emptyGuide = new Guide();
+			emptyGuide.setAccountId(id);
+			mav.getModelMap().put("editGuideInfo", emptyGuide);
+		}
+		
+		mav.setViewName("front/JoTravelFront/EditGuideProfilePage");
+		
+		return mav;
 	}
 	
 	

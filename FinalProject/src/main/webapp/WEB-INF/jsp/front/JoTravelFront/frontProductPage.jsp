@@ -57,7 +57,7 @@
 			     <h1 class="jumbotron-heading">來趟旅遊　為回憶點綴</h1>
 			     <!-- <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</p> -->
 			     <p><a href="#" class="btn btn-primary my-2">最夯熱門旅遊</a>
-			     <a href="#" class="btn btn-secondary my-2">旅遊許願池</a>
+			     <a href="${contextRoot}/front/JoGroupFront/all" class="btn btn-secondary my-2">旅遊許願池</a>
 			     </p>
 			 </div>
        <!--================Breadcrumb Area =================-->
@@ -157,8 +157,22 @@
 							</ul>
 						</aside>
 						<aside class="single-sidebar-widget tag_cloud_widget">
-							<h4 class="widget_title">猜你喜歡</h4>
+							<h4 class="widget_title">商品排行榜</h4>
 							<ul class="list_style">
+							 <c:forEach items="${productList}" var="product" begin="0" end="4" step="1" varStatus="i">
+							
+<%-- 							<c:out value="🏆 ${productList[product].productName}"></c:out> --%>
+							<a href="${contextRoot}/front/productPage/detail?id=${product.productId}" >
+							
+							<c:out value="🏆 ${product.productName}"></c:out>
+<%-- 							<c:out value="${scoreList[i.index]} 顆⭐"></c:out> --%>
+							
+							
+							</a><br/>
+							
+<%-- 							<c:out value="${scoreList[product]} ⭐"></c:out> --%>
+							
+							 </c:forEach>
 								
 								<li><p id="krisrock"></p></li>
 								<li><p id="krisrock1"></p></li>

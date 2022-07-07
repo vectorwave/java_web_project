@@ -36,6 +36,7 @@
 <link rel="stylesheet" href="<c:url value="/css/blog/responsive.css"/>">
 <link rel="stylesheet" href="<c:url value="/css/core-style"/>">
 <script type="text/javascript" src="${contextRoot}/js/js.cookie.min.js"> </script>
+<script type="text/javascript" src="${contextRoot}/js/sweetalert2.all.min.js"> </script>
 </head>
 <body style="font-size: larger">
 	<!--================Header Area =================-->
@@ -84,8 +85,8 @@
 			<div class="page-cover text-center">
 				<h2 class="page-cover-tittle">Product Detail</h2>
 				<ol class="breadcrumb">
-					<li><a href="index.html">Home</a></li>
-					<li class="active">Gallery</li>
+					<li><a href="${contextRoot}/front/productPage">Product</a></li>
+					<li class="active">Detail</li>
 				</ol>
 			</div>
 		</div>
@@ -319,7 +320,7 @@
 			}
 			var productId = ${product.productId};
 			Cookies.set('cart',Cookies.get('cart')+productId+','+$('#qty').val()+','+$('#date').val()+','+$('#totalDays').val()+';');
-			console.log(Cookies.get('cart'));
+			new Swal('已加到購物車!!!');
 		}
 		
         </script>

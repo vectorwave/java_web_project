@@ -9,7 +9,7 @@
             <div class="container">
                 <nav class="navbar navbar-expand-lg navbar-light">
                     <!-- Brand and toggle get grouped for better mobile display -->
-              <img src="<c:url value="/images/blog/Logo.png"/>" alt=""></a>
+              <a href="http://localhost:8081/jotravel/"><img src="<c:url value="/images/blog/Logo.png"/>" alt=""></a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         
                         <span class="icon-bar"></span>
@@ -25,12 +25,12 @@
                             <li class="nav-item"><a class="nav-link" href="#about_tag">關於我們</a></li>
                             <li class="nav-item"><a class="nav-link" href="gallery.html">藝廊</a></li>
                             <li class="nav-item submenu dropdown">
-                                <a href="" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">想趣旅遊</a>
+                                <a href="${contextRoot}/front/productPage/" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">想趣旅遊</a>
                                 <ul class="dropdown-menu">
-                                    <li class="nav-item"><a class="nav-link" href="http://localhost:8081/jotravel/front/productPage/">所有旅遊</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="southTravel.html">南部出團</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="eastTravel.html">東部出團</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="islandTravel.html">外島出團</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="${contextRoot}/front/productPage/">所有旅遊</a></li>
+<!--                                     <li class="nav-item"><a class="nav-link" href="southTravel.html">南部出團</a></li> -->
+<!--                                     <li class="nav-item"><a class="nav-link" href="eastTravel.html">東部出團</a></li> -->
+<!--                                     <li class="nav-item"><a class="nav-link" href="islandTravel.html">外島出團</a></li> -->
                                 </ul>
                             </li> 
                             <li class="nav-item submenu dropdown">
@@ -59,7 +59,7 @@
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">客服中心</a>
                                 <ul class="dropdown-menu">
                                     <li class="nav-item"><a class="nav-link" href="${contextRoot}/message/form">客服表單</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="blog-single.html">智能客服</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="${contextRoot}/ai">智能客服</a></li>
                                     <li class="nav-item"><a class="nav-link" href="blog-single.html">線上客服中心</a></li>
                                 </ul>
                             </li> 
@@ -81,6 +81,8 @@
 									<c:if test="${sessionScope.loginuser.accountId == null}">
 									<li class="nav-item"><a class="nav-link" href="http://localhost:8081/jotravel/page/login">登入</a></li>
                                     <li class="nav-item"><a class="nav-link" href="http://localhost:8081/jotravel/page/login/member/insert">註冊</a></li>
+<!-- 									<li class="nav-item"><a class="nav-link" href="http://localhost:8081/jotravel/page/login/password/update">修改密碼</a></li> -->
+									
 									</c:if>
 									
 									<c:if test="${sessionScope.loginuser.accountId != null && sessionScope.loginuser.title == '會員' }">
@@ -89,7 +91,7 @@
 								<li class="nav-item"><a class="nav-link" href="http://localhost:8081/jotravel/page/member/add">新增個人資料</a></li>
 									
                                 <li class="nav-item"><a class="nav-link" href="http://localhost:8081/jotravel/page/member/edit?id=${loginuser.accountId}">會員資料</a></li>
-<!-- 									<li class="nav-item"><a class="nav-link" href="blog-single.html">修改密碼</a></li> -->
+									<li class="nav-item"><a class="nav-link" href="http://localhost:8081/jotravel/page/login/password/update">修改密碼</a></li>
 									
                                 <li class="nav-item"><a class="nav-link" href="http://localhost:8081/jotravel/front/allOrder">查看訂單</a></li>
 												</c:if>

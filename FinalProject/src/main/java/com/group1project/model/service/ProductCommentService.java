@@ -11,5 +11,7 @@ public interface ProductCommentService {
 	List<ProductComment> getAllProductComment();
 	void deleteProductComment(Integer productCommentId);
 	List<ProductComment> getAllProductCommentByProductId(Integer productId);
-
+	
+	List<Double> findByCommentScore();
+	List<Integer> sortProductId();
 }

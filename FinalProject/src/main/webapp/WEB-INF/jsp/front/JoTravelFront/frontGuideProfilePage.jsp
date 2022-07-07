@@ -55,16 +55,22 @@
         
         <!--================ About Guide Area  =================-->
         <section class="about_history_area section_gap">
-            <div class="container">
+            <div class="container" style="margin-bottom:50px;margin-top:50px;">
                 <div class="row">
-                    <div class="col-md-6 d_flex align-items-center">
-                        <img class="img-fluid" src="${contextRoot}/guide_info/photo/${guideInfo.accountId}" alt="img" style="height:100px">
+
+                    <div class="">
+                        <img class="img-fluid" src="${contextRoot}/guide_info/photo/${guideInfo.accountId}" alt="img" style="height:120px">
                     </div>
-                    <div class="col-md-6" style="display:table">
+
+                    <div class="" style="display:table; margin-left: 100px;">
+
                         <div class="about_content" style="display:table-cell;vertical-align:middle;text-align: left;">
-                            <h2 class="title title_color">${guideInfo.profileName}<br>${guideInfo.guideName}</h2>
-                            <h4>證照種類： ${guideInfo.licenceType}</h4>
+                            <h3 style="color:black">${guideInfo.profileName} - ${guideInfo.guideName}</h3>
+                            <h5>證照種類： ${guideInfo.licenceType}</h5>
+                            <h5>證照號碼： ${guideInfo.licenceNo}</h5>
+                            <a href="http://localhost:8081/jotravel/guide/myprofile/edit/${loginuser.accountId}" class="genric-btn primary medium">個人資料管理</a> 
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -72,53 +78,49 @@
         <!--================ About Guide Area  =================-->
 
         <section class="gallery_area section_gap" style="padding:10px 0px 10px 0px;background-color: rgb(255, 250, 224);">
-            <div class="container">
+            <div class="" style="padding:30px 100px 30px 100px">
 
-			
                <div class="section_title text-right">
 
-                
-
-                <div style="background-color:rgb(255, 123, 0);margin-top: 20px;width:150px;border-radius:35px;text-align: center;">
-                <h3 style="color: rgb(255, 255, 255);">所有商品</h3>
-                </div>
-                <div align="right"> 
-                    <a href="#" class="genric-btn primary large">上架行程</a>
-                    <a href="#" class="genric-btn primary large">Extra Large</a>    
+                <div style="background-color:rgb(255, 141, 35);margin-top: 20px;width:190px;border-radius:35px;text-align: center;">
+                <h2 style="color: rgb(255, 255, 255);padding-top:3px;padding-bottom:3px;">所有商品</h2>
                 </div>
                 <br/>
 
-			<div class="row imageGallery1" id="gallery">
+
+                <div align="center">
+
+			<div style="padding:25px 8px 25px 8px;background-color: white; border-radius: 30px;">
                          
-                <div>
 
 
 
-                    <table class="" style="width:1200px;">
-                        <tr style="background-color:#fac473;text-align: center;">
-                        <th>編號<th>圖片<th>商品名稱<th>商品價格<th>上架時間<th>下架時間<th>更新時間<th>分區<th>上架狀態<th>修改<th>刪除</tr> 
+                    <table>
+                        <tr class="thContent" style="white-space:nowrap">
+                        <th>編號<th>圖片<th>商品名稱<th>商品價格<th>上架時間<th>下架時間<th>更新時間<th>分區<th>狀態<th> <th colspan="2"> <a href="#" class="genric-btn primary circle medium">上架行程</a>  </tr> 
                         
-                        <div id="newTable">
+                        <div>
                         <c:forEach var="value" items="${productList}">
-                        <tr>
-                        <td> <c:out value="${value.productId}"/></td>
-                        <td> <img src="${contextRoot}/back/product/photo/${value.productId}" width="50px" height="50px"> </td>      	  
+                        <tr class="tdContent">
+                        <td style="border-radius: 20px 0px 0px 20px"> <c:out value="${value.productId}"/></td>
+                        <td> <img src="${contextRoot}/back/product/photo/${value.productId}" width="100px"> </td>      	  
                         <td> <c:out value="${value.productName}"/></td>
                         <td> <c:out value="${value.productPrice}"/></td>     	     		
-                        <td> <fmt:formatDate pattern="yyyy 年 MM 月 dd 日 " value="${value.startDate}" />   	     		
-                        <td> <fmt:formatDate pattern="yyyy 年 MM 月 dd 日 " value="${value.endDate}" /></td>      	     		   		
-                        <td> <fmt:formatDate pattern="yyyy 年 MM 月 dd 日 a hh:mm:ss " value="${value.updatedTime}"/></td> 
+                        <td> <fmt:formatDate pattern="yyyy/MM/dd" value="${value.startDate}" />   	     		
+                        <td> <fmt:formatDate pattern="yyyy/MM/dd" value="${value.endDate}" /></td>      	     		   		
+                        <td> <fmt:formatDate pattern="yyyy/MM/dd a hh:mm:ss " value="${value.updatedTime}"/></td> 
                         
                         <td> <c:out value="${value.productArea}"/></td> 
                         <td> <c:out value="${value.status}"/></td> 
-                        <td><button class="delt" onclick="upd('${value.productId}')" >📝</button></td> 
-                        <td><button class="delt" onclick="del('${value.productId}')" >✂</button></td> 
+                        <td style="white-space:nowrap"><a href="#" class="genric-btn success-border small" style="border-radius: 10px;">查看評論</a></td>
+                        <td style="white-space:nowrap"><a href="#" class="genric-btn info-border small" style="border-radius: 10px;">修改</a></td> 
+                        <td style="border-radius: 0px 20px 20px 0px;white-space:nowrap;"><a href="#" class="genric-btn danger-border small" style="border-radius: 10px;">刪除</a></td> 
                         </tr>
                         </c:forEach>
                         </div>
                         </table>
 
-
+                
                 </div>    
 
 
