@@ -16,7 +16,7 @@
 <form:hidden path="articleId"/>
 
 <!-- <input  path="accountId" name="accountId" value="1"/> -->
-  <input id=accountId name="accountId" value="${loginuser.accountId}" />
+  <input id=accountId name="accountId" value="${loginuser.accountId}" style="visibility:hidden"/>
 <!-- path="accountId" -->
 <form:hidden path="picId"  value="${article.articleId}"/>
 <form:hidden path="articleJogroup"  value="1"/>
@@ -50,10 +50,29 @@
     <form:textarea path="articleText" class="form-control" id="exampleFormControlTextarea1" rows="3"></form:textarea>
   </div>
   
- <input class="btn btn-primary" type="submit" value="Submit"/>
+ <input class="btn btn-primary" type="submit" value="Submit"/><br><br>
+ <input class="btn btn-warning" type="button" value="一鍵輸入"  id="OneKey"/>
+ <input class="btn btn-danger" type="button" value="揪團範本"  id="OneKey1"/>
+ 
 </form:form>
 
 <script>
+
+$('#OneKey').click(function(){
+	  $('#exampleFormControlInput1').val("龍洞-玩水的首選!!!");
+	  $('#exampleFormControlTextarea1').val("在龍洞灣海洋公園浮潛，有專業的國際認證標準ADS最高級教練指導，潛進水裡近距離與豐富的魚群同游，尋找海星和海膽，是很棒的體驗，有機會再來玩玩！在這裡特別推薦帶我們的自由潛水教練。左教練賽高!!!!!!");
+	  
+	 })
+
+
+	 
+	 $('#OneKey1').click(function(){
+	  $('#exampleFormControlInput1').val("外雙溪SUP-立槳之旅集氣");
+	  $('#exampleFormControlTextarea1').val("外雙溪位於台北市區，乘著SUP順流而下，沿途會看見壯觀的芝山岩，接著經過雙溪河濱公園以及新佳公園，非常希望這次可以成團，讓立槳左教練帶我們出去玩");
+	  
+	 })
+
+
 $(function(){
 	
 	$('#exampleFormControlSelect1').change(function(){

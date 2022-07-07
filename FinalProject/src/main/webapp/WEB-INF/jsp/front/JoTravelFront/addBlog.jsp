@@ -88,9 +88,9 @@
                 <div class="page-cover text-center">
                     <h2 class="page-cover-tittle f_48">新增遊記</h2>
                     <ol class="breadcrumb">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="blog.html">Blog</a></li>
-                        <li class="active">Blog Details</li>
+                        <li><a href="http://localhost:8081/jotravel/">首頁</a></li>
+                        <li><a href="http://localhost:8081/jotravel/front/blogIndex">遊記論壇</a></li>
+                        <li class="active">新增文章</li>
                     </ol>
                 </div>
             </div>

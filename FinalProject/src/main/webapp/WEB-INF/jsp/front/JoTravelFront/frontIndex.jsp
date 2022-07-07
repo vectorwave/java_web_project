@@ -221,7 +221,7 @@
 <%--                                 <a href="${contextRoot}/front/blogPage/detail?id=${article.articleId}" class="btn theme_btn button_hover"></a> --%>
                             </div>
                             <h4 class="sec_h4">${article.articleCategory}</h4>
-                            <a href="${contextRoot}/front/blogPage/detail?id=${article.articleId}"><h5>${article.articleTitle}</h5></a>
+                            <a href="${contextRoot}/front/blogPage/detail?id=${article.articleId}"><h5 style="color:green">${article.articleTitle}</h5></a>
                         </div>
                     </div>
                 </c:forEach> 
