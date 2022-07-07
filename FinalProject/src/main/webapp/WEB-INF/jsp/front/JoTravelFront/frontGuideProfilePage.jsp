@@ -97,7 +97,7 @@
 
                     <table>
                         <tr class="thContent" style="white-space:nowrap">
-                        <th>編號<th>圖片<th>商品名稱<th>商品價格<th>上架時間<th>下架時間<th>更新時間<th>分區<th>狀態<th> <th colspan="2"> <a href="#" class="genric-btn primary circle medium">上架行程</a>  </tr> 
+                        <th>編號<th>圖片<th>商品名稱<th>商品價格<th>上架時間<th>下架時間<th>更新時間<th>分區<th>狀態<th> <th colspan="2"> <a href="${contextRoot}/front/addProduct" class="genric-btn primary circle medium">上架行程</a>  </tr> 
                         
                         <div>
                         <c:forEach var="value" items="${productList}">
@@ -112,9 +112,13 @@
                         
                         <td> <c:out value="${value.productArea}"/></td> 
                         <td> <c:out value="${value.status}"/></td> 
-                        <td style="white-space:nowrap"><a href="#" class="genric-btn success-border small" style="border-radius: 10px;">查看評論</a></td>
-                        <td style="white-space:nowrap"><a href="#" class="genric-btn info-border small" style="border-radius: 10px;">修改</a></td> 
-                        <td style="border-radius: 0px 20px 20px 0px;white-space:nowrap;"><a href="#" class="genric-btn danger-border small" style="border-radius: 10px;">刪除</a></td> 
+                        <td style="white-space:nowrap"><a href="${contextRoot}/front/ProductComment/search?id=${value.productId}" class="genric-btn success-border small" style="border-radius: 10px;">查看評論</a></td>
+                        <td style="white-space:nowrap"><button class="delt" onclick="upd('${value.productId}')" >📝</button></td> 
+                        <td style="border-radius: 0px 20px 20px 0px;white-space:nowrap;"><button class="delt" onclick="del('${value.productId}')" >✂</button></td> 
+                        
+<%--                          <td style="white-space:nowrap"><a href="${contextRoot}/front/frontEditProduct?id=${value.productId}" class="genric-btn info-border small" style="border-radius: 10px;">修改</a></td>  --%>
+<%--                         <td style="border-radius: 0px 20px 20px 0px;white-space:nowrap;"><a href="${contextRoot}/back/product/frontDelete/${value.productId}" class="genric-btn danger-border small" style="border-radius: 10px;">刪除</a></td> --%>
+                        
                         </tr>
                         </c:forEach>
                         </div>
@@ -133,6 +137,51 @@
         </div>
     </section>    
       <jsp:include page="frontLayout/frontFooter.jsp" />               
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>      
+        <script>
+ function upd(e){
+	 Swal.fire({
+		  title: '確認修改嗎?',
+		//   text: "You won't be able to revert this!",
+		  icon: 'question',
+		  showCancelButton: true,
+		  confirmButtonColor: '#3085d6',
+		  cancelButtonColor: '#d33',
+		  confirmButtonText: 'Yes!',
+		  
+		}).then((result) => {
+		  if (result.isConfirmed) {
+			  
+			document.location.href='${contextRoot}/front/frontEditProduct?id='+e;
+		  }else if (result.isDenied) {
+			    
+			    return false;
+			  }
+		});
+ }
+ 
+ function del(e){
+	 Swal.fire({
+		  title: '確認刪除嗎?',
+		//   text: "You won't be able to revert this!",
+		  icon: 'question',
+		  showCancelButton: true,
+		  confirmButtonColor: '#3085d6',
+		  cancelButtonColor: '#d33',
+		  confirmButtonText: 'Yes!',
+		  
+		}).then((result) => {
+		  if (result.isConfirmed) {
+
+			document.location.href='/jotravel/back/product/frontDelete/'+e;
+		  }else if (result.isDenied) {
+			  
+			    return false;
+			  }
+		});
+ }
+</script> 
+        
         
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
