@@ -97,7 +97,7 @@ public class ProductController {
 	//前台新增商品
 	//@PostMapping方法,為新增商品,輸入json格式資料即可完成新增,利用@ResponseBody回傳json格式的資料
 	@PostMapping("frontAddProduct")
-	public String frontAaveProduct(@ModelAttribute("frontPd") Product product,
+	public String frontAddProduct(@ModelAttribute("frontPd") Product product,
 			@RequestParam("file") MultipartFile file,@RequestParam("accountId") Integer accountId,
 			Model model) {
 //		Account account = storeservice.findbyid(storeId);
@@ -120,7 +120,7 @@ public class ProductController {
 		message.put("okMsg", "insertOK");
 		model.addAttribute("msg", message);
 		
-		return "redirect:/front/ownProductList?id="+ accountId;
+		return "redirect:/guide/myprofile/"+ accountId;
 	}
 	
 	
@@ -154,7 +154,7 @@ public class ProductController {
 		Integer aId= pp1.getAccount().getAccountId();
 		pService.deleteProduct(product_id);
 		
-		return "redirect:/front/ownProductList?id="+aId;
+		return "redirect:/guide/myprofile/"+aId;
 	}
 	
 	
@@ -221,7 +221,7 @@ public class ProductController {
 		}
 		pService.saveProduct(newPd);
 		
-		return "redirect:/front/ownProductList?id="+ newPd.getAccount().getAccountId() ;
+		return "redirect:/guide/myprofile/"+ newPd.getAccount().getAccountId() ;
 		
 	}
 	
