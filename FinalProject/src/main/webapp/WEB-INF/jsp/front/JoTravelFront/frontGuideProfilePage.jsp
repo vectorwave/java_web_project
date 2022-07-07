@@ -43,7 +43,7 @@
             <div class="overlay gd-parallax" data-stellar-ratio="0.8" data-stellar-vertical-offset="0" data-background=""></div>
             <div class="container">
                 <div class="page-cover text-center">
-                    <h2 class="page-cover-tittle">${guideInfo.profileName} - 管理頁面</h2>
+                    <h2 class="page-cover-tittle">${guideInfo.profileName} 管理頁面</h2>
                     <ol class="breadcrumb">
                         <li><a href="#">會員中心</a></li>
                         <li class="active">導遊主頁</li>
@@ -58,17 +58,34 @@
             <div class="container" style="margin-bottom:50px;margin-top:50px;">
                 <div class="row">
 
+                    <c:if test="${guideInfo.guidePhoto == null}">
+                    <img class="img-fluid" src="<c:url value="/image/emptyProfile.png"/>" alt="img" style="height:120px">
+                    </c:if>
+                    
+                    <c:if test="${guideInfo.guidePhoto != null}">
                     <div class="">
-                        <img class="img-fluid" src="${contextRoot}/guide_info/photo/${guideInfo.accountId}" alt="img" style="height:120px">
+                        <img class="img-fluid" src="${contextRoot}/guide_info/photo/${guideInfo.accountId}" alt="圖片讀取失敗" style="height:120px">
                     </div>
+                </c:if>
 
                     <div class="" style="display:table; margin-left: 100px;">
 
                         <div class="about_content" style="display:table-cell;vertical-align:middle;text-align: left;">
+
+                         <c:if test="${guideInfo.profileName != null}">
                             <h3 style="color:black">${guideInfo.profileName} - ${guideInfo.guideName}</h3>
                             <h5>證照種類： ${guideInfo.licenceType}</h5>
                             <h5>證照號碼： ${guideInfo.licenceNo}</h5>
                             <a href="http://localhost:8081/jotravel/guide/myprofile/edit/${loginuser.accountId}" class="genric-btn primary medium">個人資料管理</a> 
+                        </c:if>
+
+                        <c:if test="${guideInfo.profileName == null}">
+                        <h3>您尚未填寫個人資料</h3>
+                        <a href="http://localhost:8081/jotravel/guide/myprofile/edit/${loginuser.accountId}" class="genric-btn primary medium">立即填寫</a> 
+
+                        </c:if>
+                       
+                       
                         </div>
 
                     </div>
