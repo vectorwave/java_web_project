@@ -128,7 +128,7 @@ a:hover {
 				</h3>
 			</div>
 			<div class="modal-body">
-				<form class="form-login" method="post" action="/jotravel/page/logingo"
+				<form id="signupForm" class="form-login" method="post" action="/jotravel/page/logingo"
 					onsubmit="return validateCode()">
 					<!-- 					<img class="mb-4 rounded mx-auto d-block" src="assets/img/logo.png" -->
 					<!-- 						alt="" width="310" height="250">  -->
@@ -139,9 +139,8 @@ a:hover {
 						type="password" id="inputPassword" name="inputPassword"
 						class="form-control" placeholder="Password" required>
 					<div class="checkbox mt-1 mb-3">
-						<label> <input onclick="successCallback(position)"
-							type="checkbox" value="remember-me"> Remember me
-						</label>
+						<label> <input  type="checkbox" id="rememberme" value="" onchange="rememberme1(event)"> 
+						</label><span>Remember me</span>
 				<a href="http://localhost:8081/jotravel/page/login/updatepwd" class="nav-link dropdown-toggle">忘記密碼</a>
 
 						
@@ -284,35 +283,111 @@ a:hover {
 		src="<c:url value="/css/blog//vendors/lightbox/simpleLightbox.min.js"/>"></script>
 	<script src="<c:url value="/js/blog/custom.js"/>"></script>
 	<script type="text/javascript">
-		// window.onload=navigator.geolocation.getCurrentPosition(successCallback);  
-		// function successCallback(position){  
-		//     var lat1 = position.coords.latitude;  
-		//     var long1 = position.coords.longitude;  
-		//     console.log(lat1);
-		//     console.log(long1);
-		//     setCookie("lat1",lat1);
-		//     setCookie("long1",long1);
+	
+	$(function(){
+		
+		var oUser2 = document.getElementById('inputAccount');
+		var oPswd2 = document.getElementById('inputPassword');
+			
+		var	 oUser1value = getCookie('inputAccount1');
+	 	var	 oPswd1value = getCookie('inputPassword1');
+	 		console.log(oUser1value);
+	  		console.log(oPswd1value);
 
-		//     document.getElementById(
-		//           "result"
-		//         ).innerHTML = `<a href="geolat.jsp">666666</a>`;
-		// //         latlong?${lat1}+${long1}
-		//    }
+//  		$('#inputAccount').attr("value",oUser1value);
+//	 		$('#inputPassword').attr("value",oPswd1value);
+	 		 
+// 	  		oUser2.value=oUser1value;
+// 	  		oPswd2.value=oPswd1value;			
+	 			$('#inputAccount').val(oUser1value);
+	 			$('#inputPassword').val(oPswd1value);		
+			
+	 		
+	});
+	
+// 	window.onload = function(){
+// 		var oForm = document.getElementById('signupForm');
+//         var oUser = document.getElementById('inputAccount');
+//         var oPswd = document.getElementById('inputPassword');
+//         var oRemember = document.getElementById('rememberme');
+//         //頁面初始化時，如果帳號密碼cookie存在則填充
+//         if (getCookie('inputAccount') && getCookie('inputPassword')) {
+//             oUser.value = getCookie('inputAccount');
+//             oPswd.value = getCookie('inputPassword');
+//             oRemember.checked = true;
+//         }
+        
+//       //複選框勾選狀態發生改變時，如果未勾選則清除cookie
+//         oRemember.onchange = function() {
+//             if (!this.checked) {
+//                 delCookie('inputAccount');
+//                 delCookie('inputPassword');
+//             }
+//         };
+        
+//         //表單提交事件觸發時，如果複選框是勾選狀態則儲存cookie
+//         oForm.onsubmit = function() {
+//             if (oRemember.checked) {
+//                 setCookie('inputAccount', oUser.value, 7); //儲存帳號到cookie，有效期7天
+//                 setCookie('inputPassword', oPswd.value, 7); //儲存密碼到cookie，有效期7天
+//                 console.log("666");
+//             }
+//         };
+//     };
+    
+//     function setCookie(name, value, day) {
+//         var date = new Date();
+//         date.setDate(date.getDate() + day);
+//         document.cookie = name + '=' + value + ';expires=' + date;
+//     };
+    
+//     //獲取cookie
+//     function getCookie(name) {
+//         var reg = RegExp(name + '=([^;]+)');
+//         var arr = document.cookie.match(reg);
+//         if (arr) {
+//             return arr[1];
+//         } else {
+//             return '';
+//         }
+//     };
+//     //刪除cookie
+//     function delCookie(name) {
+//         setCookie(name, null, -1);
+//     };
+function rememberme1(event){
+	
+	var oUser = $('#inputAccount').val();
+	var oPswd = $('#inputPassword').val();
 
-		// function setCookie(name,value){
-		// 	document.cookie = name + "=" +escape(value) +";path=/";
-		// }
+		setCookie("inputAccount1",oUser);
+		setCookie("inputPassword1",oPswd);
+		var vip666 = getCookie('inputAccount1');
+		console.log(oUser);
+		console.log(vip666);
+	
+	
+}
 
-		// function getCookie(name){
-		// 	var arr,reg = new RegExp("(^|)" + name + "=([^;]*)(;|$)");
-		// 	if(arr = document.cookie.match(reg))
-		// 		return unescape(arr[2]);
-		// 	else
-		// 		return null;
-		// }
-		// //设置cookie值
-		// var a = "xxx";
-		// setCookie("a",a);  
+
+
+
+
+		
+		function setCookie(name,value){
+			document.cookie = name + "=" +escape(value) +";path=/";
+		}
+
+		function getCookie(name){
+			var arr,reg = new RegExp("(^|)" + name + "=([^;]*)(;|$)");
+			if(arr = document.cookie.match(reg))
+				return unescape(arr[2]);
+			else
+				return null;
+		}
+		//设置cookie值
+		var a = "xxx";
+		setCookie("a",a);  
 
 		var code;
 		function createCode() {
@@ -414,8 +489,9 @@ a:hover {
 		// 				});
 
 		// 			});
-		// 		});
-
+		// 		});		
+		
+		
 		$('#one').click(function() {
 			let checkword = $('#checkCode').text();
 			console.log(checkword)

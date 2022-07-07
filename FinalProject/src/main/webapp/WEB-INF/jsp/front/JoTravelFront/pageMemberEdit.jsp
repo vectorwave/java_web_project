@@ -15,7 +15,7 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="icon" href="image/favicon.png" type="image/png">
-<title>Royal Hotel</title>
+<title>修改會員資料</title>
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href='<c:url value="/css/blog/bootstrap.css"/>'>
 <link rel="stylesheet"
@@ -87,11 +87,11 @@ padding-left:400px;
 			data-stellar-vertical-offset="0" data-background=""></div>
 		<div class="container">
 			<div class="page-cover text-center">
-				<h2 class="page-cover-tittle">會員</h2>
-				<ol class="breadcrumb">
-					<li><a href="index.html">Home</a></li>
-					<li class="active">Account</li>
-				</ol>
+				<h2 class="page-cover-tittle">Account</h2>
+<!-- 				<ol class="breadcrumb"> -->
+<!-- 					<li><a href="index.html">Home</a></li> -->
+<!-- 					<li class="active">Account</li> -->
+<!-- 				</ol> -->
 			</div>
 		</div>
 	</section>
