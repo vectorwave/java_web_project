@@ -9,7 +9,7 @@
 <script src="${contextRoot}/js/FileSaver.js"></script>
 
 <div class="d-flex justify-content-center">
-	<div class="d-flex justify-content-center" style="visibility: hidden"><!-- 這不叫蠢，這叫農民工的智慧 -->
+	<div class="d-flex justify-content-center" style="visibility: hidden">
 		<main class="px-3">
 			<h1>下載訂單</h1>
 			<p class="lead">點擊下面的按鈕來下載你的訂單</p>
@@ -26,6 +26,7 @@
 		<p class="lead">
 			<button type="button" class="btn btn-primary btn-xs" onclick="download()">點我下載</button>
 		</p>
+		<img src="${contextRoot}/assets/img/little-monkey.gif" style="position:absolute;top:15px;left:10px;">
 	</main>
 </div>
 <script type="text/javascript">
