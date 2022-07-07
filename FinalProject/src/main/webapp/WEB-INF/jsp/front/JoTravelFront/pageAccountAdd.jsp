@@ -125,7 +125,7 @@ label {
 
 				<tr class="trCtrl">
 					<td><span id="maccountName"></span><label> 密碼：</label></td>
-					<td><form:input type="text" path="password" class="form-control"
+					<td><form:input type="password" path="password" class="form-control"
 					id="inputPassword" /></td>
 				</tr> </br> 
 
