@@ -166,14 +166,15 @@
 					</div>
 				</div>
 
-				<div class="dropdown">
-					<button class="dropbtn">
-						<span class="material-icons">live_tv</span>廣告管理
-					</button>
-					<div class="dropdown-content">
-						<a href="#">新增廣告</a> <a href="#">所有廣告</a>
-					</div>
-				</div>
+<!-- 				<div class="dropdown"> -->
+<!-- 					<button class="dropbtn"> -->
+<!-- 						<span class="material-icons">live_tv</span>廣告管理 -->
+<!-- 					</button> -->
+<!-- 					<div class="dropdown-content"> -->
+<!-- 						<a href="#">新增廣告</a> <a href="#">所有廣告</a> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
 			</nav>
 
+<!-- 			<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4"> -->
 			<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
