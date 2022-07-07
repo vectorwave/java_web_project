@@ -250,7 +250,7 @@
 	};
 	
 	$(window).on('beforeunload',function(){
-		if(flag && vm.$data.orderDetails){
+		if(flag && !vm.$data.orderDetails){
 			Cookies.set('cart',dataToCookie(),{ expires: 365 });
 		}else{
 			Cookies.set('cart','',{ expires: 365 });
