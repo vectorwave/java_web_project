@@ -6,32 +6,35 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <style>
-td 
-{
+td,th 
+{	
+	vertical-align:middle;
+	align-content: center;
     text-align: center; 
     vertical-align: middle;
-
+	border: 1px solid black;
 }
+
 </style>
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-<div class="container">
+<div class="container" style="margin-top:10px ;">
 <h2>商品資訊</h2>
-<form action="/jotravel/back/allProduct" method="get" >
+<form action="/jotravel/back/allProduct" method="get" style="margin-bottom:5px;">
 <input type="text" name="key" placeholder="搜尋商品名稱" id="key"> <input type="submit" id="send" value="🔍" > <a href="http://localhost:8081/jotravel/back/allProduct"><input type="button" value="全部商品" ></a>  
 </form>
 <div>
 <!-- class="row justify-content-center" -->
 <table class="table" border="1">
 <tr style="background-color:#fac473">
-<th>商品評論<th>評論<th>商品編號<th>商家編號<th>商品名稱<th>商品價格<th>上架時間<th>下架時間<th>商品圖片<th>更新時間<th>區域分類<th>上架狀態<th>修改<th>刪除</tr> 
+<th>查看評論<th>商品編號<th>商家編號<th>商品名稱<th>商品價格<th>上架時間<th>下架時間<th>商品圖片<th>更新時間<th>區域分類<th>上架狀態<th>修改<th>刪除</tr> 
 
 <div id="newTable">
 <c:forEach var="value" items="${page.content}">
 <tr> 
 <td><a href="ProductComment/search?id=${value.productId}"><button >評論</button></a></td>
-<td><a href="ProductComment/add?id=${value.productId}"><button >評論</button></a></td>
+<%-- <td><a href="ProductComment/add?id=${value.productId}"><button >評論</button></a></td> --%>
 <td> <c:out value="${value.productId}"/></td>
 <td> <c:out value="${value.account.accountId}"/></td>
 <td> <c:out value="${value.productName}"/></td>
