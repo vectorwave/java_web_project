@@ -73,7 +73,7 @@
 					            <div class="col-md-4" id="go">
 					              <div class="card mb-4 box-shadow" id="guideCard">
 									<a href="#" > 
-					               <img class="card-img-top" src="${contextRoot}/guide_info/photo/${guide.accountId}" width="160px" height="300px" alt="Card image cap"> </a>
+					               <img class="card-img-top" src="${contextRoot}/guide_info/photo/${guide.accountId}" width="160px" height="300px" alt="Card image cap" style="padding:30px"> </a>
 					<!--  <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap"> -->
 					                <div class="card-body" style="height:260px">
 					                     <div class="" style="width: 19rem;font-size: 20px;font-weight: 600;" align="center">
