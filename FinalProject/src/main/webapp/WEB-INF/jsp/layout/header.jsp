@@ -117,8 +117,7 @@
 					</button>
 					<div class="dropdown-content">
 						<a href="${contextRoot}/guidemanagement">所有商家</a> <a
-							href="${contextRoot}/guidemanagement/addguide">新增商家</a> <a
-							href="#">權限管理</a>
+							href="${contextRoot}/guidemanagement/addguide">新增商家</a> 
 					</div>
 				</div>
 
