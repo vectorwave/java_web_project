@@ -14,8 +14,7 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 	public List<Product> findAllByProductNameLike(String key);
 	
 	public List<Product> findAllProductByProductArea(String tag);
-	
-	 
+		 
 	public Page<Product> findAllByProductNameLike(String key,Pageable pab);
 	
 	@Query(value="select * from product where SYSDATETIME() >= start_date AND SYSDATETIME() <= end_date AND product_status = '上架'", nativeQuery = true)
