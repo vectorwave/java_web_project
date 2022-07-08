@@ -78,7 +78,7 @@
                             <!-- <div class="hover"> -->
                             	<!-- <a class="light" href="<c:url value="images/01.jpeg"/>"><i class="fa fa-expand"></i></a> -->
                     
-			   			<c:if test="${tagProduct eq null}">
+			   			<c:if test="${tagProduct =='' }">
 			   			<c:set var="tagProduct" value="${page.content}"></c:set>
 			   			</c:if>
 			   			
@@ -122,7 +122,7 @@
 	<c:forEach var="pageNumber" begin="1" end="${page.totalPages}">
   	<c:choose> 
   	<c:when test="${pageNumber!= page.number+1}"  > 
-  	<a href="${contextRoot}/front/productPage?p=${pageNumber}&key=${key}"><c:out value="${pageNumber}"/></a>
+  	<a href="${contextRoot}/front/productPage?p=${pageNumber}&key=${key}&tag=${tagProduct}"><c:out value="${pageNumber}"/></a>
  	</c:when>
  	<c:otherwise>
  	<c:out value="${pageNumber}"/>
@@ -224,11 +224,6 @@
 		<!--   ===購物車按鈕===   -->
  		<script type="text/javascript" src="${contextRoot}/js/js.cookie.min.js"> </script>
  		<script type="text/javascript">
- 		function addToCart(productId,amount,date,total_days){
- 			let cart = cookies.set("cart");
- 			cart += ${product.productId} + ',' + amount + ',' + date + ',' + total_days+';' ;
- 			cookies.set("cart",cart);
- 		}
  		
  		</script>
  	

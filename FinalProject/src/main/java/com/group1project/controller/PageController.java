@@ -92,17 +92,35 @@ public class PageController {
 			@RequestParam(value="tag",defaultValue="" ,required = false) String tag
 			) {
 //		Page<Product> page = pService.findByPage(pageNumber);
-		if(tag.isEmpty()) {
 		Pageable pgb = PageRequest.of(pageNumber - 1, 6 ,Sort.Direction.DESC,"productId");
+		
+		
+		mav.getModel().put("tagProduct", tag);
+		mav.getModel().put("key", key);
+		
+		
+		if(tag.equals("") && key.equals("")) {
+			System.out.println("=========兩個都空");
+			
+			Page<Product> page = pService.findByPage(pageNumber);
+			
+			mav.getModel().put("page", page);
+		}
+		
+		if(!(tag.equals(""))) {
+			System.out.println("=========tag不等於空");
+		List<Product> tagProduct = pService.findAllProductByProducArea(tag);		
+		mav.getModel().put("tagProduct", tagProduct);
+		
+		}
+	
+		if(!(key.equals(""))) {
+			System.out.println("=========key不等於空");
 		Page<Product> page = pService.searchProductByNameWithPage(key, pgb);
 		
 		mav.getModel().put("page", page);
 		mav.getModel().put("key", key);
-		mav.getModel().put("tagProduct", null);
-		
-		}else{
-		List<Product> tagProduct = pService.findAllProductByProducArea(tag);		
-		mav.getModel().put("tagProduct", tagProduct);
+	
 		}
 		
 		List<Double> scoreList = pcService.findByCommentScore();
