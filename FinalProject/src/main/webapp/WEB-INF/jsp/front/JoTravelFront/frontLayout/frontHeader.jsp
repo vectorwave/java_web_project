@@ -85,7 +85,7 @@
 								<li class="nav-item"><a class="nav-link" href="http://localhost:8081/jotravel/page/member/add">新增個人資料</a></li>
 									
                                 <li class="nav-item"><a class="nav-link" href="http://localhost:8081/jotravel/page/member/edit?id=${loginuser.accountId}">會員資料</a></li>
-									<li class="nav-item"><a class="nav-link" href="http://localhost:8081/jotravel/page/login/password/update">修改密碼</a></li>
+<!-- 									<li class="nav-item"><a class="nav-link" href="http://localhost:8081/jotravel/page/login/password/update">修改密碼</a></li> -->
 									
                                 <li class="nav-item"><a class="nav-link" href="http://localhost:8081/jotravel/front/allOrder">查看訂單</a></li>
 												</c:if>
