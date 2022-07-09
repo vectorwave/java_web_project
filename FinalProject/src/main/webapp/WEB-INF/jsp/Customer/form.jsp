@@ -43,7 +43,7 @@
             </div>
         </section>
 	<div class="row justify-content-center">
-		<div class="col-9">
+		<div class="col-5">
 			<div class="card" id="cusForm">
 				
 				<div class="card-body">

@@ -141,7 +141,7 @@ var qaList = [
 { Q:"難過", A:"別想它了|別難過|別想那麼多了|事情總是會解決的"},
 { Q:"高興", A:"不錯ㄚ|太棒了|這樣很好ㄚ"},
 { Q: "景點|出去玩", A: "想去北部、中部、南部、東部呢?" },
-{ Q: "北部", A: "這是北部旅遊連結<p id='tyu'><a href='http://localhost:8333/Nice_eCommerce/FrontPageSearchBySubCategory?name=%E4%BC%91%E9%96%92%E9%9E%8B'>http://localhost:8333/Nice_eCommerce/FrontPageSearchBySubCategory?name=%E4%BC%91%E9%96%92%E9%9E%8B</a>"},
+{ Q: "北部", A: "這是北部旅遊連結<br><p id='tyu'><a href='http://localhost:8081/jotravel/front/productPage?key=%E5%8C%97%E9%83%A8'>http://localhost:8081/jotravel/front/productPage?key=%E5%8C%97%E9%83%A8</a>"},
 { Q: "中部", A: "這是中部旅遊連結<p id='tyu'><a href='http://localhost:8333/Nice_eCommerce/FrontPageSearchBySubCategory?name=%E4%BC%91%E9%96%92%E9%9E%8B'>http://localhost:8333/Nice_eCommerce/FrontPageSearchBySubCategory?name=%E4%BC%91%E9%96%92%E9%9E%8B</a>"},
 { Q: "東部", A: "這是東部旅遊連結<p id='tyu'><a href='http://localhost:8333/Nice_eCommerce/FrontPageSearchBySubCategory?name=%E4%BC%91%E9%96%92%E9%9E%8B'>http://localhost:8333/Nice_eCommerce/FrontPageSearchBySubCategory?name=%E4%BC%91%E9%96%92%E9%9E%8B</a>"},
 
@@ -199,7 +199,7 @@ var qaList = [
 	} 
 	
     function say() { // 當送出鍵按下時，會呼叫這個函數進行回答動作
-      append("<br><div><p id='ty' style='color:#0800ff'>"+document.getElementById("say").value+"</p></div>"); // 先將使用者輸入的問句放到「對話區」顯示。
+      append("<br><div><img src='image/20.jpg'><p id='ty' style='color:#0800ff'>"+document.getElementById("say").value+"</p></div>"); // 先將使用者輸入的問句放到「對話區」顯示。
       answer(); // 然後回答使用者的問題。
     }
     
