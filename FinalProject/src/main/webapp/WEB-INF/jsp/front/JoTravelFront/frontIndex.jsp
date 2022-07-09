@@ -111,11 +111,11 @@
         
             <div class="container">
                 <div class="section_title text-center" style="height:50px">
-                    <h2 class="title_color">熱門旅遊行程</h2>
+                    <h2 class="title_color">最夯旅遊行程</h2>
                     <p>參與多元且精采豐富的台灣各地旅遊行程</p>
                 </div>
                 
-                <div class="row mb_30">
+                <div class="row mb_30" style="margin-top:60px">
 				<c:forEach items="${productList}" var="product" begin="0" end="3" step="1">
                     <div class="col-lg-3 col-sm-6">
                         <div class="accomodation_item text-center">
@@ -142,7 +142,7 @@
                     <h2 class="title_w">揪出美好回憶</h2>
                     <h4>享受人生，享受旅遊<h4>
                 </div>
-                <div class="row mb_30">
+                <div class="row mb_30" style="margin-top:60px">
                     <div class="col-lg-4 col-md-6">
                         <div class="facilities_item">
                             <h4 class="sec_h4"><i class="lnr lnr-dinner"></i>帶你吃遍台灣</h4>
@@ -169,8 +169,8 @@
                     </div>
                     <div class="col-lg-4 col-md-6">
                         <div class="facilities_item">
-                            <h4 class="sec_h4"><i class="lnr lnr-construction"></i>此路不通</h4>
-                            <p>這一格的標示有點難想文案喔。盡量湊滿兩行好了</p>
+                            <h4 class="sec_h4"><i class="lnr lnr-construction"></i>展覽導遊</h4>
+                            <p>最具文藝氣息的文青導遊，讓你看展不再只是拍照打卡，更能用心感受</p>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6">
@@ -239,9 +239,10 @@
 		                </div>
 		                <div class="testimonial_slider owl-carousel" style="height:300px">
 		                    <div class="media testimonial_item">
-		                        <img class="rounded-circle" src="image/testtimonial-1.jpg" alt="">
+		                        <img class="rounded-circle" src="image/guide01.png" alt="" style="width:80px">
 		                        <div class="media-body">
-		                            <p>As conscious traveling Paupers we must always be concerned about our dear Mother Earth. If you think about it, you travel across her face, and She is the </p>
+		                            <p>野外活動體驗專業教練，高空彈跳、叢林飛索甚至是高空跳傘，最多元的戶外活動嚮導！</br></br>
+                                    </p>
 		                            <a href="#"><h4 class="sec_h4">游敦凱</h4></a>
 		                            <div class="star">
 		                                <a href="#"><i class="fa fa-star"></i></a>
@@ -253,9 +254,9 @@
 		                        </div>
 		                    </div>    
 		                    <div class="media testimonial_item">
-		                        <img class="rounded-circle" src="image/testtimonial-1.jpg" alt="">
+                                <img class="rounded-circle" src="image/guide02.png" alt="" style="width:80px">
 		                        <div class="media-body">
-		                            <p>As conscious traveling Paupers we must always be concerned about our dear Mother Earth. If you think about it, you travel across her face, and She is the </p>
+		                            <p>登山野營Outdoor派嚮導，帶領您遠離城市的喧囂，在靜謐的大自然中從新定義自己。 </br></br></p>
 		                            <a href="#"><h4 class="sec_h4">徐寧翰</h4></a>
 		                            <div class="star">
 		                                <a href="#"><i class="fa fa-star"></i></a>
@@ -267,9 +268,9 @@
 		                        </div>
 		                    </div>
 		                    <div class="media testimonial_item">
-		                        <img class="rounded-circle" src="image/testtimonial-1.jpg" alt="">
+		                        <img class="rounded-circle" src="image/guide03.png" alt="" style="width:80px">
 		                        <div class="media-body">
-		                            <p>As conscious traveling Paupers we must always be concerned about our dear Mother Earth. If you think about it, you travel across her face, and She is the </p>
+		                            <p>最專業的交通顧問，公路鐵路天堂路，遊山玩水路線規劃，就交給最專業老司機，上車啦！</br></br></p>
 		                            <a href="#"><h4 class="sec_h4">徐逸誠</h4></a>
 		                            <div class="star">
 		                                <a href="#"><i class="fa fa-star"></i></a>
@@ -281,9 +282,9 @@
 		                        </div>
 		                    </div>    
 		                    <div class="media testimonial_item">
-		                        <img class="rounded-circle" src="image/testtimonial-1.jpg" alt="">
+		                        <img class="rounded-circle" src="image/guide04.png" alt="" style="width:80px">
 		                        <div class="media-body">
-		                            <p>As conscious traveling Paupers we must always be concerned about our dear Mother Earth. If you think about it, you travel across her face, and She is the </p>
+		                            <p>貓咪咖啡廳專業導遊，帶領您認識全台咖啡店明星喵喵！喜愛毛茸茸喵喵的您千萬別錯過！</br></br></p>
 		                            <a href="#"><h4 class="sec_h4">杜佳玲</h4></a>
 		                            <div class="star">
 		                                <a href="#"><i class="fa fa-star"></i></a>
@@ -295,9 +296,9 @@
 		                        </div>
 		                    </div>
 		                    <div class="media testimonial_item">
-		                        <img class="rounded-circle" src="image/testtimonial-1.jpg" alt="">
+		                        <img class="rounded-circle" src="image/guide05.png" alt="" style="width:80px">
 		                        <div class="media-body">
-		                            <p>As conscious traveling Paupers we must always be concerned about our dear Mother Earth. If you think about it, you travel across her face, and She is the </p>
+		                            <p>海浪滔滔我不怕 — 水系導遊，無論淡水海水帶您從上游玩到下游，再一路玩到海裡去～ </br></br></p>
 		                            <a href="#"><h4 class="sec_h4">陳左</h4></a>
 		                            <div class="star">
 		                                <a href="#"><i class="fa fa-star"></i></a>
@@ -309,9 +310,9 @@
 		                        </div>
 		                    </div>
 		                    <div class="media testimonial_item">
-		                        <img class="rounded-circle" src="image/testtimonial-1.jpg" alt="">
+		                        <img class="rounded-circle" src="image/guide06.png" alt="" style="width:80px">
 		                        <div class="media-body">
-		                            <p>As conscious traveling Paupers we must always be concerned about our dear Mother Earth. If you think about it, you travel across her face, and She is the </p>
+		                            <p>國內旅遊最專業行程規劃，豐富帶團經驗，從熱門景點到夢幻秘境，台灣之美絕不錯過～</br></br></p>
 		                            <a href="#"><h4 class="sec_h4">黃羿儒</h4></a>
 		                            <div class="star">
 		                                <a href="#"><i class="fa fa-star"></i></a>
