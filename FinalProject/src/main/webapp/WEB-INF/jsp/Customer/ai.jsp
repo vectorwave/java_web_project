@@ -41,14 +41,16 @@
 </head>
 <style>
 
-#ty{background:#ffffff;padding:1px;display:inline;font-size: 30px;color:#ff0000; font-weight: bolder  ;line-height:50px;border: black solid;border-radius: 10px;}
-#tyu{background:#ffffff;padding:1px;display:inline;font-size: 10px;color:#ff0000; font-weight: bolder  ;line-height:50px;border: black solid;border-radius: 10px;}
+#ty{background:#ffffff;padding:1px;display:inline;font-size: 30px;color:#ff0000; font-weight: bolder  ;line-height:50px}
+#tyu{background:#ffffff;padding:1px;display:flex;flex-direction: row-reverse;font-size: 30px;color:#2200ff; font-weight: bolder  ;line-height:50px;;border-radius: 10px;}
 #ty:first-child {
   text-shadow: 0px 0px 5px #fff; 
 }
-
+#tyu:first-child {
+  text-shadow: 0px 0px 5px #fff; 
+}
 #ty:last-child{ text-shadow: 0px 0px 5px #fff,0px 0px 5px #fff,0px 0px 5px #fff,0px 0px 5px #fff;}
-
+#tyu:last-child{ text-shadow: 0px 0px 5px #fff,0px 0px 5px #fff,0px 0px 5px #fff,0px 0px 5px #fff;}
 </style>
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <body>
@@ -199,8 +201,9 @@ var qaList = [
 	} 
 	
     function say() { // 當送出鍵按下時，會呼叫這個函數進行回答動作
-      append("<br><div><img src='image/20.jpg'><p id='ty' style='color:#0800ff'>"+document.getElementById("say").value+"</p></div>"); // 先將使用者輸入的問句放到「對話區」顯示。
+      append("<div  id='tyu' style=''><img src='image/20.jpg'><p style='position:relative;top:20px;'>"+document.getElementById("say").value+"</p></div>"); // 先將使用者輸入的問句放到「對話區」顯示。
       answer(); // 然後回答使用者的問題。
+      document.getElementById("say").val("");
     }
     
     function keyin(event) { // 當按下 enter 鍵時，會呼叫此函數進行回答
