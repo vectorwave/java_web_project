@@ -10,7 +10,7 @@
 <style>
 .backgroundCSS {
 	background-image:
-		url("http://localhost:8081/jotravel/images/blog/about_banner.jpg");
+		url("https://i.ibb.co/vzBzNmy/loginBG.jpg");
 	background-size: cover;
 }
 

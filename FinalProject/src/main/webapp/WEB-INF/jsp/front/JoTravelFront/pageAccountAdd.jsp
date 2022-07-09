@@ -12,7 +12,7 @@
 <style>
 .backgroundCSS {
 	background-image:
-		url("http://localhost:8081/jotravel/images/blog/about_banner.jpg");
+		url("https://i.ibb.co/M7S2HdK/signupBC.jpg");
 	background-size: cover;
 }
 </style>

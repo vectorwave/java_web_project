@@ -34,7 +34,7 @@
       </div>
 </form>
 
-<tr class="thContent">
+<tr class="thContent" style="white-space:nowrap;">
 <th>編號</th>
 <th>圖片</th>
 <th>主頁名稱</th>
@@ -45,7 +45,7 @@
 <th> </th>
 </tr>
 <c:forEach var="guide" items="${page.content}">
-<tr class="tdContent">
+<tr class="tdContent" >
 
 <td style="border-radius: 20px 0px 0px 20px"><c:out value="${guide.accountId}"/><c:set var="guideId" value="${guide.accountId}" scope="page"/></td>
 <td style="width:80px"><img class="guide_pic" src="${contextRoot}/guide_info/photo/${guide.accountId}" width="80"/></td>

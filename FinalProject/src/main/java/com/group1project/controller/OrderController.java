@@ -91,4 +91,8 @@ public class OrderController {
 	public Object getCountByAmount(@PathVariable("year") Integer year) {
 		return detailRepository.countAmountByMonth(year);
 	}
+	@GetMapping("count/income")
+	public Object getCountOfIncome() {
+		return detailRepository.countIncomeByArea();
+	}
 }

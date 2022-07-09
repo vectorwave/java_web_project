@@ -23,7 +23,7 @@
                         <ul class="nav navbar-nav menu_nav ml-auto">
                             <li class="nav-item"><a class="nav-link" href="${contextRoot}/">首頁</a></li> 
                             <li class="nav-item"><a class="nav-link" href="#about_tag">關於我們</a></li>
-                            <li class="nav-item"><a class="nav-link" href="gallery.html">藝廊</a></li>
+                           
                             <li class="nav-item submenu dropdown">
                                 <a href="${contextRoot}/front/productPage/" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">想趣旅遊</a>
                                 <ul class="dropdown-menu">
@@ -33,13 +33,7 @@
 <!--                                     <li class="nav-item"><a class="nav-link" href="islandTravel.html">外島出團</a></li> -->
                                 </ul>
                             </li> 
-                            <li class="nav-item submenu dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">主打活動</a>
-                                <ul class="dropdown-menu">
-                                    <li class="nav-item"><a class="nav-link" href="blog.html">導遊開團趣</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="blog-single.html">旅遊排行</a></li>
-                                </ul>
-                            </li> 
+                            
                             <li class="nav-item submenu dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">導遊資訊</a>
                                 <ul class="dropdown-menu">
