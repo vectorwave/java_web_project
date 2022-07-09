@@ -31,19 +31,19 @@
                     <tr>
                       <td class="formLabel"><label class="GIFLabel">個人圖片： </label></td>
                       <td class="formContent"><input class="form-control" type="file" name="profilePic" id="formFile"
-                          accept="image/*" style="width:250px;height: 35px;" onchange="loadFile(event)"></td>
+                          accept="image/*" style="width:250px;height: 35px;" onchange="loadFile(event)" ></td>
                     </tr>
 
                     <tr>
                       <td class="formLabel"><label class="GIFLabel">帳號： </label></td>
-                      <td class="formContent"><input type="text" name="accountName" class="inputBoxAdd" id="idAcc" />
+                      <td class="formContent"><input type="text" name="accountName" class="inputBoxAdd" id="idAcc" required="required"/>
                       </br><span class="check" id="accountCheck"></span>
                       </td>
                     </tr>
 
                     <tr>
                       <td class="formLabel"><label class="GIFLabel">密碼： </label></td>
-                      <td class="formContent"><input type="password" name="pwd" class="inputBoxAdd" id="pwdid" />
+                      <td class="formContent"><input type="password" name="pwd" class="inputBoxAdd" id="pwdid" required="required"/>
                       </br><span class="check" id="pwdCheck"></span>
                       </td>
                     </tr>
@@ -51,7 +51,7 @@
                     <tr>
                       <td class="formLabel"> <label class="GIFLabel">商家名稱： </label></td>
                       <td class="formContent">
-                        <form:input path="profileName" class="inputBoxAdd" id="profilename" />
+                        <form:input path="profileName" class="inputBoxAdd" id="profilename" required="required"/>
                       </br><span class="check" id="gNameCheck"></span>
                       </td>
                     </tr>
@@ -59,7 +59,7 @@
                     <tr>
                       <td class="formLabel"><label class="GIFLabel">姓名： </label></td>
                       <td class="formContent">
-                        <form:input path="guideName" class="inputBoxAdd" id="realname"/>
+                        <form:input path="guideName" class="inputBoxAdd" id="realname" required="required"/>
                       </br><span class="check" id="nameCheck"></span>
                       </td>
                     </tr>
@@ -74,7 +74,7 @@
                     <tr>
                       <td class="formLabel"><label class="GIFLabel">生日： </label></td>
                       <td class="formContent">
-                        <form:input type="date" path="guideBirthday" class="inputBoxAdd" id="birthday" />
+                        <form:input type="date" path="guideBirthday" class="inputBoxAdd" id="birthday" required="required"/>
                       </td>
                     </tr>
 
@@ -85,7 +85,7 @@
                         <div class="btn-group" role="group" aria-label="Basic radio toggle button group"
                           style="float:right; margin-right: 70px;">
                           <form:radiobutton path="guideGender" value="男性" class="btn-check" name="btnradio"
-                            id="btnradio1" autocomplete="off" />
+                            id="btnradio1" autocomplete="off" required="required"/>
                           <label class="btn btn-outline-dark" for="btnradio1"
                             style="border-radius: 5px 0px 0px 5px;">男性</label>
 
@@ -104,7 +104,7 @@
                     <tr>
                       <td class="formLabel"> <label class="GIFLabel">聯絡電話： </label></td>
                       <td class="formContent">
-                        <form:input path="guidePhone" class="inputBoxAdd" id="phone" />
+                        <form:input path="guidePhone" class="inputBoxAdd" id="phone" required="required"/>
                       </br><span class="check" id="phoneCheck"></span>
                       </td>
                     </tr>
@@ -112,7 +112,7 @@
                     <tr>
                       <td class="formLabel"><label class="GIFLabel">電子郵件： </label></td>
                       <td class="formContent">
-                        <form:input path="guideEmail" class="inputBoxAdd" id="mail" />
+                        <form:input path="guideEmail" class="inputBoxAdd" id="mail" required="required"/>
                       </br><span class="check" id="mailCheck"></span>
                       </td>
                     </tr>
@@ -120,7 +120,7 @@
                     <tr>
                       <td class="formLabel"><label class="GIFLabel">聯絡地址： </label></td>
                       <td class="formContent">
-                        <form:textarea path="guideAddress" class="textareaAdd" id="address" />
+                        <form:textarea path="guideAddress" class="textareaAdd" id="address" required="required"/>
                       </br><span class="check" id="addressCheck"></span>
                       </td>
                     </tr>
@@ -128,7 +128,7 @@
                     <tr>
                       <td class="formLabel"><label class="GIFLabel">證照類型： </label></td>
                       <td class="formContent">
-                        <form:input path="licenceType" class="inputBoxAdd" id="licence" />
+                        <form:input path="licenceType" class="inputBoxAdd" id="licence" required="required"/>
                       </br><span class="check" id="licenceCheck"></span>
                       </td>
                     </tr>
@@ -136,7 +136,7 @@
                     <tr>
                       <td class="formLabel"> <label class="GIFLabel">證照號碼： </label></td>
                       <td class="formContent">
-                        <form:input path="licenceNo" class="inputBoxAdd" id="licenceNo" />
+                        <form:input path="licenceNo" class="inputBoxAdd" id="licenceNo" required="required"/>
                       </br><span class="check" id="lnoCheck"></span>
                       </td>
                     </tr>
