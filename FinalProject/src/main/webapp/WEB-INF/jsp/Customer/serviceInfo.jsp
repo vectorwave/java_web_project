@@ -9,9 +9,25 @@
 	
 </script>
 <style>
-td {
-	text-align: center;
-	vertical-align: middle;
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
 }
 </style>
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
@@ -48,7 +64,7 @@ td {
 										<th>ProcessStatus</th>
 										<th>Remark</th>
 										<th>CreatedAt</th>
-										
+										<th>modifiedAt</th>
 										<th>Update</th>
 										<th>Delete</th>
 									</tr>
@@ -64,7 +80,7 @@ td {
 											<td style="">${customerBean.processStatus}</td>
 											<td style="">${customerBean.remark}</td>
 											<td style="">${customerBean.createdAt}</td>
-											
+											<td style="">${customerBean.modifiedAt}</td>
 												
 											<td style="">
 												<div class="btn-container">

@@ -53,7 +53,7 @@
 <br>
 <br>
 
-<div id="GIFormContainer1">
+<div id="GIFormContainer1" style=" margin:0px auto;">
 	<div align="center">
 		<table>
 			<thead class="thead-dark">
@@ -132,7 +132,7 @@
 		</table>
 	</div>
 </div>
-</div>
+
 <br>
 <br>
 <br>

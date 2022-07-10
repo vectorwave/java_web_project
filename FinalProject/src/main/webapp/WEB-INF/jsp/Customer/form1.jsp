@@ -47,8 +47,10 @@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
     #container {
       border: solid 3px #474544;
       max-width: 768px;
+      max-height:800px; 
       margin: 60px auto;
       position: relative;
+      background-color:white;
     }
 
     form {
@@ -333,7 +335,7 @@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <body>
-  <div style='background-image: url("image/banner_bg.jpg")''>
+  <div style='background-image: url("../image/banner_bg.jpg")'>
     <br /><br /><br />
     <div id="container">
       <h1>&bull; 客服表單 &bull;</h1>
@@ -446,8 +448,8 @@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
         <div class="submit">
           <input type="submit" value="送出表單" id="form_button" />
-          <input type="submit" value="一鍵生成" id="btnNewInOneClick" />
-          <input type="submit" value="一鍵清除" id="btnClear" />
+          <input type="button" value="一鍵生成" id="btnNewInOneClick" />
+          <input type="button" value="一鍵清除" id="btnClear" />
         </div>
       </form>
       <!-- // End form -->
@@ -486,7 +488,7 @@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
   });
 </script>
 
-/FinalProject/src/main/webapp/WEB-INF/jsp/front/JoTravelFront
+
 
 <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
 <jsp:include page="../front/JoTravelFront/frontLayout/frontFooter.jsp" />
