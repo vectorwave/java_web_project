@@ -21,11 +21,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-
 import com.group1project.model.bean.CustomerBean;
 import com.group1project.model.service.CustomerService;
-
-
 
 @Controller
 public class CustomerSupportController {
@@ -36,28 +33,27 @@ public class CustomerSupportController {
 	@Autowired
 	private JavaMailSender mailSender;
 
-
 	@RequestMapping("/back/customerSupport")
 	@ResponseBody
 	public Map<String, Integer> pie() {
-		
-		List<CustomerBean> csbList = csService.findAllCustomer();//先找出所有資料
-		Map<String, Integer> map = new HashMap<String, Integer>();//將所有serviceInfos裝在HashMap的string型別的key裡
-		for(CustomerBean csb : csbList) {
-			String thisServiceInfo = csb.getServiceInfo();//因為是一筆一筆拿出來，每次拿到一筆後去比對是否在csbList的list裡已經有相同的問題
-			if( !map.containsKey(thisServiceInfo) ) {//拿到後比對，如果map裡沒有這個ServiceInfo就變成數量1
-				map.put(thisServiceInfo, 1);//拿到後比對，如果map裡沒有這個ServiceInfo就變成數量1
-			} else {//如果對比完成後已經有相同的
-				map.put(//在map物件裡放
-					thisServiceInfo,//這個已經有的key值的 
-					map.get(thisServiceInfo)+1//的值加一
+
+		List<CustomerBean> csbList = csService.findAllCustomer();// 先找出所有資料
+		Map<String, Integer> map = new HashMap<String, Integer>();// 將所有serviceInfos裝在HashMap的string型別的key裡
+		for (CustomerBean csb : csbList) {
+			String thisServiceInfo = csb.getServiceInfo();// 因為是一筆一筆拿出來，每次拿到一筆後去比對是否在csbList的list裡已經有相同的問題
+			if (!map.containsKey(thisServiceInfo)) {// 拿到後比對，如果map裡沒有這個ServiceInfo就變成數量1
+				map.put(thisServiceInfo, 1);// 拿到後比對，如果map裡沒有這個ServiceInfo就變成數量1
+			} else {// 如果對比完成後已經有相同的
+				map.put(// 在map物件裡放
+						thisServiceInfo, // 這個已經有的key值的
+						map.get(thisServiceInfo) + 1// 的值加一
 				);
 			}
 		}
 
 		return map;
 	}
-	
+
 	// 導去智慧客服畫面
 	@GetMapping("/ai")
 	public String ai() {
@@ -66,13 +62,10 @@ public class CustomerSupportController {
 
 	}
 
-	
-
-
 	// 送出表單後查詢單筆資料
 	@GetMapping("/message/selectOne")
 	public ModelAndView selectOnePage(ModelAndView mav) {
-		
+
 		CustomerBean lastMag = csService.findById(null);
 		mav.getModel().put("lastMag", lastMag);
 		mav.setViewName("Customer/selectOne");
@@ -85,9 +78,9 @@ public class CustomerSupportController {
 
 		Page<CustomerBean> page = csService.findByPage(pageNumber);
 
-//		List<CustomerBean> allCus = csService.findAllCustomer();
+		// List<CustomerBean> allCus = csService.findAllCustomer();
 		mav.getModel().put("page", page);
-//		mav.getModel().put("allCus", allCus);
+		// mav.getModel().put("allCus", allCus);
 		mav.setViewName("Customer/selectAll");
 		return mav;
 
@@ -99,15 +92,14 @@ public class CustomerSupportController {
 
 		Page<CustomerBean> page = csService.findByPage(pageNumber);
 
-	    List<CustomerBean> allCus = csService.findAllByprocessStatus();
-	 
-		
+		List<CustomerBean> allCus = csService.findAllByprocessStatus();
+
 		mav.getModel().put("allCus", allCus);
 		mav.setViewName("Customer/selectAllByps");
 		return mav;
 
 	}
-	
+
 	// 模糊搜尋
 	@GetMapping("/message/findByServiceInfoLike")
 	public ModelAndView findByServiceInfoLike(ModelAndView mav, @RequestParam String findByServiceInfoLike) {
@@ -137,44 +129,39 @@ public class CustomerSupportController {
 	}
 
 	// 寫入資料庫
-//	@RequestMapping(value="/message/insert", method=RequestMethod.GET)
-//	@GetMapping("/message/insert")
-//	@RequestMapping(value="/message/insert", method=RequestMethod.POST)
-//	@PostMapping("/message/insert")
+	// @RequestMapping(value="/message/insert", method=RequestMethod.GET)
+	// @GetMapping("/message/insert")
+	// @RequestMapping(value="/message/insert", method=RequestMethod.POST)
+	// @PostMapping("/message/insert")
 	@RequestMapping("/message/insert")
 	public ModelAndView insertPage(@ModelAttribute(name = "CustomerBean") CustomerBean cs) throws MessagingException {
 
-		
-		
-		
-		
 		cs.setProcessStatus("處理中");
-		
+
 		CustomerBean csb = csService.insert(cs); // insert不需有回傳值
 
-		String from = "客-服通知信<roger9527vivi@gmail.com>";
+		String from = "客服通知信<roger9527vivi@gmail.com>";
 		String to = cs.getEmail();
 		MimeMessage message = mailSender.createMimeMessage();
 		MimeMessageHelper helper = new MimeMessageHelper(message);
-		
+
 		helper.setFrom(from);
 		helper.setTo(to);
 		helper.setSubject("感謝您留言");
-//		message.setText("將在48小時內回覆您");
+		// message.setText("將在48小時內回覆您");
 		boolean html = true;
-		helper.setText("這裏是酒窖網的客服，感謝您此次的咨詢"
+		helper.setText("這裏是JoTravel 揪遊四國的客服，感謝您此次的咨詢"
 				+ "<br>關於您咨詢的問題，我們會及時加以確認。"
-				+"<br>我們是依序確認郵件，可能需要幾小時才能回復您，請您知悉。"
-				+"<br>根據您詢問的問題，我們可能無法給您滿意的答復，請您諒解。"
-				+"<br>我們將會保密您的個人資料及郵件內容，不會讓第三方知道。"
+				+ "<br>我們是依序確認郵件，可能需要幾小時才能回復您，請您知悉。"
+				+ "<br>根據您詢問的問題，我們可能無法給您滿意的答復，請您諒解。"
+				+ "<br>我們將會保密您的個人資料及郵件內容，不會讓第三方知道。"
 				+ "<br>"
 				+ "<br>"
-				+ "感謝您的來信。"
-				, html);
-//		helper.setText("問題："+"<b>"+cusmes.getMessageQuest()+"</b><br>"+"回覆:"+"<b>"+cusmes.getMessagetext()+"</b>", html);
+				+ "感謝您的來信。", html);
+		// helper.setText("問題："+"<b>"+cusmes.getMessageQuest()+"</b><br>"+"回覆:"+"<b>"+cusmes.getMessagetext()+"</b>",
+		// html);
 		mailSender.send(message);
-		
-		
+
 		ModelAndView mav = new ModelAndView();
 		CustomerBean csResult = csService.findById(csb.getId());
 		mav.getModel().put("csResult", csResult);
@@ -198,21 +185,21 @@ public class CustomerSupportController {
 		return mav;
 	}
 
-//	@PostMapping("/message/editForm")
-//	public  editFormPage(@ModelAttribute(name="") ModelAndView mav) {
-//
-//		
-//
-//		mav.getModel().put("customerBean2", new CustomerBean());// 將空物件放進model
-//
-//		List<CustomerBean> allCus = csService.findAllCustomer();
-//		mav.getModel().put("allCus", allCus);
-//
-//		mav.setViewName("Customer/editForm1");
-//
-//		return mav;
-//	}
-	
+	// @PostMapping("/message/editForm")
+	// public editFormPage(@ModelAttribute(name="") ModelAndView mav) {
+	//
+	//
+	//
+	// mav.getModel().put("customerBean2", new CustomerBean());// 將空物件放進model
+	//
+	// List<CustomerBean> allCus = csService.findAllCustomer();
+	// mav.getModel().put("allCus", allCus);
+	//
+	// mav.setViewName("Customer/editForm1");
+	//
+	// return mav;
+	// }
+
 	// 確認修改
 	@GetMapping("/message/edit")
 	public ModelAndView editPage(ModelAndView mav, Integer id, @ModelAttribute("customerBean2") CustomerBean csb) {
@@ -228,9 +215,10 @@ public class CustomerSupportController {
 	}
 
 	@GetMapping("/message/delete{id}")
-	public ModelAndView deletePage(ModelAndView mav,@PathVariable Integer id,@ModelAttribute("customerBean2") CustomerBean csb) {
+	public ModelAndView deletePage(ModelAndView mav, @PathVariable Integer id,
+			@ModelAttribute("customerBean2") CustomerBean csb) {
 		csService.deleteById(id);
-		
+
 		mav.setViewName("redirect:/staff/message/selectAll");
 
 		return mav;

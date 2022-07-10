@@ -41,7 +41,7 @@
 </head>
 <body>
 <jsp:include page="../front/JoTravelFront/frontLayout/frontHeader.jsp" />
- <section class="breadcrumb_area">
+<section class="breadcrumb_area">
             <div class="overlay bg-parallax" data-stellar-ratio="0.8" data-stellar-vertical-offset="0" data-background=""></div>
             <div class="container">
                 <div class="page-cover text-center">
@@ -49,6 +49,9 @@
                      </div>
             </div>
               </section> 
+<br>
+<br>
+<br>
 
 <div id="GIFormContainer1">
 	<div align="center">
@@ -130,5 +133,8 @@
 	</div>
 </div>
 </div>
+<br>
+<br>
+<br>
 
 <jsp:include page="../front/JoTravelFront/frontLayout/frontFooter.jsp" />
