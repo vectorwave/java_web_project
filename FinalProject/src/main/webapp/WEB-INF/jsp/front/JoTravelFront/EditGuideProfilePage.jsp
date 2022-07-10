@@ -34,6 +34,11 @@
 <link href="${contextRoot}/css/sweetalert2.min.css" rel="stylesheet">
  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
 
+ <script type="text/javascript"
+	src="${contextRoot}/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript"
+	src="${contextRoot}/jQueryconfirm/jquery-confirm.js"></script>
+
         <style>
 
         </style>    
@@ -112,28 +117,28 @@
                     <tr>
                       <td class="formLabel"><label class="GIFLabel">主頁名稱： </label></td>
                       <td class="formContent">
-                        <form:input path="profileName" class="inputBoxAdd" />
+                        <form:input path="profileName" class="inputBoxAdd" id="profilename" />
                       </td>
                     </tr>
 
                     <tr>
                       <td class="formLabel"> <label class="GIFLabel">姓名： </label></td>
                       <td class="formContent">
-                        <form:input path="guideName" class="inputBoxAdd" />
+                        <form:input path="guideName" class="inputBoxAdd" id="realname" />
                       </td>
                     </tr>
 
                     <tr>
                       <td class="formLabel"> <label class="GIFLabel">個人簡述： </label></td>
                       <td class="formContent">
-                        <form:textarea path="guideDescription" class="textareaAdd" />
+                        <form:textarea path="guideDescription" class="textareaAdd" id="description" />
                       </td>
                     </tr>
 
                     <tr>
                       <td class="formLabel"> <label class="GIFLabel">生日： </label></td>
                       <td class="formContent">
-                        <form:input type="date" path="guideBirthday" class="inputBoxAdd" />
+                        <form:input type="date" path="guideBirthday" class="inputBoxAdd" id="birthday" />
                       </td>
                     </tr>
 
@@ -162,35 +167,35 @@
                     <tr>
                       <td class="formLabel"> <label class="GIFLabel">聯絡電話： </label></td>
                       <td class="formContent">
-                        <form:input path="guidePhone" class="inputBoxAdd" />
+                        <form:input path="guidePhone" class="inputBoxAdd" id="phone" />
                       </td>
                     </tr>
 
                     <tr>
                       <td class="formLabel"><label class="GIFLabel">電子郵件： </label></td>
                       <td class="formContent">
-                        <form:input path="guideEmail" class="inputBoxAdd" />
+                        <form:input path="guideEmail" class="inputBoxAdd" id="mail" />
                       </td>
                     </tr>
 
                     <tr>
                       <td class="formLabel"> <label class="GIFLabel">聯絡地址： </label></td>
                       <td class="formContent">
-                        <form:textarea path="guideAddress" class="textareaAdd" />
+                        <form:textarea path="guideAddress" class="textareaAdd" id="address" />
                       </td>
                     </tr>
 
                     <tr>
                       <td class="formLabel"> <label class="GIFLabel">證照類型： </label></td>
                       <td class="formContent">
-                        <form:input path="licenceType" class="inputBoxAdd" />
+                        <form:input path="licenceType" class="inputBoxAdd" id="licence" />
                       </td>
                     </tr>
 
                     <tr>
                       <td class="formLabel"> <label class="GIFLabel">證照號碼： </label></td>
                       <td class="formContent">
-                        <form:input path="licenceNo" class="inputBoxAdd" />
+                        <form:input path="licenceNo" class="inputBoxAdd" id="licenceNo" />
                       </td>
                     </tr>
 
@@ -199,6 +204,7 @@
                         <div class="btn-container" style="margin-top:20px" align="center"> <button type="button" onclick="editGuide(form)"
                             class="genric-btn primary circle">修改</button>
                           <button type="button" class="genric-btn warning circle" onclick="history.go(-1)">取消</button>
+                          <button type="button" class="genric-btn info circle" id="autokey">一鍵輸入</button>
                         </div>
                       </td>
                     </tr>
@@ -218,6 +224,20 @@
         </section>
         <!--================ About Guide Area  =================-->
         <script>
+               //一鍵輸入
+
+      $('#autokey').click(function(){
+      $('#profilename').val("台灣夜市專家");
+      $('#realname').val("葉俊瑋");
+      $('#description').val("專業吃貨導遊，全台夜市第一把交椅，帶你吃遍全台夜市！");
+     $('#birthday').val("1995-05-06");
+     $('#btnradio1').prop("checked",true);
+     $('#phone').val("0956322456");
+     $('#mail').val("nightmarket_tw@gmail.com");
+     $('#address').val("台北市士林區大北路34號");
+      $('#licence').val("國內導遊證照");
+      $('#licenceNo').val("GU03534699");
+			});
             
                       // 圖片處理
                       var loadFile = function (event) {

@@ -172,6 +172,32 @@ td, input {
 				</table>
 			</div>
 		</fieldset>
+		</div>
+		<div class="row justify-content-center"
+			style="text-align: center; margin-top: 310px;">
+			<div class="col-7">
+
+				<c:forEach var="pageNumber" begin="1" end="${page.totalPages}">
+					<c:choose>
+						<c:when test="${page.number != pageNumber -1}">
+
+							<a href="${contextRoot}/staff/message/selectAll?p=${pageNumber}"><button
+									type="button" class="btn btn-outline-secondary">
+									<c:out value="${pageNumber}" />
+								</button></a>
+
+						</c:when>
+						<c:otherwise>
+
+							<a class="btn btn-secondary disabled" role="button"
+								aria-disabled="true"> ${pageNumber} </a>
+
+							<c:set var="pgn" value="${page.number +1}" scope="session" />
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>
+			</div>
+		</div>
 		<div id="container" style="width: 550px; height: 100px; margin: 10px"></div>
 						<script type="text/javascript">
 	
@@ -282,87 +308,7 @@ $(document).ready(function() {
 });
 </script>
 		<!-- 原核心內容的 section 結束 -->
-		<div class="row justify-content-center"
-			style="text-align: center; margin-top: 10px;">
-			<div class="col-7">
-
-				<c:forEach var="pageNumber" begin="1" end="${page.totalPages}">
-					<c:choose>
-						<c:when test="${page.number != pageNumber -1}">
-
-							<a href="${contextRoot}/staff/message/selectAll?p=${pageNumber}"><button
-									type="button" class="btn btn-outline-secondary">
-									<c:out value="${pageNumber}" />
-								</button></a>
-
-						</c:when>
-						<c:otherwise>
-
-							<a class="btn btn-secondary disabled" role="button"
-								aria-disabled="true"> ${pageNumber} </a>
-
-							<c:set var="pgn" value="${page.number +1}" scope="session" />
-						</c:otherwise>
-					</c:choose>
-				</c:forEach>
-			</div>
-		</div>
-
-		<!-- 插入頁腳 -->
-
-
-		<div id="sample-modal" class="modal">
-			<div class="modal-background --jb-modal-close"></div>
-			<div class="modal-card">
-				<header class="modal-card-head">
-					<p class="modal-card-title">Sample modal</p>
-				</header>
-				<section class="modal-card-body">
-					<p>
-						Lorem ipsum dolor sit amet <b>adipiscing elit</b>
-					</p>
-					<p>This is sample modal</p>
-				</section>
-				<footer class="modal-card-foot">
-					<button class="button --jb-modal-close">Cancel</button>
-					<button class="button red --jb-modal-close">Confirm</button>
-				</footer>
-			</div>
-		</div>
-
-		<div id="sample-modal-2" class="modal">
-			<div class="modal-background --jb-modal-close"></div>
-			<div class="modal-card">
-				<header class="modal-card-head">
-					<p class="modal-card-title">Sample modal</p>
-				</header>
-				<section class="modal-card-body">
-					<p>
-						Lorem ipsum dolor sit amet <b>adipiscing elit</b>
-					</p>
-					<p>This is sample modal</p>
-				</section>
-				<footer class="modal-card-foot">
-					<button class="button --jb-modal-close">Cancel</button>
-					<button class="button blue --jb-modal-close">Confirm</button>
-				</footer>
-			</div>
-		</div>
-
-	</div>
-
-	<!-- Scripts below are for demo only -->
-	<script type="text/javascript"
-		src="${contextRoot}/resources/backstage/js/main.min.js?v=1628755089081"></script>
-
-
-
-
-	<noscript>
-		<img height="1" width="1" style="display: none"
-			src="https://www.facebook.com/tr?id=658339141622648&ev=PageView&noscript=1" />
-	</noscript>
-
+		
 
 	<!-- Icons below are for demo only. Feel free to use any icon pack. Docs: https://bulma.io/documentation/elements/icon/ -->
 	<jsp:include page="../layout/footer.jsp" />
