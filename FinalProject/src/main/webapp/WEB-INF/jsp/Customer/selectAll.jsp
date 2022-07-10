@@ -97,7 +97,7 @@ td, input {
 		</section>
 
 		<!-- 核心內容標題 -->
-	<div class="content-container">
+	<div class="content-container" style="margin-left:100px;width:300px">
 
 		<fieldset style="height: 450px; width: 600px">
 

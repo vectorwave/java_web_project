@@ -610,9 +610,10 @@ html {
 	          setCookie("address",kris);
 	          var address1 = getCookie("address");
 	          var address2=address1.substring(5,8)
+	          var address3="台北市";
 	          console.log(address1);
 	          console.log(address2);
-	          var jkf1=address2.indexOf("台北");
+	          var jkf1=address3.indexOf("台北");
 
 	          if(jkf1!=-1){
 	          	var el1 = document.getElementById("krisrock1");

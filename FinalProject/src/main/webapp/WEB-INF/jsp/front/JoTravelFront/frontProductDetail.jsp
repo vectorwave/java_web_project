@@ -105,7 +105,7 @@
 				
 				<!--  ============== 商品圖片跑馬燈 =================== -->
 				<div class="row">
-					<div class="col-12 col-lg-7">
+					<div class="col-12 col-lg-5">
 						<div class="single_product_thumb">
 							<div id="product_details_slider" class="carousel slide"
 								data-ride="carousel">
