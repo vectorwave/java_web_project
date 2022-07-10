@@ -108,7 +108,7 @@
 														<form method="get"
 															action="${contextRoot}/message/editForm?id=${customerBean.id}">
 															<button class="btn btn-outline-primary edit"
-																type="button">確認修改</button>
+																type="button">回覆</button>
 														</form>
 														<button type="button" onclick="deleteGuide()"
 															class="btn btn-outline-danger">刪除</button>

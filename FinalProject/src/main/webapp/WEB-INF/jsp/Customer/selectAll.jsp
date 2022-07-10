@@ -134,7 +134,7 @@ table {
 								<div class="btn-container">
 									<form method="get"
 										action="${contextRoot}/message/editForm${customerBean.id}">
-										<button class="btn btn-outline-primary edit" type="submit">修改</button>
+										<button class="btn btn-outline-primary edit" type="submit">回覆</button>
 									</form>
 								</div>
 
