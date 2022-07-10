@@ -15,15 +15,50 @@
 <title>客服管理列表</title>
 
 <style>
-
-td, input {
-	width: 150px
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
 }
 
-#inputSearch {
-	width: 150px;
-	height: 25px
-}
 </style>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async
@@ -48,21 +83,21 @@ td, input {
 
 		<fieldset style="height: 450px; width: 500px">
 
-			<legend style="position: relative; top: 30px; right:50px">客服管理</legend>
+			<legend style="position: relative;right:100px">客服管理</legend>
 
 			<div class="tableContainer">
 
 				<!-- 原核心內容的 section 開始 -->
 
 				<form action="${contextRoot}/message/findByServiceInfoLike"
-					style="position: relative;right: 100px" >
-					特定問題查詢:<input id="inputSearch" class="input" type="text"
+					style="position: relative;right: 200px" >
+					問題分類查詢:<input id="inputSearch" class="input" type="text"
 						name="findByServiceInfoLike"> <input
 						type="submit" value="送出">
 				</form>
 
 				<table
-					style="position: relative;  right: 100px">
+					style="position: relative; top: 10px; right: 200px">
 					<tr class="thContent">
 						<th>Id</th>
 						<th>ServiceInfo</th>
@@ -70,11 +105,11 @@ td, input {
 						<th>Name</th>
 						<th>Phone</th>
 						<th>Email</th>
-						<!--<th>PreferedContactTime</th>-->
+						
 						<th>ProcessStatus</th>
 						<th>Remark</th>
 						<th>CreatedAt</th>
-						
+						<th>modifiedAt</th>
 						<th>Update</th>
 						<th>Delete</th>
 					</tr>
@@ -87,10 +122,11 @@ td, input {
 							<td style="">${customerBean.name}</td>
 							<td style="">${customerBean.phone}</td>
 							<td style="">${customerBean.email}</td>
-							<!--  <td style="">${customerBean.preferedContactTime}</td>-->
+							
 							<td style="">${customerBean.processStatus}</td>
 							<td style="">${customerBean.remark}</td>
 							<td style="">${customerBean.createdAt}</td>
+							<td style="">${customerBean.modifiedAt}</td>
 							
 
 
