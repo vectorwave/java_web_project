@@ -15,7 +15,7 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="icon" href="image/favicon.png" type="image/png">
-<title>Royal Hotel</title>
+<title>Product Detail</title>
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href='<c:url value="/css/blog/bootstrap.css"/>'>
 <link rel="stylesheet"
@@ -105,7 +105,7 @@
 				
 				<!--  ============== 商品圖片跑馬燈 =================== -->
 				<div class="row">
-					<div class="col-12 col-lg-7">
+					<div class="col-12 col-lg-5">
 						<div class="single_product_thumb">
 							<div id="product_details_slider" class="carousel slide"
 								data-ride="carousel">

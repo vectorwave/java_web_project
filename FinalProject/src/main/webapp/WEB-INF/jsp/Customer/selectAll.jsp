@@ -43,7 +43,8 @@ td, input {
 
 
 		<!-- 核心內容標題 -->
-	<div class="content-container" style="margin-top: 0px;">
+
+	<div class="content-container" style="margin-left:100px;width:300px">
 
 		<fieldset style="height: 450px; width: 500px">
 

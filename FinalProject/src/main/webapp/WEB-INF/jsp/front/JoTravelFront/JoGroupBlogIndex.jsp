@@ -634,7 +634,9 @@ html {
 	          var address2=address1.substring(5,8)
 	          console.log(address1);
 	          console.log(address2);
-	          var jkf1=address2.indexOf("台北");
+	          var address3="台北市";
+
+	          var jkf1=address3.indexOf("台北");
 
 	          if(jkf1!=-1){
 	          	var el1 = document.getElementById("krisrock1");

@@ -14,7 +14,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="icon" href="image/favicon.png" type="image/png">
-        <title>Royal Hotel</title>
+        <title>Product</title>
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href='<c:url value="/css/blog/bootstrap.css"/>'>
         <link rel="stylesheet" href="<c:url value="/css/blog/vendors/linericon/style.css"/>">
@@ -56,7 +56,7 @@
 			 <div class="section_title text-center">
 			     <h1 class="jumbotron-heading">來趟旅遊　為回憶點綴</h1>
 			     <!-- <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</p> -->
-			     <p><a href="#" class="btn btn-primary my-2">最夯熱門旅遊</a>
+			     <p><a href="${contextRoot}/front/productPage" class="btn btn-primary my-2">最夯熱門旅遊</a>
 			     <a href="${contextRoot}/front/JoGroupFront/all" class="btn btn-secondary my-2">旅遊許願池</a>
 			     </p>
 			 </div>
@@ -152,7 +152,19 @@
 							<ul class="list_style">
 								
 								<li><a href='http://localhost:8081/jotravel/front/productPage?key=墾丁'>墾丁</a></li>
-								<li><a href='http://localhost:8081/jotravel/front/productPage?key=一'>一日遊</a></li>
+								<li><a href='http://localhost:8081/jotravel/front/productPage?key=台東'>台東</a></li>
+								<li><a href='http://localhost:8081/jotravel/front/productPage?key=花蓮'>花蓮</a></li>
+								<li><a href='http://localhost:8081/jotravel/front/productPage?key=宜蘭'>宜蘭</a></li>
+								<li><a href='http://localhost:8081/jotravel/front/productPage?key=三日'>三日遊</a></li>
+								<li><a href='http://localhost:8081/jotravel/front/productPage?key=五日'>五日遊</a></li>
+								
+								
+							</ul>
+						</aside>
+						<aside class="single-sidebar-widget tag_cloud_widget">
+							<h4 class="widget_title">地區分類</h4>
+							<ul class="list_style">
+								
 								<li><a href='http://localhost:8081/jotravel/front/productPage?tag=北部'>北部</a></li>
 								<li><a href='http://localhost:8081/jotravel/front/productPage?tag=南部'>南部</a></li>
 								<li><a href='http://localhost:8081/jotravel/front/productPage?tag=中部'>中部</a></li>
@@ -170,8 +182,8 @@
 <%-- 							<c:out value="🏆 ${productList[product].productName}"></c:out> --%>
 							<a href="${contextRoot}/front/productPage/detail?id=${product.productId}" >
 							
-							<c:out value="🏆 ${product.productName}"></c:out>
-<%-- 							<c:out value="${scoreList[i.index]} 顆⭐"></c:out> --%>
+							<c:out value="🏆 ${product.productName} |"></c:out>
+							<c:out value="${scoreList[i.index]}⭐"></c:out>
 							
 							
 							</a><br/>

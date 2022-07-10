@@ -15,7 +15,7 @@
 <%-- <c:forEach var="value" items="${page.content}"> --%>
 <form:hidden path="articleId"  value="${article.articleId}"/>
 
-  <input id=accountId name="accountId" value="${loginuser.accountId}" />
+  <input id=accountId name="accountId" value="${loginuser.accountId}" style="visibility:hidden" />
 
 <!-- <input type="text" name="accountId" value="1" style="visibility:hidden"/> -->
  <form:hidden path="picId"  value="${article.articleId}"/>
