@@ -14,7 +14,9 @@
             <div class="container">
                 <div class="page-cover text-center">
                     <h2 class="page-cover-tittle">以下是您的表單紀錄，請妥善保存</h2>
-                  
+                     </div>
+            </div>
+              </section>    
 					<div class="content-container" style="text-align:center">
 
 						<div align="center">
@@ -91,11 +93,14 @@
 			
 			
 	</table>
+	</div>
 </div>
-</section>
-</div>
-</div>
-</div>
+	</fieldset>
 </div>
 </div>
- <jsp:include page="../front/JoTravelFront/frontLayout/frontFooter.jsp" />
+
+
+/FinalProject/src/main/webapp/WEB-INF/jsp/front/JoTravelFront
+
+
+<jsp:include page="../front/JoTravelFront/frontLayout/frontFooter.jsp" />
