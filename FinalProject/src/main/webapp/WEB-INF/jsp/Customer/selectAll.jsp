@@ -13,47 +13,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>客服管理列表</title>
-<!-- Tailwind is included -->
-<!-- <link rel="stylesheet" href="${contextRoot}/resources/backstage/css/main.css?v=1628755089081"> -->
-<!--<link rel="stylesheet"
-	href="${contextRoot}/resources/backstage/css/main.css">
-<link rel="apple-touch-icon" sizes="180x180"
-	href="${contextRoot}/resources/backstage/apple-touch-icon.png" />
-<link rel="icon" type="image/png" sizes="32x32"
-	href="${contextRoot}/resources/backstage/favicon-32x32.png" />
-<link rel="icon" type="image/png" sizes="16x16"
-	href="${contextRoot}/resources/backstage/favicon-16x16.png" />
-<link rel="mask-icon"
-	href="${contextRoot}/resources/backstage/safari-pinned-tab.svg"
-	color="#00b4b6" />
 
-<meta name="description" content="Admin One - free Tailwind dashboard">
-
-<meta property="og:url"
-	content="https://justboil.github.io/admin-one-tailwind/">
-<meta property="og:site_name" content="JustBoil.me">
-<meta property="og:title" content="Admin One HTML">
-<meta property="og:description"
-	content="Admin One - free Tailwind dashboard">
-<meta property="og:image"
-	content="https://justboil.me/images/one-tailwind/repository-preview-hi-res.png">
-<meta property="og:image:type" content="image/png">
-<meta property="og:image:width" content="1920">
-<meta property="og:image:height" content="960">
-
-<meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:title" content="Admin One HTML">
-<meta property="twitter:description"
-	content="Admin One - free Tailwind dashboard">
-<meta property="twitter:image:src"
-	content="https://justboil.me/images/one-tailwind/repository-preview-hi-res.png">
-<meta property="twitter:image:width" content="1920">
-<meta property="twitter:image:height" content="960">
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.js"
-	integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-	crossorigin="anonymous"></script>-->
 <style>
+
 td, input {
 	width: 150px
 }
@@ -80,42 +42,27 @@ td, input {
 <body>
 
 
-
-	<!-- 插入上導覽列與左導覽列 -->
-
-
-	<!-- 章節層級 
-		<section class="is-title-bar">
-			<div
-				class="flex flex-col md:flex-row items-center justify-between space-y-6 md:space-y-0">
-				<ul>
-					<li>管理系統</li>
-					<li>客服管理</li>
-				</ul>
-			
-			</div>
-		</section>
-
 		<!-- 核心內容標題 -->
+
 	<div class="content-container" style="margin-left:100px;width:300px">
 
-		<fieldset style="height: 450px; width: 600px">
+		<fieldset style="height: 450px; width: 500px">
 
-			<legend style="position: relative; top: 30px; right: 130px">客服管理</legend>
+			<legend style="position: relative; top: 30px; right:50px">客服管理</legend>
 
 			<div class="tableContainer">
 
 				<!-- 原核心內容的 section 開始 -->
 
 				<form action="${contextRoot}/message/findByServiceInfoLike"
-					style="position: relative; top: 1px; right: 130px; width: 600px">
+					style="position: relative;right: 100px" >
 					特定問題查詢:<input id="inputSearch" class="input" type="text"
 						name="findByServiceInfoLike"> <input
 						type="submit" value="送出">
 				</form>
 
 				<table
-					style="position: relative; top: 1px; right: 130px; width: 10px">
+					style="position: relative;  right: 100px">
 					<tr class="thContent">
 						<th>Id</th>
 						<th>ServiceInfo</th>
@@ -127,7 +74,7 @@ td, input {
 						<th>ProcessStatus</th>
 						<th>Remark</th>
 						<th>CreatedAt</th>
-						<th>ModifiedAt</th>
+						
 						<th>Update</th>
 						<th>Delete</th>
 					</tr>
@@ -144,7 +91,7 @@ td, input {
 							<td style="">${customerBean.processStatus}</td>
 							<td style="">${customerBean.remark}</td>
 							<td style="">${customerBean.createdAt}</td>
-							<td style="">${customerBean.modifiedAt}</td>
+							
 
 
 							<td>
@@ -174,7 +121,7 @@ td, input {
 		</fieldset>
 		</div>
 		<div class="row justify-content-center"
-			style="text-align: center; margin-top: 310px;">
+			style="text-align: center; margin-top: 110px;">
 			<div class="col-7">
 
 				<c:forEach var="pageNumber" begin="1" end="${page.totalPages}">

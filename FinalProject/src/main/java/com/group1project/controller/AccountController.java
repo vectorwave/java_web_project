@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
-import com.group1project.mail.MailUtils;
+//import com.group1project.mail.MailUtils;
 import com.group1project.model.bean.Account;
 import com.group1project.model.bean.Member;
 import com.group1project.model.service.AccountService;
@@ -39,8 +39,8 @@ public class AccountController {
 		super();
 		this.aService = aService;
 	}
-	@Autowired
-	private MailUtils mailUtils;
+//	@Autowired
+//	private MailUtils mailUtils;
 	
 	@Autowired
 	private MemberService mService;
@@ -299,63 +299,63 @@ public class AccountController {
 //			
 //		}
 		
-		@GetMapping("page/login/updatepwd")
-		public String updatepwd() {
-			return "/front/JoTravelFront/pageNewPassword";
-		}
+//		@GetMapping("page/login/updatepwd")
+//		public String updatepwd() {
+//			return "/front/JoTravelFront/pageNewPassword";
+//		}
+//		
+//		@GetMapping(path = "/sendEmail/{accountName}", produces = "text/plain;charset=utf-8")
+//		@ResponseBody
+//		public Map<String,String> AccountsendMail(@PathVariable("accountName") String accountName) {
+//			int r=0;
+//			String ran = "";
+//			
+//			for(int i =0; i<6; i++) {
+//				r = (int)(Math.random()*10);
+//				ran=ran+r;
+//			}
+//			System.out.println(ran);
+//			
+//			Map<String,String> mailresult = new LinkedHashMap<String, String>();
+//			System.out.println(accountName+" WWWW");
+//			Account account = aService.getAccountByName(accountName);
+//			if (account==null) {
+//				mailresult.put("msg", "沒有此帳號");
+//				return mailresult;
+//			}
+//			
+//			Member member = mService.getMemberByAccountId(account.getAccountId());
+//			int accountMaillen = member.getEmail().length();
+//			if(accountMaillen==0) {
+//				mailresult.put("msg", "沒有email");
+//				return mailresult;
+//			}
+//			String msg = sendEmail(account.getAccountName(), member.getEmail(), ran);
+//			
+//			mailresult.put("ran", ran);
+//			mailresult.put("msg", msg);
+//			
+//			return mailresult;
+//		}
+//		
 		
-		@GetMapping(path = "/sendEmail/{accountName}", produces = "text/plain;charset=utf-8")
-		@ResponseBody
-		public Map<String,String> AccountsendMail(@PathVariable("accountName") String accountName) {
-			int r=0;
-			String ran = "";
-			
-			for(int i =0; i<6; i++) {
-				r = (int)(Math.random()*10);
-				ran=ran+r;
-			}
-			System.out.println(ran);
-			
-			Map<String,String> mailresult = new LinkedHashMap<String, String>();
-			System.out.println(accountName+" WWWW");
-			Account account = aService.getAccountByName(accountName);
-			if (account==null) {
-				mailresult.put("msg", "沒有此帳號");
-				return mailresult;
-			}
-			
-			Member member = mService.getMemberByAccountId(account.getAccountId());
-			int accountMaillen = member.getEmail().length();
-			if(accountMaillen==0) {
-				mailresult.put("msg", "沒有email");
-				return mailresult;
-			}
-			String msg = sendEmail(account.getAccountName(), member.getEmail(), ran);
-			
-			mailresult.put("ran", ran);
-			mailresult.put("msg", msg);
-			
-			return mailresult;
-		}
-		
-		
-		public String sendEmail(String memberName ,String memberMail, String ran){
-			
-			
-			String subject = "JoTravel修改密碼";
-			
-			String htmlcontent = "<h3>" + memberName + " 會員你好</h3></br>" +
-					"您修改的驗證碼如下:<br>" +ran; 
-			
-			boolean b = mailUtils.sendMail(memberMail,subject,htmlcontent);
-			
-			if(b) {
-				return "已寄送相關資料至會員E-Mail";
-			}else {
-				return "發生錯誤，請尋求管理員幫助";
-			}
-			
-		}
+//		public String sendEmail(String memberName ,String memberMail, String ran){
+//			
+//			
+//			String subject = "JoTravel修改密碼";
+//			
+//			String htmlcontent = "<h3>" + memberName + " 會員你好</h3></br>" +
+//					"您修改的驗證碼如下:<br>" +ran; 
+//			
+//			boolean b = mailUtils.sendMail(memberMail,subject,htmlcontent);
+//			
+//			if(b) {
+//				return "已寄送相關資料至會員E-Mail";
+//			}else {
+//				return "發生錯誤，請尋求管理員幫助";
+//			}
+//			
+//		}
 		
 		//修改密碼
 		@PostMapping("page/login/edit")

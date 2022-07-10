@@ -4,7 +4,7 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <jsp:include page="../layout/header.jsp" />
-
+<title>客服表單</title>
 <script type="text/javascript">
 	
 </script>
@@ -31,12 +31,12 @@ td {
     
 <fieldset style="height:450px;width:300px;">
 
-<legend style="position: relative;top: 30px;right: 130px">客服管理-處理中</legend>
+<legend style="position: relative;top: 30px;right: 70px">客服管理</legend>
 
 <div class="tableContainer" >
 	
 
-				<table style="position: relative;top: 30px;right: 150px;width:10px">
+				<table style="position: relative;top: 30px;right:100px;width:10px">
 									<tr class="thContent">
 										<th >Id</th>
 										<th>ServiceInfo</th>
@@ -48,7 +48,7 @@ td {
 										<th>ProcessStatus</th>
 										<th>Remark</th>
 										<th>CreatedAt</th>
-										<th>ModifiedAt</th>
+										
 										<th>Update</th>
 										<th>Delete</th>
 									</tr>
@@ -64,27 +64,26 @@ td {
 											<td style="">${customerBean.processStatus}</td>
 											<td style="">${customerBean.remark}</td>
 											<td style="">${customerBean.createdAt}</td>
-											<td style="">${customerBean.modifiedAt}</td>
-					
+											
 												
 											<td style="">
-												<div class="buttons right nowrap">
+												<div class="btn-container">
 													<!-- 修改 -->
 													<form method="get"
 														action="${contextRoot}/message/editForm${customerBean.id}">
-														<button class="btn btn-outline-dark" data-target="sample-modal-2" type="submit">回覆
-															<span class="icon"><i class="mdi mdi-eye"></i></span>
+														<button class="btn btn-outline-primary edit" data-target="sample-modal-2" type="submit">回覆
+															
 														</button>
 													</form>
 												</div>
 											</td>
 											<td style="">
-												<div class="buttons right nowrap">
+												<div class="btn-container">
 												<form id="deleteForm" method="get"
 													action="${contextRoot}/message/delete${customerBean.id}">
-													<button class="btn btn-outline-dark" data-target="sample-modal"
+													<button class="btn btn-outline-danger delete" data-target="sample-modal"
 														type="button">刪除
-														<span class="icon"><i class="mdi mdi-trash-can"></i></span>
+														
 													</button>
 												</form>
 												</div>
