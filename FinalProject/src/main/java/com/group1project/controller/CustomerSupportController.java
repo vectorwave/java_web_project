@@ -4,19 +4,24 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.group1project.mail.JavaMail;
+
 import com.group1project.model.bean.CustomerBean;
 import com.group1project.model.service.CustomerService;
 
@@ -29,7 +34,8 @@ public class CustomerSupportController {
 	private CustomerService csService;
 
 	@Autowired
-	private JavaMail mail;
+	private JavaMailSender mailSender;
+
 
 	@RequestMapping("/back/customerSupport")
 	@ResponseBody
@@ -60,12 +66,7 @@ public class CustomerSupportController {
 
 	}
 
-	// 純寄送email
-	@GetMapping("/message/sendMail")
-	public String mail() {
-		mail.SendMail();
-		return "Customer/success";
-	}
+	
 
 
 	// 送出表單後查詢單筆資料
@@ -131,7 +132,7 @@ public class CustomerSupportController {
 		CustomerBean cs = new CustomerBean();
 
 		mav.getModel().put("CustomerBean", cs); // java bean 塞進 model
-		mav.setViewName("Customer/form"); // ModelAndView 裡規定去哪個 jsp
+		mav.setViewName("Customer/form1"); // ModelAndView 裡規定去哪個 jsp
 		return mav;
 	}
 
@@ -141,16 +142,43 @@ public class CustomerSupportController {
 //	@RequestMapping(value="/message/insert", method=RequestMethod.POST)
 //	@PostMapping("/message/insert")
 	@RequestMapping("/message/insert")
-	public ModelAndView insertPage(@ModelAttribute(name = "CustomerBean") CustomerBean cs) {
+	public ModelAndView insertPage(@ModelAttribute(name = "CustomerBean") CustomerBean cs) throws MessagingException {
 
+		
+		
+		
+		
 		cs.setProcessStatus("處理中");
 		
 		CustomerBean csb = csService.insert(cs); // insert不需有回傳值
 
+		String from = "客-服通知信<roger9527vivi@gmail.com>";
+		String to = cs.getEmail();
+		MimeMessage message = mailSender.createMimeMessage();
+		MimeMessageHelper helper = new MimeMessageHelper(message);
+		
+		helper.setFrom(from);
+		helper.setTo(to);
+		helper.setSubject("感謝您留言");
+//		message.setText("將在48小時內回覆您");
+		boolean html = true;
+		helper.setText("這裏是酒窖網的客服，感謝您此次的咨詢"
+				+ "<br>關於您咨詢的問題，我們會及時加以確認。"
+				+"<br>我們是依序確認郵件，可能需要幾小時才能回復您，請您知悉。"
+				+"<br>根據您詢問的問題，我們可能無法給您滿意的答復，請您諒解。"
+				+"<br>我們將會保密您的個人資料及郵件內容，不會讓第三方知道。"
+				+ "<br>"
+				+ "<br>"
+				+ "感謝您的來信。"
+				, html);
+//		helper.setText("問題："+"<b>"+cusmes.getMessageQuest()+"</b><br>"+"回覆:"+"<b>"+cusmes.getMessagetext()+"</b>", html);
+		mailSender.send(message);
+		
+		
 		ModelAndView mav = new ModelAndView();
 		CustomerBean csResult = csService.findById(csb.getId());
 		mav.getModel().put("csResult", csResult);
-		mav.setViewName("Customer/selectOne");
+		mav.setViewName("Customer/selectOne1");
 		return mav;
 	}
 
