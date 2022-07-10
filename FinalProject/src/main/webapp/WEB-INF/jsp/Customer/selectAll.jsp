@@ -47,21 +47,21 @@ td, input {
 
 		<fieldset style="height: 450px; width: 500px">
 
-			<legend style="position: relative; top: 30px; left: 200px">客服管理</legend>
+			<legend style="position: relative; top: 30px; right:50px">客服管理</legend>
 
 			<div class="tableContainer">
 
 				<!-- 原核心內容的 section 開始 -->
 
 				<form action="${contextRoot}/message/findByServiceInfoLike"
-					style="position: relative;left: 180px" >
+					style="position: relative;right: 100px" >
 					特定問題查詢:<input id="inputSearch" class="input" type="text"
 						name="findByServiceInfoLike"> <input
 						type="submit" value="送出">
 				</form>
 
 				<table
-					style="position: relative;  left: 170px">
+					style="position: relative;  right: 100px">
 					<tr class="thContent">
 						<th>Id</th>
 						<th>ServiceInfo</th>

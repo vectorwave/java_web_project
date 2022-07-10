@@ -31,12 +31,12 @@ td {
     
 <fieldset style="height:450px;width:300px;">
 
-<legend style="position: relative;top: 30px;left: 210px">客服管理</legend>
+<legend style="position: relative;top: 30px;right: 70px">客服管理</legend>
 
 <div class="tableContainer" >
 	
 
-				<table style="position: relative;top: 30px;left:170px;width:10px">
+				<table style="position: relative;top: 30px;right:100px;width:10px">
 									<tr class="thContent">
 										<th >Id</th>
 										<th>ServiceInfo</th>
