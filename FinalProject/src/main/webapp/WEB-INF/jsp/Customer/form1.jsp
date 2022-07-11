@@ -360,7 +360,7 @@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
           <label for="name"></label>
           <input
             type="text"
-            placeholder="請輸入你/妳的名字"
+            placeholder="請輸入你/妳的名字(必填)"
             name="name"
             id="name"
             pattern="[\u4e00-\u9fa5]{2,4}"
@@ -372,7 +372,7 @@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
           <label for="inputPassword"></label>
           <input
             type="text"
-            placeholder="請輸入你/妳的聯絡方式"
+            placeholder="請輸入你/妳的聯絡方式(必填)"
             value=""
             placeholder="請輸入10碼聯絡方式..."
             name="phone"
@@ -385,14 +385,14 @@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
           <label for="email"></label>
           <input
             type="text"
-            placeholder="請輸入你/妳的電子郵件信箱"
+            placeholder="請輸入你/妳的電子郵件信箱(必填)"
             name="email"
             id="email"
             required
           />
         </div>
         <div class="email">
-          <label for="inputPassword">請選擇方便連絡時段(必選):</label>
+          <label for="inputPassword">請選擇方便連絡時段:</label>
           上午&nbsp<input
             checked="true"
             class="pixel-radio btcolor"
@@ -434,12 +434,12 @@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
           <label for="description"></label>
           <textarea
             name="description"
-            placeholder="請詳加描述您的問題..."
+            placeholder="請詳加描述您的問題...(選填)"
             id="description"
             path="description"
             cols="30"
             rows="5"
-            required
+            
           ></textarea>
         </div>
         <br />
