@@ -1,5 +1,6 @@
 package com.group1project.controller;
 
+import java.io.Console;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -202,8 +203,38 @@ public class CustomerSupportController {
 
 	// 確認修改
 	@GetMapping("/message/edit")
-	public ModelAndView editPage(ModelAndView mav, Integer id, @ModelAttribute("customerBean2") CustomerBean csb) {
+	public ModelAndView editPage(ModelAndView mav, Integer id, @ModelAttribute("customerBean2") CustomerBean csb) throws MessagingException {
 
+			
+		
+		String from = "客服通知信<roger9527vivi@gmail.com>";
+		String to = csb.getEmail();
+		String re = csb.getRemark();
+		MimeMessage message = mailSender.createMimeMessage();
+		MimeMessageHelper helper = new MimeMessageHelper(message);
+
+		helper.setFrom(from);
+		helper.setTo(to);
+		helper.setSubject("關於您反映的問題");
+		// message.setText("將在48小時內回覆您");
+		boolean html = true;
+		helper.setText("感謝您的來信。"
+				+"<br>我們是JoTravel 揪遊四國的客服中心。"
+				+"<br>"
+				+"<br>感謝您耐心等候"
+				+"<br>"
+				+"客服已做以下回覆:"
+				+"<br>"
+				+"<h1>"
+				+re
+				+"</h1>"
+				+"</br>"
+				, html);
+		// helper.setText("問題："+"<b>"+cusmes.getMessageQuest()+"</b><br>"+"回覆:"+"<b>"+cusmes.getMessagetext()+"</b>",
+		// html);
+		mailSender.send(message);
+		
+		
 		// 資料庫修改
 		csService.editOne(csb);
 
